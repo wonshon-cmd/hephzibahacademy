@@ -34,33 +34,55 @@
   <div class="wrap">
     <p class="eyebrow">Academy</p>
     <h1 class="display" style="font-size:clamp(44px,6.4vw,96px)">Lectures</h1>
-    <p class="lead" style="max-width:34ch">Short, interactive talks. One slide at a time — with the whole room taking part.</p>
-    <div class="tabs" role="group" aria-label="Audience" style="margin:56px 0 0">
-      <button type="button" aria-pressed="true">For High School</button>
-      <button type="button" disabled title="Coming soon">For College</button>
-      <button type="button" disabled title="Coming soon">For Parents</button>
+    <p class="lead" style="max-width:34ch">Learn together. One slide at a time.</p>
+    <div class="tabs" role="group" aria-label="Filter" style="margin:56px 0 0">
+      <button type="button" aria-pressed="true" data-filter="all">All</button>
+      <button type="button" aria-pressed="false" data-filter="highschool">For High School</button>
+      <button type="button" aria-pressed="false" data-filter="startup">Startup</button>
+      <button type="button" aria-pressed="false" data-filter="finance">Finance</button>
     </div>
   </div>
 </section>
 <section style="padding-bottom:96px">
   <div class="wrap">
-    <a class="card" href="/lectures/my-user-manual">
+    <a class="card" data-cat="highschool" href="/lectures/my-user-manual">
       <span class="num">01</span>
       <div>
         <span class="tag">For High School</span>
         <h3>My User Manual</h3>
-        <p>Pharmacist, company founder, 24 trips to Kenya, and back in school — Joseph Shon shares the question that connected it all: “Why?” A talk about study, money, happiness, and slowly discovering who God made you to be.</p>
+        <p>Who am I made to be? A talk on study, money and purpose.</p>
         <div class="meta"><span>Joseph Shon</span><span>29 slides</span><span>~40 min</span><span>Live answers, orchestra &amp; video</span></div>
       </div>
       <span class="go" aria-hidden="true"><svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
     </a>
-    <div class="card disabled" aria-disabled="true">
+    <div class="card" data-cat="startup">
       <span class="num">02</span>
-      <div><span class="tag">Coming soon</span><h3>More lectures on the way</h3><p>New talks for high school students are in development.</p></div>
+      <div>
+        <span class="tag">Startup</span>
+        <h3>Startup Academy</h3>
+        <p>For anyone who wants to start a company — gospel-based, built to last.</p>
+        <div class="meta"><span>Idea</span><span>Customers</span><span>Money</span><span>Team</span><span>Mission</span><span>Coming soon</span></div>
+      </div>
+      <span></span>
+    </div>
+    <div class="card" data-cat="finance">
+      <span class="num">03</span>
+      <div>
+        <span class="tag">Finance</span>
+        <h3>Basic Finance</h3>
+        <p>A Christian view of money, for life in the U.S.</p>
+        <div class="meta"><span>Budget</span><span>Save</span><span>Credit</span><span>Taxes</span><span>Give</span><span>Coming soon</span></div>
+      </div>
       <span></span>
     </div>
   </div>
 </section>
+    <script>
+    document.querySelectorAll("[data-filter]").forEach((b) => b.addEventListener("click", () => {
+      document.querySelectorAll("[data-filter]").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+      document.querySelectorAll(".card[data-cat]").forEach((c) => { c.hidden = b.dataset.filter !== "all" && c.dataset.cat !== b.dataset.filter; });
+    }));
+    </script>
 </main>
 <footer class="site-footer">
   <div class="wrap"><span>Faith for life. Learning for the world.</span><span class="right">© 2026 Hephzibah Academy</span></div>
