@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mentors · Hephzibah Academy</title>
+<meta name="description" content="Mentor, teach, and fund the next generation.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Hephzibah Academy — home">
+      <svg class="brand-mark" viewBox="9 11 43 43" aria-hidden="true"><path d="M10 22h11v12h17V12h13v41H38V42H21v11H10z" fill="currentColor"/></svg>
+      <span class="brand-name"><b>Hephzibah</b><span>ACADEMY</span></span>
+    </a>
+    <button class="menu-btn" type="button" aria-controls="nav" aria-expanded="false">Menu</button>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="/lectures">Academy</a>
+      <a href="/#community">Community</a>
+      <a href="/#about">About</a>
+      <a href="/mentors" aria-current="page">Mentors</a>
+      <a href="/support">Support</a>
+      <span class="divider" aria-hidden="true"></span>
+      <a class="login" href="/present">Log in <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="section" style="border-top:0">
+  <div class="wrap">
+    <p class="eyebrow">Mentors</p>
+    <h1 class="display" style="font-size:clamp(44px,6.4vw,96px)">Walk with them.</h1>
+    <p class="lead" style="max-width:30ch">Adults who give, teach and guide the next generation.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap split">
+    <div><p class="eyebrow">Join</p><h2 class="h2">How will you help?</h2></div>
+    <form id="mentor" novalidate>
+      <fieldset class="ways"><legend class="sr-only">Ways to help</legend>
+        <label class="way"><input type="checkbox" name="ways" value="fund"><span><b>Fund classes</b><small>Sponsor students.</small></span></label>
+        <label class="way"><input type="checkbox" name="ways" value="career"><span><b>Career advice</b><small>Share what you’ve learned.</small></span></label>
+        <label class="way"><input type="checkbox" name="ways" value="teach"><span><b>Teach a live class</b><small>Lead a session.</small></span></label>
+        <label class="way"><input type="checkbox" name="ways" value="feedback"><span><b>Give feedback</b><small>Review student work.</small></span></label>
+        <label class="way"><input type="checkbox" name="ways" value="invest"><span><b>Invest</b><small>Through Beulah Venture.</small></span></label>
+      </fieldset>
+      <label class="field"><span>Name</span><input class="input" name="name" autocomplete="name" required maxlength="120"></label>
+      <label class="field"><span>Email</span><input class="input" name="email" type="email" autocomplete="email" required maxlength="200"></label>
+      <label class="field"><span>Your field (optional)</span><input class="input" name="field" maxlength="200" placeholder="e.g. Pharmacy, software, finance"></label>
+      <label class="field"><span>Note (optional)</span><textarea class="input" name="note" maxlength="1000" rows="3"></textarea></label>
+      <button class="btn" type="submit">Join as a mentor <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
+      <p class="error" id="m-err" role="alert"></p>
+    </form>
+  </div>
+</section>
+<style>
+.ways{border:0;padding:0;margin:0 0 24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.way{display:flex;gap:12px;align-items:flex-start;padding:16px;border:1px solid var(--hair);border-radius:var(--radius);background:#fff;cursor:pointer}
+.way:has(input:checked){border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
+.way input{width:18px;height:18px;margin-top:2px;flex:none;accent-color:var(--ink)}
+.way b{display:block}
+.way small{color:var(--muted);font-size:14px}
+</style>
+<script>
+const f = document.getElementById("mentor"), err = document.getElementById("m-err");
+const pre = new URLSearchParams(location.search).get("way");
+if (pre) f.querySelectorAll('input[name="ways"]').forEach((i) => { if (i.value === pre) i.checked = true; });
+f.addEventListener("submit", async (e) => {
+  e.preventDefault(); err.textContent = "";
+  const btn = f.querySelector("button"); btn.disabled = true;
+  const body = { name: f.elements.name.value, email: f.elements.email.value, field: f.elements.field.value, note: f.elements.note.value,
+    ways: [...f.querySelectorAll('input[name="ways"]:checked')].map((i) => i.value) };
+  try {
+    const r = await fetch("/api/mentors", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
+    const d = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error((d.error && d.error.message) || "Something went wrong.");
+    f.outerHTML = '<div><h3 class="h3">Thank you.</h3><p class="lead" style="font-size:19px">We’ll be in touch soon.</p></div>';
+  } catch (x) { err.textContent = x.message; btn.disabled = false; }
+});
+</script>
+</main>
+<footer class="site-footer">
+  <div class="wrap"><span>Faith for life. Learning for the world.</span><span class="right">© 2026 Hephzibah Academy</span></div>
+</footer>
+<script src="/js/site.js" defer></script>
+</body>
+</html>

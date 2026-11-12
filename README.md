@@ -14,6 +14,8 @@ The Hephzibah Academy website, with live, interactive lectures. The presenter sh
 | Presenter screen (projector) | `/present?lecture=my-user-manual` |
 | Slide preview (no audience) | `/present?lecture=my-user-manual&preview=1` |
 | Student join page | `/join`, or the short link `/j/CODE` |
+| Mentors (adult sign-up) | `/mentors` |
+| Support (monthly giving) | `/support` |
 
 ### The live lecture: *My User Manual* (29 slides, about 40 minutes)
 
@@ -61,6 +63,10 @@ The site needs a server that runs Node, because live rooms use Server-Sent Event
 
 * Run the service as a **single instance**. Live rooms are kept in memory, so restarting the server ends any active session. Submissions are written to disk and survive restarts.
 * Submissions are saved to `DATA_DIR/submissions.jsonl`, one JSON record per line. The host CSV export reads from this file. These records are what you would use later to send job matches by email.
+
+## Mentor sign-ups
+
+Adults sign up at `/mentors`. They choose how to help: fund classes, give career advice, teach a live class, give feedback, or invest through Beulah Venture. Sign-ups are saved to `DATA_DIR/mentors.jsonl`. To download them as a CSV, open `/api/mentors.csv?passcode=YOUR_HOST_PASSCODE`. This works only when `HOST_PASSCODE` is set.
 
 ## Content and data files
 

@@ -37,6 +37,7 @@ const DIM_IDS = PERSONALITY.dimensions.map((d) => d.id);
 const DATA_DIR = path.resolve(process.env.DATA_DIR || path.join(ROOT, "data"));
 fs.mkdirSync(DATA_DIR, { recursive: true });
 const SUBMISSIONS_FILE = path.join(DATA_DIR, "submissions.jsonl");
+const MENTORS_FILE = path.join(DATA_DIR, "mentors.jsonl");
 function saveSubmission(record) {
   fs.appendFile(SUBMISSIONS_FILE, JSON.stringify(record) + "\n", (err) => { if (err) console.error("Could not save submission", err); });
 }
@@ -235,6 +236,35 @@ async function api(req, res, url) {
 
   if (parts[1] === "config" && method === "GET") {
     return sendJson(res, 200, { passcodeRequired: Boolean(HOST_PASSCODE) });
+  }
+
+  // POST /api/mentors — adult volunteer / donor sign-up
+  if (parts[1] === "mentors" && parts.length === 2 && method === "POST") {
+    const body = await readJson(req);
+    const WAYS = ["fund", "career", "teach", "feedback", "invest"];
+    const name = cleanText(body.name, 120);
+    const email = cleanText(body.email, 200).toLowerCase();
+    const field = cleanText(body.field, 200);
+    const note = cleanText(body.note, 1000);
+    const ways = Array.isArray(body.ways) ? [...new Set(body.ways.filter((w) => WAYS.includes(w)))] : [];
+    if (!name) throw httpError(400, "Please add your name.");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) throw httpError(400, "Please add a valid email.");
+    if (!ways.length) throw httpError(400, "Choose at least one way to help.");
+    fs.appendFile(MENTORS_FILE, JSON.stringify({ at: new Date().toISOString(), name, email, field, ways, note }) + "\n",
+      (err) => { if (err) console.error("Could not save mentor sign-up", err); });
+    return sendJson(res, 201, { ok: true });
+  }
+
+  // GET /api/mentors.csv?passcode=HOST_PASSCODE — download sign-ups
+  if (parts[1] === "mentors.csv" && method === "GET") {
+    if (!HOST_PASSCODE || !safeEqual(url.searchParams.get("passcode") || "", HOST_PASSCODE)) throw httpError(403, "Passcode required.");
+    let text = ""; try { text = fs.readFileSync(MENTORS_FILE, "utf8"); } catch {}
+    const cols = ["at", "name", "email", "field", "ways", "note"];
+    const esc = (v) => { let t = Array.isArray(v) ? v.join(" ") : String(v ?? ""); if (/^[=+\-@\t\r]/.test(t)) t = "'" + t; return `"${t.replace(/"/g, '""')}"`; };
+    const rows = [cols.join(",")];
+    for (const line of text.split("\n")) { if (!line) continue; try { const r = JSON.parse(line); rows.push(cols.map((c) => esc(r[c])).join(",")); } catch {} }
+    res.writeHead(200, { "content-type": "text/csv; charset=utf-8", "cache-control": "no-store", "content-disposition": 'attachment; filename="hephzibah-mentors.csv"' });
+    return res.end("\ufeff" + rows.join("\r\n"));
   }
 
   // POST /api/rooms  {lectureId, passcode}
@@ -445,7 +475,7 @@ const TYPES = { ".html": "text/html; charset=utf-8", ".css": "text/css; charset=
   ".woff": "font/woff", ".woff2": "font/woff2", ".txt": "text/plain; charset=utf-8", ".webp": "image/webp", ".jpg": "image/jpeg",
   ".mp3": "audio/mpeg", ".m4a": "audio/mp4", ".ogg": "audio/ogg", ".wav": "audio/wav" };
 
-const ROUTES = { "/": "/index.html", "/lectures": "/lectures.html", "/present": "/present.html", "/join": "/join.html", "/support": "/support.html",
+const ROUTES = { "/": "/index.html", "/lectures": "/lectures.html", "/present": "/present.html", "/join": "/join.html", "/support": "/support.html", "/mentors": "/mentors.html",
   "/lectures/my-user-manual": "/lectures/my-user-manual.html" };
 
 function serveStatic(req, res, url) {
