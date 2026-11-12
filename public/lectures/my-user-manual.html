@@ -49,13 +49,13 @@
   <div class="wrap split">
     <div><p class="eyebrow">How it works</p><h2 class="h2">One slide at a time. Everyone takes part.</h2></div>
     <ol class="steps">
-      <li><b>Open the presenter screen</b> on the projector. A room code and QR code appear.</li>
-      <li><b>Students scan with their phones.</b> No sign-up — each joins as a random orchestra instrument — the only name shown on screen.</li>
-      <li><b>Advance one slide at a time.</b> Phones follow along automatically.</li>
-      <li><b>On question slides, students type or tap.</b> Answers appear live on the big screen — no names. Turn on review mode to approve each message first.</li>
-      <li><b>The “first page” worksheet stays private</b> on each phone, and can be downloaded.</li>
-      <li><b>Hear the orchestra.</b> Click each instrument to hear its part alone — then all together — before the closing video.</li>
-      <li><b>Finish with a review.</b> Students share what they learned, review the lecture, unlock their 20-question results, and write how they’ll use their strengths and weaknesses.</li>
+      <li><div><b>Open the presenter screen.</b><span>A room code and QR code appear on the projector.</span></div></li>
+      <li><div><b>Students scan with their phones.</b><span>No sign-up. Each joins as a random orchestra instrument, the only name shown on screen.</span></div></li>
+      <li><div><b>Advance one slide at a time.</b><span>Phones follow along automatically.</span></div></li>
+      <li><div><b>Students answer on question slides.</b><span>Answers appear on the big screen without names. Turn on review mode to approve each one first.</span></div></li>
+      <li><div><b>The first-page worksheet stays private.</b><span>It stays on each phone and can be downloaded.</span></div></li>
+      <li><div><b>Hear the orchestra.</b><span>Click each instrument to hear its part alone, then all together, before the closing video.</span></div></li>
+      <li><div><b>Finish with a review.</b><span>Students share what they learned, review the lecture, unlock their 20-question results, and write how they’ll use their strengths and weaknesses.</span></div></li>
     </ol>
   </div>
 </section>
@@ -75,7 +75,8 @@
 .steps{margin:0;padding:0;list-style:none;counter-reset:s}
 .steps li{counter-increment:s;display:grid;grid-template-columns:56px 1fr;padding:22px 0;border-top:1px solid var(--hair);font-size:18px;color:var(--ink-2)}
 .steps li::before{content:"0" counter(s);font-weight:600;letter-spacing:.18em;font-size:15px;color:var(--ink);padding-top:3px}
-.steps b{color:var(--ink)}
+.steps b{display:block;color:var(--ink);font-size:19px}
+.steps li span{display:block;margin-top:4px}
 .ros .row{display:grid;grid-template-columns:1fr auto auto;gap:24px;padding:20px 0;border-top:1px solid var(--hair);font-size:18px}
 .ros .row span{color:var(--muted);font-variant-numeric:tabular-nums}
 .outline{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1px;background:var(--hair);border:1px solid var(--hair)}
