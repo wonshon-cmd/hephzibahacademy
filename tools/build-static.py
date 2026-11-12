@@ -35,5 +35,7 @@ for src,dst in pages.items():
 shutil.copy('downloads/my-user-manual-slides.html',dl)
 shutil.copy('data/site.json',dl)
 open(os.path.join(dl,'.nojekyll'),'w').write('')
+# Custom domain for GitHub Pages (keep in sync with Settings → Pages)
+open(os.path.join(dl,'CNAME'),'w').write('hephzibahacademy.org\n')
 open(os.path.join(dl,'404.html'),'w').write(links(open('404.html').read()))
 print('ok')
