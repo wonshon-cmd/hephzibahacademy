@@ -237,6 +237,8 @@ html[lang="ko"] body { word-break: keep-all; }
   .nav .divider { display: none; }
   .nav .lang-btn { margin-top: 12px; align-self: flex-start; }
 }
+.later { margin: 14px 0 0; font-size: 12px; color: var(--muted); letter-spacing: 0.02em; }
+.card:has(+ .later) { border-bottom: 1px solid var(--rule); }
 
 .preview-note{position:fixed;left:16px;bottom:16px;z-index:50;background:var(--ink);color:var(--paper);padding:10px 14px;border-radius:8px;font-size:14px;max-width:calc(100vw - 32px)}
 </style>
@@ -1135,6 +1137,8 @@ function note(t){const K=window.hzI18n&&window.hzLang&&window.hzLang()==="ko"?wi
     "Leadership": "리더십", "People": "사람", "Calling": "소명",
     "How to Live in the Age of AI": "AI 시대, 어떻게 살아가야 할까", "What does it mean to live well, and faithfully, in the age of AI?": "AI 시대에 믿음으로, 바르게 살아간다는 것은 무엇일까?",
     "Work": "일", "Identity": "정체성", "Wisdom": "지혜",
+    "Later: How to live in the age of AI": "나중에: AI 시대, 어떻게 살아가야 할까",
+    "Class fees and monthly gifts support Hephzibah Academy and mentoring, and invest in gospel-based startups through Beulah Venture.": "수강료와 정기 후원은 헵시바 아카데미와 멘토링을 통해, 그리고 쁄라 벤처를 통해 복음 기반 스타트업에 투자됩니다.", "Support →": "후원하기 →",
     "Menu": "메뉴", "Academy": "아카데미", "Community": "커뮤니티", "About": "소개", "Mentors": "멘토", "Support": "후원", "Log in": "로그인",
     "Hephzibah Academy": "헵시바 아카데미",
     "Light and salt.": "빛과 소금.", "Light and salt": "빛과 소금", "Matthew 5:13–16": "마태복음 5:13–16", "Start learning": "배움 시작하기",

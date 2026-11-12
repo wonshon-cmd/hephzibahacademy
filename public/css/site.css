@@ -225,3 +225,5 @@ html[lang="ko"] body { word-break: keep-all; }
   .nav .divider { display: none; }
   .nav .lang-btn { margin-top: 12px; align-self: flex-start; }
 }
+.later { margin: 14px 0 0; font-size: 12px; color: var(--muted); letter-spacing: 0.02em; }
+.card:has(+ .later) { border-bottom: 1px solid var(--rule); }
