@@ -159,5 +159,5 @@ textarea.input { resize: vertical; min-height: 104px; line-height: 1.45; }
 .salt-light .num { font-size: 13px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; }
 .salt-light p { margin: 8px 0 0; color: var(--ink-2); font-size: 16px; max-width: 34ch; }
 @media (max-width: 600px) { .salt-light { grid-template-columns: 1fr; } }
-.hero-ref { margin: 14px 0 0; font-size: 13px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; }
+.hero-ref { margin: 28px 0 0; font-size: 13px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; }
 .hero-ref a { text-decoration: none; border-bottom: 1px solid currentColor; }
