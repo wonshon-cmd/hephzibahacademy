@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support · Hephzibah Academy</title>
+<meta name="description" content="Support Hephzibah Academy monthly.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Hephzibah Academy — home">
+      <svg class="brand-mark" viewBox="9 11 43 43" aria-hidden="true"><path d="M10 22h11v12h17V12h13v41H38V42H21v11H10z" fill="currentColor"/></svg>
+      <span class="brand-name"><b>Hephzibah</b><span>ACADEMY</span></span>
+    </a>
+    <button class="menu-btn" type="button" aria-controls="nav" aria-expanded="false">Menu</button>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="/lectures">Academy</a>
+      <a href="/#community">Community</a>
+      <a href="/#about">About</a>
+      <a href="/support" aria-current="page">Support</a>
+      <span class="divider" aria-hidden="true"></span>
+      <a class="login" href="/present">Log in <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="section" style="border-top:0">
+  <div class="wrap">
+    <p class="eyebrow">Support</p>
+    <h1 class="display" style="font-size:clamp(44px,6.4vw,96px)">Give monthly.</h1>
+    <p class="lead" style="max-width:30ch">Your gift keeps the light on — and multiplies.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <p class="eyebrow">Where it goes</p>
+    <ol class="flow">
+      <li><span class="num">01</span><h3>Run the academy</h3><p>Lectures, events, students.</p></li>
+      <li><span class="num">02</span><h3>Invest</h3><p>Gospel-based startups through Beulah Venture.</p></li>
+      <li><span class="num">03</span><h3>Share profit</h3><p>Companies share what they earn.</p></li>
+      <li><span class="num">04</span><h3>Invest more</h3><p>Profits go back into new ventures.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap split">
+    <div><p class="eyebrow">Monthly</p><h2 class="h2">Choose an amount.</h2></div>
+    <div>
+      <div class="tiers" id="tiers">
+        <a class="tier" data-amount="10" href="#"><b>$10</b><span>/ month</span></a>
+        <a class="tier" data-amount="30" href="#"><b>$30</b><span>/ month</span></a>
+        <a class="tier" data-amount="100" href="#"><b>$100</b><span>/ month</span></a>
+        <a class="tier" data-amount="" href="#"><b>Other</b><span>any amount</span></a>
+      </div>
+      <p class="muted" id="support-note" style="font-size:14px;margin-top:16px"></p>
+    </div>
+  </div>
+</section>
+<style>
+.flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--rule)}
+.flow li{padding:24px 24px 0 0;position:relative}
+.flow li:not(:last-child)::after{content:"→";position:absolute;right:12px;top:24px;font-size:20px;color:var(--muted)}
+.flow .num{font-size:14px;font-weight:600;letter-spacing:.18em}
+.flow h3{font-size:clamp(22px,2vw,28px);letter-spacing:-.02em;margin:10px 0 6px}
+.flow p{margin:0;color:var(--ink-2);max-width:24ch}
+@media (max-width:760px){.flow{grid-template-columns:1fr}.flow li{padding:18px 0;border-bottom:1px solid var(--hair)}.flow li::after{display:none}}
+.tiers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;max-width:520px}
+.tier{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;padding:20px;border:1px solid var(--ink);border-radius:var(--radius);text-decoration:none;transition:background .15s,color .15s}
+.tier b{font-size:30px;letter-spacing:-.03em}
+.tier span{color:var(--muted);font-size:14px}
+.tier:hover{background:var(--ink);color:var(--paper)}
+.tier:hover span{color:inherit}
+.tier[aria-disabled="true"]{opacity:.5;pointer-events:none}
+</style>
+<script type="module">
+// Set "supportUrl" in /data/site.json to your giving page (Stripe, PayPal, church giving, etc.).
+// "{amount}" in the URL is replaced with the chosen amount.
+const site = await fetch("/data/site.json").then((r) => r.json()).catch(() => ({}));
+const note = document.getElementById("support-note");
+document.querySelectorAll(".tier").forEach((a) => {
+  if (!site.supportUrl) { a.setAttribute("aria-disabled", "true"); return; }
+  a.href = site.supportUrl.replace("{amount}", a.dataset.amount);
+  a.target = "_blank"; a.rel = "noopener";
+});
+note.textContent = site.supportUrl ? "You’ll be taken to our secure giving page." : "Online giving opens soon.";
+</script>
+</main>
+<footer class="site-footer">
+  <div class="wrap"><span>Faith for life. Learning for the world.</span><span class="right">© 2026 Hephzibah Academy</span></div>
+</footer>
+<script src="/js/site.js" defer></script>
+</body>
+</html>
