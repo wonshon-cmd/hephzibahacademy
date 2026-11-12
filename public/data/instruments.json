@@ -1,0 +1,16 @@
+[
+  { "id": "violin",   "name": "Violin",      "abbr": "Vn", "family": "Strings" },
+  { "id": "viola",    "name": "Viola",       "abbr": "Va", "family": "Strings" },
+  { "id": "cello",    "name": "Cello",       "abbr": "Vc", "family": "Strings" },
+  { "id": "bass",     "name": "Double Bass", "abbr": "Cb", "family": "Strings" },
+  { "id": "harp",     "name": "Harp",        "abbr": "Hp", "family": "Strings" },
+  { "id": "flute",    "name": "Flute",       "abbr": "Fl", "family": "Woodwinds" },
+  { "id": "oboe",     "name": "Oboe",        "abbr": "Ob", "family": "Woodwinds" },
+  { "id": "clarinet", "name": "Clarinet",    "abbr": "Cl", "family": "Woodwinds" },
+  { "id": "bassoon",  "name": "Bassoon",     "abbr": "Bn", "family": "Woodwinds" },
+  { "id": "horn",     "name": "French Horn", "abbr": "Hn", "family": "Brass" },
+  { "id": "trumpet",  "name": "Trumpet",     "abbr": "Tp", "family": "Brass" },
+  { "id": "trombone", "name": "Trombone",    "abbr": "Tb", "family": "Brass" },
+  { "id": "tuba",     "name": "Tuba",        "abbr": "Tu", "family": "Brass" },
+  { "id": "timpani",  "name": "Timpani",     "abbr": "Ti", "family": "Percussion" }
+]

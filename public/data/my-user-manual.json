@@ -1,0 +1,625 @@
+{
+ "id": "my-user-manual",
+ "track": "For High School",
+ "title": "My User Manual",
+ "fullTitle": "Still Finding My User Manual",
+ "subtitle": "For anyone wondering what a good future looks like",
+ "speaker": "Joseph Shon",
+ "minutes": 40,
+ "summary": "A short, honest talk about asking “why?” — about study, money, work and happiness — and slowly discovering who God made you to be. Every student joins as an orchestra instrument, answers on their phone, and sees the room’s answers live on screen. It ends with the orchestra, a video, and a personal reflection.",
+ "runOfShow": [
+  {
+   "label": "The first question & introduction",
+   "slides": "1–6",
+   "minutes": 6
+  },
+  {
+   "label": "Questions I met in Kenya",
+   "slides": "7–10",
+   "minutes": 5
+  },
+  {
+   "label": "A user manual — and faith",
+   "slides": "11–19",
+   "minutes": 11
+  },
+  {
+   "label": "My first page & one next step",
+   "slides": "20–26",
+   "minutes": 9
+  },
+  {
+   "label": "The orchestra, the video & your review",
+   "slides": "27–29",
+   "minutes": 9
+  }
+ ],
+ "slides": [
+  {
+   "id": "s01",
+   "section": "Start",
+   "kind": "cover",
+   "eyebrow": "HEPHZIBAH ACADEMY",
+   "title": "Still finding\nmy user manual.",
+   "subtitle": "For anyone wondering what a good future looks like",
+   "body": [
+    "Joseph Shon"
+   ],
+   "notes": [
+    "[Smile] Honestly, I’m a little nervous right now. Thank you for listening.",
+    "Today I’ll share a bit of how I’ve lived, and I hope you take home one small question about yourself.",
+    "You don’t need to finish figuring out your life today. Let’s just think about it together."
+   ]
+  },
+  {
+   "id": "s02",
+   "section": "01 Questions",
+   "kind": "choice",
+   "eyebrow": "Question one",
+   "title": "What’s taking up\nmost of your mind lately?",
+   "subtitle": "No right answer. Pick the one closest to how you feel right now.",
+   "body": [],
+   "interaction": {
+    "type": "choice",
+    "prompt": "What’s taking up most of your mind lately?",
+    "options": [
+     {
+      "value": "future",
+      "label": "My future & career"
+     },
+     {
+      "value": "study",
+      "label": "School & grades"
+     },
+     {
+      "value": "relationships",
+      "label": "Friends & relationships"
+     },
+     {
+      "value": "money",
+      "label": "Money & stability"
+     },
+     {
+      "value": "identity",
+      "label": "Who I really am"
+     },
+     {
+      "value": "unsure",
+      "label": "I’m not sure yet"
+     }
+    ]
+   },
+   "notes": [
+    "Tapping might feel easier than talking. Pick the one thing weighing on you most right now.",
+    "No names needed. “Not sure yet” is fine, and so is just thinking about it.",
+    "Read out two or three of the results. Don’t ask who picked what. Connect it: “I wrestled with that too.”"
+   ]
+  },
+  {
+   "id": "s03",
+   "section": "01 Questions",
+   "kind": "intro",
+   "eyebrow": "Nice to meet you — I’m Joseph",
+   "title": "Pharmacist. Company.\nKenya. And a student again.",
+   "subtitle": "“So… what exactly do you do?”",
+   "body": [
+    "Pharmacist",
+    "10 years running a company",
+    "24 trips to Kenya",
+    "Back in school these days"
+   ],
+   "notes": [
+    "I’m a pharmacist, and I’ve been running a company for ten years. I’ve been to Kenya 24 times, and these days I’m back in school.",
+    "You might be thinking, “What does this guy actually do?” [Pause] But all of these are connected by one question that started when I was in college.",
+    "Don’t present the numbers as achievements — keep it short, and make them curious about how different experiences connect."
+   ]
+  },
+  {
+   "id": "s04",
+   "section": "01 Questions",
+   "kind": "question",
+   "eyebrow": "Back when I was in college",
+   "title": "But…\nwhy should I?",
+   "subtitle": "Study, money, a career. The question behind all of it.",
+   "body": [
+    "Why do I study?",
+    "Why do I earn money?",
+    "Why do I want that job?",
+    "What do I actually want?"
+   ],
+   "notes": [
+    "I heard it all the time: study hard, get a good job, make money. Then at some point, a question showed up — “Why?”",
+    "That doesn’t mean study or money don’t matter. I just started wondering why they mattered to me, and what I really wanted.",
+    "Have you ever asked something like that? Don’t ask for answers — just give them a moment to think."
+   ]
+  },
+  {
+   "id": "s05",
+   "section": "01 Questions",
+   "kind": "path",
+   "eyebrow": "Imagining my future self",
+   "title": "If I get into a good school,\nthen what?",
+   "subtitle": "What does the day I dream about actually look like?",
+   "body": [
+    "School",
+    "Job",
+    "Money",
+    "The day after that"
+   ],
+   "notes": [
+    "Right now, college and grades might feel like a huge mountain. Wanting a good school and a good job is natural.",
+    "But after you reach that goal — what do you want each morning to look like? What will you do, who will you spend time with, what will you treasure?",
+    "This isn’t a quiz about job titles. It’s about imagining the life you want. Don’t assume college is the only path."
+   ]
+  },
+  {
+   "id": "s06",
+   "section": "01 Questions",
+   "kind": "statement",
+   "eyebrow": "The question that stopped me",
+   "title": "Do I work to live?\nOr live to work?",
+   "subtitle": "Someday, looking back — what kind of life do I want to say it was?",
+   "body": [],
+   "notes": [
+    "I pictured it: make money, get a place, buy clothes, buy a car, go back to work. And this question came up.",
+    "Am I working in order to live, or living in order to work? When I look back at the end, what do I want to remain?",
+    "[Pause 3 seconds] The question didn’t lead straight to an answer. But I couldn’t just walk past it."
+   ]
+  },
+  {
+   "id": "s07",
+   "section": "02 A different scene",
+   "kind": "number",
+   "eyebrow": "Carrying that question",
+   "title": "So for a while,\nI stopped.",
+   "subtitle": "I took a year off from school.",
+   "body": [
+    "Time spent stepping off the expected path"
+   ],
+   "notes": [
+    "I took a one-year leave from school and stepped off the road I’d always been on.",
+    "That doesn’t mean you need to take time off or travel far. In my story, that pause became a chance to look more deeply at the question.",
+    "Before moving to Kenya, lightly ask: “Has anyone here been to Kenya?” — a quick show of hands, not a formal activity."
+   ]
+  },
+  {
+   "id": "s08",
+   "section": "02 A different scene",
+   "kind": "photo",
+   "eyebrow": "KENYA",
+   "title": "A small room in Kenya,\nand a big question.",
+   "subtitle": "I started to see the things I took for granted in a new way.",
+   "body": [],
+   "photo": {
+    "label": "Your own photo from Kenya",
+    "note": "Optional. Use only your own photo; don’t show identifiable children without consent. Without a photo, this slide works as text."
+   },
+   "notes": [
+    "[If you have your own photo, show it] Where I was, there was a small room, a single bed, and not enough to eat.",
+    "Seeing that, I started rethinking things I’d taken for granted. If there’s no photo, describe one real scene you remember in your own words.",
+    "Don’t generalize about all of Kenya. Keep it to the people and places you actually met."
+   ]
+  },
+  {
+   "id": "s09",
+   "section": "02 A different scene",
+   "kind": "statement",
+   "eyebrow": "The scene that stayed with me",
+   "title": "The children’s laughter\nstayed with me.",
+   "subtitle": "Watching them, a question began to grow in my heart, too.",
+   "body": [
+    "When am I happiest?"
+   ],
+   "notes": [
+    "The surroundings were a shock, but what stayed with me longest was those kids laughing together.",
+    "That doesn’t mean being poor makes you happier. Hardship needed help. But in the time I spent with those kids, I began to look again at what I thought happiness was.",
+    "My circumstances couldn’t fully explain my heart. So, when am I happiest? That’s how my question changed."
+   ]
+  },
+  {
+   "id": "s10",
+   "section": "02 A different scene",
+   "kind": "text-input",
+   "eyebrow": "Question two · 45 seconds",
+   "title": "When do you feel\nmost alive — most like you?",
+   "subtitle": "It doesn’t have to be a big moment.",
+   "body": [
+    "A moment you lost track of time",
+    "A moment you laughed with someone",
+    "A moment you helped, even a little"
+   ],
+   "interaction": {
+    "type": "text",
+    "prompt": "When do you feel most alive — most like you?",
+    "placeholder": "e.g. Laughing with friends while playing basketball",
+    "maxLength": 180
+   },
+   "notes": [
+    "Think of a recent moment when you lost track of time. Sports, drawing, gaming, listening to a friend, resting alone — all fine.",
+    "Type it in a few words. If nothing comes to mind, write something you’d like to try. [Wait 45 seconds]",
+    "Read a few answers from the screen — no names. For me, I found I’m happiest spending time with kids, helping someone, and sharing. Your answer can be different from mine."
+   ]
+  },
+  {
+   "id": "s11",
+   "section": "03 The user manual",
+   "kind": "objects",
+   "eyebrow": "Another question",
+   "title": "Everything that’s made\nis made for a reason.",
+   "subtitle": "A chair. A smartphone. A car.",
+   "body": [
+    "So what about me?"
+   ],
+   "notes": [
+    "A chair is made for sitting; a car for getting around. Whoever made it had a purpose in mind.",
+    "So what kind of person am I? What if there were a manual that helped me understand myself better? That’s what I started to wonder.",
+    "We’ll make clear on the value slide that this isn’t about judging people like objects. For now, keep it a short, curiosity-opening question."
+   ]
+  },
+  {
+   "id": "s12",
+   "section": "03 The user manual",
+   "kind": "phone",
+   "eyebrow": "Imagine this for a second",
+   "title": "What if you only used\nyour phone as a calculator?",
+   "subtitle": "The more you know it, the more you see what it can do.",
+   "body": [
+    "How well do I actually know myself?"
+   ],
+   "notes": [
+    "What if you bought a smartphone and only ever used the calculator? It’d calculate great — but you’d be missing a lot. [Leave room for a laugh]",
+    "I wondered if I was judging myself after knowing only a tiny part of me — what I like, what interests me, what gives me energy.",
+    "Don’t pressure them to “unlock every potential.” Connect it to the joy of getting to know yourself."
+   ]
+  },
+  {
+   "id": "s13",
+   "section": "03 The user manual",
+   "kind": "contrast",
+   "eyebrow": "Even in the same house",
+   "title": "Why are we\nall so different?",
+   "subtitle": "Personality, talents, the things we love.",
+   "body": [
+    "What do you think?"
+   ],
+   "notes": [
+    "Even looking at my younger sibling, I was amazed. People look different, think differently, love different things.",
+    "Instead of ranking those differences, what if we got to know them? Maybe there are parts of me I don’t know yet.",
+    "[Pause 5 seconds] Have them silently think of one way they’re like the person next to them, and one way they’re different. No sharing required."
+   ]
+  },
+  {
+   "id": "s14",
+   "section": "03 The user manual",
+   "kind": "money",
+   "eyebrow": "The way I saw money changed",
+   "title": "The same $100.\nA different weight.",
+   "subtitle": "I started asking not just how much I have, but where it goes.",
+   "body": [
+    "Helping someone learn",
+    "Where treatment is needed",
+    "Protecting someone’s today"
+   ],
+   "notes": [
+    "Money matters. We need it to care for family, get treatment, and build a life.",
+    "But $100 as I thought of it in the U.S., and $100 when I faced someone’s need in Kenya, felt different to me. The same money can mean something different depending on where it goes.",
+    "Don’t present $100 as a price that solves tuition or medical bills. Share only a specific example you actually experienced. Don’t ask students to give."
+   ]
+  },
+  {
+   "id": "s15",
+   "section": "03 The user manual",
+   "kind": "turn",
+   "eyebrow": "Back to school, then to work",
+   "title": "The work continued —\nbut the reason changed.",
+   "subtitle": "I graduated from pharmacy school and started a company.",
+   "body": [
+    "Caring for my family",
+    "Working with meaning",
+    "A life of sharing"
+   ],
+   "notes": [
+    "I went back to school, graduated from pharmacy school, and started a company. From the outside, studying and working looked about the same.",
+    "But the reason I held onto changed. Instead of only looking at money, I started thinking about caring for family, working meaningfully, and sharing.",
+    "[Slowly] When the reason I live changed, the same work felt different."
+   ]
+  },
+  {
+   "id": "s16",
+   "section": "03 The user manual",
+   "kind": "reframe-examples",
+   "eyebrow": "Getting to know myself",
+   "title": "Even the parts I didn’t like\nhad another side.",
+   "subtitle": "Depending on the situation, they could be used differently.",
+   "body": [
+    {
+     "trait": "I’m shy",
+     "possibility": "I notice how people feel"
+    },
+    {
+     "trait": "I’m interested in everything",
+     "possibility": "I try new things"
+    },
+    {
+     "trait": "I get scared easily",
+     "possibility": "I prepare well"
+    }
+   ],
+   "notes": [
+    "I used to think of myself as ordinary, or not much. But as I got to know myself, some things looked different.",
+    "Shyness sometimes helped me notice people’s hearts. Lots of interests led to new attempts. Fear sometimes made me prepare more.",
+    "This doesn’t mean every struggle automatically becomes a strength. It’s okay to get help with hard things. The point: don’t define yourself by one weakness."
+   ]
+  },
+  {
+   "id": "s17",
+   "section": "03 The user manual",
+   "kind": "reframe-input",
+   "eyebrow": "Question three · 60 seconds",
+   "title": "Take one part of you —\nand look from another angle.",
+   "subtitle": "You don’t have to force it into something positive.",
+   "body": [
+    "When might it actually help?",
+    "What kind of help would be good?"
+   ],
+   "interaction": {
+    "type": "text",
+    "prompt": "One part of me, seen from another angle:",
+    "placeholder": "e.g. I decide slowly — but I look carefully at things that matter.",
+    "maxLength": 180
+   },
+   "notes": [
+    "Pick one part of yourself you’re a little disappointed in. You don’t need to share a big struggle — an example is fine.",
+    "Write one line: when it might help, or what help you’d need to feel more at ease. [Wait 60 seconds]",
+    "Don’t evaluate shared answers — just receive them: “That’s a great way to see it.” Don’t force a positive conclusion on anyone who couldn’t find one."
+   ]
+  },
+  {
+   "id": "s18",
+   "section": "03 The user manual",
+   "kind": "faith-statement",
+   "eyebrow": "Something I really want to add",
+   "title": "Before God,\nyou are already precious.",
+   "subtitle": "Even if you don’t know what you’re good at yet. Even if you don’t have a clear dream.",
+   "body": [
+    "Our worth isn’t decided by grades or usefulness."
+   ],
+   "notes": [
+    "Looking for your user manual doesn’t mean you have to become useful to be loved. A person’s worth isn’t decided by how much they get done.",
+    "The faith I want to share here is that God knows us and loves us. You — right now, even before you can explain your dreams or gifts — are precious.",
+    "Don’t present this as a direct Bible quote. Say it slowly, so the “function” metaphor never limits anyone’s worth."
+   ]
+  },
+  {
+   "id": "s19",
+   "section": "03 The user manual",
+   "kind": "faith-practice",
+   "eyebrow": "This is how I want to ask",
+   "title": "“God,\nwho am I?”",
+   "subtitle": "Reading Scripture, praying, and talking with people I trust.",
+   "body": [
+    "Psalm 139:14 · Thankful to be wonderfully made",
+    "Ephesians 2:10 · An invitation to good works"
+   ],
+   "notes": [
+    "In Scripture we meet the confession that we are made by God, and an invitation toward good works. The lines on screen are summaries, not direct quotes.",
+    "I use “user manual” less to mean my whole career is written on one page, and more as a picture of getting to know myself, little by little, before God.",
+    "We can ask through Scripture and prayer, and by talking with trusted adults and friends who know us. It’s okay if the answer doesn’t come all at once."
+   ]
+  },
+  {
+   "id": "s20",
+   "section": "04 One next step",
+   "kind": "testimony",
+   "eyebrow": "Looking back on the last 10 years",
+   "title": "It’s been a grateful decade —\nand I’m excited for the next.",
+   "subtitle": "Because little by little, I’m learning why I live and who I am.",
+   "body": [],
+   "notes": [
+    "Over the last ten years — studying, working, running a company — there were failures and a lot happened. Looking back, it was a truly happy and grateful time.",
+    "Because I moved from only asking what I should do to holding onto why, and I slowly learned what makes me happy.",
+    "Be careful not to suggest you must be perfectly happy every day, or that anxiety comes from a lack of faith. Close with: “So I’m excited for the next ten years, too.”"
+   ]
+  },
+  {
+   "id": "s21",
+   "section": "04 One next step",
+   "kind": "statement",
+   "eyebrow": "After hearing my story",
+   "title": "Your path\nmay look different.",
+   "subtitle": "Your surroundings, personality, gifts and dreams are different.",
+   "body": [
+    "Today: not one answer, but one question about you."
+   ],
+   "notes": [
+    "My story isn’t an answer that applies to you exactly. We all have different circumstances, personalities, gifts and dreams.",
+    "Not everyone needs to start a business or go to Kenya. Start your own questions right where you live.",
+    "Add that it’s okay to still be figuring it out — so no one leaves thinking, “If I don’t have an answer now, am I too late?”"
+   ]
+  },
+  {
+   "id": "s22",
+   "section": "04 One next step",
+   "kind": "questions",
+   "eyebrow": "Questions worth coming back to",
+   "title": "What kind of life\ndo I want to live?",
+   "subtitle": "One at a time. Slowly.",
+   "body": [
+    "Why do I study?",
+    "Where do I want my money to go?",
+    "What am I good at?",
+    "When do I feel joy?",
+    "What kind of neighbor do I want to be?",
+    "Who am I before God?"
+   ],
+   "notes": [
+    "You don’t need to solve these today. If one of them sticks with you, start with that one.",
+    "When choosing a career, we can look beyond titles and conditions and ask what kind of life we want.",
+    "Next, we’ll write down what comes to mind right now — a first page you can rewrite later."
+   ]
+  },
+  {
+   "id": "s23",
+   "section": "04 One next step",
+   "kind": "worksheet",
+   "eyebrow": "Question four · 2 minutes",
+   "title": "My user manual:\npage one.",
+   "subtitle": "Write only what you know now. It’s okay if it changes later.",
+   "body": [],
+   "interaction": {
+    "type": "private",
+    "prompt": "My user manual · page one",
+    "privacy": "This stays on your phone. It never appears on the big screen.",
+    "fields": [
+     {
+      "id": "joy",
+      "label": "Moments my heart lights up",
+      "placeholder": "What makes you feel a little happier or more at ease?"
+     },
+     {
+      "id": "strength",
+      "label": "Something I’m good at, or want to try more",
+      "placeholder": "Small things and things you’re still learning count."
+     },
+     {
+      "id": "value",
+      "label": "What I treasure",
+      "placeholder": "People, relationships, values, ways I want to help…"
+     },
+     {
+      "id": "question",
+      "label": "A question I want to keep asking",
+      "placeholder": "To myself, to God, or to someone I trust"
+     }
+    ]
+   },
+   "notes": [
+    "This isn’t a test that judges you. It’s a short record of how you understand yourself right now.",
+    "If you don’t know what you’re good at, write something people often ask you for, or something that feels easy for you. People and values you treasure are good clues too. [Wait 2 minutes]",
+    "This page stays private. Mention they can download it on their phone, and that filling in just one or two boxes is fine."
+   ]
+  },
+  {
+   "id": "s24",
+   "section": "04 One next step",
+   "kind": "commitment",
+   "eyebrow": "Question five · 60 seconds",
+   "title": "This week —\nwhat’s one thing you could try?",
+   "subtitle": "One small experiment in getting to know yourself.",
+   "body": [
+    "Listen to a friend for 10 minutes",
+    "Spend 20 minutes on something I love",
+    "Ask a trusted adult what my strengths are",
+    "Pause and ask God a question"
+   ],
+   "interaction": {
+    "type": "text",
+    "prompt": "This week, I will…",
+    "placeholder": "e.g. Ask a teacher I trust what they think I’m good at.",
+    "maxLength": 160
+   },
+   "notes": [
+    "No need to choose a career or make a grand plan. Pick one action small enough to try once this week.",
+    "Adding when makes it more concrete. Doing something you already do — on purpose — counts too. Afterwards, notice how it felt. [Wait 60 seconds]",
+    "Only share if they want to, without names. Never follow up on whether they kept a public promise, and don’t make sharing a condition of participating."
+   ]
+  },
+  {
+   "id": "s25",
+   "section": "04 One next step",
+   "kind": "prayer",
+   "eyebrow": "A moment to pause",
+   "title": "God,\nhelp me know who I am.",
+   "subtitle": "Valuing who I am now, and taking the next step.",
+   "body": [
+    "Pray along if you’d like, or simply reflect quietly."
+   ],
+   "notes": [
+    "First let everyone know they can pray together, or simply reflect quietly.",
+    "[Example prayer] God, thank you for knowing and loving us. Help us not to see ourselves only through grades or comparison. Help us discover the ways you made us, ask for help when we need it, and treasure one another. Give us courage for one small step this week. In Jesus’ name, Amen.",
+    "Don’t ask for any particular emotion or decision. Leave a short silence after the prayer."
+   ]
+  },
+  {
+   "id": "s26",
+   "section": "Closing",
+   "kind": "closing",
+   "eyebrow": "HEPHZIBAH ACADEMY",
+   "title": "Cheering you on\nas you discover who you are.",
+   "subtitle": "I’m still finding my user manual, too.",
+   "body": [
+    "Thank you for listening and thinking with me."
+   ],
+   "interaction": {
+    "type": "text",
+    "channel": "qa",
+    "prompt": "Any questions for Joseph?",
+    "placeholder": "Ask anything — no names shown.",
+    "maxLength": 200
+   },
+   "notes": [
+    "The more I learned, the more I thought, “Wow — I’m made in an amazing way.”",
+    "I’m still finding my own user manual. I hope you keep getting to know yourself and keep asking your own questions.",
+    "I’m cheering you on, truly. Thank you for listening and thinking together. If there’s time, take one or two questions from the screen — then move on to the orchestra."
+   ]
+  },
+  {
+   "id": "s27",
+   "section": "Closing",
+   "kind": "orchestra",
+   "eyebrow": "Every instrument has its own voice",
+   "title": "Alone, each one\nsounds like this.",
+   "subtitle": "Tap an instrument to hear just its part. Then hear them together.",
+   "body": [],
+   "notes": [
+    "Each of you joined as an instrument. Look at your phone — which one are you?",
+    "Click a few instruments one at a time. Alone, some parts sound simple — a tuba playing just a few low notes, timpani only hitting now and then. On its own, a part can feel unimpressive.",
+    "Then click “All together.” Each part was made for a reason, and none of them has to be the melody to matter. That’s what I mean by a user manual: knowing your own part.",
+    "Then move on to the video."
+   ]
+  },
+  {
+   "id": "s28",
+   "section": "Closing",
+   "kind": "video",
+   "eyebrow": "Together",
+   "title": "The Mission — Gabriel’s Oboe",
+   "subtitle": "Ennio Morricone conducts his own music.",
+   "video": {
+    "youtubeId": "s7w-IeNR9ko",
+    "title": "Morricone conducts Morricone: The Mission (Gabriel's Oboe)"
+   },
+   "body": [],
+   "notes": [
+    "Introduce briefly: one oboe carries the melody, but listen to how every other instrument holds it up.",
+    "Let the video play without talking over it.",
+    "Afterwards, a short pause. Then: “On your phone, tell me what you learned today.”"
+   ]
+  },
+  {
+   "id": "s29",
+   "section": "Closing",
+   "kind": "review",
+   "eyebrow": "Before you go",
+   "title": "What did you\nlearn today?",
+   "subtitle": "Share one thing, review the lecture — then see your own results on your phone.",
+   "body": [
+    "What I learned",
+    "Review the lecture",
+    "See my results",
+    "How I’ll use my strengths — and my weaknesses"
+   ],
+   "interaction": {
+    "type": "review",
+    "prompt": "What did you learn today?",
+    "placeholder": "One thing I’m taking home…",
+    "maxLength": 200
+   },
+   "notes": [
+    "Give everyone 3–4 minutes. What they learned appears on screen with their instrument name — no real names.",
+    "After they review the lecture, their personal results from the 20 questions unlock on their phone.",
+    "They can write how they’ll use their strengths and weaknesses, and leave an email if they’d like job matches later. Remind them email is optional and only with their permission."
+   ]
+  }
+ ]
+}
