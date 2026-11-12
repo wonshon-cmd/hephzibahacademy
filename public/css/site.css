@@ -187,10 +187,19 @@ textarea.input { resize: vertical; min-height: 104px; line-height: 1.45; }
 .mission b { color: var(--ink); }
 
 /* Yellow light accents */
-.brand-mark .lamp { fill: var(--accent); filter: drop-shadow(0 0 2.5px rgba(214, 235, 0, 0.95)); }
+.brand-mark .lamp, .lk-mark .lamp { fill: var(--accent); filter: drop-shadow(0 0 2.5px rgba(214, 235, 0, 0.95)); }
 .spark { position: relative; display: inline-block; width: 0.17em; height: 0.17em; margin-left: 0.05em; border-radius: 50%;
   background: var(--accent); box-shadow: 0 0 0.06em rgba(200, 220, 0, 0.9); }
 .spark::after { content: ""; position: absolute; left: 50%; top: 50%; width: 0.9em; height: 0.9em; transform: translate(-50%, -50%);
   border-radius: 50%; background: radial-gradient(circle, rgba(232, 255, 0, 0.55) 0%, rgba(232, 255, 0, 0.18) 35%, rgba(232, 255, 0, 0) 70%);
   animation: spark 3.6s ease-in-out infinite; pointer-events: none; z-index: -1; }
 @keyframes spark { 50% { transform: translate(-50%, -50%) scale(1.25); opacity: 0.7; } }
+
+/* Hephzibah & Beulah names (Isaiah 62:4) */
+.names { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 40px; border-top: 1px solid var(--rule); }
+.names > div { display: grid; gap: 6px; padding: 24px 24px 0 0; }
+.names .lk-mark { width: 34px; height: 34px; margin-bottom: 8px; color: var(--ink); }
+.names b { font-size: clamp(22px, 2vw, 28px); letter-spacing: -0.02em; }
+.names span { font-size: 17px; color: var(--ink-2); }
+.names small { font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+@media (max-width: 520px) { .names { grid-template-columns: 1fr; } }
