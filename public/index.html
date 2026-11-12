@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hephzibah Academy</title>
+<meta name="description" content="Rooted in faith. Shining in the world. Interactive lectures that help young people discover who God made them to be.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Hephzibah Academy — home">
+      <svg class="brand-mark" viewBox="9 11 43 43" aria-hidden="true"><path d="M10 22h11v12h17V12h13v41H38V42H21v11H10z" fill="currentColor"/></svg>
+      <span class="brand-name"><b>Hephzibah</b><span>ACADEMY</span></span>
+    </a>
+    <button class="menu-btn" type="button" aria-controls="nav" aria-expanded="false">Menu</button>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="/lectures">Academy</a>
+      <a href="/#community">Community</a>
+      <a href="/#about">About</a>
+      <span class="divider" aria-hidden="true"></span>
+      <a class="login" href="/present">Log in <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Hephzibah Academy</p>
+      <h1 class="display">Rooted in faith.<br>Shining in the world.</h1>
+      <p class="lead">Helping young people discover who God made them to be.</p>
+      <div class="cta"><a class="btn" href="/lectures">Start learning <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></div>
+    </div>
+    <div class="vertical" aria-hidden="true">FAITH / PURPOSE / IMPACT</div>
+  </div>
+</section>
+
+<section class="pillars" aria-label="Our pillars">
+  <div class="wrap">
+    <div class="pillar"><span class="num">01</span><div><h3>Faith</h3><p>Knowing we are loved before we achieve anything.</p></div></div>
+    <div class="pillar"><span class="num">02</span><div><h3>Learning</h3><p>Asking honest questions about study, work, money and joy.</p></div></div>
+    <div class="pillar"><span class="num">03</span><div><h3>Impact</h3><p>Taking one small next step for the people around us.</p></div></div>
+  </div>
+</section>
+
+<section class="section" id="lectures">
+  <div class="wrap">
+    <div class="section-head">
+      <div><p class="eyebrow">Lectures</p><h2 class="h2">Start with a question.</h2></div>
+      <a class="btn ghost small" href="/lectures">All lectures <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
+    </div>
+    <a class="card" href="/lectures/my-user-manual">
+      <span class="num">01</span>
+      <div>
+        <span class="tag">For High School</span>
+        <h3>My User Manual</h3>
+        <p>Still finding my user manual — a talk for anyone wondering what a good future looks like. Interactive: students answer on their phones and see the room’s answers live.</p>
+        <div class="meta"><span>29 slides</span><span>~40 min</span><span>Live & interactive</span></div>
+      </div>
+      <span class="go" aria-hidden="true"><svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
+    </a>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="wrap split">
+    <div><p class="eyebrow">About</p><h2 class="h2">What’s in a name.</h2></div>
+    <div>
+      <blockquote class="quote">“You will be called Hephzibah — my delight is in her.”<cite>Isaiah 62:4 (paraphrased)</cite></blockquote>
+      <div class="prose" style="margin-top:36px">
+        <p>Hephzibah means <em>“my delight is in her.”</em> We believe every student is already precious before God — not because of grades or usefulness, but because they are known and loved.</p>
+        <p>Hephzibah Academy creates short, honest lectures and reflection activities that help young people ask good questions about their future, and take one small next step.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="community">
+  <div class="wrap split">
+    <div><p class="eyebrow">Community</p><h2 class="h2">In the room right now?</h2></div>
+    <div>
+      <p class="prose" style="margin:0 0 24px"><span style="font-size:19px;color:var(--ink-2)">Enter the code shown on the presenter’s screen to join the live session from your phone.</span></p>
+      <form class="join-inline" action="/join" method="get" style="display:flex;gap:12px;flex-wrap:wrap;max-width:520px">
+        <label class="sr-only" for="code">Room code</label>
+        <input class="input" id="code" name="code" placeholder="ROOM CODE" autocomplete="off" autocapitalize="characters" maxlength="8" style="flex:1 1 220px;letter-spacing:.2em;text-transform:uppercase;font-weight:700">
+        <button class="btn" type="submit">Join <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap"><span>Faith for life. Learning for the world.</span><span class="right">© 2026 Hephzibah Academy</span></div>
+</footer>
+<script src="/js/site.js" defer></script>
+</body>
+</html>

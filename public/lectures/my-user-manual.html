@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My User Manual · Hephzibah Academy</title>
+<meta name="description" content="An interactive lecture for high school students by Joseph Shon.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Hephzibah Academy — home">
+      <svg class="brand-mark" viewBox="9 11 43 43" aria-hidden="true"><path d="M10 22h11v12h17V12h13v41H38V42H21v11H10z" fill="currentColor"/></svg>
+      <span class="brand-name"><b>Hephzibah</b><span>ACADEMY</span></span>
+    </a>
+    <button class="menu-btn" type="button" aria-controls="nav" aria-expanded="false">Menu</button>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="/lectures" aria-current="page">Academy</a>
+      <a href="/#community">Community</a>
+      <a href="/#about">About</a>
+      <span class="divider" aria-hidden="true"></span>
+      <a class="login" href="/present">Log in <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="section" style="border-top:0">
+  <div class="wrap">
+    <p class="eyebrow"><a href="/lectures" style="text-decoration:none">Academy</a> / For High School</p>
+    <h1 class="display" style="font-size:clamp(44px,7vw,108px)">My User Manual</h1>
+    <p class="lead" style="max-width:36ch">Still finding my user manual — for anyone wondering what a good future looks like.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:44px">
+      <a class="btn" href="/present?lecture=my-user-manual">Present live <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
+      <a class="btn ghost" href="/present?lecture=my-user-manual&amp;preview=1">Preview slides</a>
+      <a class="btn ghost" href="/join">Join as audience</a>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap split">
+    <div><p class="eyebrow">How it works</p><h2 class="h2">One slide at a time. Everyone takes part.</h2></div>
+    <ol class="steps">
+      <li><b>Open the presenter screen</b> on the projector. A room code and QR code appear.</li>
+      <li><b>Students scan with their phones.</b> No sign-up — each joins as a random orchestra instrument — the only name shown on screen.</li>
+      <li><b>Advance one slide at a time.</b> Phones follow along automatically.</li>
+      <li><b>On question slides, students type or tap.</b> Answers appear live on the big screen — no names. Turn on review mode to approve each message first.</li>
+      <li><b>The “first page” worksheet stays private</b> on each phone, and can be downloaded.</li>
+      <li><b>Hear the orchestra.</b> Click each instrument to hear its part alone — then all together — before the closing video.</li>
+      <li><b>Finish with a review.</b> Students share what they learned, review the lecture, unlock their 20-question results, and write how they’ll use their strengths and weaknesses.</li>
+    </ol>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap split">
+    <div><p class="eyebrow">Run of show</p><h2 class="h2">About 40 minutes.</h2></div>
+    <div id="runofshow" class="ros"></div>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap">
+    <div class="section-head"><div><p class="eyebrow">Slides</p><h2 class="h2">All 29 slides.</h2></div></div>
+    <ol id="outline" class="outline"></ol>
+  </div>
+</section>
+<style>
+.steps{margin:0;padding:0;list-style:none;counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:56px 1fr;padding:22px 0;border-top:1px solid var(--hair);font-size:18px;color:var(--ink-2)}
+.steps li::before{content:"0" counter(s);font-weight:600;letter-spacing:.18em;font-size:15px;color:var(--ink);padding-top:3px}
+.steps b{color:var(--ink)}
+.ros .row{display:grid;grid-template-columns:1fr auto auto;gap:24px;padding:20px 0;border-top:1px solid var(--hair);font-size:18px}
+.ros .row span{color:var(--muted);font-variant-numeric:tabular-nums}
+.outline{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1px;background:var(--hair);border:1px solid var(--hair)}
+.outline li{background:var(--paper);padding:20px 22px;min-height:132px;display:flex;flex-direction:column;gap:8px}
+.outline .n{font-size:13px;font-weight:700;letter-spacing:.16em;color:var(--muted);display:flex;justify-content:space-between}
+.outline .t{font-weight:700;font-size:18px;line-height:1.25;letter-spacing:-.01em}
+.outline .i{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--ink);border-radius:999px;padding:2px 8px;color:var(--ink)}
+</style>
+<script type="module">
+const deck = await (await fetch("/data/my-user-manual.json")).json();
+document.getElementById("runofshow").innerHTML = deck.runOfShow.map(r =>
+  `<div class="row"><b>${r.label}</b><span>Slides ${r.slides}</span><span>${r.minutes} min</span></div>`).join("");
+const label = { choice: "Live poll", text: "Live answers", private: "Private", review: "Review" };
+const ol = document.getElementById("outline");
+deck.slides.forEach((s, i) => {
+  const li = document.createElement("li");
+  const ix = s.interaction ? (s.interaction.channel === "qa" ? "Q&A" : label[s.interaction.type]) : s.kind === "orchestra" ? "Sound" : s.kind === "video" ? "Video" : "";
+  li.innerHTML = `<div class="n"><span>${String(i + 1).padStart(2, "0")}</span>${ix ? `<span class="i">${ix}</span>` : ""}</div><div class="t"></div>`;
+  li.querySelector(".t").textContent = s.title.replace(/\n/g, " ");
+  ol.appendChild(li);
+});
+</script>
+</main>
+<footer class="site-footer">
+  <div class="wrap"><span>Faith for life. Learning for the world.</span><span class="right">© 2026 Hephzibah Academy</span></div>
+</footer>
+<script src="/js/site.js" defer></script>
+</body>
+</html>
