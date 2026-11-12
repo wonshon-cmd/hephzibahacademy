@@ -183,3 +183,5 @@ textarea.input { resize: vertical; min-height: 104px; line-height: 1.45; }
 .hill-art .rays { animation: rays 4.5s ease-in-out infinite; }
 @keyframes glow { 50% { transform: scale(1.12); opacity: .75; } }
 @keyframes rays { 50% { opacity: .2; } }
+.mission { margin: 24px 0 0; font-size: clamp(18px, 1.6vw, 22px); line-height: 1.5; color: var(--ink-2); max-width: 36ch; }
+.mission b { color: var(--ink); }
