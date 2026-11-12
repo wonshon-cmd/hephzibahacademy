@@ -215,3 +215,4 @@ textarea.input { resize: vertical; min-height: 104px; line-height: 1.45; }
 .lang-btn:hover { background: var(--ink); color: var(--paper); }
 html[lang="ko"] body { word-break: keep-all; }
 @media (max-width: 760px) { .nav .lang-btn { margin-top: 12px; align-self: flex-start; } }
+.names2-lead { max-width: 40ch; }
