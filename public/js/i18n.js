@@ -5,7 +5,7 @@
     "Menu": "메뉴", "Academy": "아카데미", "Community": "커뮤니티", "About": "소개", "Mentors": "멘토", "Support": "후원", "Log in": "로그인",
     "Hephzibah Academy": "헵시바 아카데미",
     "Light and salt.": "빛과 소금.", "Matthew 5:13–16": "마태복음 5:13–16", "Start learning": "배움 시작하기",
-    "LEARN / SHARE / THRIVE": "배우고 / 나누고 / 자라고",
+    "LEARN / THRIVE / SHARE": "배우고 / 자라고 / 나누고",
     "Learn": "배움", "Ask honest questions.": "솔직하게 질문해요.", "Share": "나눔", "Hear one another.": "서로의 이야기를 들어요.",
     "Thrive": "성장", "Take one small step.": "작은 한 걸음을 내디뎌요.",
     "Light and Salt": "빛과 소금", "A house on a hill.": "산 위의 집.", "A light for every room.": "모든 방을 비추는 빛.",
