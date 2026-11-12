@@ -74,3 +74,35 @@ export function scorePersonality(data, answers) {
   }
   return out;
 }
+
+// ---------- Language (English / 한국어) ----------
+let memLang = null;
+export function getLang() {
+  if (memLang) return memLang;
+  try { return localStorage.getItem("hz-lang") === "ko" ? "ko" : "en"; } catch { return "en"; }
+}
+export function setLang(v) { memLang = v; try { localStorage.setItem("hz-lang", v); } catch {} document.documentElement.lang = v; }
+export const t = (en, ko) => (getLang() === "ko" ? ko : en);
+
+// Slide in the current language (Korean fields live under slide.ko).
+export function tr(slide) {
+  if (getLang() !== "ko" || !slide.ko) return slide;
+  const k = slide.ko;
+  const out = { ...slide, ...k };
+  delete out.ko;
+  if (slide.interaction) {
+    const ki = k.interaction || {};
+    out.interaction = { ...slide.interaction, ...ki };
+    if (slide.interaction.options) out.interaction.options = slide.interaction.options.map((o) => ({ ...o, label: (ki.options && ki.options[o.value]) || o.label }));
+    if (slide.interaction.fields) out.interaction.fields = slide.interaction.fields.map((f) => ({ ...f, ...((ki.fields && ki.fields[f.id]) || {}) }));
+  }
+  return out;
+}
+
+// Instrument name / alias in the current language ("Cello 2" → "첼로 2").
+export function insName(id) { const i = instrumentById(id); return i ? t(i.name, i.ko) : ""; }
+export function insFamily(id) { const i = instrumentById(id); return i ? t(i.family, i.familyKo) : ""; }
+export function aliasText(alias, id) {
+  const i = instrumentById(id);
+  return i && alias ? alias.replace(i.name, t(i.name, i.ko)) : alias || t("Guest", "손님");
+}

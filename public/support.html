@@ -8,7 +8,7 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/site.css">
 </head>
 <body>
@@ -114,6 +114,7 @@ document.querySelectorAll(".tier").forEach((a) => {
   a.target = "_blank"; a.rel = "noopener";
 });
 note.textContent = site.supportUrl ? "You’ll be taken to our secure giving page." : "Online giving opens soon.";
+window.hzI18n && window.hzI18n.apply();
 </script>
 </main>
 <footer class="site-footer">
@@ -127,5 +128,6 @@ note.textContent = site.supportUrl ? "You’ll be taken to our secure giving pag
   <div class="wrap"><span>Faith for life. Learning for the world.</span><span class="right">© 2026 Hephzibah Academy</span></div>
 </footer>
 <script src="/js/site.js" defer></script>
+<script src="/js/i18n.js" defer></script>
 </body>
 </html>

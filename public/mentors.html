@@ -8,7 +8,7 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/site.css">
 </head>
 <body>
@@ -80,7 +80,7 @@ f.addEventListener("submit", async (e) => {
     const r = await fetch("/api/mentors", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
     const d = await r.json().catch(() => ({}));
     if (!r.ok) throw new Error((d.error && d.error.message) || "Something went wrong.");
-    f.outerHTML = '<div><h3 class="h3">Thank you.</h3><p class="lead" style="font-size:19px">We’ll be in touch soon.</p></div>';
+    f.outerHTML = '<div id="thanks"><h3 class="h3">Thank you.</h3><p class="lead" style="font-size:19px">We’ll be in touch soon.</p></div>'; window.hzI18n && window.hzI18n.apply();
   } catch (x) { err.textContent = x.message; btn.disabled = false; }
 });
 </script>
@@ -96,5 +96,6 @@ f.addEventListener("submit", async (e) => {
   <div class="wrap"><span>Faith for life. Learning for the world.</span><span class="right">© 2026 Hephzibah Academy</span></div>
 </footer>
 <script src="/js/site.js" defer></script>
+<script src="/js/i18n.js" defer></script>
 </body>
 </html>

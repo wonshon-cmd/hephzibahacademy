@@ -1,149 +1,478 @@
 {
-  "title": "20 Questions: Getting to Know Me",
-  "subtitle": "A self-reflection activity about how you’ve been lately",
-  "instructions": [
-    "Think about yourself over the past few weeks.",
-    "There are no right answers and no grades. Pick what’s closest.",
-    "You can skip a question, or go back and change an answer."
-  ],
-  "note": "This is a self-reflection activity — not a psychological test or diagnosis. If a description doesn’t fit you, you don’t have to keep it.",
-  "choices": [
-    { "value": -1, "label": "Not really" },
-    { "value": 0, "label": "It depends" },
-    { "value": 1, "label": "That’s me" }
-  ],
-  "dimensions": [
-    {
-      "id": "social", "name": "How I recharge",
-      "leftLabel": "Alone or with a few, quietly", "rightLabel": "With people, actively",
-      "low": { "title": "Recharges quietly",
-        "summary": "Your answers show you get energy from thinking alone or being with a few comfortable people.",
-        "strength": "You can think things through deeply and invest steadily in close relationships.",
-        "challenge": "Long stretches with groups can wear you out, and you may wait too long to ask for help.",
-        "grow": "Share one good idea you worked out on your own with one person you’re comfortable with.",
-        "practice": "Leave a short break before and after big gatherings, and ask for help in a sentence when you need it." },
-      "mid": { "title": "Recharges either way",
-        "summary": "Your answers show you get energy from both time with people and time alone.",
-        "strength": "You can join in when it fits, and step back to think when you need to.",
-        "challenge": "It can be hard to tell whether you need conversation or rest, so your schedule may fill up.",
-        "grow": "Write one line about which gatherings energized you and which activities left you wanting rest.",
-        "practice": "Check your energy before making plans, and leave some space to rest." },
-      "high": { "title": "Recharges with people",
-        "summary": "Your answers show you get energy from talking and doing things with others.",
-        "strength": "You start conversations, connect people, and bring life to a group.",
-        "challenge": "Your schedule can get overloaded, and you may not get enough time to think alone.",
-        "grow": "In groups, make room for quieter people to speak.",
-        "practice": "Before an important conversation, take a moment to jot down your own thoughts first." }
-    },
-    {
-      "id": "curiosity", "name": "Familiar vs. new",
-      "leftLabel": "Go deep on the familiar", "rightLabel": "Explore new things widely",
-      "low": { "title": "Goes deep on the familiar",
-        "summary": "Your answers show you like to keep building on methods and things you already enjoy.",
-        "strength": "You build real skill through repetition and understand familiar things in detail.",
-        "challenge": "Even when a new approach would help, you may hesitate a long time before starting.",
-        "grow": "Raise the difficulty a little on something you love, or add just one new method.",
-        "practice": "Instead of a totally unfamiliar challenge, try a small change to something familiar." },
-      "mid": { "title": "Mixes familiar and new",
-        "summary": "Your answers show you use what you know while staying open to new ideas.",
-        "strength": "You connect existing methods with new ideas.",
-        "challenge": "With many options, deciding where to start can take a while.",
-        "grow": "Apply one new method to something you already do, and notice the difference.",
-        "practice": "Before choosing, write down the one criterion that matters most right now." },
-      "high": { "title": "Explores new things",
-        "summary": "Your answers show new experiences and ideas spark your interest.",
-        "strength": "You imagine other possibilities and learn by starting.",
-        "challenge": "Interests keep multiplying, which can make it hard to finish what you start.",
-        "grow": "Pick the one idea you most want to try, and finish a small version of it.",
-        "practice": "Write new ideas down separately, and set a small finish line for what you’re doing now." }
-    },
-    {
-      "id": "structure", "name": "How I start and keep going",
-      "leftLabel": "Adjust as I go", "rightLabel": "Plan the order first",
-      "low": { "title": "Adapts in the moment",
-        "summary": "Your answers show you tend to move with the situation rather than a set plan.",
-        "strength": "You change approach as things shift, and you spot opportunities in front of you.",
-        "challenge": "You may miss when to start or how much time is left, so work piles up at once.",
-        "grow": "Turn a task into a tiny first action, and set just one start time.",
-        "practice": "Instead of a long plan, write one thing to finish today and put it where you can see it." },
-      "mid": { "title": "Keeps a frame, adjusts inside it",
-        "summary": "Your answers show you make the plans you need and change them when things shift.",
-        "strength": "You keep the main direction while adjusting the method.",
-        "challenge": "If you’re not clear on what must stay fixed, small exceptions can add up.",
-        "grow": "Split today into one must-do and one nice-to-do.",
-        "practice": "At the end of the day, don’t grade your plan — just choose one thing to change tomorrow." },
-      "high": { "title": "Likes a clear order",
-        "summary": "Your answers show you feel at ease when the order and timing are set.",
-        "strength": "You prepare, remember commitments, and follow through.",
-        "challenge": "Surprises can be hard, and you may keep polishing results that are already good enough.",
-        "grow": "Show a small draft before it’s perfect, and ask for feedback.",
-        "practice": "Leave slack in your plans, and decide on one backup in case things change." }
-    },
-    {
-      "id": "attunement", "name": "What I notice first in people",
-      "leftLabel": "Ideas and solutions", "rightLabel": "Feelings and mood",
-      "low": { "title": "Speaks thoughts clearly",
-        "summary": "Your answers show you tend to think first about the core issue or the solution.",
-        "strength": "You say what you think clearly and organize problems concretely.",
-        "challenge": "If you rush to fix things, others may feel you didn’t really hear them.",
-        "grow": "Before offering a solution, ask how the other person is feeling right now.",
-        "practice": "Practice asking: “Want to find a solution together, or should I just listen first?”" },
-      "mid": { "title": "Balances my view and theirs",
-        "summary": "Your answers show you weigh both speaking clearly and noticing how others feel.",
-        "strength": "You connect different opinions and help people understand each other.",
-        "challenge": "Trying to satisfy everyone, you may share your own view late.",
-        "grow": "Repeat back the other person’s point in one sentence, then share yours in one sentence.",
-        "practice": "Instead of assuming you know how someone feels, check with them directly." },
-      "high": { "title": "Reads feelings and mood closely",
-        "summary": "Your answers show you notice first how words and moods land on people.",
-        "strength": "You notice small changes and help others feel safe to talk.",
-        "challenge": "You may take on too much responsibility for others’ reactions, or put your own feelings last.",
-        "grow": "As much as you notice others, write one sentence about your own feelings and needs today.",
-        "practice": "Practice a kind boundary: “I can’t do that right now, but I can help with this much.”" }
-    },
-    {
-      "id": "sensitivity", "name": "How I sense and recover",
-      "leftLabel": "Stay steady amid noise", "rightLabel": "Notice changes in detail",
-      "low": { "title": "Stays steady amid noise",
-        "summary": "Your answers show you keep your flow even when things around you change.",
-        "strength": "You keep working through busy situations and don’t get swept up easily.",
-        "challenge": "You may notice your own tiredness — or someone else’s discomfort — late.",
-        "grow": "In the middle of busy activities, briefly check how your body and mind are doing.",
-        "practice": "Remember that an environment that’s fine for you may not be for others — ask them." },
-      "mid": { "title": "Adjusts to the setting",
-        "summary": "Your answers show that sometimes stimulation feels fine, and sometimes you need quiet.",
-        "strength": "You adapt to environments and find the changes you need.",
-        "challenge": "Certain sounds or schedules may build up fatigue before you notice.",
-        "grow": "Find one difference between settings that felt easy and ones that felt tiring.",
-        "practice": "Before it gets hard, make a small choice: take a short break or change seats." },
-      "high": { "title": "Senses small changes",
-        "summary": "Your answers show you easily notice changes in sound, mood, or schedule.",
-        "strength": "You observe small differences and catch what others might miss.",
-        "challenge": "On busy days you may get worn out and need more quiet time to think.",
-        "grow": "Pick one task where your attention to detail helps, and do it somewhere you can focus.",
-        "practice": "Plan quiet recovery time ahead, and tell someone you trust what setting or help you need." }
+ "title": "20 Questions: Getting to Know Me",
+ "subtitle": "A self-reflection activity about how you’ve been lately",
+ "instructions": [
+  "Think about yourself over the past few weeks.",
+  "There are no right answers and no grades. Pick what’s closest.",
+  "You can skip a question, or go back and change an answer."
+ ],
+ "note": "This is a self-reflection activity — not a psychological test or diagnosis. If a description doesn’t fit you, you don’t have to keep it.",
+ "choices": [
+  {
+   "value": -1,
+   "label": "Not really"
+  },
+  {
+   "value": 0,
+   "label": "It depends"
+  },
+  {
+   "value": 1,
+   "label": "That’s me"
+  }
+ ],
+ "dimensions": [
+  {
+   "id": "social",
+   "name": "How I recharge",
+   "leftLabel": "Alone or with a few, quietly",
+   "rightLabel": "With people, actively",
+   "low": {
+    "title": "Recharges quietly",
+    "summary": "Your answers show you get energy from thinking alone or being with a few comfortable people.",
+    "strength": "You can think things through deeply and invest steadily in close relationships.",
+    "challenge": "Long stretches with groups can wear you out, and you may wait too long to ask for help.",
+    "grow": "Share one good idea you worked out on your own with one person you’re comfortable with.",
+    "practice": "Leave a short break before and after big gatherings, and ask for help in a sentence when you need it.",
+    "ko": {
+     "title": "차분히 충전하는 편",
+     "summary": "혼자 생각하거나 편한 몇 사람과 있을 때 힘을 얻는 모습이 답에 담겼어요.",
+     "strength": "생각을 깊이 정리하고, 작은 관계에 꾸준히 마음을 쓰는 힘을 살펴보세요.",
+     "challenge": "함께하는 시간이 길어지면 지치거나, 혼자 해결하다 도움을 늦게 요청할 수 있어요.",
+     "grow": "혼자 정리한 좋은 생각 하나를 편한 사람 한 명에게 이야기해 보세요.",
+     "practice": "큰 모임 앞뒤에 잠깐 쉬는 시간을 두고, 도움이 필요하면 짧게 요청해 보세요."
     }
+   },
+   "mid": {
+    "title": "Recharges either way",
+    "summary": "Your answers show you get energy from both time with people and time alone.",
+    "strength": "You can join in when it fits, and step back to think when you need to.",
+    "challenge": "It can be hard to tell whether you need conversation or rest, so your schedule may fill up.",
+    "grow": "Write one line about which gatherings energized you and which activities left you wanting rest.",
+    "practice": "Check your energy before making plans, and leave some space to rest.",
+    "ko": {
+     "title": "상황에 따라 충전하는 편",
+     "summary": "함께하는 시간과 혼자 있는 시간 모두에서 힘을 얻는 모습이 답에 담겼어요.",
+     "strength": "상황에 맞게 참여하고, 필요할 때 한 걸음 물러나 생각하는 힘을 살펴보세요.",
+     "challenge": "그날 필요한 것이 대화인지 휴식인지 헷갈려 일정이 많아질 수 있어요.",
+     "grow": "어떤 만남 뒤에 힘이 났는지, 어떤 활동 뒤에 쉬고 싶었는지 한 줄 남겨 보세요.",
+     "practice": "약속을 정하기 전에 오늘의 에너지를 잠깐 확인하고 쉬는 틈을 남겨 보세요."
+    }
+   },
+   "high": {
+    "title": "Recharges with people",
+    "summary": "Your answers show you get energy from talking and doing things with others.",
+    "strength": "You start conversations, connect people, and bring life to a group.",
+    "challenge": "Your schedule can get overloaded, and you may not get enough time to think alone.",
+    "grow": "In groups, make room for quieter people to speak.",
+    "practice": "Before an important conversation, take a moment to jot down your own thoughts first.",
+    "ko": {
+     "title": "함께하며 충전하는 편",
+     "summary": "사람들과 이야기하거나 활동할 때 힘을 얻는 모습이 답에 담겼어요.",
+     "strength": "대화를 시작하고, 함께할 사람을 연결하고, 모임에 활기를 더하는 힘을 살펴보세요.",
+     "challenge": "일정이 너무 많아지거나, 혼자 생각할 시간이 부족해질 수 있어요.",
+     "grow": "모임에서 조용한 사람에게도 말할 자리를 주며 함께하는 힘을 키워 보세요.",
+     "practice": "중요한 일을 이야기하기 전, 내 생각을 혼자 짧게 적어 볼 시간을 가져 보세요."
+    }
+   },
+   "ko": {
+    "name": "에너지를 채우는 방식",
+    "leftLabel": "혼자 또는 소수와 차분히",
+    "rightLabel": "사람들과 함께 활발히"
+   }
+  },
+  {
+   "id": "curiosity",
+   "name": "Familiar vs. new",
+   "leftLabel": "Go deep on the familiar",
+   "rightLabel": "Explore new things widely",
+   "low": {
+    "title": "Goes deep on the familiar",
+    "summary": "Your answers show you like to keep building on methods and things you already enjoy.",
+    "strength": "You build real skill through repetition and understand familiar things in detail.",
+    "challenge": "Even when a new approach would help, you may hesitate a long time before starting.",
+    "grow": "Raise the difficulty a little on something you love, or add just one new method.",
+    "practice": "Instead of a totally unfamiliar challenge, try a small change to something familiar.",
+    "ko": {
+     "title": "익숙한 것을 깊이 파는 편",
+     "summary": "아는 방법이나 좋아하는 것을 꾸준히 이어 가는 모습이 답에 담겼어요.",
+     "strength": "반복하며 실력을 쌓고, 이미 아는 것을 자세히 이해하는 힘을 살펴보세요.",
+     "challenge": "새로운 방법이 도움이 되어도 시작을 오래 망설일 수 있어요.",
+     "grow": "좋아하는 일 하나에서 난이도를 조금 올리거나, 새로운 방법을 하나만 붙여 보세요.",
+     "practice": "완전히 낯선 도전보다 익숙한 것의 작은 변화부터 시도해 보세요."
+    }
+   },
+   "mid": {
+    "title": "Mixes familiar and new",
+    "summary": "Your answers show you use what you know while staying open to new ideas.",
+    "strength": "You connect existing methods with new ideas.",
+    "challenge": "With many options, deciding where to start can take a while.",
+    "grow": "Apply one new method to something you already do, and notice the difference.",
+    "practice": "Before choosing, write down the one criterion that matters most right now.",
+    "ko": {
+     "title": "익숙함과 새로움을 섞는 편",
+     "summary": "아는 방법을 활용하면서 새로운 시도도 열어 두는 모습이 답에 담겼어요.",
+     "strength": "기존의 방법과 새 아이디어를 연결하는 힘을 살펴보세요.",
+     "challenge": "여러 방법 사이에서 무엇부터 할지 결정이 늦어질 수 있어요.",
+     "grow": "이미 하던 일 하나에 새 방법 하나를 적용해 보고 차이를 관찰해 보세요.",
+     "practice": "선택 전에 지금 가장 중요한 기준 하나를 적어 보세요."
+    }
+   },
+   "high": {
+    "title": "Explores new things",
+    "summary": "Your answers show new experiences and ideas spark your interest.",
+    "strength": "You imagine other possibilities and learn by starting.",
+    "challenge": "Interests keep multiplying, which can make it hard to finish what you start.",
+    "grow": "Pick the one idea you most want to try, and finish a small version of it.",
+    "practice": "Write new ideas down separately, and set a small finish line for what you’re doing now.",
+    "ko": {
+     "title": "새로운 것을 탐색하는 편",
+     "summary": "새로운 경험이나 아이디어를 만나면 관심이 생기는 모습이 답에 담겼어요.",
+     "strength": "다른 가능성을 떠올리고, 시작해 보며 배우는 힘을 살펴보세요.",
+     "challenge": "관심사가 계속 늘어나 끝내고 싶은 일을 마무리하기 어려울 수 있어요.",
+     "grow": "가장 해 보고 싶은 아이디어 하나를 골라, 작게라도 끝까지 만들어 보세요.",
+     "practice": "새로 떠오른 아이디어는 따로 적고, 지금 하는 일의 작은 마침표를 정해 보세요."
+    }
+   },
+   "ko": {
+    "name": "익숙함과 새로움",
+    "leftLabel": "익숙한 것을 깊이",
+    "rightLabel": "새로운 것을 넓게"
+   }
+  },
+  {
+   "id": "structure",
+   "name": "How I start and keep going",
+   "leftLabel": "Adjust as I go",
+   "rightLabel": "Plan the order first",
+   "low": {
+    "title": "Adapts in the moment",
+    "summary": "Your answers show you tend to move with the situation rather than a set plan.",
+    "strength": "You change approach as things shift, and you spot opportunities in front of you.",
+    "challenge": "You may miss when to start or how much time is left, so work piles up at once.",
+    "grow": "Turn a task into a tiny first action, and set just one start time.",
+    "practice": "Instead of a long plan, write one thing to finish today and put it where you can see it.",
+    "ko": {
+     "title": "상황에 맞춰 움직이는 편",
+     "summary": "미리 정한 순서보다 그때의 상황을 보며 움직이는 모습이 답에 담겼어요.",
+     "strength": "변화에 맞춰 방법을 바꾸고, 눈앞의 기회를 발견하는 힘을 살펴보세요.",
+     "challenge": "시작 시점이나 남은 시간을 놓쳐 일이 한꺼번에 몰릴 수 있어요.",
+     "grow": "해야 할 일을 아주 작은 첫 행동으로 바꾸고, 시작할 시각 하나만 정해 보세요.",
+     "practice": "긴 계획표 대신 오늘 끝낼 한 가지를 적고 눈에 보이는 곳에 놓아 보세요."
+    }
+   },
+   "mid": {
+    "title": "Keeps a frame, adjusts inside it",
+    "summary": "Your answers show you make the plans you need and change them when things shift.",
+    "strength": "You keep the main direction while adjusting the method.",
+    "challenge": "If you’re not clear on what must stay fixed, small exceptions can add up.",
+    "grow": "Split today into one must-do and one nice-to-do.",
+    "practice": "At the end of the day, don’t grade your plan — just choose one thing to change tomorrow.",
+    "ko": {
+     "title": "뼈대를 두고 조정하는 편",
+     "summary": "필요한 계획을 세우고 상황에 따라 바꾸는 모습이 답에 담겼어요.",
+     "strength": "기본 방향을 지키면서 방법을 조정하는 힘을 살펴보세요.",
+     "challenge": "무엇을 꼭 지킬지 분명하지 않으면 작은 예외가 쌓일 수 있어요.",
+     "grow": "오늘 꼭 할 일 하나와 여유가 있으면 할 일 하나를 나누어 보세요.",
+     "practice": "하루가 끝날 때 계획을 평가하기보다, 내일 바꿀 점 하나만 골라 보세요."
+    }
+   },
+   "high": {
+    "title": "Likes a clear order",
+    "summary": "Your answers show you feel at ease when the order and timing are set.",
+    "strength": "You prepare, remember commitments, and follow through.",
+    "challenge": "Surprises can be hard, and you may keep polishing results that are already good enough.",
+    "grow": "Show a small draft before it’s perfect, and ask for feedback.",
+    "practice": "Leave slack in your plans, and decide on one backup in case things change.",
+    "ko": {
+     "title": "순서를 정해 움직이는 편",
+     "summary": "일의 순서와 시간을 정해 두면 편안한 모습이 답에 담겼어요.",
+     "strength": "준비하고, 약속을 기억하고, 끝까지 이어 가는 힘을 살펴보세요.",
+     "challenge": "예상과 달라질 때 힘들거나, 충분히 괜찮은 결과도 계속 고치고 싶을 수 있어요.",
+     "grow": "완벽하게 준비되기 전 작은 초안을 보여 주고 의견을 받아 보세요.",
+     "practice": "계획 안에 여유를 남기고, 바뀌었을 때 쓸 대안 하나를 정해 보세요."
+    }
+   },
+   "ko": {
+    "name": "일을 시작하고 이어 가는 방식",
+    "leftLabel": "상황을 보며 조정",
+    "rightLabel": "순서를 세워 진행"
+   }
+  },
+  {
+   "id": "attunement",
+   "name": "What I notice first in people",
+   "leftLabel": "Ideas and solutions",
+   "rightLabel": "Feelings and mood",
+   "low": {
+    "title": "Speaks thoughts clearly",
+    "summary": "Your answers show you tend to think first about the core issue or the solution.",
+    "strength": "You say what you think clearly and organize problems concretely.",
+    "challenge": "If you rush to fix things, others may feel you didn’t really hear them.",
+    "grow": "Before offering a solution, ask how the other person is feeling right now.",
+    "practice": "Practice asking: “Want to find a solution together, or should I just listen first?”",
+    "ko": {
+     "title": "생각을 분명히 전하는 편",
+     "summary": "상황의 핵심이나 해결 방법을 먼저 떠올리는 모습이 답에 담겼어요.",
+     "strength": "생각을 명확히 말하고, 문제를 구체적으로 정리하는 힘을 살펴보세요.",
+     "challenge": "해결을 서두르면 상대는 마음을 충분히 듣지 못했다고 느낄 수 있어요.",
+     "grow": "방법을 말하기 전에 상대가 지금 어떻게 느끼는지 한 번 물어보세요.",
+     "practice": "“같이 방법을 찾아볼까, 먼저 들어 줄까?”라고 물어보는 연습을 해 보세요."
+    }
+   },
+   "mid": {
+    "title": "Balances my view and theirs",
+    "summary": "Your answers show you weigh both speaking clearly and noticing how others feel.",
+    "strength": "You connect different opinions and help people understand each other.",
+    "challenge": "Trying to satisfy everyone, you may share your own view late.",
+    "grow": "Repeat back the other person’s point in one sentence, then share yours in one sentence.",
+    "practice": "Instead of assuming you know how someone feels, check with them directly.",
+    "ko": {
+     "title": "내 생각과 상대 마음을 함께 보는 편",
+     "summary": "분명하게 말하는 것과 상대의 마음을 살피는 것 모두를 고려하는 모습이 답에 담겼어요.",
+     "strength": "다른 의견을 연결하고, 서로 이해하도록 돕는 힘을 살펴보세요.",
+     "challenge": "모두를 만족시키려다 자신의 생각을 늦게 말할 수 있어요.",
+     "grow": "상대의 말을 한 문장으로 확인한 뒤, 내 생각도 한 문장으로 말해 보세요.",
+     "practice": "다른 사람의 마음을 내가 정확히 안다고 단정하기보다 직접 확인해 보세요."
+    }
+   },
+   "high": {
+    "title": "Reads feelings and mood closely",
+    "summary": "Your answers show you notice first how words and moods land on people.",
+    "strength": "You notice small changes and help others feel safe to talk.",
+    "challenge": "You may take on too much responsibility for others’ reactions, or put your own feelings last.",
+    "grow": "As much as you notice others, write one sentence about your own feelings and needs today.",
+    "practice": "Practice a kind boundary: “I can’t do that right now, but I can help with this much.”",
+    "ko": {
+     "title": "마음과 분위기를 세심히 살피는 편",
+     "summary": "말이나 분위기가 사람들에게 어떻게 닿는지 먼저 살피는 모습이 답에 담겼어요.",
+     "strength": "작은 변화를 알아차리고, 다른 사람이 편하게 이야기하도록 돕는 힘을 살펴보세요.",
+     "challenge": "다른 사람의 반응을 너무 많이 책임지거나, 내 마음을 뒤로 미룰 수 있어요.",
+     "grow": "다른 사람을 살핀 만큼 오늘 내 마음과 필요도 한 문장으로 적어 보세요.",
+     "practice": "“지금은 어렵지만, 이 정도는 도울 수 있어”처럼 친절한 한계를 말해 보세요."
+    }
+   },
+   "ko": {
+    "name": "관계에서 먼저 살피는 것",
+    "leftLabel": "생각과 해결 방법",
+    "rightLabel": "마음과 분위기"
+   }
+  },
+  {
+   "id": "sensitivity",
+   "name": "How I sense and recover",
+   "leftLabel": "Stay steady amid noise",
+   "rightLabel": "Notice changes in detail",
+   "low": {
+    "title": "Stays steady amid noise",
+    "summary": "Your answers show you keep your flow even when things around you change.",
+    "strength": "You keep working through busy situations and don’t get swept up easily.",
+    "challenge": "You may notice your own tiredness — or someone else’s discomfort — late.",
+    "grow": "In the middle of busy activities, briefly check how your body and mind are doing.",
+    "practice": "Remember that an environment that’s fine for you may not be for others — ask them.",
+    "ko": {
+     "title": "자극 속에서도 흐름을 유지하는 편",
+     "summary": "주변이 조금 달라져도 하던 흐름을 이어 가는 모습이 답에 담겼어요.",
+     "strength": "복잡한 상황에서도 일을 이어 가고 분위기에 쉽게 휩쓸리지 않는 힘을 살펴보세요.",
+     "challenge": "내 피곤함이나 다른 사람의 불편함을 늦게 알아차릴 수 있어요.",
+     "grow": "바쁜 활동 중간에 몸과 마음이 어떤지 잠깐 확인해 보세요.",
+     "practice": "내게 괜찮은 환경도 다른 사람에게는 다를 수 있음을 기억하고 직접 물어보세요."
+    }
+   },
+   "mid": {
+    "title": "Adjusts to the setting",
+    "summary": "Your answers show that sometimes stimulation feels fine, and sometimes you need quiet.",
+    "strength": "You adapt to environments and find the changes you need.",
+    "challenge": "Certain sounds or schedules may build up fatigue before you notice.",
+    "grow": "Find one difference between settings that felt easy and ones that felt tiring.",
+    "practice": "Before it gets hard, make a small choice: take a short break or change seats.",
+    "ko": {
+     "title": "상황을 보며 자극을 조절하는 편",
+     "summary": "상황에 따라 주변 자극을 편하게 느끼기도 하고 조용한 시간이 필요하기도 한 모습이 답에 담겼어요.",
+     "strength": "환경에 적응하면서 필요한 변화를 찾는 힘을 살펴보세요.",
+     "challenge": "특정한 소리나 일정이 피곤함을 쌓이게 하는데 뒤늦게 알아차릴 수 있어요.",
+     "grow": "편했던 환경과 피곤했던 환경의 차이를 한 가지씩 찾아보세요.",
+     "practice": "어려워지기 전에 짧게 쉬거나 자리를 바꾸는 작은 선택을 해 보세요."
+    }
+   },
+   "high": {
+    "title": "Senses small changes",
+    "summary": "Your answers show you easily notice changes in sound, mood, or schedule.",
+    "strength": "You observe small differences and catch what others might miss.",
+    "challenge": "On busy days you may get worn out and need more quiet time to think.",
+    "grow": "Pick one task where your attention to detail helps, and do it somewhere you can focus.",
+    "practice": "Plan quiet recovery time ahead, and tell someone you trust what setting or help you need.",
+    "ko": {
+     "title": "작은 변화도 세밀히 느끼는 편",
+     "summary": "소리나 분위기, 일정의 변화가 잘 느껴지는 모습이 답에 담겼어요.",
+     "strength": "작은 차이를 관찰하고 놓치기 쉬운 부분을 발견하는 힘을 살펴보세요.",
+     "challenge": "자극이 많은 날에는 지치거나 생각을 정리할 조용한 시간이 더 필요할 수 있어요.",
+     "grow": "세심함을 쓰고 싶은 일 하나를 고르고, 집중하기 편한 환경에서 해 보세요.",
+     "practice": "조용히 쉬는 시간을 미리 만들고, 필요한 환경이나 도움을 믿을 만한 사람에게 말해 보세요."
+    }
+   },
+   "ko": {
+    "name": "자극을 느끼고 회복하는 방식",
+    "leftLabel": "자극 속에서도 흐름 유지",
+    "rightLabel": "변화를 세밀하게 느낌"
+   }
+  }
+ ],
+ "items": [
+  {
+   "id": "p01",
+   "dimension": "social",
+   "reverse": false,
+   "text": "Talking with someone during a break gives me energy again.",
+   "ko": "쉬는 시간에 누군가와 이야기하면 다시 힘이 나는 편이에요."
+  },
+  {
+   "id": "p02",
+   "dimension": "curiosity",
+   "reverse": false,
+   "text": "When I meet a new activity or topic, I want to learn more about it.",
+   "ko": "처음 보는 활동이나 주제를 만나면 일단 더 알아보고 싶어요."
+  },
+  {
+   "id": "p03",
+   "dimension": "structure",
+   "reverse": false,
+   "text": "Deciding the order of my tasks ahead of time makes it easier to start.",
+   "ko": "할 일의 순서를 미리 정해 두면 시작하기가 편해요."
+  },
+  {
+   "id": "p04",
+   "dimension": "attunement",
+   "reverse": false,
+   "text": "Before I speak, I think about how the other person might feel.",
+   "ko": "말하기 전에 상대가 어떻게 느낄지 먼저 생각하는 편이에요."
+  },
+  {
+   "id": "p05",
+   "dimension": "sensitivity",
+   "reverse": false,
+   "text": "I easily notice sounds, light, or small movements around me.",
+   "ko": "소리나 빛, 주변의 작은 움직임이 쉽게 눈에 들어오는 편이에요."
+  },
+  {
+   "id": "p06",
+   "dimension": "social",
+   "reverse": true,
+   "text": "When I want to recharge, I’d rather be alone than meet people.",
+   "ko": "기운을 되찾고 싶을 때는 사람을 만나기보다 혼자 있는 쪽을 고르는 편이에요."
+  },
+  {
+   "id": "p07",
+   "dimension": "curiosity",
+   "reverse": true,
+   "text": "I’d rather go deeper into what I already like than add new activities.",
+   "ko": "새로운 활동을 늘리기보다 이미 좋아하는 것을 더 깊게 해 보고 싶어요."
+  },
+  {
+   "id": "p08",
+   "dimension": "structure",
+   "reverse": true,
+   "text": "Rather than making a detailed plan, I start and figure it out as I go.",
+   "ko": "자세한 계획을 세우기보다 시작한 뒤 상황에 맞춰 정하는 편이에요."
+  },
+  {
+   "id": "p09",
+   "dimension": "attunement",
+   "reverse": true,
+   "text": "When a friend shares a problem, I think of solutions before feelings.",
+   "ko": "친구의 고민을 들으면 기분보다 해결 방법이 먼저 떠오르는 편이에요."
+  },
+  {
+   "id": "p10",
+   "dimension": "sensitivity",
+   "reverse": true,
+   "text": "Even when it’s a bit noisy, it’s fairly easy for me to keep focusing.",
+   "ko": "주변이 조금 시끄러워도 하던 일에 집중을 이어 가기 비교적 편해요."
+  },
+  {
+   "id": "p11",
+   "dimension": "social",
+   "reverse": false,
+   "text": "After talking or doing things in a group, I feel more energized.",
+   "ko": "여럿이 함께 대화하거나 활동하고 나면 더 활발해지는 편이에요."
+  },
+  {
+   "id": "p12",
+   "dimension": "curiosity",
+   "reverse": false,
+   "text": "Even if I have a familiar way of doing something, I want to try another way.",
+   "ko": "익숙한 방법이 있어도 다른 방법을 한 번 시험해 보고 싶어요."
+  },
+  {
+   "id": "p13",
+   "dimension": "structure",
+   "reverse": false,
+   "text": "I write down plans and assignments so I don’t forget them.",
+   "ko": "약속이나 과제를 잊지 않도록 적어 두고 확인하는 편이에요."
+  },
+  {
+   "id": "p14",
+   "dimension": "attunement",
+   "reverse": false,
+   "text": "I notice when someone in a group goes quiet or the mood shifts.",
+   "ko": "모임에서 누군가 조용해지거나 분위기가 바뀌면 잘 알아차리는 편이에요."
+  },
+  {
+   "id": "p15",
+   "dimension": "sensitivity",
+   "reverse": false,
+   "text": "On days with lots of people or plans, I need quite a bit of quiet time to recover.",
+   "ko": "사람이나 일정이 많은 날에는 조용히 회복할 시간이 꽤 필요한 편이에요."
+  },
+  {
+   "id": "p16",
+   "dimension": "social",
+   "reverse": true,
+   "text": "I get more energy from being alone or with one or two close people than from busy groups.",
+   "ko": "여러 사람과 활발하게 보내기보다 혼자나 편한 한두 명과 지낼 때 더 힘을 얻어요."
+  },
+  {
+   "id": "p17",
+   "dimension": "curiosity",
+   "reverse": true,
+   "text": "In my free time, I pick familiar favorites over unfamiliar things.",
+   "ko": "여가 시간이 생기면 낯선 것보다 익숙하고 좋아하는 것을 고르는 편이에요."
+  },
+  {
+   "id": "p18",
+   "dimension": "structure",
+   "reverse": true,
+   "text": "Instead of planning my day tightly, I pick what’s needed in the moment.",
+   "ko": "하루를 미리 촘촘하게 정해 두기보다 그때 필요한 일을 고르는 편이에요."
+  },
+  {
+   "id": "p19",
+   "dimension": "attunement",
+   "reverse": true,
+   "text": "When opinions differ, I state my view clearly before checking people’s reactions.",
+   "ko": "의견이 다를 때는 사람들의 반응을 살피기 전에 내 생각을 먼저 분명히 말하는 편이에요."
+  },
+  {
+   "id": "p20",
+   "dimension": "sensitivity",
+   "reverse": true,
+   "text": "When something unexpected happens, I get back into my rhythm fairly quickly.",
+   "ko": "예상하지 못한 변화가 생겨도 비교적 빨리 내 리듬을 다시 잡는 편이에요."
+  }
+ ],
+ "ko": {
+  "title": "나를 알아가는 질문 20",
+  "subtitle": "요즘 내 모습에 대한 자기이해 활동",
+  "instructions": [
+   "지난 몇 주의 나를 떠올려 보세요.",
+   "정답도 등급도 없어요. 가장 가까운 답을 고르면 돼요.",
+   "질문은 넘겨도 괜찮고, 이전 질문으로 돌아가 바꿀 수도 있어요."
   ],
-  "items": [
-    { "id": "p01", "dimension": "social", "reverse": false, "text": "Talking with someone during a break gives me energy again." },
-    { "id": "p02", "dimension": "curiosity", "reverse": false, "text": "When I meet a new activity or topic, I want to learn more about it." },
-    { "id": "p03", "dimension": "structure", "reverse": false, "text": "Deciding the order of my tasks ahead of time makes it easier to start." },
-    { "id": "p04", "dimension": "attunement", "reverse": false, "text": "Before I speak, I think about how the other person might feel." },
-    { "id": "p05", "dimension": "sensitivity", "reverse": false, "text": "I easily notice sounds, light, or small movements around me." },
-    { "id": "p06", "dimension": "social", "reverse": true, "text": "When I want to recharge, I’d rather be alone than meet people." },
-    { "id": "p07", "dimension": "curiosity", "reverse": true, "text": "I’d rather go deeper into what I already like than add new activities." },
-    { "id": "p08", "dimension": "structure", "reverse": true, "text": "Rather than making a detailed plan, I start and figure it out as I go." },
-    { "id": "p09", "dimension": "attunement", "reverse": true, "text": "When a friend shares a problem, I think of solutions before feelings." },
-    { "id": "p10", "dimension": "sensitivity", "reverse": true, "text": "Even when it’s a bit noisy, it’s fairly easy for me to keep focusing." },
-    { "id": "p11", "dimension": "social", "reverse": false, "text": "After talking or doing things in a group, I feel more energized." },
-    { "id": "p12", "dimension": "curiosity", "reverse": false, "text": "Even if I have a familiar way of doing something, I want to try another way." },
-    { "id": "p13", "dimension": "structure", "reverse": false, "text": "I write down plans and assignments so I don’t forget them." },
-    { "id": "p14", "dimension": "attunement", "reverse": false, "text": "I notice when someone in a group goes quiet or the mood shifts." },
-    { "id": "p15", "dimension": "sensitivity", "reverse": false, "text": "On days with lots of people or plans, I need quite a bit of quiet time to recover." },
-    { "id": "p16", "dimension": "social", "reverse": true, "text": "I get more energy from being alone or with one or two close people than from busy groups." },
-    { "id": "p17", "dimension": "curiosity", "reverse": true, "text": "In my free time, I pick familiar favorites over unfamiliar things." },
-    { "id": "p18", "dimension": "structure", "reverse": true, "text": "Instead of planning my day tightly, I pick what’s needed in the moment." },
-    { "id": "p19", "dimension": "attunement", "reverse": true, "text": "When opinions differ, I state my view clearly before checking people’s reactions." },
-    { "id": "p20", "dimension": "sensitivity", "reverse": true, "text": "When something unexpected happens, I get back into my rhythm fairly quickly." }
+  "note": "심리검사나 진단을 대신하지 않는 자기이해 활동입니다. 내 답에서 보인 방향을 함께 살펴봐요. 상황과 경험에 따라 달라질 수 있고, 나와 맞지 않는 설명은 가져가지 않아도 괜찮아요.",
+  "choices": [
+   "아니에요",
+   "때에 따라 달라요",
+   "그래요"
   ]
+ }
 }

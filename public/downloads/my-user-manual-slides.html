@@ -1,0 +1,1118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My User Manual · Hephzibah Academy</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2213%22%20fill%3D%22%23f8f7f3%22%2F%3E%3Cpath%20d%3D%22M10%2022h11v12h17V12h13v41H38V42H21v11H10z%22%20fill%3D%22%23111a2e%22%2F%3E%3C%2Fsvg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+/* Hephzibah Academy — shared design system */
+:root {
+  --paper: #f8f7f3;
+  --paper-2: #efede6;
+  --ink: #111a2e;
+  --ink-2: #3a4256;
+  --muted: #6b7183;
+  --rule: #111a2e;
+  --hair: rgba(17, 26, 46, 0.14);
+  --accent: #e8ff00;
+  --ok: #1f9d55;
+  --radius: 6px;
+  --gutter: clamp(16px, 4.2vw, 64px);
+  --font: "Plus Jakarta Sans", "Noto Sans KR", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+img, svg { display: block; max-width: 100%; }
+button, input, textarea, select { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.wrap { width: 100%; max-width: 1440px; margin: 0 auto; padding: 0 var(--gutter); }
+
+/* ---------- Header ---------- */
+.site-header { border-bottom: 1px solid var(--rule); }
+.site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 104px; }
+.brand { display: inline-flex; align-items: center; gap: 14px; text-decoration: none; color: var(--ink); }
+.brand-mark { width: 52px; height: 52px; flex: none; }
+.brand-name { display: flex; flex-direction: column; line-height: 1; }
+.brand-name b { font-size: 30px; font-weight: 700; letter-spacing: -0.02em; }
+.brand-name span { font-size: 18px; font-weight: 600; letter-spacing: 0.22em; margin-top: 6px; }
+.nav { display: flex; align-items: center; gap: clamp(20px, 3.6vw, 56px); font-size: 17px; font-weight: 500; }
+.nav a { text-decoration: none; padding: 6px 0; border-bottom: 1.5px solid transparent; }
+.nav a:hover, .nav a[aria-current="page"] { border-bottom-color: var(--ink); }
+.nav .divider { width: 1px; height: 28px; background: var(--ink); }
+.nav .login { display: inline-flex; align-items: center; gap: 8px; }
+.arrow { width: 0.9em; height: 0.9em; flex: none; }
+.menu-btn { display: none; background: none; border: 1px solid var(--hair); border-radius: var(--radius); padding: 8px 12px; cursor: pointer; }
+
+@media (max-width: 760px) {
+  .site-header .wrap { min-height: 76px; }
+  .brand-mark { width: 38px; height: 38px; }
+  .brand-name b { font-size: 22px; }
+  .brand-name span { font-size: 13px; }
+  .menu-btn { display: block; }
+  .nav { display: none; position: absolute; left: 0; right: 0; top: 76px; flex-direction: column; align-items: stretch; gap: 0;
+    background: var(--paper); border-bottom: 1px solid var(--rule); padding: 8px var(--gutter) 16px; z-index: 10; }
+  .nav.open { display: flex; }
+  .nav a { padding: 14px 0; border-bottom: 1px solid var(--hair); }
+  .nav .divider { display: none; }
+  .site-header { position: relative; }
+}
+
+/* ---------- Type ---------- */
+.eyebrow { font-size: 15px; font-weight: 700; letter-spacing: 0.32em; text-transform: uppercase; margin: 0 0 28px; }
+.display { font-size: clamp(46px, 8.2vw, 122px); line-height: 0.98; letter-spacing: -0.045em; font-weight: 800; margin: 0; }
+.h2 { font-size: clamp(32px, 4.4vw, 60px); line-height: 1.05; letter-spacing: -0.035em; font-weight: 800; margin: 0; }
+.h3 { font-size: clamp(22px, 2.2vw, 30px); line-height: 1.2; letter-spacing: -0.02em; font-weight: 700; margin: 0; }
+.lead { font-size: clamp(19px, 2vw, 30px); line-height: 1.4; color: var(--ink); margin: 28px 0 0; font-weight: 400; }
+.muted { color: var(--muted); }
+
+/* ---------- Buttons ---------- */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 12px; padding: 18px 36px; border-radius: var(--radius);
+  background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; font-size: 18px; border: 1px solid var(--ink);
+  cursor: pointer; transition: transform .15s ease, background .15s ease; }
+.btn:hover { transform: translateY(-1px); }
+.btn:disabled { opacity: .45; cursor: not-allowed; transform: none; }
+.btn.ghost { background: transparent; color: var(--ink); }
+.btn.ghost:hover { background: var(--paper-2); }
+.btn.small { padding: 11px 20px; font-size: 15px; }
+
+/* ---------- Hero ---------- */
+.hero .wrap { position: relative; display: grid; grid-template-columns: 1fr auto; gap: 40px; padding-top: clamp(56px, 10vh, 120px); padding-bottom: clamp(56px, 12vh, 128px); }
+.hero .vertical { writing-mode: vertical-rl; font-size: 14px; letter-spacing: 0.34em; font-weight: 600; border-left: 1px solid var(--ink);
+  padding-left: 28px; align-self: start; height: 384px; display: flex; align-items: center; }
+.hero .cta { margin-top: 52px; }
+@media (max-width: 760px) { .hero .vertical { display: none; } .hero .wrap { grid-template-columns: 1fr; } }
+
+/* ---------- Pillars ---------- */
+.pillars { border-top: 1px solid var(--rule); }
+.pillars .wrap { display: grid; grid-template-columns: repeat(3, 1fr); }
+.pillar { padding: 28px 24px 32px 0; display: flex; gap: 22px; align-items: baseline; }
+.pillar .num { font-size: 16px; font-weight: 600; letter-spacing: 0.18em; }
+.pillar h3 { font-size: clamp(24px, 2.4vw, 34px); letter-spacing: -0.02em; margin: 0; font-weight: 700; }
+.pillar p { margin: 8px 0 0; color: var(--ink-2); font-size: 15px; max-width: 30ch; }
+@media (max-width: 760px) { .pillars .wrap { grid-template-columns: 1fr; } .pillar { border-bottom: 1px solid var(--hair); } }
+
+/* ---------- Sections ---------- */
+.section { border-top: 1px solid var(--rule); padding: clamp(56px, 9vw, 120px) 0; }
+.section-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; margin-bottom: 48px; }
+.split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(32px, 6vw, 96px); }
+@media (max-width: 860px) { .split { grid-template-columns: 1fr; } }
+.prose p { font-size: 19px; line-height: 1.65; margin: 0 0 18px; color: var(--ink-2); max-width: 62ch; }
+.quote { font-size: clamp(22px, 2.4vw, 32px); line-height: 1.35; letter-spacing: -0.015em; font-weight: 500; margin: 0; }
+.quote cite { display: block; margin-top: 18px; font-style: normal; font-size: 14px; letter-spacing: 0.24em; text-transform: uppercase; font-weight: 600; }
+
+/* ---------- Lecture cards ---------- */
+.tag { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; padding: 6px 10px;
+  border: 1px solid var(--ink); border-radius: 999px; }
+.tag.live::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--ok); margin-right: 8px; vertical-align: 1px; }
+.card { display: grid; grid-template-columns: auto 1fr auto; gap: clamp(20px, 4vw, 56px); align-items: start; padding: 36px 0;
+  border-top: 1px solid var(--rule); text-decoration: none; color: inherit; }
+.card:last-child { border-bottom: 1px solid var(--rule); }
+.card .num { font-size: 16px; font-weight: 600; letter-spacing: 0.18em; padding-top: 10px; }
+.card h3 { font-size: clamp(30px, 3.6vw, 52px); letter-spacing: -0.035em; line-height: 1.05; margin: 12px 0 10px; font-weight: 800; }
+.card p { margin: 0; color: var(--ink-2); max-width: 60ch; font-size: 17px; }
+.card .meta { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 18px; font-size: 14px; color: var(--muted); font-weight: 500; }
+.card .go { width: 56px; height: 56px; border: 1px solid var(--ink); border-radius: 50%; display: grid; place-items: center; transition: background .15s, color .15s; }
+a.card:hover .go { background: var(--ink); color: var(--paper); }
+.card.disabled { opacity: .5; }
+@media (max-width: 760px) { .card { grid-template-columns: 1fr; } .card .go { display: none; } }
+
+.tabs { display: flex; gap: 10px; flex-wrap: wrap; }
+.tabs button { background: transparent; border: 1px solid var(--ink); border-radius: 999px; padding: 10px 18px; font-weight: 600; font-size: 15px; cursor: pointer; }
+.tabs button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.tabs button:disabled { opacity: .4; cursor: not-allowed; }
+
+/* ---------- Footer ---------- */
+.site-footer { border-top: 1px solid var(--rule); }
+.site-footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; padding-top: 28px; padding-bottom: 32px;
+  font-size: 14px; letter-spacing: 0.1em; font-weight: 500; }
+.site-footer .right { letter-spacing: 0.22em; text-transform: uppercase; }
+
+/* ---------- Forms ---------- */
+.field { display: block; margin-bottom: 18px; }
+.field > span { display: block; font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 8px; }
+.input, textarea.input { width: 100%; background: #fff; border: 1px solid var(--hair); border-radius: var(--radius); padding: 14px 16px; font-size: 17px; }
+.input:focus { border-color: var(--ink); outline: none; box-shadow: 0 0 0 3px rgba(17,26,46,.12); }
+textarea.input { resize: vertical; min-height: 104px; line-height: 1.45; }
+.error { color: #b42318; font-size: 15px; margin: 10px 0 0; min-height: 1.4em; }
+
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+
+/* Instrument badge (score abbreviation, tinted by family) */
+.avatar { --size: 44px; width: var(--size); height: var(--size); border-radius: 50%; flex: none; display: inline-grid; place-items: center; background: var(--ink); color: var(--paper); line-height: 1;
+  font-weight: 700; font-size: calc(var(--size) * 0.38); letter-spacing: -0.01em; font-style: italic; font-family: Georgia, "Times New Roman", serif; }
+.avatar[data-family="strings"] { background: #1d3a6b; }
+.avatar[data-family="woodwinds"] { background: #2f6b4f; }
+.avatar[data-family="brass"] { background: #a8741a; }
+.avatar[data-family="percussion"] { background: #8e3b2e; }
+
+/* Light and Salt */
+.verse p { margin: 0; }
+.salt-light { display: grid; grid-template-columns: 1fr 1fr; margin-top: 40px; border-top: 1px solid var(--rule); }
+.salt-light > div { padding: 22px 24px 0 0; }
+.salt-light .num { font-size: 13px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; }
+.salt-light p { margin: 8px 0 0; color: var(--ink-2); font-size: 16px; max-width: 34ch; }
+@media (max-width: 600px) { .salt-light { grid-template-columns: 1fr; } }
+.hero-ref { margin: 28px 0 0; font-size: 13px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; }
+.hero-ref a { text-decoration: none; border-bottom: 1px solid currentColor; }
+.card[hidden] { display: none; }
+
+/* Hephzibah × Beulah lockup */
+.lockup { display: flex; align-items: center; gap: clamp(18px, 3vw, 36px); flex-wrap: wrap; }
+.lk { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
+.lk-mark { width: 30px; height: 30px; flex: none; }
+.lk-name { display: flex; flex-direction: column; line-height: 1; }
+.lk-name b { font-size: 19px; font-weight: 700; letter-spacing: -0.02em; }
+.lk-name span { font-size: 10px; font-weight: 600; letter-spacing: 0.22em; margin-top: 4px; }
+.lk-sep { width: 1px; height: 30px; background: var(--ink); }
+.lockup.big .lk-mark { width: 48px; height: 48px; }
+.lockup.big .lk-name b { font-size: 28px; }
+.lockup.big .lk-name span { font-size: 13px; margin-top: 6px; }
+.lockup.big .lk-sep { height: 48px; }
+.site-footer .footer-brands { padding-top: 32px; padding-bottom: 0; }
+
+/* Town on a hill illustration */
+.hill-art { width: 100%; max-width: 420px; height: auto; color: var(--ink); margin-top: clamp(28px, 4vw, 48px); overflow: visible; }
+.hill-art .glow { transform-origin: 240px 132px; animation: glow 4.5s ease-in-out infinite; }
+.hill-art .rays { animation: rays 4.5s ease-in-out infinite; }
+@keyframes glow { 50% { transform: scale(1.12); opacity: .75; } }
+@keyframes rays { 50% { opacity: .2; } }
+.mission { margin: 24px 0 0; font-size: clamp(18px, 1.6vw, 22px); line-height: 1.5; color: var(--ink-2); max-width: 36ch; }
+.mission b { color: var(--ink); }
+
+/* Yellow light accents */
+.brand-mark .lamp, .lk-mark .lamp { fill: var(--accent); filter: drop-shadow(0 0 2.5px rgba(214, 235, 0, 0.95)); }
+.spark { position: relative; display: inline-block; width: 0.13em; height: 0.13em; margin-left: 0.04em; border-radius: 50%;
+  background: var(--accent); animation: twinkle 4s ease-in-out infinite; }
+.spark::after { content: ""; position: absolute; left: 50%; top: 50%; width: 0.7em; height: 0.7em; transform: translate(-50%, -50%);
+  border-radius: 50%; background: radial-gradient(circle, rgba(232, 255, 0, 0.6) 0%, rgba(232, 255, 0, 0.2) 35%, rgba(232, 255, 0, 0) 70%);
+  animation: halo 4s ease-in-out infinite; pointer-events: none; z-index: -1; }
+@keyframes twinkle { 0%, 100% { opacity: 1; box-shadow: 0 0 0.05em rgba(200, 220, 0, 0.9); } 50% { opacity: 0.55; box-shadow: 0 0 0 rgba(200, 220, 0, 0); } }
+@keyframes halo { 0%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); } 50% { opacity: 0.25; transform: translate(-50%, -50%) scale(0.8); } }
+
+/* Hephzibah & Beulah names (Isaiah 62:4) */
+.names2 { margin: 8px 0 0; border-top: 1px solid var(--rule); }
+.names2 > div { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); align-items: baseline; gap: 24px; padding: clamp(18px, 3vw, 36px) 0; border-bottom: 1px solid var(--rule); }
+.names2 dt { font-size: clamp(52px, 9vw, 140px); font-weight: 800; letter-spacing: -0.05em; line-height: 0.95; }
+.names2 dd { margin: 0; font-size: clamp(18px, 2vw, 28px); color: var(--ink-2); letter-spacing: -0.01em; }
+.names2-verse { margin: 28px 0 0; max-width: 60ch; color: var(--muted); font-size: 16px; }
+.names2-verse cite { font-style: normal; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; margin-left: 8px; }
+@media (max-width: 640px) { .names2 > div { grid-template-columns: 1fr; gap: 8px; } }
+.names2 .heb { display: block; margin-top: 12px; font-size: 18px; font-weight: 500; letter-spacing: 0; color: var(--muted); font-family: "Noto Sans Hebrew", "Arial Hebrew", "David", var(--font); direction: rtl; text-align: left; unicode-bidi: isolate; }
+.names2-lead { margin: 32px 0 0; font-size: clamp(20px, 2vw, 28px); font-weight: 700; letter-spacing: -0.02em; }
+.names2-lead + .names2-verse { margin-top: 10px; }
+.spark.sm { width: 0.45em; height: 0.45em; margin-left: 0; vertical-align: 0.05em; }
+.spark.sm::after { width: 2.6em; height: 2.6em; }
+
+/* Language toggle */
+.lang-btn { background: transparent; border: 1px solid var(--ink); border-radius: 999px; padding: 6px 14px; font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+.lang-btn:hover { background: var(--ink); color: var(--paper); }
+html[lang="ko"] body { word-break: keep-all; }
+@media (max-width: 760px) { .nav .lang-btn { margin-top: 12px; align-self: flex-start; } }
+
+/* ---------- Presenter stage ---------- */
+body.stage-body { height: 100vh; height: 100dvh; overflow: hidden; }
+body.stage-body #app { height: 100%; display: flex; flex-direction: column; }
+.topbar, .bottombar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 0 clamp(16px, 2.6vw, 40px); flex: none; }
+.topbar { height: 64px; border-bottom: 1px solid var(--rule); }
+.bottombar { height: 60px; border-top: 1px solid var(--rule); font-size: 14px; }
+.topbar .brand-mark { width: 30px; height: 30px; }
+.topbar .brand-name b { font-size: 18px; }
+.topbar .brand-name span { font-size: 10px; margin-top: 3px; }
+.joinline { font-size: clamp(14px, 1.3vw, 20px); font-weight: 500; text-align: center; }
+.joinline b { font-weight: 800; letter-spacing: 0.14em; background: var(--ink); color: var(--paper); padding: 2px 10px; border-radius: 4px; margin-left: 6px; }
+.count { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.dot { width: 9px; height: 9px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 4px rgba(31,157,85,.15); }
+.controls { display: flex; gap: 6px; align-items: center; flex-wrap: nowrap; }
+.ctl { background: transparent; border: 1px solid var(--hair); border-radius: var(--radius); padding: 7px 12px; cursor: pointer; font-size: 14px; font-weight: 600; white-space: nowrap; }
+.ctl:hover { border-color: var(--ink); }
+.ctl[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.ctl .badge { display: inline-block; min-width: 20px; padding: 0 6px; border-radius: 999px; background: #c2410c; color: #fff; font-size: 12px; margin-left: 4px; }
+.progress { position: relative; height: 2px; background: var(--hair); flex: 1; max-width: 260px; }
+.progress i { position: absolute; inset: 0 auto 0 0; background: var(--ink); }
+.slide-pos { font-variant-numeric: tabular-nums; font-weight: 600; letter-spacing: 0.12em; }
+
+.stage { flex: 1; min-height: 0; position: relative; overflow: hidden; }
+.slide { position: absolute; inset: 0; padding: clamp(28px, 5vh, 72px) clamp(24px, 5vw, 96px); display: grid; animation: slideIn .45s ease both; }
+@keyframes slideIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.slide .eyebrow { font-size: clamp(12px, 1.1vw, 16px); margin-bottom: clamp(16px, 3vh, 36px); }
+.slide .title { font-size: clamp(36px, 6.2vw, 112px); line-height: 1.02; letter-spacing: -0.045em; font-weight: 800; margin: 0; }
+.slide.compact .title { font-size: clamp(30px, 4.2vw, 76px); }
+.slide .subtitle { font-size: clamp(17px, 1.9vw, 32px); line-height: 1.35; margin: clamp(16px, 3vh, 32px) 0 0; color: var(--ink-2); max-width: 40ch; }
+.slide .content { align-self: center; min-width: 0; }
+.slide .accent { width: 120px; height: 3px; background: var(--ink); margin-top: clamp(20px, 4vh, 44px); }
+
+.blist { list-style: none; padding: 0; margin: clamp(20px, 4vh, 48px) 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); border-top: 1px solid var(--rule); }
+.blist li { padding: 18px 20px 18px 0; display: flex; gap: 16px; align-items: baseline; font-size: clamp(17px, 1.7vw, 28px); font-weight: 600; letter-spacing: -0.01em; line-height: 1.25; }
+.blist li span { font-size: 0.6em; letter-spacing: 0.16em; font-weight: 600; color: var(--muted); }
+.reframe { margin-top: clamp(20px, 4vh, 48px); border-top: 1px solid var(--rule); }
+.reframe div { display: grid; grid-template-columns: 1fr auto 1fr; gap: 24px; align-items: center; padding: 18px 0; border-bottom: 1px solid var(--hair); font-size: clamp(18px, 2vw, 34px); font-weight: 600; letter-spacing: -0.015em; }
+.reframe .from { color: var(--muted); text-decoration: line-through; text-decoration-thickness: 1px; }
+.photo-slot { border: 1px dashed var(--muted); border-radius: var(--radius); display: grid; place-items: center; text-align: center; padding: 24px; color: var(--muted); min-height: 40vh; }
+
+/* Split layout: prompt + live wall */
+.slide.split-live { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.25fr); gap: clamp(24px, 4vw, 72px); }
+.wall-wrap { min-height: 0; display: flex; flex-direction: column; border-left: 1px solid var(--rule); padding-left: clamp(20px, 3vw, 48px); }
+.wall-head { display: flex; justify-content: space-between; align-items: baseline; font-size: 13px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; padding-bottom: 14px; }
+.wall { flex: 1; min-height: 0; overflow-y: auto; columns: 2 260px; column-gap: 16px; scrollbar-width: thin; padding-bottom: 12px; }
+.msg { break-inside: avoid; background: #fff; border: 1px solid var(--hair); border-radius: 10px; padding: 16px 18px; margin-bottom: 16px; position: relative;
+  animation: pop .5s cubic-bezier(.2,1.4,.4,1) both; }
+@keyframes pop { from { opacity: 0; transform: scale(.92) translateY(10px); } to { opacity: 1; transform: none; } }
+.msg p { margin: 0 0 12px; font-size: clamp(17px, 1.55vw, 26px); line-height: 1.32; font-weight: 500; letter-spacing: -0.01em; overflow-wrap: anywhere; }
+.msg .who { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; color: var(--muted); }
+.msg .x { position: absolute; top: 8px; right: 8px; border: 0; background: var(--paper-2); border-radius: 6px; padding: 2px 8px; font-size: 12px; cursor: pointer; opacity: 0; }
+.msg:hover .x, .msg .x:focus-visible { opacity: 1; }
+.wall-empty { color: var(--muted); font-size: clamp(16px, 1.4vw, 22px); padding: 40px 0; column-span: all; }
+
+/* Poll */
+.poll { display: grid; gap: clamp(10px, 1.6vh, 18px); }
+.poll .opt { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 16px; font-size: clamp(16px, 1.6vw, 26px); font-weight: 600; }
+.poll .bar { grid-column: 1 / -1; height: 12px; background: var(--paper-2); border-radius: 999px; overflow: hidden; }
+.poll .bar i { display: block; height: 100%; background: var(--ink); border-radius: 999px; transition: width .6s cubic-bezier(.2,.8,.2,1); }
+.poll .num { font-variant-numeric: tabular-nums; color: var(--muted); }
+
+/* Cover QR */
+.qr-box { background: #fff; border: 1px solid var(--hair); border-radius: 14px; padding: 18px; width: min(34vh, 320px); }
+.qr-box svg { width: 100%; height: auto; }
+.qr-cap { text-align: center; margin-top: 12px; font-weight: 600; font-size: 15px; }
+.qr-cap b { letter-spacing: 0.14em; }
+
+/* Orchestra */
+.orch { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin-top: clamp(16px, 3vh, 32px); }
+.inst { display: flex; align-items: center; gap: 12px; padding: 12px 14px; background: #fff; border: 1px solid var(--hair); border-radius: 12px; cursor: pointer; text-align: left; transition: transform .15s, border-color .15s, box-shadow .15s; }
+.inst:hover { border-color: var(--ink); transform: translateY(-2px); }
+.inst.playing { border-color: var(--ink); box-shadow: 0 0 0 3px var(--ink); }
+.inst.playing .avatar { animation: beat .71s ease-in-out infinite; }
+@keyframes beat { 50% { transform: scale(1.12); } }
+.inst b { display: block; font-size: 16px; }
+.inst small { color: var(--muted); font-size: 12px; font-weight: 600; }
+.orch-actions { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
+
+/* Video */
+.slide.video { grid-template-rows: auto minmax(0, 1fr); gap: 16px; padding-top: clamp(16px, 3vh, 32px); padding-bottom: clamp(16px, 3vh, 32px); }
+.video-frame { position: relative; min-height: 0; display: grid; place-items: center; }
+.video-frame iframe { width: 100%; height: 100%; max-height: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 10px; background: #000; }
+
+/* Overlays / drawers */
+.overlay { position: fixed; inset: 0; background: rgba(248,247,243,.97); display: grid; place-items: center; z-index: 30; }
+.overlay[hidden], .drawer[hidden] { display: none; }
+.overlay .big { display: grid; grid-template-columns: auto 1fr; gap: 6vw; align-items: center; padding: 5vw; }
+.overlay .big .qr-box { width: min(60vh, 520px); }
+.drawer { position: fixed; top: 64px; right: 0; bottom: 60px; width: min(460px, 92vw); background: var(--paper); border-left: 1px solid var(--rule); z-index: 20; overflow-y: auto; padding: 24px; box-shadow: -20px 0 40px rgba(17,26,46,.06); }
+.drawer h3 { font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; margin: 0 0 12px; }
+.drawer .notes p { font-size: 17px; line-height: 1.55; margin: 0 0 14px; }
+.drawer .pending .msg { animation: none; }
+.drawer .pending .row { display: flex; gap: 8px; }
+
+/* Setup screen */
+.setup { max-width: 560px; margin: 0 auto; padding: 8vh var(--gutter); }
+
+@media (max-width: 860px) {
+  .slide.split-live { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
+  .wall-wrap { border-left: 0; padding-left: 0; border-top: 1px solid var(--rule); padding-top: 16px; }
+  .joinline { display: none; }
+  .controls .hide-sm { display: none; }
+}
+
+/* ---------- Audience phone ---------- */
+body.phone { min-height: 100dvh; }
+.phone-head { position: sticky; top: 0; z-index: 5; background: var(--paper); border-bottom: 1px solid var(--rule); display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 16px; }
+.phone-head .me { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+.phone-head .code { font-size: 12px; letter-spacing: 0.2em; font-weight: 700; color: var(--muted); }
+.phone-main { max-width: 560px; margin: 0 auto; padding: 24px 16px 64px; }
+.phone-main .eyebrow { font-size: 12px; margin-bottom: 12px; letter-spacing: .24em; }
+.phone-title { font-size: 30px; line-height: 1.08; letter-spacing: -0.035em; font-weight: 800; margin: 0 0 10px; }
+.phone-sub { color: var(--ink-2); margin: 0 0 22px; font-size: 16px; }
+.panel { background: #fff; border: 1px solid var(--hair); border-radius: 14px; padding: 18px; margin-top: 18px; }
+.panel h3 { margin: 0 0 6px; font-size: 18px; letter-spacing: -0.01em; }
+.panel p { margin: 0 0 12px; color: var(--ink-2); font-size: 15px; }
+.stack { display: grid; gap: 10px; }
+.choice { display: block; width: 100%; text-align: left; padding: 16px 18px; border-radius: 12px; border: 1px solid var(--hair); background: #fff; font-size: 17px; font-weight: 600; cursor: pointer; }
+.choice[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.full { width: 100%; }
+.sent { list-style: none; padding: 0; margin: 14px 0 0; display: grid; gap: 8px; }
+.sent li { font-size: 15px; background: var(--paper-2); border-radius: 10px; padding: 10px 12px; }
+.sent li small { display: block; color: var(--muted); font-size: 12px; margin-top: 2px; }
+.reveal { text-align: center; padding: 6vh 0 2vh; }
+.reveal .avatar { margin: 0 auto 22px; animation: pop .6s cubic-bezier(.2,1.4,.4,1) both; }
+.reveal h1 { font-size: 40px; letter-spacing: -0.04em; margin: 4px 0 6px; line-height: 1; }
+.stars { display: flex; gap: 6px; }
+.stars button { font-size: 32px; line-height: 1; border: 0; background: none; cursor: pointer; padding: 4px; color: #c9c7bf; }
+.stars button.on { color: var(--ink); }
+.check { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--ink-2); margin: 6px 0 16px; }
+.check input { margin-top: 3px; width: 18px; height: 18px; flex: none; }
+.result { border-top: 1px solid var(--hair); padding: 16px 0; }
+.result:first-child { border-top: 0; padding-top: 0; }
+.result .dim { font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+.result h4 { margin: 4px 0 6px; font-size: 20px; letter-spacing: -0.02em; }
+.result dl { margin: 10px 0 0; display: grid; gap: 8px; }
+.result dt { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+.result dd { margin: 0; font-size: 15px; color: var(--ink-2); }
+.scale { display: flex; justify-content: space-between; gap: 10px; font-size: 11px; color: var(--muted); margin-top: 8px; }
+.scale-bar { position: relative; height: 4px; background: var(--paper-2); border-radius: 4px; margin-top: 6px; }
+.scale-bar i { position: absolute; top: -4px; width: 12px; height: 12px; border-radius: 50%; background: var(--ink); transform: translateX(-50%); }
+.steps-dots { display: flex; gap: 6px; margin-bottom: 18px; }
+.steps-dots i { height: 3px; flex: 1; background: var(--hair); border-radius: 3px; }
+.steps-dots i.on { background: var(--ink); }
+
+/* Quiz (swipe cards) */
+.quiz { position: fixed; inset: 0; background: var(--paper); z-index: 40; display: flex; flex-direction: column; }
+.quiz[hidden] { display: none; }
+.quiz-top { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; border-bottom: 1px solid var(--hair); font-weight: 600; font-size: 14px; }
+.quiz-top button { background: none; border: 0; font-weight: 600; cursor: pointer; padding: 6px; }
+.quiz-progress { height: 3px; background: var(--hair); }
+.quiz-progress i { display: block; height: 100%; background: var(--ink); transition: width .3s; }
+.quiz-body { flex: 1; display: grid; place-items: center; padding: 20px 16px; overflow: hidden; }
+.qcard { width: min(100%, 460px); min-height: 300px; background: #fff; border: 1px solid var(--hair); border-radius: 18px; padding: 28px 24px; box-shadow: 0 18px 40px rgba(17,26,46,.08);
+  display: flex; flex-direction: column; justify-content: space-between; touch-action: pan-y; user-select: none; cursor: grab; position: relative; }
+.qcard .qn { font-size: 12px; font-weight: 700; letter-spacing: .2em; color: var(--muted); }
+.qcard .qt { font-size: 24px; line-height: 1.3; font-weight: 700; letter-spacing: -0.02em; margin: 18px 0; }
+.qcard .hint { display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); font-weight: 600; }
+.qcard .stamp { position: absolute; top: 18px; padding: 4px 10px; border: 2px solid; border-radius: 6px; font-weight: 800; letter-spacing: .1em; opacity: 0; font-size: 14px; }
+.qcard .stamp.yes { right: 18px; color: var(--ok); }
+.qcard .stamp.no { left: 18px; color: #b42318; }
+.quiz-actions { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; padding: 12px 16px 6px; max-width: 520px; margin: 0 auto; width: 100%; }
+.quiz-actions button { padding: 14px 6px; border-radius: 12px; border: 1px solid var(--ink); background: #fff; font-weight: 700; font-size: 15px; cursor: pointer; }
+.quiz-actions button.sel { background: var(--ink); color: var(--paper); }
+.quiz-sub { display: flex; justify-content: space-between; padding: 6px 16px 18px; max-width: 520px; margin: 0 auto; width: 100%; }
+.quiz-sub button { background: none; border: 0; color: var(--muted); font-weight: 600; cursor: pointer; padding: 8px 4px; text-decoration: underline; }
+.toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); background: var(--ink); color: var(--paper); padding: 12px 18px; border-radius: 10px; font-size: 15px; z-index: 60; max-width: 90vw; }
+.ctl .badge[hidden] { display: none; }
+.orch { grid-template-columns: repeat(auto-fill, minmax(176px, 1fr)); }
+/* Fit a 16:9 player inside whatever space the slide leaves */
+.video-frame { height: 100%; container-type: size; }
+.video-frame iframe { width: min(100cqw, 100cqh * 16 / 9); height: min(100cqh, 100cqw * 9 / 16); max-height: none; aspect-ratio: auto; }
+
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script type="module">
+const __DATA = {"/data/my-user-manual.json":{"id":"my-user-manual","track":"For High School","title":"My User Manual","fullTitle":"Still Finding My User Manual","subtitle":"For anyone wondering what a good future looks like","speaker":"Joseph Shon","minutes":40,"summary":"A short, honest talk about asking “why?” — about study, money, work and happiness — and slowly discovering who God made you to be. Every student joins as an orchestra instrument, answers on their phone, and sees the room’s answers live on screen. It ends with the orchestra, a video, and a personal reflection.","runOfShow":[{"label":"The first question & introduction","slides":"1–6","minutes":6},{"label":"Questions I met in Kenya","slides":"7–10","minutes":5},{"label":"A user manual — and faith","slides":"11–19","minutes":11},{"label":"My first page & one next step","slides":"20–26","minutes":9},{"label":"The orchestra, the video & your review","slides":"27–29","minutes":9}],"slides":[{"id":"s01","section":"Start","kind":"cover","eyebrow":"HEPHZIBAH ACADEMY","title":"Still finding\nmy user manual.","subtitle":"For anyone wondering what a good future looks like","body":["Joseph Shon"],"notes":["[Smile] Honestly, I’m a little nervous right now. Thank you for listening.","Today I’ll share a bit of how I’ve lived, and I hope you take home one small question about yourself.","You don’t need to finish figuring out your life today. Let’s just think about it together."],"ko":{"section":"시작","eyebrow":"HEPHZIBAH ACADEMY","title":"나의 사용설명서를\n찾아가는 중입니다","subtitle":"좋은 미래를 고민하는 너에게","body":["손원규 Joseph Shon"],"notes":["[잠깐 웃으며] 사실 지금 조금 긴장됩니다. 잘 들어주시면 정말 감사하겠습니다.","오늘은 제가 어떻게 살아왔는지 이야기하면서, 여러분도 자기 자신에 대해 작은 질문 하나를 가져갔으면 좋겠어요.","오늘 안에 인생의 답을 완성할 필요는 없습니다. 같이 생각해 보면 좋겠습니다."]}},{"id":"s02","section":"01 Questions","kind":"choice","eyebrow":"Question one","title":"What’s taking up\nmost of your mind lately?","subtitle":"No right answer. Pick the one closest to how you feel right now.","body":[],"interaction":{"type":"choice","prompt":"What’s taking up most of your mind lately?","options":[{"value":"future","label":"My future & career"},{"value":"study","label":"School & grades"},{"value":"relationships","label":"Friends & relationships"},{"value":"money","label":"Money & stability"},{"value":"identity","label":"Who I really am"},{"value":"unsure","label":"I’m not sure yet"}]},"notes":["Tapping might feel easier than talking. Pick the one thing weighing on you most right now.","No names needed. “Not sure yet” is fine, and so is just thinking about it.","Read out two or three of the results. Don’t ask who picked what. Connect it: “I wrestled with that too.”"],"ko":{"section":"01 질문","eyebrow":"첫 번째 질문","title":"요즘 머릿속을\n가장 많이 차지하는 건?","subtitle":"정답 없이, 지금 내 마음에 가까운 것 하나.","body":[],"notes":["말하기보다 눌러 보는 게 조금 덜 부담스러울 수 있죠. 지금 가장 마음에 걸리는 것을 하나 골라 주세요.","이름을 적을 필요는 없습니다. 아직 잘 모르겠다는 답도 괜찮고, 그냥 생각만 해도 괜찮습니다.","공유된 답이 있으면 두세 가지만 읽습니다. 누가 어떤 답을 골랐는지 묻지 않습니다. '저도 이런 고민을 했어요'라고 연결합니다."],"interaction":{"prompt":"요즘 머릿속을 가장 많이 차지하는 건?","options":{"future":"진로와 미래","study":"공부와 성적","relationships":"친구와 관계","money":"돈과 안정","identity":"나는 어떤 사람인지","unsure":"아직 잘 모르겠어요"}}}},{"id":"s03","section":"01 Questions","kind":"intro","eyebrow":"Nice to meet you — I’m Joseph","title":"Pharmacist. Company.\nKenya. And a student again.","subtitle":"“So… what exactly do you do?”","body":["Pharmacist","10 years running a company","24 trips to Kenya","Back in school these days"],"notes":["I’m a pharmacist, and I’ve been running a company for ten years. I’ve been to Kenya 24 times, and these days I’m back in school.","You might be thinking, “What does this guy actually do?” [Pause] But all of these are connected by one question that started when I was in college.","Don’t present the numbers as achievements — keep it short, and make them curious about how different experiences connect."],"ko":{"section":"01 질문","eyebrow":"반가워요, 저는 손원규입니다","title":"약사. 회사. 케냐.\n그리고 다시 학생.","subtitle":"“도대체 뭐 하는 사람이에요?”","body":["약사","회사를 운영한 지 10년","케냐에 다녀온 횟수 24번","요즘은 다시 학교에"],"notes":["저는 약사이고, 회사를 운영한 지 10년이 되었습니다. 케냐에는 24번 다녀왔고, 요즘은 다시 학교에 다니고 있습니다.","이렇게 들으면 '도대체 뭐 하는 사람이야?' 싶으실 수 있죠. [한 박자 쉬기] 그런데 이 이야기들은 제가 대학생 때 시작한 질문 하나로 연결되어 있어요.","숫자를 성취의 크기처럼 강조하기보다, 서로 달라 보이는 경험이 어떻게 이어지는지 궁금하게 만드는 소개로 짧게 진행합니다."]}},{"id":"s04","section":"01 Questions","kind":"question","eyebrow":"Back when I was in college","title":"But…\nwhy should I?","subtitle":"Study, money, a career. The question behind all of it.","body":["Why do I study?","Why do I earn money?","Why do I want that job?","What do I actually want?"],"notes":["I heard it all the time: study hard, get a good job, make money. Then at some point, a question showed up — “Why?”","That doesn’t mean study or money don’t matter. I just started wondering why they mattered to me, and what I really wanted.","Have you ever asked something like that? Don’t ask for answers — just give them a moment to think."],"ko":{"section":"01 질문","eyebrow":"대학생이었던 저에게","title":"그런데,\n왜 해야 하지?","subtitle":"공부도, 돈도, 직업도. 그 뒤에 있던 질문.","body":["왜 공부할까?","왜 돈을 벌까?","왜 그 일을 하고 싶을까?","나는 무엇을 원할까?"],"notes":["공부를 잘하고, 좋은 직업을 갖고, 돈을 벌어야 한다는 말은 정말 많이 들었어요. 그런데 어느 순간 '왜?'라는 질문이 생겼습니다.","공부나 돈이 중요하지 않다는 뜻은 아닙니다. 나에게 왜 중요한지, 내가 정말 원하는 것이 무엇인지 궁금해진 거예요.","여러분도 비슷한 질문을 해 본 적이 있나요? 대답을 요구하지 않고 잠깐 생각할 시간을 줍니다."]}},{"id":"s05","section":"01 Questions","kind":"path","eyebrow":"Imagining my future self","title":"If I get into a good school,\nthen what?","subtitle":"What does the day I dream about actually look like?","body":["School","Job","Money","The day after that"],"notes":["Right now, college and grades might feel like a huge mountain. Wanting a good school and a good job is natural.","But after you reach that goal — what do you want each morning to look like? What will you do, who will you spend time with, what will you treasure?","This isn’t a quiz about job titles. It’s about imagining the life you want. Don’t assume college is the only path."],"ko":{"section":"01 질문","eyebrow":"앞으로의 나를 상상하면","title":"좋은 학교에 가면,\n그다음은?","subtitle":"내가 꿈꾸는 하루는 어떤 모습일까?","body":["학교","직업","돈","그다음의 하루"],"notes":["지금은 입시나 성적이 눈앞의 큰 산처럼 느껴질 수 있어요. 좋은 학교와 좋은 직업을 바라는 마음도 자연스럽습니다.","그런데 그 목표를 이루고 난 다음, 매일 아침 일어나 살아갈 하루는 어떤 모습이면 좋을까요? 무슨 일을 하고, 누구와 시간을 보내고, 무엇을 소중하게 여기고 싶을까요?","직업 이름을 맞히는 퀴즈가 아니라, 내가 바라는 삶을 떠올리는 질문이라고 설명합니다. 대학 진학을 유일한 길로 전제하지 않습니다."]}},{"id":"s06","section":"01 Questions","kind":"statement","eyebrow":"The question that stopped me","title":"Do I work to live?\nOr live to work?","subtitle":"Someday, looking back — what kind of life do I want to say it was?","body":[],"notes":["I pictured it: make money, get a place, buy clothes, buy a car, go back to work. And this question came up.","Am I working in order to live, or living in order to work? When I look back at the end, what do I want to remain?","[Pause 3 seconds] The question didn’t lead straight to an answer. But I couldn’t just walk past it."],"ko":{"section":"01 질문","eyebrow":"멈춰 서게 만든 질문","title":"살아가기 위해 일할까?\n일하기 위해 살아갈까?","subtitle":"언젠가 돌아봤을 때, 어떤 삶이었다고 말하고 싶을까?","body":[],"notes":["돈을 벌고, 집을 구하고, 옷을 사고, 차를 사고, 다시 일하는 모습을 상상했습니다. 그러다가 이 질문이 생겼어요.","나는 살아가기 위해 일하는 걸까, 일을 하기 위해 살아가는 걸까? 마지막에 내 삶을 돌아보면 무엇이 남으면 좋을까?","[3초 멈춤] 이 질문이 바로 답으로 이어지지는 않았어요. 하지만 그냥 지나치기는 어려웠습니다."]}},{"id":"s07","section":"02 A different scene","kind":"number","eyebrow":"Carrying that question","title":"So for a while,\nI stopped.","subtitle":"I took a year off from school.","body":["Time spent stepping off the expected path"],"notes":["I took a one-year leave from school and stepped off the road I’d always been on.","That doesn’t mean you need to take time off or travel far. In my story, that pause became a chance to look more deeply at the question.","Before moving to Kenya, lightly ask: “Has anyone here been to Kenya?” — a quick show of hands, not a formal activity."],"ko":{"section":"02 다른 장면","eyebrow":"질문을 안고","title":"그래서 잠깐,\n멈췄습니다.","subtitle":"학교를 1년 쉬었습니다.","body":["정해진 길에서 잠시 벗어나 본 시간"],"notes":["저는 학교를 1년 휴학했습니다. 늘 가던 방향에서 잠시 벗어나 보게 되었어요.","여러분도 휴학을 하거나 멀리 떠나야 한다는 뜻은 아닙니다. 제 이야기에서는 그 멈춤이 질문을 더 깊이 들여다보는 계기가 되었어요.","케냐로 넘어가기 전에 '혹시 케냐에 가 본 사람 있나요?' 하고 가볍게 손을 들어 보도록 합니다. 두 번째 정식 입력 활동으로 세지 않는 짧은 현장 대화입니다."]}},{"id":"s08","section":"02 A different scene","kind":"photo","eyebrow":"KENYA","title":"A small room in Kenya,\nand a big question.","subtitle":"I started to see the things I took for granted in a new way.","body":[],"photo":{"label":"Your own photo from Kenya","note":"Optional. Use only your own photo; don’t show identifiable children without consent. Without a photo, this slide works as text."},"notes":["[If you have your own photo, show it] Where I was, there was a small room, a single bed, and not enough to eat.","Seeing that, I started rethinking things I’d taken for granted. If there’s no photo, describe one real scene you remember in your own words.","Don’t generalize about all of Kenya. Keep it to the people and places you actually met."],"ko":{"section":"02 다른 장면","eyebrow":"KENYA","title":"케냐에서 만난\n작은 방과 큰 질문.","subtitle":"내가 당연하게 여겼던 것들을 다시 보게 되었습니다.","body":[],"notes":["[본인 사진이 있으면 보여 주며] 제가 만난 환경에는 작은 방, 침대 하나, 충분하지 않은 먹을 것이 있었습니다.","그 상황을 보면서 제가 당연하게 생각하던 것들을 다시 돌아보게 되었어요. 사진이 없다면 실제로 기억하는 한 장면을 자신의 말로 묘사합니다.","케냐 전체가 같은 환경이라고 일반화하지 않습니다. 직접 만난 사람과 장소에 관한 이야기로 한정합니다."],"photo":{"label":"직접 촬영한 케냐 사진","note":"실제 경험을 보여 줄 수 있는 사진 1장을 넣습니다. 동의 없이 식별 가능한 아동 사진을 공개하지 않고, 없으면 이 장은 텍스트만으로 진행합니다. 다른 사람의 사진을 발표자의 실제 경험처럼 사용하지 않습니다."}}},{"id":"s09","section":"02 A different scene","kind":"statement","eyebrow":"The scene that stayed with me","title":"The children’s laughter\nstayed with me.","subtitle":"Watching them, a question began to grow in my heart, too.","body":["When am I happiest?"],"notes":["The surroundings were a shock, but what stayed with me longest was those kids laughing together.","That doesn’t mean being poor makes you happier. Hardship needed help. But in the time I spent with those kids, I began to look again at what I thought happiness was.","My circumstances couldn’t fully explain my heart. So, when am I happiest? That’s how my question changed."],"ko":{"section":"02 다른 장면","eyebrow":"오래 마음에 남은 장면","title":"아이들의 웃음이\n오래 남았습니다.","subtitle":"그 아이들을 보며, 제 마음에도 질문이 생겼습니다.","body":["나는 언제 가장 행복하지?"],"notes":["환경도 충격이었지만, 제 마음에 오래 남은 것은 함께 웃던 아이들의 모습이었습니다.","가난하면 더 행복하다는 뜻은 아니에요. 어려움에는 도움이 필요했습니다. 다만 그 아이들과 함께한 시간 속에서, 저는 제가 무엇을 행복이라고 생각해 왔는지 돌아보게 됐어요.","내가 가진 조건만으로 내 마음을 다 설명할 수는 없겠구나. 그러면 나는 언제 가장 행복하지? 그렇게 질문이 바뀌었습니다."]}},{"id":"s10","section":"02 A different scene","kind":"text-input","eyebrow":"Question two · 45 seconds","title":"When do you feel\nmost alive — most like you?","subtitle":"It doesn’t have to be a big moment.","body":["A moment you lost track of time","A moment you laughed with someone","A moment you helped, even a little"],"interaction":{"type":"text","prompt":"When do you feel most alive — most like you?","placeholder":"e.g. Laughing with friends while playing basketball","maxLength":180},"notes":["Think of a recent moment when you lost track of time. Sports, drawing, gaming, listening to a friend, resting alone — all fine.","Type it in a few words. If nothing comes to mind, write something you’d like to try. [Wait 45 seconds]","Read a few answers from the screen — no names. For me, I found I’m happiest spending time with kids, helping someone, and sharing. Your answer can be different from mine."],"ko":{"section":"02 다른 장면","eyebrow":"두 번째 질문 · 45초","title":"언제,\n나답게 살아 있다고 느껴요?","subtitle":"대단한 순간이 아니어도 좋아요.","body":["시간 가는 줄 몰랐던 순간","누군가와 함께 웃었던 순간","작게라도 도움이 되었던 순간"],"notes":["최근에 시간 가는 줄 몰랐던 순간 하나를 떠올려 보세요. 운동, 그림, 게임, 친구의 이야기를 듣는 일, 혼자 쉬는 시간도 괜찮아요.","지금 떠오르는 장면을 짧게 적어 봅니다. 기억이 잘 안 나면 '앞으로 해 보고 싶은 것'을 적어도 괜찮습니다. [45초 기다리기]","원하는 사람의 문장만 이름 없이 함께 봅니다. 저는 아이들과 시간을 보내고, 누군가를 돕고, 나누는 순간에 행복을 느낀다는 것을 알아갔습니다. 여러분의 답은 제 답과 달라도 괜찮아요."],"interaction":{"prompt":"언제, 나답게 살아 있다고 느껴요?","placeholder":"예: 친구와 농구하면서 한참 웃었을 때"}}},{"id":"s11","section":"03 The user manual","kind":"objects","eyebrow":"Another question","title":"Everything that’s made\nis made for a reason.","subtitle":"A chair. A smartphone. A car.","body":["So what about me?"],"notes":["A chair is made for sitting; a car for getting around. Whoever made it had a purpose in mind.","So what kind of person am I? What if there were a manual that helped me understand myself better? That’s what I started to wonder.","We’ll make clear on the value slide that this isn’t about judging people like objects. For now, keep it a short, curiosity-opening question."],"ko":{"section":"03 사용설명서","eyebrow":"또 하나의 질문","title":"만들어진 것에는\n만든 이유가 있죠.","subtitle":"의자. 스마트폰. 자동차.","body":["그렇다면, 나는?"],"notes":["의자는 앉을 수 있도록, 자동차는 이동할 수 있도록 만들어졌죠. 만든 사람이 생각한 쓰임이 있습니다.","그런데 나는 어떤 사람일까? 나를 더 잘 이해할 수 있는 설명서가 있다면 어떨까? 그런 생각이 들었어요.","사람을 물건처럼 평가하려는 비유가 아님을 뒤의 가치 슬라이드에서 분명히 합니다. 지금은 호기심을 여는 질문으로 짧게 진행합니다."]}},{"id":"s12","section":"03 The user manual","kind":"phone","eyebrow":"Imagine this for a second","title":"What if you only used\nyour phone as a calculator?","subtitle":"The more you know it, the more you see what it can do.","body":["How well do I actually know myself?"],"notes":["What if you bought a smartphone and only ever used the calculator? It’d calculate great — but you’d be missing a lot. [Leave room for a laugh]","I wondered if I was judging myself after knowing only a tiny part of me — what I like, what interests me, what gives me energy.","Don’t pressure them to “unlock every potential.” Connect it to the joy of getting to know yourself."],"ko":{"section":"03 사용설명서","eyebrow":"잠깐 상상해 봐요","title":"스마트폰을\n계산기로만 쓴다면?","subtitle":"더 알아갈수록, 할 수 있는 일도 보이겠죠.","body":["나는 나에 대해 얼마나 알고 있을까?"],"notes":["스마트폰을 샀는데 계산기로만 쓰고 있다면 어떨까요? 계산은 아주 잘 되겠지만, 아직 모르는 기능이 정말 많겠죠. [짧게 웃을 여유]","저도 제 자신을 아주 조금만 알고 평가하고 있던 것은 아닐까 생각했습니다. 내가 무엇을 좋아하고, 무엇에 관심을 갖고, 언제 힘을 얻는 사람인지요.","'모든 가능성을 다 발휘해야 한다'는 부담을 주지 않고, 나를 알아가는 즐거움으로 연결합니다."]}},{"id":"s13","section":"03 The user manual","kind":"contrast","eyebrow":"Even in the same house","title":"Why are we\nall so different?","subtitle":"Personality, talents, the things we love.","body":["What do you think?"],"notes":["Even looking at my younger sibling, I was amazed. People look different, think differently, love different things.","Instead of ranking those differences, what if we got to know them? Maybe there are parts of me I don’t know yet.","[Pause 5 seconds] Have them silently think of one way they’re like the person next to them, and one way they’re different. No sharing required."],"ko":{"section":"03 사용설명서","eyebrow":"같은 집에서도 이렇게 다른데","title":"왜 우리는\n이렇게 다를까요?","subtitle":"성격도, 재능도, 좋아하는 것도.","body":["여러분은 어떻게 생각하세요?"],"notes":["저는 제 동생을 보면서도 참 신기했어요. 사람들은 이렇게 다르게 생겼고, 다르게 생각하고, 다른 것을 좋아하잖아요.","그 차이를 줄 세우는 대신, 알아가 볼 수는 없을까 생각했습니다. 내 안에도 아직 내가 잘 모르는 면이 있지 않을까요?","[5초 멈춤] 옆 사람과 닮은 점, 다른 점 하나를 마음속으로 떠올리게 합니다. 공개 발표는 요구하지 않습니다."]}},{"id":"s14","section":"03 The user manual","kind":"money","eyebrow":"The way I saw money changed","title":"The same $100.\nA different weight.","subtitle":"I started asking not just how much I have, but where it goes.","body":["Helping someone learn","Where treatment is needed","Protecting someone’s today"],"notes":["Money matters. We need it to care for family, get treatment, and build a life.","But $100 as I thought of it in the U.S., and $100 when I faced someone’s need in Kenya, felt different to me. The same money can mean something different depending on where it goes.","Don’t present $100 as a price that solves tuition or medical bills. Share only a specific example you actually experienced. Don’t ask students to give."],"ko":{"section":"03 사용설명서","eyebrow":"돈을 보는 눈도 달라졌습니다","title":"같은 100달러.\n다르게 느껴진 무게.","subtitle":"얼마를 갖는가와 함께, 어디에 쓰는가를 생각하게 됐습니다.","body":["배움을 돕는 데","치료가 필요한 곳에","누군가의 오늘을 지키는 데"],"notes":["돈은 중요합니다. 가족을 돌보고, 필요한 치료를 받고, 삶을 꾸려 가는 데 꼭 필요하죠.","그런데 미국에서 생각하던 100달러와 케냐에서 누군가의 필요를 마주하며 생각한 100달러는 제게 다르게 느껴졌습니다. 같은 돈이어도 어디에 쓰이느냐에 따라 의미가 달라질 수 있겠구나 싶었어요.","학비나 병원비를 100달러로 반드시 해결할 수 있다는 가격 정보로 설명하지 않습니다. 본인이 직접 경험한 구체적인 사례가 있다면 그 사례만 짧게 이야기합니다. 학생에게 기부를 요구하지 않습니다."]}},{"id":"s15","section":"03 The user manual","kind":"turn","eyebrow":"Back to school, then to work","title":"The work continued —\nbut the reason changed.","subtitle":"I graduated from pharmacy school and started a company.","body":["Caring for my family","Working with meaning","A life of sharing"],"notes":["I went back to school, graduated from pharmacy school, and started a company. From the outside, studying and working looked about the same.","But the reason I held onto changed. Instead of only looking at money, I started thinking about caring for family, working meaningfully, and sharing.","[Slowly] When the reason I live changed, the same work felt different."],"ko":{"section":"03 사용설명서","eyebrow":"다시 학교로, 그리고 일터로","title":"하던 일은 이어졌지만,\n하는 이유가 달라졌습니다.","subtitle":"약대를 졸업하고, 회사를 시작했습니다.","body":["가족을 돌보는 일","의미 있게 일하는 것","누군가와 나누는 삶"],"notes":["저는 학교로 돌아왔고, 약대를 졸업했고, 회사를 시작했습니다. 겉으로 보면 공부하고 일하는 모습은 비슷했을 수 있어요.","하지만 그 안에서 붙잡는 이유가 달라졌습니다. 돈만을 바라보던 데서, 가족을 돌보고 의미 있게 일하고 나누는 삶을 함께 생각하게 되었어요.","[천천히] 살아가는 이유가 바뀌니, 같은 일도 다르게 다가왔습니다."]}},{"id":"s16","section":"03 The user manual","kind":"reframe-examples","eyebrow":"Getting to know myself","title":"Even the parts I didn’t like\nhad another side.","subtitle":"Depending on the situation, they could be used differently.","body":[{"trait":"I’m shy","possibility":"I notice how people feel"},{"trait":"I’m interested in everything","possibility":"I try new things"},{"trait":"I get scared easily","possibility":"I prepare well"}],"notes":["I used to think of myself as ordinary, or not much. But as I got to know myself, some things looked different.","Shyness sometimes helped me notice people’s hearts. Lots of interests led to new attempts. Fear sometimes made me prepare more.","This doesn’t mean every struggle automatically becomes a strength. It’s okay to get help with hard things. The point: don’t define yourself by one weakness."],"ko":{"section":"03 사용설명서","eyebrow":"나를 알아간다는 것","title":"내가 아쉬워하던 모습에도\n다른 면이 있었습니다.","subtitle":"상황에 따라, 다르게 쓰일 수 있더라고요.","body":[{"trait":"부끄럼이 많다","possibility":"사람의 마음을 더 살핀다"},{"trait":"관심이 많다","possibility":"새로운 것을 시도한다"},{"trait":"겁이 많다","possibility":"충분히 준비한다"}],"notes":["저는 제 자신을 평범하거나 별로인 사람이라고 생각하기도 했습니다. 그런데 조금씩 알아가다 보니 다르게 보이는 면이 있었어요.","부끄러움이 사람의 마음을 살피는 계기가 되기도 하고, 여러 관심이 새로운 시도로 이어지기도 했습니다. 두려움이 준비를 더 하게 만드는 때도 있었고요.","모든 어려움이 자동으로 장점이 된다는 뜻은 아닙니다. 힘든 부분에는 도움을 받아도 괜찮습니다. 여기서는 나를 한 가지 단점으로만 단정하지 말자는 의미로 전합니다."]}},{"id":"s17","section":"03 The user manual","kind":"reframe-input","eyebrow":"Question three · 60 seconds","title":"Take one part of you —\nand look from another angle.","subtitle":"You don’t have to force it into something positive.","body":["When might it actually help?","What kind of help would be good?"],"interaction":{"type":"text","prompt":"One part of me, seen from another angle:","placeholder":"e.g. I decide slowly — but I look carefully at things that matter.","maxLength":180},"notes":["Pick one part of yourself you’re a little disappointed in. You don’t need to share a big struggle — an example is fine.","Write one line: when it might help, or what help you’d need to feel more at ease. [Wait 60 seconds]","Don’t evaluate shared answers — just receive them: “That’s a great way to see it.” Don’t force a positive conclusion on anyone who couldn’t find one."],"ko":{"section":"03 사용설명서","eyebrow":"세 번째 질문 · 60초","title":"내 모습 하나를,\n다른 각도에서 보면?","subtitle":"억지로 좋게 바꾸지 않아도 괜찮아요.","body":["어떤 때에는 도움이 될까?","어떤 도움이 있으면 좋을까?"],"notes":["내가 조금 아쉽게 느끼는 모습 하나를 골라 봅시다. 큰 고민을 공개할 필요는 없어요. 예시를 골라도 괜찮습니다.","그 모습이 도움이 되는 때가 있는지, 또는 내가 더 편안해지려면 어떤 도움이 필요한지 한 줄 적어 보세요. 혼자 생각하기 어렵다면 옆 사람과 가벼운 예시를 이야기해도 좋아요. [60초 기다리기]","공유된 답은 평가하지 않고 '그렇게 볼 수도 있겠네요'라고 받아 줍니다. 답을 못 찾은 학생에게 긍정적인 결론을 강요하지 않습니다."],"interaction":{"prompt":"내 모습 하나를, 다른 각도에서 보면?","placeholder":"예: 결정이 느려도 중요한 일을 신중하게 살펴볼 수 있어요"}}},{"id":"s18","section":"03 The user manual","kind":"faith-statement","eyebrow":"Something I really want to add","title":"Before God,\nyou are already precious.","subtitle":"Even if you don’t know what you’re good at yet. Even if you don’t have a clear dream.","body":["Our worth isn’t decided by grades or usefulness."],"notes":["Looking for your user manual doesn’t mean you have to become useful to be loved. A person’s worth isn’t decided by how much they get done.","The faith I want to share here is that God knows us and loves us. You — right now, even before you can explain your dreams or gifts — are precious.","Don’t present this as a direct Bible quote. Say it slowly, so the “function” metaphor never limits anyone’s worth."],"ko":{"section":"03 사용설명서","eyebrow":"이 이야기에 꼭 덧붙이고 싶은 말","title":"하나님 앞에서\n너는 이미 소중한 사람이야.","subtitle":"아직 잘하는 일을 몰라도. 지금 뚜렷한 꿈이 없어도.","body":["우리의 가치는 성적이나 쓸모로 정해지지 않습니다."],"notes":["사용설명서를 찾자는 말이, 쓸모 있는 사람이 되어야 사랑받는다는 뜻은 아닙니다. 우리가 무엇을 얼마나 해내느냐로 사람의 가치가 정해지는 것은 아니에요.","교회에서 여러분과 나누고 싶은 믿음은, 하나님께서 우리를 아시고 사랑하신다는 것입니다. 아직 꿈이나 재능을 설명하지 못하는 지금의 여러분도 소중합니다.","이 문장은 성경의 직접 인용문으로 표시하지 않습니다. 기능의 비유가 사람의 가치를 제한하지 않도록 충분히 천천히 전합니다."]}},{"id":"s19","section":"03 The user manual","kind":"faith-practice","eyebrow":"This is how I want to ask","title":"“God,\nwho am I?”","subtitle":"Reading Scripture, praying, and talking with people I trust.","body":["Psalm 139:14 · Thankful to be wonderfully made","Ephesians 2:10 · An invitation to good works"],"notes":["In Scripture we meet the confession that we are made by God, and an invitation toward good works. The lines on screen are summaries, not direct quotes.","I use “user manual” less to mean my whole career is written on one page, and more as a picture of getting to know myself, little by little, before God.","We can ask through Scripture and prayer, and by talking with trusted adults and friends who know us. It’s okay if the answer doesn’t come all at once."],"ko":{"section":"03 사용설명서","eyebrow":"저는 이렇게 질문하고 싶습니다","title":"“하나님,\n저는 어떤 사람인가요?”","subtitle":"말씀을 읽고, 기도하고, 믿을 만한 사람과 이야기하며.","body":["시편 139:14 · 지으심을 감사하는 고백","에베소서 2:10 · 선한 일을 향한 초대"],"notes":["우리는 성경에서 하나님이 지으신 존재라는 고백과, 선한 일을 향한 초대를 만납니다. 화면의 문장은 성경 구절의 요약이지 직접 인용은 아닙니다.","저는 사용설명서라는 말을, 평생의 진로가 한 장에 다 적혀 있다는 뜻보다 하나님 앞에서 나를 조금씩 알아가는 비유로 사용하고 싶어요.","말씀을 읽고 기도하면서, 또 나를 잘 아는 믿을 만한 어른이나 친구와 이야기하면서 질문해 볼 수 있습니다. 답이 한 번에 들리지 않아도 괜찮습니다. 작은 경험을 통해 알아갈 수도 있어요."]}},{"id":"s20","section":"04 One next step","kind":"testimony","eyebrow":"Looking back on the last 10 years","title":"It’s been a grateful decade —\nand I’m excited for the next.","subtitle":"Because little by little, I’m learning why I live and who I am.","body":[],"notes":["Over the last ten years — studying, working, running a company — there were failures and a lot happened. Looking back, it was a truly happy and grateful time.","Because I moved from only asking what I should do to holding onto why, and I slowly learned what makes me happy.","Be careful not to suggest you must be perfectly happy every day, or that anxiety comes from a lack of faith. Close with: “So I’m excited for the next ten years, too.”"],"ko":{"section":"04 다음 한 걸음","eyebrow":"지난 10년을 돌아보면","title":"감사한 시간이었고,\n다음 10년도 기대됩니다.","subtitle":"왜 살아가는지, 어떤 사람인지 조금씩 알아가고 있기 때문입니다.","body":[],"notes":["지난 10년 동안 공부하고, 일하고, 회사를 운영하면서 실패도 있었고 많은 일이 있었습니다. 그 시간을 돌아보면 제게는 정말 행복하고 감사한 시간이었습니다.","무엇을 해야 하는가만 생각하던 데서 왜 해야 하는가를 붙잡게 되었고, 무엇을 할 때 행복한 사람인지 조금씩 알아가게 되었기 때문입니다.","지금도 매일 완벽하게 행복해야 한다는 메시지가 되지 않도록 주의합니다. 현재 불안하거나 힘든 마음이 믿음이나 목적이 부족해서라고 연결하지 않습니다. '그래서 앞으로의 10년도 기대됩니다'로 마무리합니다."]}},{"id":"s21","section":"04 One next step","kind":"statement","eyebrow":"After hearing my story","title":"Your path\nmay look different.","subtitle":"Your surroundings, personality, gifts and dreams are different.","body":["Today: not one answer, but one question about you."],"notes":["My story isn’t an answer that applies to you exactly. We all have different circumstances, personalities, gifts and dreams.","Not everyone needs to start a business or go to Kenya. Start your own questions right where you live.","Add that it’s okay to still be figuring it out — so no one leaves thinking, “If I don’t have an answer now, am I too late?”"],"ko":{"section":"04 다음 한 걸음","eyebrow":"오늘 제 이야기를 듣고","title":"여러분의 길은\n또 다를 수 있습니다.","subtitle":"환경도, 성격도, 재능도, 꿈도 다르니까요.","body":["오늘은 답 하나보다, 나를 향한 질문 하나."],"notes":["제 이야기가 여러분에게 그대로 적용되는 정답은 아닙니다. 우리는 환경도 성격도 재능도 꿈도 다르니까요.","모두가 사업을 하거나 케냐에 가야 하는 것은 아닙니다. 여러분이 살아가는 곳에서, 여러분만의 질문을 시작해 보면 좋겠습니다.","'지금 답이 없으면 늦은 건가?'라는 부담이 남지 않도록, 아직 알아가는 중이어도 괜찮다는 말을 덧붙입니다."]}},{"id":"s22","section":"04 One next step","kind":"questions","eyebrow":"Questions worth coming back to","title":"What kind of life\ndo I want to live?","subtitle":"One at a time. Slowly.","body":["Why do I study?","Where do I want my money to go?","What am I good at?","When do I feel joy?","What kind of neighbor do I want to be?","Who am I before God?"],"notes":["You don’t need to solve these today. If one of them sticks with you, start with that one.","When choosing a career, we can look beyond titles and conditions and ask what kind of life we want.","Next, we’ll write down what comes to mind right now — a first page you can rewrite later."],"ko":{"section":"04 다음 한 걸음","eyebrow":"앞으로도 다시 꺼내 볼 질문","title":"나는 어떤 삶을\n살고 싶을까?","subtitle":"하나씩, 천천히.","body":["나는 왜 공부할까?","돈은 어디에 쓰고 싶을까?","나는 무엇을 잘할까?","언제 기쁨을 느낄까?","어떤 이웃이 되고 싶을까?","하나님 앞에서 나는 어떤 사람일까?"],"notes":["이 질문들을 오늘 다 해결할 필요는 없습니다. 그중 하나가 마음에 남는다면, 그 하나부터 붙잡아도 좋습니다.","직업을 고를 때도 이름이나 조건만 보지 않고, 어떤 삶을 살고 싶은지 함께 물어볼 수 있겠죠.","다음 장에서 지금 떠오르는 것을 짧게 적어 보고, 나중에 다시 고쳐 쓸 수 있는 첫 페이지를 만들어 봅니다."]}},{"id":"s23","section":"04 One next step","kind":"worksheet","eyebrow":"Question four · 2 minutes","title":"My user manual:\npage one.","subtitle":"Write only what you know now. It’s okay if it changes later.","body":[],"interaction":{"type":"private","prompt":"My user manual · page one","privacy":"This stays on your phone. It never appears on the big screen.","fields":[{"id":"joy","label":"Moments my heart lights up","placeholder":"What makes you feel a little happier or more at ease?"},{"id":"strength","label":"Something I’m good at, or want to try more","placeholder":"Small things and things you’re still learning count."},{"id":"value","label":"What I treasure","placeholder":"People, relationships, values, ways I want to help…"},{"id":"question","label":"A question I want to keep asking","placeholder":"To myself, to God, or to someone I trust"}]},"notes":["This isn’t a test that judges you. It’s a short record of how you understand yourself right now.","If you don’t know what you’re good at, write something people often ask you for, or something that feels easy for you. People and values you treasure are good clues too. [Wait 2 minutes]","This page stays private. Mention they can download it on their phone, and that filling in just one or two boxes is fine."],"ko":{"section":"04 다음 한 걸음","eyebrow":"네 번째 질문 · 2분","title":"나의 사용설명서\n첫 페이지.","subtitle":"지금 아는 만큼만 적어도 좋아요. 나중에 바뀌어도 괜찮아요.","body":[],"notes":["이건 여러분을 판정하는 검사가 아닙니다. 지금의 내가 나를 어떻게 이해하고 있는지 남기는 짧은 기록이에요.","잘하는 일을 잘 모르겠다면 사람들이 나에게 종종 부탁하는 일이나, 해 보면 조금 편한 일을 적어 보세요. 소중하게 생각하는 사람이나 가치도 좋은 단서입니다. [2분 기다리기]","이 장은 개인 기록으로 둡니다. 모두에게 보여 줄 필요는 없습니다. 다운로드하거나 자신의 기기에 저장할 수 있다면 방법을 짧게 안내하고, 한두 칸만 채웠어도 괜찮다고 말해 줍니다."],"interaction":{"prompt":"나의 사용설명서 첫 페이지","privacy":"내 기록으로 남겨요. 공개 화면에는 올라가지 않아요.","fields":{"joy":{"label":"내 마음이 밝아지는 순간","placeholder":"어떤 일을 할 때 조금 즐겁거나 편안한가요?"},"strength":{"label":"내가 잘하거나 더 해 보고 싶은 것","placeholder":"작은 일도, 아직 배우고 있는 일도 괜찮아요."},"value":{"label":"내가 소중하게 여기는 것","placeholder":"사람, 관계, 가치, 돕고 싶은 일…"},"question":{"label":"앞으로 붙잡고 싶은 질문","placeholder":"나에게, 하나님께, 믿을 만한 사람에게 묻고 싶은 것"}}}}},{"id":"s24","section":"04 One next step","kind":"commitment","eyebrow":"Question five · 60 seconds","title":"This week —\nwhat’s one thing you could try?","subtitle":"One small experiment in getting to know yourself.","body":["Listen to a friend for 10 minutes","Spend 20 minutes on something I love","Ask a trusted adult what my strengths are","Pause and ask God a question"],"interaction":{"type":"text","prompt":"This week, I will…","placeholder":"e.g. Ask a teacher I trust what they think I’m good at.","maxLength":160},"notes":["No need to choose a career or make a grand plan. Pick one action small enough to try once this week.","Adding when makes it more concrete. Doing something you already do — on purpose — counts too. Afterwards, notice how it felt. [Wait 60 seconds]","Only share if they want to, without names. Never follow up on whether they kept a public promise, and don’t make sharing a condition of participating."],"ko":{"section":"04 다음 한 걸음","eyebrow":"다섯 번째 질문 · 60초","title":"이번 주,\n한 번 해 볼 수 있는 건?","subtitle":"나를 조금 더 알아가는 작은 시도 하나.","body":["친구의 이야기를 10분 들어 보기","좋아하는 일을 20분 해 보기","믿을 만한 어른에게 내 장점 물어보기","잠깐 멈춰 하나님께 질문해 보기"],"notes":["진로를 정하거나 거창한 계획을 세울 필요는 없습니다. 이번 주 안에 한 번 해 볼 수 있을 만큼 작은 행동을 하나 골라 보세요.","언제 할지도 적으면 조금 더 구체적이겠죠. 이미 하고 있는 일을 의식적으로 다시 해 보는 것도 좋습니다. 해 본 다음 내 마음이 어땠는지 짧게 돌아보면 더 좋고요. [60초 기다리기]","원하면 자신의 다짐만 이름 없이 나눕니다. 공개한 약속을 지켰는지 추궁하거나, 공개를 참여의 조건으로 삼지 않습니다."],"interaction":{"prompt":"이번 주에 나는…","placeholder":"예: 친한 선생님께 제가 잘하는 것을 하나 물어볼래요."}}},{"id":"s25","section":"04 One next step","kind":"prayer","eyebrow":"A moment to pause","title":"God,\nhelp me know who I am.","subtitle":"Valuing who I am now, and taking the next step.","body":["Pray along if you’d like, or simply reflect quietly."],"notes":["First let everyone know they can pray together, or simply reflect quietly.","[Example prayer] God, thank you for knowing and loving us. Help us not to see ourselves only through grades or comparison. Help us discover the ways you made us, ask for help when we need it, and treasure one another. Give us courage for one small step this week. In Jesus’ name, Amen.","Don’t ask for any particular emotion or decision. Leave a short silence after the prayer."],"ko":{"section":"04 다음 한 걸음","eyebrow":"잠깐 멈추는 시간","title":"하나님,\n저를 알아가게 해 주세요.","subtitle":"지금의 나를 소중히 여기며, 다음 한 걸음을 걷도록.","body":["원하면 함께 기도하고, 조용히 생각해도 좋습니다."],"notes":["원하는 사람은 함께 기도하고, 조용히 생각해도 괜찮다고 먼저 안내합니다.","[기도 예시] 하나님, 우리를 아시고 사랑해 주셔서 감사합니다. 성적이나 비교로만 우리를 바라보지 않게 해 주세요. 우리에게 주신 모습들을 알아가고, 도움이 필요할 때 도움을 구하고, 서로를 소중히 여기게 해 주세요. 이번 주 작은 한 걸음을 걸을 용기를 주세요. 예수님의 이름으로 기도합니다. 아멘.","특정한 감정이나 결단을 요구하지 않습니다. 기도 뒤에 잠깐 조용한 시간을 둡니다."]}},{"id":"s26","section":"Closing","kind":"closing","eyebrow":"HEPHZIBAH ACADEMY","title":"Cheering you on\nas you discover who you are.","subtitle":"I’m still finding my user manual, too.","body":["Thank you for listening and thinking with me."],"interaction":{"type":"text","channel":"qa","prompt":"Any questions for Joseph?","placeholder":"Ask anything — no names shown.","maxLength":200},"notes":["The more I learned, the more I thought, “Wow — I’m made in an amazing way.”","I’m still finding my own user manual. I hope you keep getting to know yourself and keep asking your own questions.","I’m cheering you on, truly. Thank you for listening and thinking together. If there’s time, take one or two questions from the screen — then move on to the orchestra."],"ko":{"section":"마침","eyebrow":"HEPHZIBAH ACADEMY","title":"너라는 사람을\n알아가는 여정을 응원해.","subtitle":"저도 계속 제 사용설명서를 찾아가는 중입니다.","body":["함께 들어 주고, 생각해 줘서 고맙습니다."],"notes":["하나씩 알아갈수록, '나라는 사람이 참 신기하게 만들어졌구나'라는 생각이 들었습니다.","저도 여전히 제 사용설명서를 찾아가는 중입니다. 여러분도 자신을 더 알아가고, 여러분만의 질문을 계속해 보면 좋겠습니다.","그 여정을 진심으로 응원합니다. 잘 들어 주고 함께 생각해 줘서 감사합니다. 여유가 있으면 자발적인 질문 한두 개를 받습니다. 그다음 오케스트라로 넘어갑니다."],"interaction":{"prompt":"궁금한 점이 있나요?","placeholder":"무엇이든 물어보세요. 이름은 보이지 않아요."}}},{"id":"s27","section":"Closing","kind":"orchestra","eyebrow":"Every instrument has its own voice","title":"Alone, each one\nsounds like this.","subtitle":"Tap an instrument to hear just its part. Then hear them together.","body":[],"notes":["Each of you joined as an instrument. Look at your phone — which one are you?","Click a few instruments one at a time. Alone, some parts sound simple — a tuba playing just a few low notes, timpani only hitting now and then. On its own, a part can feel unimpressive.","Then click “All together.” Each part was made for a reason, and none of them has to be the melody to matter. That’s what I mean by a user manual: knowing your own part.","Then move on to the video."],"ko":{"section":"마침","eyebrow":"모든 악기에는 저마다의 소리가 있어요","title":"혼자서는,\n이런 소리가 나요.","subtitle":"악기를 눌러 그 파트만 들어 보세요. 그다음 함께 들어 봐요.","body":[],"notes":["여러분은 각자 하나의 악기로 들어왔어요. 휴대폰을 보세요. 나는 어떤 악기인가요?","악기를 하나씩 눌러 봅니다. 혼자 들으면 단순하게 들리는 파트도 있어요. 튜바는 낮은 음 몇 개, 팀파니는 가끔 한 번씩 울릴 뿐이죠.","이제 \"함께 연주\"를 누릅니다. 모든 파트는 이유가 있어서 만들어졌고, 멜로디가 아니어도 소중합니다. 이것이 사용설명서의 의미예요. 나의 파트를 아는 것.","그리고 영상으로 넘어갑니다."]}},{"id":"s28","section":"Closing","kind":"video","eyebrow":"Together","title":"The Mission — Gabriel’s Oboe","subtitle":"Ennio Morricone conducts his own music.","video":{"youtubeId":"s7w-IeNR9ko","title":"Morricone conducts Morricone: The Mission (Gabriel's Oboe)"},"body":[],"notes":["Introduce briefly: one oboe carries the melody, but listen to how every other instrument holds it up.","Let the video play without talking over it.","Afterwards, a short pause. Then: “On your phone, tell me what you learned today.”"],"ko":{"section":"마침","eyebrow":"함께","title":"미션 — 가브리엘의 오보에","subtitle":"엔니오 모리코네가 직접 지휘합니다.","body":[],"notes":["짧게 소개합니다. 오보에 하나가 멜로디를 이끌지만, 다른 모든 악기가 그것을 받쳐 주는 것을 들어 보세요.","영상이 나오는 동안에는 말을 얹지 않습니다.","끝나면 잠깐 멈춘 뒤: \"오늘 배운 것을 휴대폰에 적어 주세요.\""]}},{"id":"s29","section":"Closing","kind":"review","eyebrow":"Before you go","title":"What did you\nlearn today?","subtitle":"Share one thing, review the lecture — then see your own results on your phone.","body":["What I learned","Review the lecture","See my results","How I’ll use my strengths — and my weaknesses"],"interaction":{"type":"review","prompt":"What did you learn today?","placeholder":"One thing I’m taking home…","maxLength":200},"notes":["Give everyone 3–4 minutes. What they learned appears on screen with their instrument name — no real names.","After they review the lecture, their personal results from the 20 questions unlock on their phone.","They can write how they’ll use their strengths and weaknesses, and leave an email if they’d like job matches later. Remind them email is optional and only with their permission."],"ko":{"section":"마침","eyebrow":"마치기 전에","title":"오늘 무엇을\n배웠나요?","subtitle":"하나만 나누고, 강의를 평가하고, 내 결과를 휴대폰에서 확인해요.","body":["오늘 배운 것","강의 평가","내 결과 보기","강점과 약점을 어떻게 쓸까"],"interaction":{"prompt":"오늘 무엇을 배웠나요?","placeholder":"오늘 가져가는 한 가지…"},"notes":["3~4분을 줍니다. 배운 것은 악기 이름과 함께 화면에 나옵니다. 실명은 나오지 않아요.","강의를 평가하면 20문항 결과가 휴대폰에서 열립니다.","강점과 약점을 어떻게 쓸지 적고, 원하면 나중에 직업 추천을 받을 이메일을 남길 수 있어요. 이메일은 선택이고 동의가 필요하다고 안내합니다."]}}],"ko":{"title":"나의 사용설명서","fullTitle":"나의 사용설명서를 찾아가는 중입니다","subtitle":"좋은 미래를 고민하는 너에게","track":"고등학생","speaker":"손원규","summary":"공부, 돈, 일, 행복에 대해 \"왜?\"라고 묻고, 하나님이 나를 어떤 사람으로 지으셨는지 조금씩 알아가는 이야기. 학생들은 오케스트라 악기 이름으로 참여해 휴대폰으로 답하고, 그 답이 화면에 실시간으로 나타납니다.","runOfShow":["처음 질문과 소개","케냐에서 만난 질문","사용설명서와 믿음","나의 첫 페이지와 다음 한 걸음","오케스트라, 영상, 그리고 나의 리뷰"]}},"/data/instruments.json":[{"id":"violin","name":"Violin","abbr":"Vn","family":"Strings","ko":"바이올린","familyKo":"현악기"},{"id":"viola","name":"Viola","abbr":"Va","family":"Strings","ko":"비올라","familyKo":"현악기"},{"id":"cello","name":"Cello","abbr":"Vc","family":"Strings","ko":"첼로","familyKo":"현악기"},{"id":"bass","name":"Double Bass","abbr":"Cb","family":"Strings","ko":"더블베이스","familyKo":"현악기"},{"id":"harp","name":"Harp","abbr":"Hp","family":"Strings","ko":"하프","familyKo":"현악기"},{"id":"flute","name":"Flute","abbr":"Fl","family":"Woodwinds","ko":"플루트","familyKo":"목관악기"},{"id":"oboe","name":"Oboe","abbr":"Ob","family":"Woodwinds","ko":"오보에","familyKo":"목관악기"},{"id":"clarinet","name":"Clarinet","abbr":"Cl","family":"Woodwinds","ko":"클라리넷","familyKo":"목관악기"},{"id":"bassoon","name":"Bassoon","abbr":"Bn","family":"Woodwinds","ko":"바순","familyKo":"목관악기"},{"id":"horn","name":"French Horn","abbr":"Hn","family":"Brass","ko":"호른","familyKo":"금관악기"},{"id":"trumpet","name":"Trumpet","abbr":"Tp","family":"Brass","ko":"트럼펫","familyKo":"금관악기"},{"id":"trombone","name":"Trombone","abbr":"Tb","family":"Brass","ko":"트롬본","familyKo":"금관악기"},{"id":"tuba","name":"Tuba","abbr":"Tu","family":"Brass","ko":"튜바","familyKo":"금관악기"},{"id":"timpani","name":"Timpani","abbr":"Ti","family":"Percussion","ko":"팀파니","familyKo":"타악기"}],"/api/config":{}};
+// Shared helpers for the presenter and audience screens.
+
+async function api(path, body) {
+  const res = await fetch(path, body === undefined ? {} : {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(body),
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) {
+    const err = new Error((data.error && data.error.message) || `Request failed (${res.status})`);
+    err.status = res.status;
+    throw err;
+  }
+  return data;
+}
+
+const getJson = (url) => Promise.resolve(__DATA[url]);
+
+let __ins = null;
+async function loadInstruments() {
+  __ins ||= await getJson("/data/instruments.json");
+  return __ins;
+}
+const instrumentById = (id) => (__ins || []).find((i) => i.id === id);
+
+// Round "badge" for an instrument: score abbreviation (Vn, Ob, Hn…) tinted by family.
+function avatar(id, size = 44) {
+  const ins = instrumentById(id);
+  const el = document.createElement("span");
+  el.className = "avatar";
+  el.dataset.family = ins ? ins.family.toLowerCase() : "";
+  el.style.setProperty("--size", size + "px");
+  el.textContent = ins ? ins.abbr : "?";
+  el.setAttribute("aria-hidden", "true");
+  return el;
+}
+
+function h(tag, attrs = {}, ...children) {
+  const el = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (v == null || v === false) continue;
+    if (k === "class") el.className = v;
+    else if (k.startsWith("on")) el.addEventListener(k.slice(2), v);
+    else if (k === "text") el.textContent = v;
+    else el.setAttribute(k, v === true ? "" : v);
+  }
+  for (const c of children.flat()) if (c != null && c !== false) el.append(c instanceof Node ? c : document.createTextNode(String(c)));
+  return el;
+}
+
+// Multi-line title text ("\n") → spans with <br>, safely.
+function lines(text) {
+  const frag = document.createDocumentFragment();
+  String(text).split("\n").forEach((line, i) => { if (i) frag.append(document.createElement("br")); frag.append(line); });
+  return frag;
+}
+
+const store = {
+  get(k, d = null) { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch { return d; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
+  del(k) { try { localStorage.removeItem(k); } catch {} },
+};
+
+// Score the 20-question self-reflection. Answers: -1, 0, 1, or null (skipped).
+function scorePersonality(data, answers) {
+  const out = {};
+  for (const dim of data.dimensions) {
+    const items = data.items.filter((it) => it.dimension === dim.id);
+    const vals = items.map((it) => answers[it.id]).map((v, i) => (v == null ? null : items[i].reverse ? -v : v)).filter((v) => v != null);
+    if (vals.length < 2) { out[dim.id] = null; continue; }
+    const mean = vals.reduce((a, b) => a + b, 0) / vals.length;
+    out[dim.id] = mean < -0.25 ? "low" : mean > 0.25 ? "high" : "mid";
+  }
+  return out;
+}
+
+// ---------- Language (English / 한국어) ----------
+let memLang = null;
+function getLang() {
+  if (memLang) return memLang;
+  try { return localStorage.getItem("hz-lang") === "ko" ? "ko" : "en"; } catch { return "en"; }
+}
+function setLang(v) { memLang = v; try { localStorage.setItem("hz-lang", v); } catch {} document.documentElement.lang = v; }
+const t = (en, ko) => (getLang() === "ko" ? ko : en);
+
+// Slide in the current language (Korean fields live under slide.ko).
+function tr(slide) {
+  if (getLang() !== "ko" || !slide.ko) return slide;
+  const k = slide.ko;
+  const out = { ...slide, ...k };
+  delete out.ko;
+  if (slide.interaction) {
+    const ki = k.interaction || {};
+    out.interaction = { ...slide.interaction, ...ki };
+    if (slide.interaction.options) out.interaction.options = slide.interaction.options.map((o) => ({ ...o, label: (ki.options && ki.options[o.value]) || o.label }));
+    if (slide.interaction.fields) out.interaction.fields = slide.interaction.fields.map((f) => ({ ...f, ...((ki.fields && ki.fields[f.id]) || {}) }));
+  }
+  return out;
+}
+
+// Instrument name / alias in the current language ("Cello 2" → "첼로 2").
+function insName(id) { const i = instrumentById(id); return i ? t(i.name, i.ko) : ""; }
+function insFamily(id) { const i = instrumentById(id); return i ? t(i.family, i.familyKo) : ""; }
+function aliasText(alias, id) {
+  const i = instrumentById(id);
+  return i && alias ? alias.replace(i.name, t(i.name, i.ko)) : alias || t("Guest", "손님");
+}
+
+// A small Web Audio orchestra.
+//
+// Each instrument has its own part in one short, original 5-bar piece
+// (D – Bm – G – A – D). Played alone, a part can sound simple; played
+// together, the parts make a whole. Sounds are synthesized in the browser,
+// so no audio files are required.
+//
+// Want real recordings instead? Drop licensed clips into /public/audio/
+// named after the instrument id (e.g. audio/oboe.mp3, audio/tuba.m4a).
+// When a file exists it is used instead of the synthesizer.
+
+const BPM = 84;
+const BEAT = 60 / BPM;
+const CHORDS = [[50, 54, 57], [47, 50, 54], [43, 47, 50], [45, 49, 52], [50, 54, 57]]; // D Bm G A D
+const MELODY = [
+  [66, 69, 74, 69], [71, 69, 66, 62], [67, 71, 74, 76], [73, 71, 69, 73],
+];
+
+// Notes are [startBeat, lengthInBeats, midi, velocity]
+function part(id) {
+  const n = [];
+  const bars = (fn) => CHORDS.forEach((c, b) => fn(c, b * 4, b));
+  const melody = (shift = 0, from = 0) => {
+    MELODY.forEach((bar, b) => { if (b >= from) bar.forEach((m, i) => n.push([b * 4 + i, 1, m + shift, 0.8])); });
+    n.push([16, 4, 74 + shift, 0.8]);
+  };
+  switch (id) {
+    case "violin": melody(0); break;
+    case "oboe": melody(0); break;
+    case "flute": melody(12, 2); break;
+    case "trumpet":
+      n.push([7, 1, 66, 0.6], [15, 1, 69, 0.7], [16, 4, 74, 0.8]); break;
+    case "viola": bars((c, s) => { for (let i = 0; i < 8; i++) n.push([s + i / 2, 0.5, (i % 2 ? c[2] : c[1]) + 12, 0.45]); }); break;
+    case "clarinet": bars((c, s) => n.push([s, 2, c[1] + 12, 0.5], [s + 2, 2, c[2] + 12, 0.5])); break;
+    case "horn": bars((c, s) => n.push([s, 4, c[2], 0.5])); break;
+    case "trombone": bars((c, s) => n.push([s, 4, c[1], 0.45])); break;
+    case "cello": bars((c, s) => n.push([s, 2, c[0] - 12, 0.6], [s + 2, 2, c[2] - 12, 0.55])); break;
+    case "bassoon": bars((c, s) => { for (let i = 0; i < 4; i++) n.push([s + i, 0.9, (i % 2 ? c[2] : c[0]) - 12, 0.5]); }); break;
+    case "bass": bars((c, s) => n.push([s, 4, low(c[0]), 0.7])); break;
+    case "tuba": bars((c, s, b) => { if (b % 2 === 0) n.push([s, 4, low(c[0]), 0.6]); }); break;
+    case "timpani": bars((c, s, b) => { n.push([s, 2, c[0] - 12 < 38 ? c[0] : c[0] - 12, 0.9]); if (b < 4) n.push([s + 2, 2, 45, 0.6]); }); break;
+    case "harp": bars((c, s, b) => {
+      const arp = [c[0], c[1], c[2], c[0] + 12, c[1] + 12, c[2] + 12, c[0] + 24, c[2] + 12];
+      if (b === 4) { [c[0], c[1], c[2], c[0] + 12, c[1] + 12, c[2] + 12].forEach((m, i) => n.push([s + i * 0.12, 4, m + 12, 0.5])); return; }
+      arp.forEach((m, i) => n.push([s + i / 2, 1.5, m + 12, 0.45]));
+    }); break;
+  }
+  return n;
+}
+
+// Bass register: one or two octaves down, staying around D1–D2.
+function low(m) { m -= 12; return m > 40 ? m - 12 : m; }
+
+const freq = (m) => 440 * Math.pow(2, (m - 69) / 12);
+
+function env(g, t, a, peak, d, rel) {
+  g.gain.setValueAtTime(0.0001, t);
+  g.gain.exponentialRampToValueAtTime(peak, t + a);
+  g.gain.setValueAtTime(peak, t + Math.max(a, d - rel));
+  g.gain.exponentialRampToValueAtTime(0.0001, t + d);
+}
+
+function vibrato(ctx, osc, t, f, depth = 0.004, rate = 5.4) {
+  const lfo = ctx.createOscillator(), lg = ctx.createGain();
+  lfo.frequency.value = rate;
+  lg.gain.setValueAtTime(0, t);
+  lg.gain.linearRampToValueAtTime(f * depth, t + 0.35);
+  lfo.connect(lg).connect(osc.frequency);
+  return lfo; // started together with the voice's other nodes
+}
+
+let noiseBuf = null;
+function noise(ctx) {
+  if (noiseBuf) return noiseBuf;
+  noiseBuf = ctx.createBuffer(1, ctx.sampleRate, ctx.sampleRate);
+  const d = noiseBuf.getChannelData(0);
+  for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+  return noiseBuf;
+}
+
+function voice(ctx, out, id, midi, t, dur, vel) {
+  const f = freq(midi);
+  const g = ctx.createGain();
+  g.connect(out);
+  const nodes = [];
+  const osc = (type, fr, detune = 0) => { const o = ctx.createOscillator(); o.type = type; o.frequency.value = fr; o.detune.value = detune; nodes.push(o); return o; };
+  const filter = (type, fr, q = 0.7) => { const b = ctx.createBiquadFilter(); b.type = type; b.frequency.value = fr; b.Q.value = q; return b; };
+  const v = vel * 0.22;
+
+  if (["violin", "viola", "cello", "bass"].includes(id)) {
+    const lp = filter("lowpass", Math.min(f * 7, 6000), 0.9);
+    const o1 = osc("sawtooth", f, -6), o2 = osc("sawtooth", f, 7);
+    o1.connect(lp); o2.connect(lp); lp.connect(g);
+    nodes.push(vibrato(ctx, o1, t, f), vibrato(ctx, o2, t, f));
+    env(g, t, id === "bass" ? 0.12 : 0.09, v * (id === "bass" ? 1.2 : 0.8), dur, 0.18);
+  } else if (id === "harp") {
+    const o1 = osc("triangle", f), o2 = osc("sine", f * 2);
+    const g2 = ctx.createGain(); g2.gain.value = 0.25;
+    o1.connect(g); o2.connect(g2).connect(g);
+    g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(v * 1.1, t + 0.005);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + Math.min(dur, 2.2));
+  } else if (id === "flute") {
+    const o = osc("sine", f), o2 = osc("triangle", f);
+    const g2 = ctx.createGain(); g2.gain.value = 0.18;
+    o.connect(g); o2.connect(g2).connect(g); nodes.push(vibrato(ctx, o, t, f, 0.005, 5));
+    const n = ctx.createBufferSource(); n.buffer = noise(ctx); n.loop = true;
+    const bp = filter("bandpass", f * 2, 1.5), ng = ctx.createGain(); ng.gain.value = 0.05;
+    n.connect(bp).connect(ng).connect(g); nodes.push(n);
+    env(g, t, 0.06, v * 0.9, dur, 0.12);
+  } else if (id === "oboe") {
+    const o = osc("sawtooth", f);
+    const bp = filter("bandpass", 1300, 1.6), hp = filter("highpass", f * 0.9);
+    o.connect(hp).connect(bp).connect(g); nodes.push(vibrato(ctx, o, t, f, 0.003, 5.6));
+    env(g, t, 0.04, v * 1.6, dur, 0.1);
+  } else if (id === "clarinet") {
+    const o = osc("square", f); const lp = filter("lowpass", f * 4);
+    o.connect(lp).connect(g); env(g, t, 0.05, v * 0.55, dur, 0.12);
+  } else if (id === "bassoon") {
+    const o = osc("sawtooth", f); const lp = filter("lowpass", f * 3.2), bp = filter("peaking", 480, 2); bp.gain.value = 6;
+    o.connect(lp).connect(bp).connect(g); env(g, t, 0.03, v * 0.8, dur, 0.08);
+  } else if (["horn", "trumpet", "trombone", "tuba"].includes(id)) {
+    const bright = { horn: 3, trumpet: 9, trombone: 5, tuba: 2.6 }[id];
+    const o = osc("sawtooth", f); const lp = filter("lowpass", f * 1.2, 1.2);
+    lp.frequency.setValueAtTime(f * 1.2, t); lp.frequency.exponentialRampToValueAtTime(Math.min(f * bright, 9000), t + 0.09);
+    lp.frequency.exponentialRampToValueAtTime(Math.min(f * bright * 0.7, 9000), t + 0.4);
+    o.connect(lp).connect(g);
+    if (id !== "tuba") nodes.push(vibrato(ctx, o, t, f, 0.002, 5));
+    env(g, t, 0.05, v * (id === "trumpet" ? 0.75 : id === "tuba" ? 1.3 : 0.9), dur, 0.15);
+  } else if (id === "timpani") {
+    const o = osc("sine", f * 1.04);
+    o.frequency.setValueAtTime(f * 1.04, t); o.frequency.exponentialRampToValueAtTime(f, t + 0.15);
+    o.connect(g);
+    const n = ctx.createBufferSource(); n.buffer = noise(ctx);
+    const lp = filter("lowpass", 900), ng = ctx.createGain();
+    ng.gain.setValueAtTime(v * 1.2, t); ng.gain.exponentialRampToValueAtTime(0.0001, t + 0.12);
+    n.connect(lp).connect(ng).connect(out); nodes.push(n);
+    g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(v * 3, t + 0.01);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + 1.6);
+    dur = 1.7;
+  }
+  nodes.forEach((n) => { n.start(t); n.stop(t + dur + 0.2); });
+  return nodes;
+}
+
+function impulse(ctx, seconds = 2.4) {
+  const len = Math.floor(ctx.sampleRate * seconds);
+  const buf = ctx.createBuffer(2, len, ctx.sampleRate);
+  for (let ch = 0; ch < 2; ch++) {
+    const d = buf.getChannelData(ch);
+    for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 2.6);
+  }
+  return buf;
+}
+
+class Orchestra {
+  constructor() { this.ctx = null; this.active = []; this.timer = null; this.files = {}; this.onend = null; }
+
+  async init(ids) {
+    // Optional recordings dropped into /public/audio/ (listed by the server).
+    try {
+      const files = [];
+      for (const id of ids) { const f = files.find((n) => n.replace(/\.[^.]+$/, "") === id); if (f) this.files[id] = `/audio/${f}`; }
+    } catch {}
+  }
+
+  setup() {
+    if (this.ctx) return;
+    const ctx = this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+    this.master = ctx.createGain(); this.master.gain.value = 0.9;
+    const comp = ctx.createDynamicsCompressor();
+    const verb = ctx.createConvolver(); verb.buffer = impulse(ctx);
+    const wet = ctx.createGain(); wet.gain.value = 0.28;
+    this.bus = ctx.createGain();
+    this.bus.connect(this.master); this.bus.connect(verb).connect(wet).connect(this.master);
+    this.master.connect(comp).connect(ctx.destination);
+  }
+
+  get duration() { return 20 * BEAT + 1.5; }
+
+  stop() {
+    clearTimeout(this.timer);
+    for (const n of this.active) { try { n.stop ? n.stop() : n.pause(); } catch {} }
+    this.active = [];
+  }
+
+  play(ids) {
+    this.stop();
+    this.setup();
+    this.ctx.resume();
+    const t0 = this.ctx.currentTime + 0.08;
+    // In a full ensemble, quieten each part a little.
+    const out = this.ctx.createGain(); out.gain.value = ids.length > 1 ? 0.55 : 1; out.connect(this.bus);
+    for (const id of ids) {
+      if (this.files[id]) {
+        const a = new Audio(this.files[id]); a.play().catch(() => {}); this.active.push(a); continue;
+      }
+      for (const [beat, len, midi, vel] of part(id)) {
+        this.active.push(...voice(this.ctx, out, id, midi, t0 + beat * BEAT, len * BEAT * 0.98, vel));
+      }
+    }
+    this.timer = setTimeout(() => { this.active = []; this.onend && this.onend(); }, this.duration * 1000);
+  }
+}
+
+
+
+
+const ARROW = '<svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>';
+const LOGO = '<svg class="brand-mark" viewBox="9 11 43 43" aria-hidden="true"><path d="M10 22h11v12h17V12h13v41H38V42H21v11H10z" fill="currentColor"/></svg>';
+
+const params = new URLSearchParams(location.search);
+const lectureId = "my-user-manual";
+const preview = true;
+const app = document.getElementById("app");
+
+let deck, instruments, room = null; // room: {code, hostKey}
+let state = { slideIndex: 0, messages: [], votes: {}, participants: 0, online: 0, instruments: {}, moderate: false, ended: false, reviews: 0, rating: null, submissions: 0 };
+let renderedSlide = -1;
+let keysBound = false, connected = false;
+const orchestra = new Orchestra();
+
+const joinUrl = () => `${location.origin}/j/${room.code}`;
+const joinHost = () => `${location.host}/j/`;
+
+function qrSvg(url) {
+  try { return window.makeQR ? window.makeQR(url) : ""; } catch { return ""; }
+}
+
+// ---------------- Setup (sign in) ----------------
+async function showSetup() {
+  document.title = "Presenter · Hephzibah Academy";
+  const config = await getJson("/api/config").catch(() => ({}));
+  const last = store.get("hephzibah-host");
+  document.body.className = "";
+  app.innerHTML = `
+  <header class="site-header"><div class="wrap">
+    <a class="brand" href="/">${LOGO}<span class="brand-name"><b>Hephzibah</b><span>ACADEMY</span></span></a>
+    <a class="btn ghost small" href="/lectures/${lectureId}">${t("Back to lecture", "강의로 돌아가기")}</a>
+  </div></header>
+  <main class="setup">
+    <p class="eyebrow">${t("Presenter", "발표자")}</p>
+    <h1 class="h2">${escape(t(deck.title, deck.ko.title))}</h1>
+    <p class="lead" style="font-size:20px;margin-top:14px">${escape(t(deck.track, deck.ko.track))} · ${t("slides", "슬라이드")} ${deck.slides.length} · ~${deck.minutes}${t(" min", "분")}</p>
+    <form id="start" style="margin-top:40px">
+      ${config.passcodeRequired ? `<label class="field"><span>${t("Presenter passcode", "발표자 비밀번호")}</span><input class="input" name="passcode" type="password" autocomplete="current-password" required></label>` : ""}
+      <button class="btn full" type="submit" style="width:100%">${t("Start live session", "실시간 발표 시작")} ${ARROW}</button>
+      <p class="error" id="err" role="alert"></p>
+    </form>
+    ${last && last.lectureId === lectureId ? `<button class="btn ghost" id="resume" style="width:100%;margin-top:4px">${t("Resume room", "이어서 진행")} ${escape(last.code)}</button>` : ""}
+    <p class="muted" style="font-size:14px;margin-top:28px">${t("Open this on the projector. Students join from their phones with the code or QR on screen. Keys: ←/→ move · N notes · Q show QR · F fullscreen.", "프로젝터에 띄우세요. 학생들은 화면의 코드나 QR로 휴대폰에서 입장해요. 키: ←/→ 이동 · N 노트 · Q QR 보기 · F 전체 화면.")}</p>
+    <button class="lang-btn" id="langSetup" type="button" style="margin-top:12px">${t("한국어", "English")}</button>
+  </main>`;
+  app.querySelector("#langSetup").onclick = () => { setLang(getLang() === "ko" ? "en" : "ko"); showSetup(); };
+  app.querySelector("#start").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const btn = e.target.querySelector("button"); btn.disabled = true;
+    try {
+      const passcode = e.target.passcode ? e.target.passcode.value : undefined;
+      const r = await api("/api/rooms", { lectureId, passcode });
+      room = { code: r.code, hostKey: r.hostKey, lectureId };
+      store.set("hephzibah-host", room);
+      history.replaceState(null, "", `/present?lecture=${lectureId}&room=${r.code}`);
+      startStage();
+    } catch (err) { app.querySelector("#err").textContent = err.message; btn.disabled = false; }
+  });
+  const resume = app.querySelector("#resume");
+  if (resume) resume.addEventListener("click", async () => {
+    try { await api(`/api/rooms/${last.code}`); room = last; history.replaceState(null, "", `/present?lecture=${lectureId}&room=${last.code}`); startStage(); }
+    catch { store.del("hephzibah-host"); resume.textContent = t("That room has expired — start a new one", "그 방은 끝났어요. 새로 시작해 주세요"); resume.disabled = true; }
+  });
+}
+
+function escape(s) { return String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
+
+// ---------------- Stage ----------------
+function startStage() {
+  document.body.className = "stage-body";
+  document.title = `${t(deck.title, deck.ko.title)} · Hephzibah Academy`;
+  app.innerHTML = `
+  <header class="topbar">
+    <a class="brand" href="#" title="Hephzibah Academy">${LOGO}<span class="brand-name"><b>Hephzibah</b><span>ACADEMY</span></span></a>
+    <div class="joinline">${room ? `${t("Join at", "입장:")} <u>${escape(joinHost())}</u><b>${room.code}</b>` : `<span class="muted">${t("Arrow keys to move · N for notes · F for fullscreen", "화살표로 이동 · N 노트 · F 전체 화면")}</span>`}</div>
+    <span class="count" id="count">${room ? `<span class="dot"></span><span>0 ${t("joined", "명 입장")}</span>` : ""}</span>
+  </header>
+  <div class="stage" id="stage"></div>
+  <footer class="bottombar">
+    <div style="display:flex;align-items:center;gap:16px;flex:1;min-width:0">
+      <span class="slide-pos" id="pos"></span><div class="progress"><i id="bar"></i></div>
+      <span class="muted hide-sm" id="section" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis"></span>
+    </div>
+    <div class="controls">
+      ${room ? `<button class="ctl hide-sm" id="mod" aria-pressed="false" title="${t("Review messages before they appear", "화면에 띄우기 전에 검토")}">${t("Review first", "검토 후 표시")}</button>
+      <button class="ctl hide-sm" id="queue">${t("Queue", "대기열")}<span class="badge" id="qcount" hidden>0</span></button>
+      <button class="ctl hide-sm" id="qr">QR</button>
+      <a class="ctl hide-sm" id="export" href="#" download>${t("Export", "내보내기")}</a>` : ""}
+      <button class="ctl hide-sm" id="notes">${t("Notes", "노트")}</button>
+      <button class="ctl" id="lang">${t("한국어", "English")}</button>
+      <button class="ctl" id="prev" aria-label="${t("Previous slide", "이전 슬라이드")}">←</button>
+      <button class="ctl" id="next" aria-label="${t("Next slide", "다음 슬라이드")}">→</button>
+    </div>
+  </footer>
+  <aside class="drawer" id="drawer" hidden></aside>
+  <div class="overlay" id="qrOverlay" hidden></div>`;
+
+  if (room) {
+    document.getElementById("export").href = `/api/rooms/${room.code}/export?key=${encodeURIComponent(room.hostKey)}`;
+    document.getElementById("mod").onclick = () => hostOp({ op: "moderate", value: !state.moderate });
+    document.getElementById("queue").onclick = () => toggleDrawer("queue");
+    document.getElementById("qr").onclick = toggleQr;
+  }
+  document.getElementById("notes").onclick = () => toggleDrawer("notes");
+  document.getElementById("lang").onclick = () => { setLang(getLang() === "ko" ? "en" : "ko"); startStage(); };
+  document.getElementById("prev").onclick = () => go(state.slideIndex - 1);
+  document.getElementById("next").onclick = () => go(state.slideIndex + 1);
+  if (!keysBound) { document.addEventListener("keydown", onKey); keysBound = true; }
+  if (room && !connected) { connected = true; connect(); }
+  renderedSlide = -1;
+  render();
+}
+
+function onKey(e) {
+  if (e.target.closest("input, textarea")) return;
+  if (["ArrowRight", "PageDown", " "].includes(e.key)) { e.preventDefault(); go(state.slideIndex + 1); }
+  else if (["ArrowLeft", "PageUp"].includes(e.key)) { e.preventDefault(); go(state.slideIndex - 1); }
+  else if (e.key === "n" || e.key === "N") toggleDrawer("notes");
+  else if ((e.key === "q" || e.key === "Q") && room) toggleQr();
+  else if (e.key === "f" || e.key === "F") document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen?.();
+  else if (e.key === "Escape") { document.getElementById("qrOverlay").hidden = true; document.getElementById("drawer").hidden = true; }
+}
+
+async function go(i) {
+  if (i < 0 || i >= deck.slides.length || i === state.slideIndex) return;
+  state.slideIndex = i; // optimistic
+  render();
+  if (room) hostOp({ op: "slide", index: i });
+}
+
+async function hostOp(body) {
+  try { await api(`/api/rooms/${room.code}/host`, { key: room.hostKey, ...body }); }
+  catch (err) { toast(err.message); }
+}
+
+function connect() {
+  const es = new EventSource(`/api/rooms/${room.code}/stream?key=${encodeURIComponent(room.hostKey)}`);
+  es.onmessage = (ev) => {
+    const next = JSON.parse(ev.data);
+    const slideChanged = next.slideIndex !== state.slideIndex;
+    state = next;
+    if (slideChanged) render(); else update();
+  };
+  es.onerror = () => {
+    // EventSource reconnects automatically. If the room is gone (server restart), say so.
+    api(`/api/rooms/${room.code}`).catch((err) => { if (err.status === 404) { es.close(); store.del("hephzibah-host"); toast(t("This room has ended (server restarted). Start a new session.", "방이 종료되었어요(서버 재시작). 새로 시작해 주세요.")); } });
+  };
+}
+
+// ---------------- Rendering ----------------
+function render() {
+  const slide = tr(deck.slides[state.slideIndex]);
+  if (renderedSlide !== state.slideIndex) orchestra.stop();
+  renderedSlide = state.slideIndex;
+  const stage = document.getElementById("stage");
+  stage.replaceChildren(buildSlide(slide));
+  document.getElementById("pos").textContent = `${String(state.slideIndex + 1).padStart(2, "0")} / ${deck.slides.length}`;
+  document.getElementById("bar").style.width = `${((state.slideIndex + 1) / deck.slides.length) * 100}%`;
+  document.getElementById("section").textContent = slide.section;
+  const drawer = document.getElementById("drawer");
+  if (!drawer.hidden && drawer.dataset.mode === "notes") fillNotes();
+  update();
+}
+
+function head(slide, compact) {
+  return h("div", { class: "content" },
+    h("p", { class: "eyebrow", text: slide.eyebrow }),
+    h("h1", { class: "title" }, lines(slide.title)),
+    slide.subtitle ? h("p", { class: "subtitle", text: slide.subtitle }) : null);
+}
+
+function buildSlide(slide) {
+  const el = h("section", { class: "slide", "aria-live": "polite", "data-kind": slide.kind });
+  const ix = slide.interaction;
+
+  if (slide.kind === "cover" && room) {
+    el.style.gridTemplateColumns = "1fr auto"; el.style.gap = "5vw";
+    const c = head(slide); c.append(h("div", { class: "accent" }), h("p", { class: "subtitle", style: "font-weight:700;color:var(--ink)", text: slide.body[0] }));
+    el.append(c, h("div", { class: "content" }, qrBox()));
+    return el;
+  }
+
+  if (slide.kind === "video") {
+    el.classList.add("video");
+    const v = slide.video;
+    el.append(h("div", { style: "display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap" },
+      h("div", {}, h("p", { class: "eyebrow", style: "margin-bottom:8px", text: slide.eyebrow }), h("h1", { class: "title", style: "font-size:clamp(26px,3vw,48px)", text: slide.title })),
+      h("a", { class: "ctl", href: `https://www.youtube.com/watch?v=${v.youtubeId}`, target: "_blank", rel: "noopener", text: t("Open on YouTube ↗", "YouTube에서 열기 ↗") })));
+    const frame = h("div", { class: "video-frame" });
+    const iframe = h("iframe", { src: `https://www.youtube-nocookie.com/embed/${v.youtubeId}?rel=0&modestbranding=1`, title: v.title,
+      allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen", allowfullscreen: true, referrerpolicy: "strict-origin-when-cross-origin" });
+    frame.append(iframe); el.append(frame);
+    return el;
+  }
+
+  if (slide.kind === "orchestra") {
+    el.classList.add("compact");
+    const c = head(slide);
+    const grid = h("div", { class: "orch", id: "orch" });
+    for (const ins of instruments) {
+      const b = h("button", { class: "inst", type: "button", "data-id": ins.id, onclick: () => playSolo(ins.id, b) },
+        avatar(ins.id, 46), h("span", {}, h("b", { text: t(ins.name, ins.ko) }), h("small", { class: "inroom", text: t(ins.family, ins.familyKo) })));
+      grid.append(b);
+    }
+    const together = h("button", { class: "btn", type: "button", onclick: () => playAll(together) }, t("▶ All together", "▶ 함께 연주"));
+    const stop = h("button", { class: "btn ghost", type: "button", onclick: () => { orchestra.stop(); markPlaying([]); } }, t("■ Stop", "■ 정지"));
+    c.append(grid, h("div", { class: "orch-actions" }, together, stop));
+    el.append(c);
+    return el;
+  }
+
+  const live = ix && (ix.type === "text" || ix.type === "choice" || ix.type === "review");
+  if (live && room || (live && ix.type === "choice")) {
+    el.classList.add("split-live", "compact");
+    const c = head(slide);
+    if (ix.type === "text" || ix.type === "review") {
+      c.append(h("p", { class: "subtitle", style: "font-size:clamp(14px,1.2vw,18px);color:var(--muted)" }, room ? `${t("Answer on your phone", "휴대폰으로 답해 주세요")} · ${joinHost()}${room.code}` : ""));
+      if (ix.type === "review") c.append(h("p", { class: "subtitle", id: "reviewStats", style: "font-weight:700;color:var(--ink)" }));
+      const wrap = h("div", { class: "wall-wrap" },
+        h("div", { class: "wall-head" }, h("span", { text: ix.channel === "qa" ? t("Your questions", "질문") : ix.type === "review" ? t("What we learned", "우리가 배운 것") : t("Live answers", "실시간 답변") }), h("span", { id: "wallCount" })),
+        h("div", { class: "wall", id: "wall", "data-slide": ix.channel === "qa" ? "qa" : slide.id }));
+      el.append(c, wrap);
+    } else {
+      const poll = h("div", { class: "poll", id: "poll" });
+      for (const o of ix.options) poll.append(h("div", { class: "opt", "data-value": o.value }, h("span", { text: o.label }), h("span", { class: "num", text: "0" }), h("div", { class: "bar" }, h("i", { style: "width:0" }))));
+      el.append(c, h("div", { class: "wall-wrap", style: "justify-content:center" }, h("div", { class: "wall-head" }, h("span", { text: t("Live poll", "실시간 투표") }), h("span", { id: "wallCount" })), poll));
+    }
+    return el;
+  }
+
+  // Static slide kinds
+  const c = head(slide);
+  if (slide.kind === "reframe-examples") {
+    const box = h("div", { class: "reframe" });
+    for (const r of slide.body) box.append(h("div", {}, h("span", { class: "from", text: r.trait }), h("span", { text: "→" }), h("span", { text: r.possibility })));
+    c.append(box);
+  } else if (slide.kind === "photo") {
+    el.style.gridTemplateColumns = "1.1fr 1fr"; el.style.gap = "4vw";
+    el.append(c, h("div", { class: "content" }, h("div", { class: "photo-slot" }, h("div", {}, h("b", { text: slide.photo.label }), h("p", { style: "max-width:36ch", text: slide.photo.note })))));
+    return el;
+  } else if (ix && ix.type === "private") {
+    c.append(h("ul", { class: "blist" }, ix.fields.map((f, i) => h("li", {}, h("span", { text: String(i + 1).padStart(2, "0") }), f.label))));
+    c.append(h("p", { class: "subtitle", style: "font-size:clamp(14px,1.2vw,18px);color:var(--muted)", text: t("✎ Write this on your phone. ", "✎ 휴대폰에 적어 보세요. ") + ix.privacy }));
+  } else if (Array.isArray(slide.body) && slide.body.length && slide.kind !== "cover" && slide.kind !== "closing") {
+    if (slide.body.length === 1) c.append(h("div", { class: "accent" }), h("p", { class: "subtitle", style: "font-weight:700;color:var(--ink)", text: slide.body[0] }));
+    else c.append(h("ul", { class: "blist" }, slide.body.map((b, i) => h("li", {}, h("span", { text: String(i + 1).padStart(2, "0") }), b))));
+  } else if (slide.body && slide.body.length) {
+    c.append(h("div", { class: "accent" }), h("p", { class: "subtitle", style: "font-weight:700;color:var(--ink)", text: slide.body[0] }));
+  }
+  el.append(c);
+  return el;
+}
+
+function qrBox(big) {
+  const box = h("div", {});
+  const q = h("div", { class: "qr-box" });
+  const svg = qrSvg(joinUrl());
+  if (svg) q.innerHTML = svg; else q.append(h("p", { text: t("Loading QR…", "QR 준비 중…") }));
+  box.append(q, h("div", { class: "qr-cap" }, `${joinHost()}`, h("b", { text: room.code })));
+  if (!svg) setTimeout(() => { const s = qrSvg(joinUrl()); if (s) q.innerHTML = s; }, 400);
+  return box;
+}
+
+function toggleQr() {
+  const o = document.getElementById("qrOverlay");
+  if (!o.hidden) { o.hidden = true; return; }
+  o.replaceChildren(h("div", { class: "big" }, qrBox(true),
+    h("div", {}, h("p", { class: "eyebrow", text: t("Join the session", "강의 입장") }), h("h2", { class: "display", style: "font-size:clamp(40px,6vw,96px)" }, t("Scan, or go to", "스캔하거나 접속하세요"), h("br"), h("u", { text: joinHost() }), h("br"), room.code),
+      h("p", { class: "lead", text: t("Press Q or Esc to close.", "Q 또는 Esc로 닫기") }))));
+  o.hidden = false;
+  o.onclick = () => (o.hidden = true);
+}
+
+// Live parts of the current slide
+function update() {
+  const slide = tr(deck.slides[state.slideIndex]);
+  if (room) {
+    document.getElementById("count").innerHTML = `<span class="dot"></span><span>${state.participants} ${t("joined", "명 입장")}</span>`;
+    const mod = document.getElementById("mod"); mod.setAttribute("aria-pressed", String(state.moderate));
+    const pending = state.messages.filter((m) => m.status === "pending").length;
+    const qc = document.getElementById("qcount"); qc.hidden = !pending; qc.textContent = pending;
+    const drawer = document.getElementById("drawer");
+    if (!drawer.hidden && drawer.dataset.mode === "queue") fillQueue();
+  }
+
+  const wall = document.getElementById("wall");
+  if (wall) {
+    const key = wall.dataset.slide;
+    const msgs = state.messages.filter((m) => m.slideId === key && m.status === "shown");
+    const have = new Set([...wall.querySelectorAll(".msg")].map((n) => Number(n.dataset.id)));
+    const want = new Set(msgs.map((m) => m.id));
+    wall.querySelectorAll(".msg").forEach((n) => { if (!want.has(Number(n.dataset.id))) n.remove(); });
+    for (const m of msgs) if (!have.has(m.id)) wall.prepend(msgCard(m, true));
+    let empty = wall.querySelector(".wall-empty");
+    if (!msgs.length && !empty) wall.append(h("p", { class: "wall-empty", text: room ? t("Waiting for the first answer…", "첫 답을 기다리고 있어요…") : t("Answers will appear here during a live session.", "실시간 발표 중에 답이 여기에 나타나요.") }));
+    if (msgs.length && empty) empty.remove();
+    document.getElementById("wallCount").textContent = msgs.length ? String(msgs.length) : "";
+  }
+
+  const poll = document.getElementById("poll");
+  if (poll) {
+    const tally = state.votes[slide.id] || {};
+    const total = Object.values(tally).reduce((a, b) => a + b, 0);
+    poll.querySelectorAll(".opt").forEach((o) => {
+      const n = tally[o.dataset.value] || 0;
+      o.querySelector(".num").textContent = total ? `${n} · ${Math.round((n / total) * 100)}%` : "0";
+      o.querySelector(".bar i").style.width = total ? `${(n / total) * 100}%` : "0";
+    });
+    document.getElementById("wallCount").textContent = total ? `${total}${t(" votes", "표")}` : "";
+  }
+
+  const orch = document.getElementById("orch");
+  if (orch && room) orch.querySelectorAll(".inst").forEach((b) => {
+    const n = state.instruments[b.dataset.id] || 0;
+    b.querySelector(".inroom").textContent = n ? t(`${n} in the room`, `${n}명 참여`) : insFamily(b.dataset.id);
+  });
+
+  const rs = document.getElementById("reviewStats");
+  if (rs) rs.textContent = state.reviews ? t(`${state.reviews} reviews · ★ ${state.rating} · ${state.submissions} reflections submitted`, `리뷰 ${state.reviews}개 · ★ ${state.rating} · 성찰 ${state.submissions}개 제출`) : "";
+}
+
+function msgCard(m, canHide) {
+  const ins = instrumentById(m.avatarId);
+  const card = h("article", { class: "msg", "data-id": m.id },
+    h("p", { text: m.text }),
+    h("div", { class: "who" }, avatar(m.avatarId, 26), h("span", { text: aliasText(m.alias, m.avatarId) })));
+  if (canHide && room) card.append(h("button", { class: "x", type: "button", title: t("Hide from screen", "화면에서 숨기기"), onclick: () => hostOp({ op: "status", id: m.id, status: "hidden" }) }, t("Hide", "숨기기")));
+  return card;
+}
+
+function markPlaying(ids) {
+  document.querySelectorAll(".inst").forEach((b) => b.classList.toggle("playing", ids.includes(b.dataset.id)));
+}
+function playSolo(id) {
+  orchestra.play([id]); markPlaying([id]);
+  orchestra.onend = () => markPlaying([]);
+}
+function playAll() {
+  const ids = instruments.map((i) => i.id);
+  orchestra.play(ids); markPlaying(ids);
+  orchestra.onend = () => markPlaying([]);
+}
+
+// ---------------- Drawer ----------------
+function toggleDrawer(mode) {
+  const d = document.getElementById("drawer");
+  if (!d.hidden && d.dataset.mode === mode) { d.hidden = true; return; }
+  d.dataset.mode = mode; d.hidden = false;
+  mode === "notes" ? fillNotes() : fillQueue();
+}
+function fillNotes() {
+  const slide = tr(deck.slides[state.slideIndex]);
+  const d = document.getElementById("drawer");
+  d.replaceChildren(h("h3", { text: `${t("Speaker notes", "발표자 노트")} · ${state.slideIndex + 1}` }), h("div", { class: "notes" }, (slide.notes || []).map((n) => h("p", { text: n }))));
+}
+function fillQueue() {
+  const d = document.getElementById("drawer");
+  const pending = state.messages.filter((m) => m.status === "pending");
+  const hidden = state.messages.filter((m) => m.status === "hidden");
+  const qa = state.messages.filter((m) => m.channel === "qa" && m.status === "shown");
+  d.replaceChildren(
+    h("h3", { text: `${t("Waiting for review", "검토 대기")} (${pending.length})` }),
+    pending.length > 1 ? h("button", { class: "ctl", style: "margin-bottom:12px", onclick: () => hostOp({ op: "approveAll" }) }, t("Approve all", "모두 승인")) : null,
+    h("div", { class: "pending" }, pending.length ? pending.map((m) => {
+      const c = msgCard(m, false);
+      c.append(h("div", { class: "row" }, h("button", { class: "ctl", onclick: () => hostOp({ op: "status", id: m.id, status: "shown" }) }, t("Show", "표시")),
+        h("button", { class: "ctl", onclick: () => hostOp({ op: "status", id: m.id, status: "hidden" }) }, t("Hide", "숨기기"))));
+      return c;
+    }) : h("p", { class: "muted", text: state.moderate ? t("Nothing waiting.", "대기 중인 메시지가 없어요.") : t("“Review first” is off — messages appear immediately.", "“검토 후 표시”가 꺼져 있어 메시지가 바로 나타나요.") })),
+    h("h3", { style: "margin-top:28px", text: `${t("Audience questions", "청중 질문")} (${qa.length})` }),
+    h("div", {}, qa.length ? qa.map((m) => msgCard(m, true)) : h("p", { class: "muted", text: t("Students can ask questions from their phones anytime.", "학생들은 언제든 휴대폰으로 질문할 수 있어요.") })),
+    hidden.length ? h("h3", { style: "margin-top:28px", text: `${t("Hidden", "숨김")} (${hidden.length})` }) : null,
+    h("div", {}, hidden.map((m) => { const c = msgCard(m, false); c.append(h("button", { class: "ctl", onclick: () => hostOp({ op: "status", id: m.id, status: "shown" }) }, t("Show again", "다시 표시"))); return c; })));
+}
+
+function toast(text) {
+  const el = h("div", { class: "toast", role: "status", text });
+  document.body.append(el); setTimeout(() => el.remove(), 4000);
+}
+
+// ---------------- Boot ----------------
+(async () => {
+  [deck, instruments] = await Promise.all([getJson(`/data/${lectureId}.json`), loadInstruments()]);
+  orchestra.init(instruments.map((i) => i.id));
+  if (preview) return startStage();
+  const code = params.get("room");
+  const saved = store.get("hephzibah-host");
+  if (code && saved && saved.code === code) {
+    try { await api(`/api/rooms/${code}`); room = saved; return startStage(); } catch { store.del("hephzibah-host"); }
+  }
+  showSetup();
+})();
+
+</script>
+</body>
+</html>

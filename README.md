@@ -64,6 +64,18 @@ The site needs a server that runs Node, because live rooms use Server-Sent Event
 * Run the service as a **single instance**. Live rooms are kept in memory, so restarting the server ends any active session. Submissions are written to disk and survive restarts.
 * Submissions are saved to `DATA_DIR/submissions.jsonl`, one JSON record per line. The host CSV export reads from this file. These records are what you would use later to send job matches by email.
 
+## Languages
+
+Every page has a 한국어 / English button. The choice is remembered on that device. Slides, speaker notes, the 20 questions and the results all have Korean versions (`ko` fields in `public/data/*.json`).
+
+## Standalone slide deck
+
+`public/downloads/my-user-manual-slides.html` is a single offline file of the lecture, with the language toggle, speaker notes (N) and the orchestra sounds. It has no live audience features. After editing the slides, rebuild it:
+
+```bash
+node tools/build-slides.mjs my-user-manual public/downloads/my-user-manual-slides.html
+```
+
 ## Mentor sign-ups
 
 Adults sign up at `/mentors`. They choose how to help: fund classes, give career advice, teach a live class, give feedback, or invest through Beulah Venture. Sign-ups are saved to `DATA_DIR/mentors.jsonl`. To download them as a CSV, open `/api/mentors.csv?passcode=YOUR_HOST_PASSCODE`. This works only when `HOST_PASSCODE` is set.
