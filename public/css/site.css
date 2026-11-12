@@ -176,3 +176,10 @@ textarea.input { resize: vertical; min-height: 104px; line-height: 1.45; }
 .lockup.big .lk-name span { font-size: 13px; margin-top: 6px; }
 .lockup.big .lk-sep { height: 48px; }
 .site-footer .footer-brands { padding-top: 32px; padding-bottom: 0; }
+
+/* Town on a hill illustration */
+.hill-art { width: 100%; max-width: 420px; height: auto; color: var(--ink); margin-top: clamp(28px, 4vw, 48px); overflow: visible; }
+.hill-art .glow { transform-origin: 240px 132px; animation: glow 4.5s ease-in-out infinite; }
+.hill-art .rays { animation: rays 4.5s ease-in-out infinite; }
+@keyframes glow { 50% { transform: scale(1.12); opacity: .75; } }
+@keyframes rays { 50% { opacity: .2; } }
