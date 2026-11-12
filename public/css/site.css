@@ -188,12 +188,13 @@ textarea.input { resize: vertical; min-height: 104px; line-height: 1.45; }
 
 /* Yellow light accents */
 .brand-mark .lamp, .lk-mark .lamp { fill: var(--accent); filter: drop-shadow(0 0 2.5px rgba(214, 235, 0, 0.95)); }
-.spark { position: relative; display: inline-block; width: 0.17em; height: 0.17em; margin-left: 0.05em; border-radius: 50%;
-  background: var(--accent); box-shadow: 0 0 0.06em rgba(200, 220, 0, 0.9); }
-.spark::after { content: ""; position: absolute; left: 50%; top: 50%; width: 0.9em; height: 0.9em; transform: translate(-50%, -50%);
-  border-radius: 50%; background: radial-gradient(circle, rgba(232, 255, 0, 0.55) 0%, rgba(232, 255, 0, 0.18) 35%, rgba(232, 255, 0, 0) 70%);
-  animation: spark 3.6s ease-in-out infinite; pointer-events: none; z-index: -1; }
-@keyframes spark { 50% { transform: translate(-50%, -50%) scale(1.25); opacity: 0.7; } }
+.spark { position: relative; display: inline-block; width: 0.13em; height: 0.13em; margin-left: 0.04em; border-radius: 50%;
+  background: var(--accent); animation: twinkle 4s ease-in-out infinite; }
+.spark::after { content: ""; position: absolute; left: 50%; top: 50%; width: 0.7em; height: 0.7em; transform: translate(-50%, -50%);
+  border-radius: 50%; background: radial-gradient(circle, rgba(232, 255, 0, 0.6) 0%, rgba(232, 255, 0, 0.2) 35%, rgba(232, 255, 0, 0) 70%);
+  animation: halo 4s ease-in-out infinite; pointer-events: none; z-index: -1; }
+@keyframes twinkle { 0%, 100% { opacity: 1; box-shadow: 0 0 0.05em rgba(200, 220, 0, 0.9); } 50% { opacity: 0.55; box-shadow: 0 0 0 rgba(200, 220, 0, 0); } }
+@keyframes halo { 0%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); } 50% { opacity: 0.25; transform: translate(-50%, -50%) scale(0.8); } }
 
 /* Hephzibah & Beulah names (Isaiah 62:4) */
 .names2 { margin: 8px 0 0; border-top: 1px solid var(--rule); }
