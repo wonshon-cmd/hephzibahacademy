@@ -64,6 +64,27 @@ The site needs a server that runs Node, because live rooms use Server-Sent Event
 * Run the service as a **single instance**. Live rooms are kept in memory, so restarting the server ends any active session. Submissions are written to disk and survive restarts.
 * Submissions are saved to `DATA_DIR/submissions.jsonl`, one JSON record per line. The host CSV export reads from this file. These records are what you would use later to send job matches by email.
 
+## Beulah Venture applications
+
+`/apply` is the First Track 2026 application ("Tell us about your business"). It is for Venture 101 graduates, and the page says you reply within 2 weeks.
+
+The applicant goes through three steps:
+
+1. Enter a name and email.
+2. Type in the 6-digit code that was emailed to them (it expires after 15 minutes).
+3. Fill in the application.
+
+Applications are saved to `DATA_DIR/applications.jsonl`. To download them as a CSV, open `/api/applications.csv?passcode=YOUR_HOST_PASSCODE`.
+
+Sending the code by email needs a [Resend](https://resend.com) account:
+
+| Variable | Purpose |
+| --- | --- |
+| `RESEND_API_KEY` | Resend API key, required to send the verification emails |
+| `MAIL_FROM` | Sender, e.g. `Beulah Venture <apply@yourdomain.com>` (the domain must be verified in Resend) |
+
+Without `RESEND_API_KEY`, the code is printed to the server log instead. That is enough for testing, but real applicants cannot apply this way.
+
 ## Languages
 
 Every page has a 한국어 / English button. The choice is remembered on that device. Slides, speaker notes, the 20 questions and the results all have Korean versions (`ko` fields in `public/data/*.json`).

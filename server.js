@@ -38,6 +38,32 @@ const DATA_DIR = path.resolve(process.env.DATA_DIR || path.join(ROOT, "data"));
 fs.mkdirSync(DATA_DIR, { recursive: true });
 const SUBMISSIONS_FILE = path.join(DATA_DIR, "submissions.jsonl");
 const MENTORS_FILE = path.join(DATA_DIR, "mentors.jsonl");
+const APPLICATIONS_FILE = path.join(DATA_DIR, "applications.jsonl");
+
+// ---------- Email (verification codes) ----------
+// Uses Resend's HTTP API when RESEND_API_KEY is set (https://resend.com).
+// Without it, codes are printed to the server log so you can test locally.
+const RESEND_API_KEY = process.env.RESEND_API_KEY || "";
+const MAIL_FROM = process.env.MAIL_FROM || "Beulah Venture <onboarding@resend.dev>";
+async function sendEmail(to, subject, text) {
+  if (!RESEND_API_KEY) {
+    console.log(`[email not configured] to=${to} subject="${subject}"\n${text}`);
+    return { delivered: false };
+  }
+  const r = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: { authorization: `Bearer ${RESEND_API_KEY}`, "content-type": "application/json" },
+    body: JSON.stringify({ from: MAIL_FROM, to: [to], subject, text }),
+  });
+  if (!r.ok) { console.error("Email send failed", r.status, await r.text().catch(() => "")); throw httpError(502, "We couldn’t send the email. Please try again in a minute."); }
+  return { delivered: true };
+}
+
+// Pending email verifications and verified application sessions (in memory).
+const verifications = new Map(); // email -> {name, codeHash, expires, tries, sentAt}
+const appSessions = new Map();   // token -> {name, email, expires}
+const hash = (v) => crypto.createHash("sha256").update(String(v)).digest("hex");
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 function saveSubmission(record) {
   fs.appendFile(SUBMISSIONS_FILE, JSON.stringify(record) + "\n", (err) => { if (err) console.error("Could not save submission", err); });
 }
@@ -236,6 +262,73 @@ async function api(req, res, url) {
 
   if (parts[1] === "config" && method === "GET") {
     return sendJson(res, 200, { passcodeRequired: Boolean(HOST_PASSCODE) });
+  }
+
+  // ----- Beulah Venture applications (First Track) -----
+  // 1) POST /api/apply/start {name, email, lang} -> emails a 6-digit code
+  if (parts[1] === "apply" && parts[2] === "start" && method === "POST") {
+    const body = await readJson(req);
+    const name = cleanText(body.name, 120);
+    const email = cleanText(body.email, 200).toLowerCase();
+    if (!name) throw httpError(400, "Please add your name.");
+    if (!EMAIL_RE.test(email)) throw httpError(400, "Please add a valid email.");
+    const now = Date.now();
+    const prev = verifications.get(email);
+    if (prev && now - prev.sentAt < 60_000) throw httpError(429, "We just sent a code. Please wait a minute before asking again.");
+    if (verifications.size > 5000) for (const [k, v] of verifications) if (v.expires < now) verifications.delete(k);
+    const code = String(crypto.randomInt(100000, 1000000));
+    verifications.set(email, { name, codeHash: hash(code + email), expires: now + 15 * 60_000, tries: 0, sentAt: now });
+    const ko = body.lang === "ko";
+    const sent = await sendEmail(email,
+      ko ? `쁄라 벤처 인증 코드: ${code}` : `Your Beulah Venture code: ${code}`,
+      ko ? `${name}님, 안녕하세요.\n\n인증 코드는 ${code} 입니다. 15분 동안 유효해요.\n\n쁄라 벤처 · 헵시바 아카데미`
+         : `Hi ${name},\n\nYour verification code is ${code}. It expires in 15 minutes.\n\nBeulah Venture · Hephzibah Academy`);
+    return sendJson(res, 200, { ok: true, delivered: sent.delivered });
+  }
+
+  // 2) POST /api/apply/verify {email, code} -> application token
+  if (parts[1] === "apply" && parts[2] === "verify" && method === "POST") {
+    const body = await readJson(req);
+    const email = cleanText(body.email, 200).toLowerCase();
+    const v = verifications.get(email);
+    if (!v || v.expires < Date.now()) throw httpError(400, "That code has expired. Please request a new one.");
+    if (++v.tries > 5) { verifications.delete(email); throw httpError(429, "Too many tries. Please request a new code."); }
+    if (!safeEqual(hash(String(body.code || "").trim() + email), v.codeHash)) throw httpError(400, "That code isn’t right. Please check your email and try again.");
+    verifications.delete(email);
+    const tok = token();
+    appSessions.set(tok, { name: v.name, email, expires: Date.now() + 24 * 60 * 60_000 });
+    return sendJson(res, 200, { token: tok, name: v.name, email });
+  }
+
+  // 3) POST /api/apply/submit {token, ...answers}
+  if (parts[1] === "apply" && parts[2] === "submit" && method === "POST") {
+    const body = await readJson(req);
+    const sess = appSessions.get(body.token);
+    if (!sess || sess.expires < Date.now()) throw httpError(401, "Your session expired. Please verify your email again.");
+    if (body.venture101 !== true) throw httpError(400, "This track is for Venture 101 graduates.");
+    const F = { company: 160, oneLiner: 200, problem: 1500, customers: 1500, stage: 40, traction: 1500, values: 1500, team: 1500, ask: 600, website: 300, cohort: 120 };
+    const answers = {};
+    for (const [k, max] of Object.entries(F)) answers[k] = cleanText(body[k], max);
+    for (const k of ["company", "oneLiner", "problem", "customers", "values"]) if (!answers[k]) throw httpError(400, "Please fill in the required fields.");
+    const record = { at: new Date().toISOString(), track: "First Track 2026", name: sess.name, email: sess.email, emailVerified: true, venture101: true, ...answers };
+    fs.appendFile(APPLICATIONS_FILE, JSON.stringify(record) + "\n", (err) => { if (err) console.error("Could not save application", err); });
+    appSessions.delete(body.token);
+    sendEmail(sess.email, body.lang === "ko" ? "쁄라 벤처 지원이 접수되었어요" : "We received your Beulah Venture application",
+      body.lang === "ko" ? `${sess.name}님, 지원해 주셔서 감사해요.\n\n2주 안에 답장드릴게요.\n\n쁄라 벤처 · First Track 2026`
+                         : `Thank you, ${sess.name}.\n\nWe’ll reply within 2 weeks.\n\nBeulah Venture · First Track 2026`).catch(() => {});
+    return sendJson(res, 201, { ok: true });
+  }
+
+  // GET /api/applications.csv?passcode=HOST_PASSCODE
+  if (parts[1] === "applications.csv" && method === "GET") {
+    if (!HOST_PASSCODE || !safeEqual(url.searchParams.get("passcode") || "", HOST_PASSCODE)) throw httpError(403, "Passcode required.");
+    let text = ""; try { text = fs.readFileSync(APPLICATIONS_FILE, "utf8"); } catch {}
+    const cols = ["at", "track", "name", "email", "company", "oneLiner", "stage", "problem", "customers", "traction", "values", "team", "ask", "website", "cohort"];
+    const esc = (v) => { let t = String(v ?? ""); if (/^[=+\-@\t\r]/.test(t)) t = "'" + t; return `"${t.replace(/"/g, '""')}"`; };
+    const rows = [cols.join(",")];
+    for (const line of text.split("\n")) { if (!line) continue; try { const r = JSON.parse(line); rows.push(cols.map((c) => esc(r[c])).join(",")); } catch {} }
+    res.writeHead(200, { "content-type": "text/csv; charset=utf-8", "cache-control": "no-store", "content-disposition": 'attachment; filename="beulah-applications.csv"' });
+    return res.end("\ufeff" + rows.join("\r\n"));
   }
 
   // POST /api/mentors — adult volunteer / donor sign-up
@@ -475,7 +568,7 @@ const TYPES = { ".html": "text/html; charset=utf-8", ".css": "text/css; charset=
   ".woff": "font/woff", ".woff2": "font/woff2", ".txt": "text/plain; charset=utf-8", ".webp": "image/webp", ".jpg": "image/jpeg",
   ".mp3": "audio/mpeg", ".m4a": "audio/mp4", ".ogg": "audio/ogg", ".wav": "audio/wav" };
 
-const ROUTES = { "/": "/index.html", "/lectures": "/lectures.html", "/present": "/present.html", "/join": "/join.html", "/support": "/support.html", "/mentors": "/mentors.html",
+const ROUTES = { "/": "/index.html", "/lectures": "/lectures.html", "/present": "/present.html", "/join": "/join.html", "/support": "/support.html", "/mentors": "/mentors.html", "/apply": "/apply.html",
   "/lectures/my-user-manual": "/lectures/my-user-manual.html" };
 
 function serveStatic(req, res, url) {

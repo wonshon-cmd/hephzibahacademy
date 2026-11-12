@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apply · Beulah Venture</title>
+<meta name="description" content="Tell us about your business. Beulah Venture First Track 2026, for Venture 101 graduates.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Hephzibah Academy — home">
+      <svg class="brand-mark" viewBox="9 11 43 43" aria-hidden="true"><path d="M10 22h11v12h17V12h13v41H38V42H21v11H10z" fill="currentColor"/></svg>
+      <span class="brand-name"><b>Hephzibah</b><span>ACADEMY</span></span>
+    </a>
+    <button class="menu-btn" type="button" aria-controls="nav" aria-expanded="false">Menu</button>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="/lectures">Academy</a>
+      <a href="/#community">Community</a>
+      <a href="/#about">About</a>
+      <a href="/mentors">Mentors</a>
+      <a href="/support">Support</a>
+      <a href="/apply" aria-current="page">Apply</a>
+      <span class="divider" aria-hidden="true"></span>
+      <a class="login" href="/present">Log in <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="section" style="border-top:0">
+  <div class="wrap">
+    <p class="eyebrow">Beulah Venture</p>
+    <h1 class="display" style="font-size:clamp(44px,6.4vw,96px)">Tell us about your business.</h1>
+    <p class="lead" style="max-width:34ch">Venture 101 graduates only. We reply within 2 weeks.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow">First Track</p>
+      <h2 class="h2">2026 cohort.</h2>
+      <p class="muted" style="margin-top:16px;max-width:34ch">Our first track for gospel-based startups begins in 2026.</p>
+    </div>
+    <div id="apply-flow">
+      <div id="step-start">
+        <ol class="apply-steps">
+          <li><b>Name and email</b></li>
+          <li><b>Verify your email</b></li>
+          <li><b>Tell us about your business</b></li>
+        </ol>
+        <button class="btn" type="button" id="btn-apply">Apply <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
+      </div>
+
+      <form id="step-email" class="panel-form" hidden novalidate>
+        <p class="step-label">Step 1 of 3</p>
+        <label class="field"><span>Name</span><input class="input" id="ap-name" name="name" autocomplete="name" required maxlength="120"></label>
+        <label class="field"><span>Email</span><input class="input" id="ap-email" name="email" type="email" autocomplete="email" required maxlength="200"></label>
+        <button class="btn" type="submit">Send verification code</button>
+        <p class="error" role="alert"></p>
+      </form>
+
+      <form id="step-code" class="panel-form" hidden novalidate>
+        <p class="step-label">Step 2 of 3</p>
+        <p class="prose-sm">We sent a 6-digit code to <b id="ap-sent-to"></b>.</p>
+        <label class="field"><span>Verification code</span><input class="input code-input" id="ap-code" name="code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" required></label>
+        <button class="btn" type="submit">Verify</button>
+        <button class="linkish" type="button" id="ap-resend">Send a new code</button>
+        <p class="error" role="alert"></p>
+      </form>
+
+      <form id="step-app" class="panel-form" hidden novalidate>
+        <p class="step-label">Step 3 of 3 · <span id="ap-who"></span></p>
+        <label class="check"><input type="checkbox" id="ap-v101" name="venture101"><span>I completed Venture 101.</span></label>
+        <label class="field"><span>Venture 101 cohort or year (optional)</span><input class="input" id="ap-cohort" name="cohort" maxlength="120"></label>
+        <label class="field"><span>Company name</span><input class="input" id="ap-company" name="company" required maxlength="160"></label>
+        <label class="field"><span>Your business in one line</span><input class="input" id="ap-oneliner" name="oneLiner" required maxlength="200"></label>
+        <label class="field"><span>Stage</span>
+          <select class="input" id="ap-stage" name="stage">
+            <option value="Idea">Idea</option><option value="Building">Building</option><option value="Launched">Launched</option><option value="Revenue">Revenue</option>
+          </select></label>
+        <label class="field"><span>What problem are you solving?</span><textarea class="input" id="ap-problem" name="problem" rows="4" required maxlength="1500"></textarea></label>
+        <label class="field"><span>Who are your customers?</span><textarea class="input" id="ap-customers" name="customers" rows="3" required maxlength="1500"></textarea></label>
+        <label class="field"><span>Traction so far (optional)</span><textarea class="input" id="ap-traction" name="traction" rows="3" maxlength="1500"></textarea></label>
+        <label class="field"><span>How does your faith shape this business?</span><textarea class="input" id="ap-values" name="values" rows="4" required maxlength="1500"></textarea></label>
+        <label class="field"><span>Team (optional)</span><textarea class="input" id="ap-team" name="team" rows="3" maxlength="1500"></textarea></label>
+        <label class="field"><span>What are you asking for? (optional)</span><input class="input" id="ap-ask" name="ask" maxlength="600" placeholder="Funding, mentoring, customers…"></label>
+        <label class="field"><span>Website (optional)</span><input class="input" id="ap-website" name="website" type="url" maxlength="300"></label>
+        <button class="btn" type="submit">Submit application</button>
+        <p class="error" role="alert"></p>
+      </form>
+
+      <div id="step-done" hidden>
+        <h3 class="h3">Thank you.</h3>
+        <p class="lead" style="font-size:19px">We reply within 2 weeks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+.apply-steps{list-style:none;margin:0 0 28px;padding:0;counter-reset:s;border-top:1px solid var(--rule)}
+.apply-steps li{counter-increment:s;display:grid;grid-template-columns:48px 1fr;padding:16px 0;border-bottom:1px solid var(--hair);font-size:18px}
+.apply-steps li::before{content:"0" counter(s);font-weight:600;letter-spacing:.18em;font-size:14px;padding-top:3px}
+.step-label{font-size:13px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:0 0 20px}
+.prose-sm{margin:0 0 18px;color:var(--ink-2)}
+.code-input{font-size:28px;letter-spacing:.4em;font-weight:700;max-width:260px}
+.linkish{background:none;border:0;padding:8px 0;margin-left:16px;color:var(--ink-2);text-decoration:underline;cursor:pointer;font-size:15px}
+.check{display:flex;gap:10px;align-items:flex-start;margin:0 0 18px;font-size:17px}
+.check input{width:18px;height:18px;margin-top:3px;accent-color:var(--ink)}
+select.input{appearance:auto}
+</style>
+<script>
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const lang = () => (window.hzLang && window.hzLang()) || "en";
+  const tr = (s) => (lang() === "ko" && window.hzI18n && window.hzI18n.KO[s]) || s;
+  const show = (id) => ["step-start", "step-email", "step-code", "step-app", "step-done"].forEach((s) => ($(s).hidden = s !== id));
+  let email = "", tok = "";
+  async function post(url, body) {
+    const r = await fetch(url, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
+    const d = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error((d.error && d.error.message) || "Something went wrong.");
+    return d;
+  }
+  const fail = (form, e) => { form.querySelector(".error").textContent = tr(e.message); form.querySelector("button[type=submit]").disabled = false; };
+  $("btn-apply").onclick = () => { show("step-email"); $("ap-name").focus(); };
+  async function sendCode(form) {
+    email = $("ap-email").value.trim();
+    await post("/api/apply/start", { name: $("ap-name").value, email, lang: lang() });
+    $("ap-sent-to").textContent = email;
+  }
+  $("step-email").addEventListener("submit", async (e) => {
+    e.preventDefault(); const f = e.target; f.querySelector(".error").textContent = ""; f.querySelector("button[type=submit]").disabled = true;
+    try { await sendCode(f); show("step-code"); $("ap-code").focus(); f.querySelector("button[type=submit]").disabled = false; } catch (x) { fail(f, x); }
+  });
+  $("ap-resend").onclick = async () => {
+    const f = $("step-code"); f.querySelector(".error").textContent = "";
+    try { await sendCode(f); f.querySelector(".error").textContent = tr("A new code is on its way."); } catch (x) { f.querySelector(".error").textContent = tr(x.message); }
+  };
+  $("step-code").addEventListener("submit", async (e) => {
+    e.preventDefault(); const f = e.target; f.querySelector(".error").textContent = ""; f.querySelector("button[type=submit]").disabled = true;
+    try {
+      const d = await post("/api/apply/verify", { email, code: $("ap-code").value });
+      tok = d.token; $("ap-who").textContent = `${d.name} · ${d.email}`; show("step-app"); f.querySelector("button[type=submit]").disabled = false;
+    } catch (x) { fail(f, x); }
+  });
+  $("step-app").addEventListener("submit", async (e) => {
+    e.preventDefault(); const f = e.target; f.querySelector(".error").textContent = "";
+    if (!$("ap-v101").checked) { f.querySelector(".error").textContent = tr("This track is for Venture 101 graduates."); return; }
+    for (const id of ["ap-company", "ap-oneliner", "ap-problem", "ap-customers", "ap-values"]) if (!$(id).value.trim()) { f.querySelector(".error").textContent = tr("Please fill in the required fields."); $(id).focus(); return; }
+    f.querySelector("button[type=submit]").disabled = true;
+    const body = { token: tok, lang: lang(), venture101: true };
+    for (const el of f.querySelectorAll("input[name],textarea[name],select[name]")) if (el.name !== "venture101") body[el.name] = el.value;
+    try { await post("/api/apply/submit", body); show("step-done"); window.scrollTo(0, $("apply-flow").offsetTop - 120); } catch (x) { fail(f, x); }
+  });
+})();
+</script>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-brands">
+    <div class="lockup" aria-label="Hephzibah Academy and Beulah">
+      <a class="lk" href="/"><svg class="lk-mark" viewBox="9 11 43 43" aria-hidden="true"><path d="M10 22h11v12h17V12h13v41H38V42H21v11H10z" fill="currentColor"/></svg><span class="lk-name"><b>Hephzibah</b><span>ACADEMY</span></span></a>
+      <span class="lk-sep" aria-hidden="true"></span>
+      <a class="lk" href="/support"><svg class="lk-mark" viewBox="9 11 43 43" aria-hidden="true"><path fill-rule="evenodd" d="M11 12h28l9 8v9l-4 3.5 5 4.5v9l-8 7H11zM23 21v8h11v-8zM23 38v8h12v-8z" fill="currentColor"/></svg><span class="lk-name"><b>Beulah</b><span>VENTURE</span></span></a>
+    </div>
+  </div>
+  <div class="wrap"><span>Faith for life. Learning for the world.</span><span class="right">© 2026 Hephzibah Academy</span></div>
+</footer>
+<script src="/js/site.js" defer></script>
+<script src="/js/i18n.js" defer></script>
+</body>
+</html>
