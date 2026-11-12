@@ -15,6 +15,9 @@ The Hephzibah Academy website, with live, interactive lectures. The presenter sh
 | Slide preview (no audience) | `/present?lecture=my-user-manual&preview=1` |
 | Student join page | `/join`, or the short link `/j/CODE` |
 | Mentors (adult sign-up) | `/mentors` |
+| Cohort sign-up | `/cohort` |
+| Personality test (20 questions) | `/personality` |
+| Beulah Venture application | `/apply` |
 | Support (monthly giving) | `/support` |
 
 ### The live lecture: *My User Manual* (29 slides, about 40 minutes)
@@ -57,6 +60,16 @@ Then open http://localhost:3000.
 | `HOST_PASSCODE` | If set, a presenter must enter this passcode before starting a live session. **Set this in production.** |
 | `DATA_DIR` | Folder where student submissions are saved (default `./data`). Point it at a persistent disk. |
 
+## Public website (GitHub Pages)
+
+`docs/` holds a static copy of the website, rebuilt with `python3 tools/build-static.py`. To publish it for free:
+
+1. On GitHub, open the repo and go to **Settings → Pages**.
+2. Under **Source**, choose **Deploy from a branch**.
+3. Pick the branch and the **/docs** folder, then click **Save**.
+
+After a minute the site is live at https://wonshon-cmd.github.io/hephzibahacademy/. It includes every page, the 한국어 button, the personality test and the slide deck. Live classes, sign-ups and applications need the full server, described below.
+
 ## Hosting
 
 The site needs a server that runs Node, because live rooms use Server-Sent Events. Render, Railway, Fly.io or any VPS will work. Static hosts such as GitHub Pages will not.
@@ -96,6 +109,10 @@ Every page has a 한국어 / English button. The choice is remembered on that de
 ```bash
 node tools/build-slides.mjs my-user-manual public/downloads/my-user-manual-slides.html
 ```
+
+## Cohort sign-ups
+
+A cohort runs as a live session, then a class, then mentoring, with a check-in after each one. Sign-ups made at `/cohort` are saved to `DATA_DIR/cohort.jsonl`. To download them as a CSV, open `/api/cohort.csv?passcode=YOUR_HOST_PASSCODE`.
 
 ## Mentor sign-ups
 

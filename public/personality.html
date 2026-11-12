@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My User Manual Personality Test · Hephzibah Academy</title>
+<meta name="description" content="20 questions about you. My User Manual personality test from Hephzibah Academy.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/live.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Hephzibah Academy — home">
+      <svg class="brand-mark" viewBox="9 11 43 43" aria-hidden="true"><path d="M10 22h11v12h17V12h13v41H38V42H21v11H10z" fill="currentColor"/></svg>
+      <span class="brand-name"><b>Hephzibah</b><span>ACADEMY</span></span>
+    </a>
+    <button class="menu-btn" type="button" aria-controls="nav" aria-expanded="false">Menu</button>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="/lectures">Academy</a>
+      <a href="/#community">Community</a>
+      <a href="/#about">About</a>
+      <a href="/cohort">Cohort</a>
+      <a href="/mentors">Mentors</a>
+      <a href="/support">Support</a>
+      <a href="/apply">Apply</a>
+      <span class="divider" aria-hidden="true"></span>
+      <a class="login" href="/present">Log in <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="section" style="border-top:0;padding-bottom:40px">
+  <div class="wrap">
+    <p class="eyebrow"><a href="/lectures/my-user-manual" style="text-decoration:none">My User Manual</a></p>
+    <h1 class="display" style="font-size:clamp(44px,6.4vw,96px)">Personality test.</h1>
+    <p class="lead" style="max-width:34ch">20 questions about you. About 5 minutes.</p>
+  </div>
+</section>
+<section style="padding-bottom:96px">
+  <div class="wrap"><div id="pt" class="pt" aria-live="polite"></div></div>
+</section>
+<style>
+.pt{max-width:640px}
+.pt-list{margin:0 0 16px;padding-left:20px;font-size:18px;line-height:1.7;color:var(--ink-2)}
+.pt-note{color:var(--muted);font-size:15px;max-width:60ch;margin:12px 0 24px}
+.pt-progress{height:3px;background:var(--hair);margin-bottom:24px}
+.pt-progress i{display:block;height:100%;background:var(--ink);transition:width .3s}
+.pt-stage{display:grid;place-items:center;padding:8px 0 20px}
+.pt .quiz-actions,.pt .quiz-sub{padding-left:0;padding-right:0;margin:0;max-width:none}
+.pt .quiz-sub button:disabled{opacity:.35;cursor:default}
+.pt-results{background:#fff;border:1px solid var(--hair);border-radius:14px;padding:24px;margin-top:8px}
+.pt-actions{display:flex;gap:12px;flex-wrap:wrap}
+</style>
+<script src="/js/personality-test.js" defer></script>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-brands">
+    <div class="lockup" aria-label="Hephzibah Academy and Beulah">
+      <a class="lk" href="/"><svg class="lk-mark" viewBox="9 11 43 43" aria-hidden="true"><path d="M10 22h11v12h17V12h13v41H38V42H21v11H10z" fill="currentColor"/></svg><span class="lk-name"><b>Hephzibah</b><span>ACADEMY</span></span></a>
+      <span class="lk-sep" aria-hidden="true"></span>
+      <a class="lk" href="/support"><svg class="lk-mark" viewBox="9 11 43 43" aria-hidden="true"><path fill-rule="evenodd" d="M11 12h28l9 8v9l-4 3.5 5 4.5v9l-8 7H11zM23 21v8h11v-8zM23 38v8h12v-8z" fill="currentColor"/></svg><span class="lk-name"><b>Beulah</b><span>VENTURE</span></span></a>
+    </div>
+  </div>
+  <div class="wrap"><span>Faith for life. Learning for the world.</span><span class="right">© 2026 Hephzibah Academy</span></div>
+</footer>
+<script src="/js/site.js" defer></script>
+<script src="/js/i18n.js" defer></script>
+</body>
+</html>

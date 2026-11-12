@@ -1,0 +1,1254 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My User Manual Personality Test · Hephzibah Academy</title>
+<meta name="description" content="20 questions about you. My User Manual personality test from Hephzibah Academy.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='13' fill='%23f8f7f3'/><path d='M10 22h11v12h17V12h13v41H38V42H21v11H10z' fill='%23111a2e'/></svg>" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+/* Hephzibah Academy — shared design system */
+:root {
+  --paper: #f8f7f3;
+  --paper-2: #efede6;
+  --ink: #111a2e;
+  --ink-2: #3a4256;
+  --muted: #6b7183;
+  --rule: #111a2e;
+  --hair: rgba(17, 26, 46, 0.14);
+  --accent: #f2c230;
+  --ok: #1f9d55;
+  --radius: 6px;
+  --gutter: clamp(16px, 4.2vw, 64px);
+  --font: "Plus Jakarta Sans", "Noto Sans KR", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+img, svg { display: block; max-width: 100%; }
+button, input, textarea, select { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.wrap { width: 100%; max-width: 1440px; margin: 0 auto; padding: 0 var(--gutter); }
+
+/* ---------- Header ---------- */
+.site-header { border-bottom: 1px solid var(--rule); }
+.site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 104px; }
+.brand { display: inline-flex; align-items: center; gap: 14px; text-decoration: none; color: var(--ink); }
+.brand-mark { width: 52px; height: 52px; flex: none; }
+.brand-name { display: flex; flex-direction: column; line-height: 1; }
+.brand-name b { font-size: 30px; font-weight: 700; letter-spacing: -0.02em; }
+.brand-name span { font-size: 18px; font-weight: 600; letter-spacing: 0.22em; margin-top: 6px; }
+.nav { display: flex; align-items: center; gap: clamp(20px, 3.6vw, 56px); font-size: 17px; font-weight: 500; }
+.nav a { text-decoration: none; padding: 6px 0; border-bottom: 1.5px solid transparent; }
+.nav a:hover, .nav a[aria-current="page"] { border-bottom-color: var(--ink); }
+.nav .divider { width: 1px; height: 28px; background: var(--ink); }
+.nav .login { display: inline-flex; align-items: center; gap: 8px; }
+.arrow { width: 0.9em; height: 0.9em; flex: none; }
+.menu-btn { display: none; background: none; border: 1px solid var(--hair); border-radius: var(--radius); padding: 8px 12px; cursor: pointer; }
+
+@media (max-width: 760px) {
+  .site-header .wrap { min-height: 76px; }
+  .brand-mark { width: 38px; height: 38px; }
+  .brand-name b { font-size: 22px; }
+  .brand-name span { font-size: 13px; }
+  .menu-btn { display: block; }
+  .nav { display: none; position: absolute; left: 0; right: 0; top: 76px; flex-direction: column; align-items: stretch; gap: 0;
+    background: var(--paper); border-bottom: 1px solid var(--rule); padding: 8px var(--gutter) 16px; z-index: 10; }
+  .nav.open { display: flex; }
+  .nav a { padding: 14px 0; border-bottom: 1px solid var(--hair); }
+  .nav .divider { display: none; }
+  .site-header { position: relative; }
+}
+
+/* ---------- Type ---------- */
+.eyebrow { font-size: 15px; font-weight: 700; letter-spacing: 0.32em; text-transform: uppercase; margin: 0 0 28px; }
+.display { font-size: clamp(46px, 8.2vw, 122px); line-height: 0.98; letter-spacing: -0.045em; font-weight: 800; margin: 0; }
+.h2 { font-size: clamp(32px, 4.4vw, 60px); line-height: 1.05; letter-spacing: -0.035em; font-weight: 800; margin: 0; }
+.h3 { font-size: clamp(22px, 2.2vw, 30px); line-height: 1.2; letter-spacing: -0.02em; font-weight: 700; margin: 0; }
+.lead { font-size: clamp(19px, 2vw, 30px); line-height: 1.4; color: var(--ink); margin: 28px 0 0; font-weight: 400; }
+.muted { color: var(--muted); }
+
+/* ---------- Buttons ---------- */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 12px; padding: 18px 36px; border-radius: var(--radius);
+  background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; font-size: 18px; border: 1px solid var(--ink);
+  cursor: pointer; transition: transform .15s ease, background .15s ease; }
+.btn:hover { transform: translateY(-1px); }
+.btn:disabled { opacity: .45; cursor: not-allowed; transform: none; }
+.btn.ghost { background: transparent; color: var(--ink); }
+.btn.ghost:hover { background: var(--paper-2); }
+.btn.small { padding: 11px 20px; font-size: 15px; }
+
+/* ---------- Hero ---------- */
+.hero .wrap { position: relative; display: grid; grid-template-columns: 1fr auto; gap: 40px; padding-top: clamp(56px, 10vh, 120px); padding-bottom: clamp(56px, 12vh, 128px); }
+.hero .vertical { writing-mode: vertical-rl; font-size: 14px; letter-spacing: 0.34em; font-weight: 600; border-left: 1px solid var(--ink);
+  padding-left: 28px; align-self: start; height: 384px; display: flex; align-items: center; }
+.hero .cta { margin-top: 52px; }
+@media (max-width: 760px) { .hero .vertical { display: none; } .hero .wrap { grid-template-columns: 1fr; } }
+
+/* ---------- Pillars ---------- */
+.pillars { border-top: 1px solid var(--rule); }
+.pillars .wrap { display: grid; grid-template-columns: repeat(3, 1fr); }
+.pillar { padding: 28px 24px 32px 0; display: flex; gap: 22px; align-items: baseline; }
+.pillar .num { font-size: 16px; font-weight: 600; letter-spacing: 0.18em; }
+.pillar h3 { font-size: clamp(24px, 2.4vw, 34px); letter-spacing: -0.02em; margin: 0; font-weight: 700; }
+.pillar p { margin: 8px 0 0; color: var(--ink-2); font-size: 15px; max-width: 30ch; }
+@media (max-width: 760px) { .pillars .wrap { grid-template-columns: 1fr; } .pillar { border-bottom: 1px solid var(--hair); } }
+
+/* ---------- Sections ---------- */
+.section { border-top: 1px solid var(--rule); padding: clamp(56px, 9vw, 120px) 0; }
+.section-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; margin-bottom: 48px; }
+.split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(32px, 6vw, 96px); }
+@media (max-width: 860px) { .split { grid-template-columns: 1fr; } }
+.prose p { font-size: 19px; line-height: 1.65; margin: 0 0 18px; color: var(--ink-2); max-width: 62ch; }
+.quote { font-size: clamp(22px, 2.4vw, 32px); line-height: 1.35; letter-spacing: -0.015em; font-weight: 500; margin: 0; }
+.quote cite { display: block; margin-top: 18px; font-style: normal; font-size: 14px; letter-spacing: 0.24em; text-transform: uppercase; font-weight: 600; }
+
+/* ---------- Lecture cards ---------- */
+.tag { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; padding: 6px 10px;
+  border: 1px solid var(--ink); border-radius: 999px; }
+.tag.live::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--ok); margin-right: 8px; vertical-align: 1px; }
+.card { display: grid; grid-template-columns: auto 1fr auto; gap: clamp(20px, 4vw, 56px); align-items: start; padding: 36px 0;
+  border-top: 1px solid var(--rule); text-decoration: none; color: inherit; }
+.card:last-child { border-bottom: 1px solid var(--rule); }
+.card .num { font-size: 16px; font-weight: 600; letter-spacing: 0.18em; padding-top: 10px; }
+.card h3 { font-size: clamp(30px, 3.6vw, 52px); letter-spacing: -0.035em; line-height: 1.05; margin: 12px 0 10px; font-weight: 800; }
+.card p { margin: 0; color: var(--ink-2); max-width: 60ch; font-size: 17px; }
+.card .meta { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 18px; font-size: 14px; color: var(--muted); font-weight: 500; }
+.card .go { width: 56px; height: 56px; border: 1px solid var(--ink); border-radius: 50%; display: grid; place-items: center; transition: background .15s, color .15s; }
+a.card:hover .go { background: var(--ink); color: var(--paper); }
+.card.disabled { opacity: .5; }
+@media (max-width: 760px) { .card { grid-template-columns: 1fr; } .card .go { display: none; } }
+
+.tabs { display: flex; gap: 10px; flex-wrap: wrap; }
+.tabs button { background: transparent; border: 1px solid var(--ink); border-radius: 999px; padding: 10px 18px; font-weight: 600; font-size: 15px; cursor: pointer; }
+.tabs button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.tabs button:disabled { opacity: .4; cursor: not-allowed; }
+
+/* ---------- Footer ---------- */
+.site-footer { border-top: 1px solid var(--rule); }
+.site-footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; padding-top: 28px; padding-bottom: 32px;
+  font-size: 14px; letter-spacing: 0.1em; font-weight: 500; }
+.site-footer .right { letter-spacing: 0.22em; text-transform: uppercase; }
+
+/* ---------- Forms ---------- */
+.field { display: block; margin-bottom: 18px; }
+.field > span { display: block; font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 8px; }
+.input, textarea.input { width: 100%; background: #fff; border: 1px solid var(--hair); border-radius: var(--radius); padding: 14px 16px; font-size: 17px; }
+.input:focus { border-color: var(--ink); outline: none; box-shadow: 0 0 0 3px rgba(17,26,46,.12); }
+textarea.input { resize: vertical; min-height: 104px; line-height: 1.45; }
+.error { color: #b42318; font-size: 15px; margin: 10px 0 0; min-height: 1.4em; }
+
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+
+/* Instrument badge (score abbreviation, tinted by family) */
+.avatar { --size: 44px; width: var(--size); height: var(--size); border-radius: 50%; flex: none; display: inline-grid; place-items: center; background: var(--ink); color: var(--paper); line-height: 1;
+  font-weight: 700; font-size: calc(var(--size) * 0.38); letter-spacing: -0.01em; font-style: italic; font-family: Georgia, "Times New Roman", serif; }
+.avatar[data-family="strings"] { background: #1d3a6b; }
+.avatar[data-family="woodwinds"] { background: #2f6b4f; }
+.avatar[data-family="brass"] { background: #a8741a; }
+.avatar[data-family="percussion"] { background: #8e3b2e; }
+
+/* Light and Salt */
+.verse p { margin: 0; }
+.salt-light { display: grid; grid-template-columns: 1fr 1fr; margin-top: 40px; border-top: 1px solid var(--rule); }
+.salt-light > div { padding: 22px 24px 0 0; }
+.salt-light .num { font-size: 13px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; }
+.salt-light p { margin: 8px 0 0; color: var(--ink-2); font-size: 16px; max-width: 34ch; }
+@media (max-width: 600px) { .salt-light { grid-template-columns: 1fr; } }
+.hero-ref { margin: 28px 0 0; font-size: 13px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; }
+.hero-ref a { text-decoration: none; border-bottom: 1px solid currentColor; }
+.card[hidden] { display: none; }
+
+/* Hephzibah × Beulah lockup */
+.lockup { display: flex; align-items: center; gap: clamp(18px, 3vw, 36px); flex-wrap: wrap; }
+.lk { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
+.lk-mark { width: 30px; height: 30px; flex: none; }
+.lk-name { display: flex; flex-direction: column; line-height: 1; }
+.lk-name b { font-size: 19px; font-weight: 700; letter-spacing: -0.02em; }
+.lk-name span { font-size: 10px; font-weight: 600; letter-spacing: 0.22em; margin-top: 4px; }
+.lk-sep { width: 1px; height: 30px; background: var(--ink); }
+.lockup.big .lk-mark { width: 48px; height: 48px; }
+.lockup.big .lk-name b { font-size: 28px; }
+.lockup.big .lk-name span { font-size: 13px; margin-top: 6px; }
+.lockup.big .lk-sep { height: 48px; }
+.site-footer .footer-brands { padding-top: 32px; padding-bottom: 0; }
+
+/* Town on a hill illustration */
+.hill-art { width: 100%; max-width: 420px; height: auto; color: var(--ink); margin-top: clamp(28px, 4vw, 48px); overflow: visible; }
+.hill-art .glow { transform-origin: 240px 132px; animation: glow 4.5s ease-in-out infinite; }
+.hill-art .rays { animation: rays 4.5s ease-in-out infinite; }
+@keyframes glow { 50% { transform: scale(1.12); opacity: .75; } }
+@keyframes rays { 50% { opacity: .2; } }
+.mission { margin: 24px 0 0; font-size: clamp(18px, 1.6vw, 22px); line-height: 1.5; color: var(--ink-2); max-width: 36ch; }
+.mission b { color: var(--ink); }
+
+/* Yellow light accents */
+.brand-mark .lamp, .lk-mark .lamp { fill: var(--accent); filter: drop-shadow(0 0 2.5px rgba(214, 235, 0, 0.95)); }
+.spark { display: inline-block; width: 0.13em; height: 0.13em; margin-left: 0.12em; border-radius: 50%;
+  background: var(--accent); animation: blink 3s ease-in-out infinite; }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.15; } }
+
+/* Hephzibah & Beulah names (Isaiah 62:4) */
+.names2 { margin: 8px 0 0; border-top: 1px solid var(--rule); }
+.names2 > div { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); align-items: baseline; gap: 24px; padding: clamp(18px, 3vw, 36px) 0; border-bottom: 1px solid var(--rule); }
+.names2 dt { font-size: clamp(52px, 9vw, 140px); font-weight: 800; letter-spacing: -0.05em; line-height: 0.95; }
+.names2 dd { margin: 0; font-size: clamp(18px, 2vw, 28px); color: var(--ink-2); letter-spacing: -0.01em; }
+.names2-verse { margin: 28px 0 0; max-width: 60ch; color: var(--muted); font-size: 16px; }
+.names2-verse cite { font-style: normal; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; margin-left: 8px; }
+@media (max-width: 640px) { .names2 > div { grid-template-columns: 1fr; gap: 8px; } }
+.names2 .heb { display: block; margin-top: 12px; font-size: 18px; font-weight: 500; letter-spacing: 0; color: var(--muted); font-family: "Noto Sans Hebrew", "Arial Hebrew", "David", var(--font); direction: rtl; text-align: left; unicode-bidi: isolate; }
+.names2-lead { margin: 32px 0 0; font-size: clamp(20px, 2vw, 28px); font-weight: 700; letter-spacing: -0.02em; }
+.names2-lead + .names2-verse { margin-top: 10px; }
+.spark.sm { width: 0.45em; height: 0.45em; margin-left: 0; vertical-align: 0.05em; }
+
+/* Language toggle */
+.lang-btn { background: transparent; border: 1px solid var(--ink); border-radius: 999px; padding: 6px 14px; font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+.lang-btn:hover { background: var(--ink); color: var(--paper); }
+html[lang="ko"] body { word-break: keep-all; }
+@media (max-width: 760px) { .nav .lang-btn { margin-top: 12px; align-self: flex-start; } }
+.names2-lead { max-width: 40ch; }
+
+/* Navigation: tighter on mid widths, collapse to the Menu button below 1080px */
+.nav a { white-space: nowrap; }
+@media (max-width: 1320px) { .nav { gap: 24px; font-size: 16px; } }
+@media (max-width: 1080px) {
+  .site-header { position: relative; }
+  .menu-btn { display: block; }
+  .nav { display: none; position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; align-items: stretch; gap: 0;
+    background: var(--paper); border-bottom: 1px solid var(--rule); padding: 8px var(--gutter) 16px; z-index: 10; }
+  .nav.open { display: flex; }
+  .nav a { padding: 14px 0; border-bottom: 1px solid var(--hair); }
+  .nav .divider { display: none; }
+  .nav .lang-btn { margin-top: 12px; align-self: flex-start; }
+}
+
+.preview-note{position:fixed;left:16px;bottom:16px;z-index:50;background:var(--ink);color:var(--paper);padding:10px 14px;border-radius:8px;font-size:14px;max-width:calc(100vw - 32px)}
+</style>
+<style>
+/* ---------- Presenter stage ---------- */
+body.stage-body { height: 100vh; height: 100dvh; overflow: hidden; }
+body.stage-body #app { height: 100%; display: flex; flex-direction: column; }
+.topbar, .bottombar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 0 clamp(16px, 2.6vw, 40px); flex: none; }
+.topbar { height: 64px; border-bottom: 1px solid var(--rule); }
+.bottombar { height: 60px; border-top: 1px solid var(--rule); font-size: 14px; }
+.topbar .brand-mark { width: 30px; height: 30px; }
+.topbar .brand-name b { font-size: 18px; }
+.topbar .brand-name span { font-size: 10px; margin-top: 3px; }
+.joinline { font-size: clamp(14px, 1.3vw, 20px); font-weight: 500; text-align: center; }
+.joinline b { font-weight: 800; letter-spacing: 0.14em; background: var(--ink); color: var(--paper); padding: 2px 10px; border-radius: 4px; margin-left: 6px; }
+.count { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.dot { width: 9px; height: 9px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 4px rgba(31,157,85,.15); }
+.controls { display: flex; gap: 6px; align-items: center; flex-wrap: nowrap; }
+.ctl { background: transparent; border: 1px solid var(--hair); border-radius: var(--radius); padding: 7px 12px; cursor: pointer; font-size: 14px; font-weight: 600; white-space: nowrap; }
+.ctl:hover { border-color: var(--ink); }
+.ctl[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.ctl .badge { display: inline-block; min-width: 20px; padding: 0 6px; border-radius: 999px; background: #c2410c; color: #fff; font-size: 12px; margin-left: 4px; }
+.progress { position: relative; height: 2px; background: var(--hair); flex: 1; max-width: 260px; }
+.progress i { position: absolute; inset: 0 auto 0 0; background: var(--ink); }
+.slide-pos { font-variant-numeric: tabular-nums; font-weight: 600; letter-spacing: 0.12em; }
+
+.stage { flex: 1; min-height: 0; position: relative; overflow: hidden; }
+.slide { position: absolute; inset: 0; padding: clamp(28px, 5vh, 72px) clamp(24px, 5vw, 96px); display: grid; animation: slideIn .45s ease both; }
+@keyframes slideIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.slide .eyebrow { font-size: clamp(12px, 1.1vw, 16px); margin-bottom: clamp(16px, 3vh, 36px); }
+.slide .title { font-size: clamp(36px, 6.2vw, 112px); line-height: 1.02; letter-spacing: -0.045em; font-weight: 800; margin: 0; }
+.slide.compact .title { font-size: clamp(30px, 4.2vw, 76px); }
+.slide .subtitle { font-size: clamp(17px, 1.9vw, 32px); line-height: 1.35; margin: clamp(16px, 3vh, 32px) 0 0; color: var(--ink-2); max-width: 40ch; }
+.slide .content { align-self: center; min-width: 0; }
+.slide .accent { width: 120px; height: 3px; background: var(--ink); margin-top: clamp(20px, 4vh, 44px); }
+
+.blist { list-style: none; padding: 0; margin: clamp(20px, 4vh, 48px) 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); border-top: 1px solid var(--rule); }
+.blist li { padding: 18px 20px 18px 0; display: flex; gap: 16px; align-items: baseline; font-size: clamp(17px, 1.7vw, 28px); font-weight: 600; letter-spacing: -0.01em; line-height: 1.25; }
+.blist li span { font-size: 0.6em; letter-spacing: 0.16em; font-weight: 600; color: var(--muted); }
+.reframe { margin-top: clamp(20px, 4vh, 48px); border-top: 1px solid var(--rule); }
+.reframe div { display: grid; grid-template-columns: 1fr auto 1fr; gap: 24px; align-items: center; padding: 18px 0; border-bottom: 1px solid var(--hair); font-size: clamp(18px, 2vw, 34px); font-weight: 600; letter-spacing: -0.015em; }
+.reframe .from { color: var(--muted); text-decoration: line-through; text-decoration-thickness: 1px; }
+.photo-slot { border: 1px dashed var(--muted); border-radius: var(--radius); display: grid; place-items: center; text-align: center; padding: 24px; color: var(--muted); min-height: 40vh; }
+
+/* Split layout: prompt + live wall */
+.slide.split-live { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.25fr); gap: clamp(24px, 4vw, 72px); }
+.wall-wrap { min-height: 0; display: flex; flex-direction: column; border-left: 1px solid var(--rule); padding-left: clamp(20px, 3vw, 48px); }
+.wall-head { display: flex; justify-content: space-between; align-items: baseline; font-size: 13px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; padding-bottom: 14px; }
+.wall { flex: 1; min-height: 0; overflow-y: auto; columns: 2 260px; column-gap: 16px; scrollbar-width: thin; padding-bottom: 12px; }
+.msg { break-inside: avoid; background: #fff; border: 1px solid var(--hair); border-radius: 10px; padding: 16px 18px; margin-bottom: 16px; position: relative;
+  animation: pop .5s cubic-bezier(.2,1.4,.4,1) both; }
+@keyframes pop { from { opacity: 0; transform: scale(.92) translateY(10px); } to { opacity: 1; transform: none; } }
+.msg p { margin: 0 0 12px; font-size: clamp(17px, 1.55vw, 26px); line-height: 1.32; font-weight: 500; letter-spacing: -0.01em; overflow-wrap: anywhere; }
+.msg .who { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; color: var(--muted); }
+.msg .x { position: absolute; top: 8px; right: 8px; border: 0; background: var(--paper-2); border-radius: 6px; padding: 2px 8px; font-size: 12px; cursor: pointer; opacity: 0; }
+.msg:hover .x, .msg .x:focus-visible { opacity: 1; }
+.wall-empty { color: var(--muted); font-size: clamp(16px, 1.4vw, 22px); padding: 40px 0; column-span: all; }
+
+/* Poll */
+.poll { display: grid; gap: clamp(10px, 1.6vh, 18px); }
+.poll .opt { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 16px; font-size: clamp(16px, 1.6vw, 26px); font-weight: 600; }
+.poll .bar { grid-column: 1 / -1; height: 12px; background: var(--paper-2); border-radius: 999px; overflow: hidden; }
+.poll .bar i { display: block; height: 100%; background: var(--ink); border-radius: 999px; transition: width .6s cubic-bezier(.2,.8,.2,1); }
+.poll .num { font-variant-numeric: tabular-nums; color: var(--muted); }
+
+/* Cover QR */
+.qr-box { background: #fff; border: 1px solid var(--hair); border-radius: 14px; padding: 18px; width: min(34vh, 320px); }
+.qr-box svg { width: 100%; height: auto; }
+.qr-cap { text-align: center; margin-top: 12px; font-weight: 600; font-size: 15px; }
+.qr-cap b { letter-spacing: 0.14em; }
+
+/* Orchestra */
+.orch { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin-top: clamp(16px, 3vh, 32px); }
+.inst { display: flex; align-items: center; gap: 12px; padding: 12px 14px; background: #fff; border: 1px solid var(--hair); border-radius: 12px; cursor: pointer; text-align: left; transition: transform .15s, border-color .15s, box-shadow .15s; }
+.inst:hover { border-color: var(--ink); transform: translateY(-2px); }
+.inst.playing { border-color: var(--ink); box-shadow: 0 0 0 3px var(--ink); }
+.inst.playing .avatar { animation: beat .71s ease-in-out infinite; }
+@keyframes beat { 50% { transform: scale(1.12); } }
+.inst b { display: block; font-size: 16px; }
+.inst small { color: var(--muted); font-size: 12px; font-weight: 600; }
+.orch-actions { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
+
+/* Video */
+.slide.video { grid-template-rows: auto minmax(0, 1fr); gap: 16px; padding-top: clamp(16px, 3vh, 32px); padding-bottom: clamp(16px, 3vh, 32px); }
+.video-frame { position: relative; min-height: 0; display: grid; place-items: center; }
+.video-frame iframe { width: 100%; height: 100%; max-height: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 10px; background: #000; }
+
+/* Overlays / drawers */
+.overlay { position: fixed; inset: 0; background: rgba(248,247,243,.97); display: grid; place-items: center; z-index: 30; }
+.overlay[hidden], .drawer[hidden] { display: none; }
+.overlay .big { display: grid; grid-template-columns: auto 1fr; gap: 6vw; align-items: center; padding: 5vw; }
+.overlay .big .qr-box { width: min(60vh, 520px); }
+.drawer { position: fixed; top: 64px; right: 0; bottom: 60px; width: min(460px, 92vw); background: var(--paper); border-left: 1px solid var(--rule); z-index: 20; overflow-y: auto; padding: 24px; box-shadow: -20px 0 40px rgba(17,26,46,.06); }
+.drawer h3 { font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; margin: 0 0 12px; }
+.drawer .notes p { font-size: 17px; line-height: 1.55; margin: 0 0 14px; }
+.drawer .pending .msg { animation: none; }
+.drawer .pending .row { display: flex; gap: 8px; }
+
+/* Setup screen */
+.setup { max-width: 560px; margin: 0 auto; padding: 8vh var(--gutter); }
+
+@media (max-width: 860px) {
+  .slide.split-live { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
+  .wall-wrap { border-left: 0; padding-left: 0; border-top: 1px solid var(--rule); padding-top: 16px; }
+  .joinline { display: none; }
+  .controls .hide-sm { display: none; }
+}
+
+/* ---------- Audience phone ---------- */
+body.phone { min-height: 100dvh; }
+.phone-head { position: sticky; top: 0; z-index: 5; background: var(--paper); border-bottom: 1px solid var(--rule); display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 16px; }
+.phone-head .me { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+.phone-head .code { font-size: 12px; letter-spacing: 0.2em; font-weight: 700; color: var(--muted); }
+.phone-main { max-width: 560px; margin: 0 auto; padding: 24px 16px 64px; }
+.phone-main .eyebrow { font-size: 12px; margin-bottom: 12px; letter-spacing: .24em; }
+.phone-title { font-size: 30px; line-height: 1.08; letter-spacing: -0.035em; font-weight: 800; margin: 0 0 10px; }
+.phone-sub { color: var(--ink-2); margin: 0 0 22px; font-size: 16px; }
+.panel { background: #fff; border: 1px solid var(--hair); border-radius: 14px; padding: 18px; margin-top: 18px; }
+.panel h3 { margin: 0 0 6px; font-size: 18px; letter-spacing: -0.01em; }
+.panel p { margin: 0 0 12px; color: var(--ink-2); font-size: 15px; }
+.stack { display: grid; gap: 10px; }
+.choice { display: block; width: 100%; text-align: left; padding: 16px 18px; border-radius: 12px; border: 1px solid var(--hair); background: #fff; font-size: 17px; font-weight: 600; cursor: pointer; }
+.choice[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.full { width: 100%; }
+.sent { list-style: none; padding: 0; margin: 14px 0 0; display: grid; gap: 8px; }
+.sent li { font-size: 15px; background: var(--paper-2); border-radius: 10px; padding: 10px 12px; }
+.sent li small { display: block; color: var(--muted); font-size: 12px; margin-top: 2px; }
+.reveal { text-align: center; padding: 6vh 0 2vh; }
+.reveal .avatar { margin: 0 auto 22px; animation: pop .6s cubic-bezier(.2,1.4,.4,1) both; }
+.reveal h1 { font-size: 40px; letter-spacing: -0.04em; margin: 4px 0 6px; line-height: 1; }
+.stars { display: flex; gap: 6px; }
+.stars button { font-size: 32px; line-height: 1; border: 0; background: none; cursor: pointer; padding: 4px; color: #c9c7bf; }
+.stars button.on { color: var(--ink); }
+.check { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--ink-2); margin: 6px 0 16px; }
+.check input { margin-top: 3px; width: 18px; height: 18px; flex: none; }
+.result { border-top: 1px solid var(--hair); padding: 16px 0; }
+.result:first-child { border-top: 0; padding-top: 0; }
+.result .dim { font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+.result h4 { margin: 4px 0 6px; font-size: 20px; letter-spacing: -0.02em; }
+.result dl { margin: 10px 0 0; display: grid; gap: 8px; }
+.result dt { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+.result dd { margin: 0; font-size: 15px; color: var(--ink-2); }
+.scale { display: flex; justify-content: space-between; gap: 10px; font-size: 11px; color: var(--muted); margin-top: 8px; }
+.scale-bar { position: relative; height: 4px; background: var(--paper-2); border-radius: 4px; margin-top: 6px; }
+.scale-bar i { position: absolute; top: -4px; width: 12px; height: 12px; border-radius: 50%; background: var(--ink); transform: translateX(-50%); }
+.steps-dots { display: flex; gap: 6px; margin-bottom: 18px; }
+.steps-dots i { height: 3px; flex: 1; background: var(--hair); border-radius: 3px; }
+.steps-dots i.on { background: var(--ink); }
+
+/* Quiz (swipe cards) */
+.quiz { position: fixed; inset: 0; background: var(--paper); z-index: 40; display: flex; flex-direction: column; }
+.quiz[hidden] { display: none; }
+.quiz-top { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; border-bottom: 1px solid var(--hair); font-weight: 600; font-size: 14px; }
+.quiz-top button { background: none; border: 0; font-weight: 600; cursor: pointer; padding: 6px; }
+.quiz-progress { height: 3px; background: var(--hair); }
+.quiz-progress i { display: block; height: 100%; background: var(--ink); transition: width .3s; }
+.quiz-body { flex: 1; display: grid; place-items: center; padding: 20px 16px; overflow: hidden; }
+.qcard { width: min(100%, 460px); min-height: 300px; background: #fff; border: 1px solid var(--hair); border-radius: 18px; padding: 28px 24px; box-shadow: 0 18px 40px rgba(17,26,46,.08);
+  display: flex; flex-direction: column; justify-content: space-between; touch-action: pan-y; user-select: none; cursor: grab; position: relative; }
+.qcard .qn { font-size: 12px; font-weight: 700; letter-spacing: .2em; color: var(--muted); }
+.qcard .qt { font-size: 24px; line-height: 1.3; font-weight: 700; letter-spacing: -0.02em; margin: 18px 0; }
+.qcard .hint { display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); font-weight: 600; }
+.qcard .stamp { position: absolute; top: 18px; padding: 4px 10px; border: 2px solid; border-radius: 6px; font-weight: 800; letter-spacing: .1em; opacity: 0; font-size: 14px; }
+.qcard .stamp.yes { right: 18px; color: var(--ok); }
+.qcard .stamp.no { left: 18px; color: #b42318; }
+.quiz-actions { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; padding: 12px 16px 6px; max-width: 520px; margin: 0 auto; width: 100%; }
+.quiz-actions button { padding: 14px 6px; border-radius: 12px; border: 1px solid var(--ink); background: #fff; font-weight: 700; font-size: 15px; cursor: pointer; }
+.quiz-actions button.sel { background: var(--ink); color: var(--paper); }
+.quiz-sub { display: flex; justify-content: space-between; padding: 6px 16px 18px; max-width: 520px; margin: 0 auto; width: 100%; }
+.quiz-sub button { background: none; border: 0; color: var(--muted); font-weight: 600; cursor: pointer; padding: 8px 4px; text-decoration: underline; }
+.toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); background: var(--ink); color: var(--paper); padding: 12px 18px; border-radius: 10px; font-size: 15px; z-index: 60; max-width: 90vw; }
+.ctl .badge[hidden] { display: none; }
+.orch { grid-template-columns: repeat(auto-fill, minmax(176px, 1fr)); }
+/* Fit a 16:9 player inside whatever space the slide leaves */
+.video-frame { height: 100%; container-type: size; }
+.video-frame iframe { width: min(100cqw, 100cqh * 16 / 9); height: min(100cqh, 100cqw * 9 / 16); max-height: none; aspect-ratio: auto; }
+
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Hephzibah Academy — home">
+      <svg class="brand-mark" viewBox="9 11 43 43" aria-hidden="true"><path d="M10 22h11v12h17V12h13v41H38V42H21v11H10z" fill="currentColor"/></svg>
+      <span class="brand-name"><b>Hephzibah</b><span>ACADEMY</span></span>
+    </a>
+    <button class="menu-btn" type="button" aria-controls="nav" aria-expanded="false">Menu</button>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="lectures.html">Academy</a>
+      <a href="index.html#community">Community</a>
+      <a href="index.html#about">About</a>
+      <a href="cohort.html">Cohort</a>
+      <a href="mentors.html">Mentors</a>
+      <a href="support.html">Support</a>
+      <a href="apply.html">Apply</a>
+      <span class="divider" aria-hidden="true"></span>
+      <a class="login" href="#live-only">Log in <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="section" style="border-top:0;padding-bottom:40px">
+  <div class="wrap">
+    <p class="eyebrow"><a href="my-user-manual.html" style="text-decoration:none">My User Manual</a></p>
+    <h1 class="display" style="font-size:clamp(44px,6.4vw,96px)">Personality test.</h1>
+    <p class="lead" style="max-width:34ch">20 questions about you. About 5 minutes.</p>
+  </div>
+</section>
+<section style="padding-bottom:96px">
+  <div class="wrap"><div id="pt" class="pt" aria-live="polite"></div></div>
+</section>
+<style>
+.pt{max-width:640px}
+.pt-list{margin:0 0 16px;padding-left:20px;font-size:18px;line-height:1.7;color:var(--ink-2)}
+.pt-note{color:var(--muted);font-size:15px;max-width:60ch;margin:12px 0 24px}
+.pt-progress{height:3px;background:var(--hair);margin-bottom:24px}
+.pt-progress i{display:block;height:100%;background:var(--ink);transition:width .3s}
+.pt-stage{display:grid;place-items:center;padding:8px 0 20px}
+.pt .quiz-actions,.pt .quiz-sub{padding-left:0;padding-right:0;margin:0;max-width:none}
+.pt .quiz-sub button:disabled{opacity:.35;cursor:default}
+.pt-results{background:#fff;border:1px solid var(--hair);border-radius:14px;padding:24px;margin-top:8px}
+.pt-actions{display:flex;gap:12px;flex-wrap:wrap}
+</style>
+<script>window.__PERSONALITY={
+ "title": "20 Questions: Getting to Know Me",
+ "subtitle": "A self-reflection activity about how you’ve been lately",
+ "instructions": [
+  "Think about yourself over the past few weeks.",
+  "There are no right answers and no grades. Pick what’s closest.",
+  "You can skip a question, or go back and change an answer."
+ ],
+ "note": "This is a self-reflection activity — not a psychological test or diagnosis. If a description doesn’t fit you, you don’t have to keep it.",
+ "choices": [
+  {
+   "value": -1,
+   "label": "Not really"
+  },
+  {
+   "value": 0,
+   "label": "It depends"
+  },
+  {
+   "value": 1,
+   "label": "That’s me"
+  }
+ ],
+ "dimensions": [
+  {
+   "id": "social",
+   "name": "How I recharge",
+   "leftLabel": "Alone or with a few, quietly",
+   "rightLabel": "With people, actively",
+   "low": {
+    "title": "Recharges quietly",
+    "summary": "Your answers show you get energy from thinking alone or being with a few comfortable people.",
+    "strength": "You can think things through deeply and invest steadily in close relationships.",
+    "challenge": "Long stretches with groups can wear you out, and you may wait too long to ask for help.",
+    "grow": "Share one good idea you worked out on your own with one person you’re comfortable with.",
+    "practice": "Leave a short break before and after big gatherings, and ask for help in a sentence when you need it.",
+    "ko": {
+     "title": "차분히 충전하는 편",
+     "summary": "혼자 생각하거나 편한 몇 사람과 있을 때 힘을 얻는 모습이 답에 담겼어요.",
+     "strength": "생각을 깊이 정리하고, 작은 관계에 꾸준히 마음을 쓰는 힘을 살펴보세요.",
+     "challenge": "함께하는 시간이 길어지면 지치거나, 혼자 해결하다 도움을 늦게 요청할 수 있어요.",
+     "grow": "혼자 정리한 좋은 생각 하나를 편한 사람 한 명에게 이야기해 보세요.",
+     "practice": "큰 모임 앞뒤에 잠깐 쉬는 시간을 두고, 도움이 필요하면 짧게 요청해 보세요."
+    }
+   },
+   "mid": {
+    "title": "Recharges either way",
+    "summary": "Your answers show you get energy from both time with people and time alone.",
+    "strength": "You can join in when it fits, and step back to think when you need to.",
+    "challenge": "It can be hard to tell whether you need conversation or rest, so your schedule may fill up.",
+    "grow": "Write one line about which gatherings energized you and which activities left you wanting rest.",
+    "practice": "Check your energy before making plans, and leave some space to rest.",
+    "ko": {
+     "title": "상황에 따라 충전하는 편",
+     "summary": "함께하는 시간과 혼자 있는 시간 모두에서 힘을 얻는 모습이 답에 담겼어요.",
+     "strength": "상황에 맞게 참여하고, 필요할 때 한 걸음 물러나 생각하는 힘을 살펴보세요.",
+     "challenge": "그날 필요한 것이 대화인지 휴식인지 헷갈려 일정이 많아질 수 있어요.",
+     "grow": "어떤 만남 뒤에 힘이 났는지, 어떤 활동 뒤에 쉬고 싶었는지 한 줄 남겨 보세요.",
+     "practice": "약속을 정하기 전에 오늘의 에너지를 잠깐 확인하고 쉬는 틈을 남겨 보세요."
+    }
+   },
+   "high": {
+    "title": "Recharges with people",
+    "summary": "Your answers show you get energy from talking and doing things with others.",
+    "strength": "You start conversations, connect people, and bring life to a group.",
+    "challenge": "Your schedule can get overloaded, and you may not get enough time to think alone.",
+    "grow": "In groups, make room for quieter people to speak.",
+    "practice": "Before an important conversation, take a moment to jot down your own thoughts first.",
+    "ko": {
+     "title": "함께하며 충전하는 편",
+     "summary": "사람들과 이야기하거나 활동할 때 힘을 얻는 모습이 답에 담겼어요.",
+     "strength": "대화를 시작하고, 함께할 사람을 연결하고, 모임에 활기를 더하는 힘을 살펴보세요.",
+     "challenge": "일정이 너무 많아지거나, 혼자 생각할 시간이 부족해질 수 있어요.",
+     "grow": "모임에서 조용한 사람에게도 말할 자리를 주며 함께하는 힘을 키워 보세요.",
+     "practice": "중요한 일을 이야기하기 전, 내 생각을 혼자 짧게 적어 볼 시간을 가져 보세요."
+    }
+   },
+   "ko": {
+    "name": "에너지를 채우는 방식",
+    "leftLabel": "혼자 또는 소수와 차분히",
+    "rightLabel": "사람들과 함께 활발히"
+   }
+  },
+  {
+   "id": "curiosity",
+   "name": "Familiar vs. new",
+   "leftLabel": "Go deep on the familiar",
+   "rightLabel": "Explore new things widely",
+   "low": {
+    "title": "Goes deep on the familiar",
+    "summary": "Your answers show you like to keep building on methods and things you already enjoy.",
+    "strength": "You build real skill through repetition and understand familiar things in detail.",
+    "challenge": "Even when a new approach would help, you may hesitate a long time before starting.",
+    "grow": "Raise the difficulty a little on something you love, or add just one new method.",
+    "practice": "Instead of a totally unfamiliar challenge, try a small change to something familiar.",
+    "ko": {
+     "title": "익숙한 것을 깊이 파는 편",
+     "summary": "아는 방법이나 좋아하는 것을 꾸준히 이어 가는 모습이 답에 담겼어요.",
+     "strength": "반복하며 실력을 쌓고, 이미 아는 것을 자세히 이해하는 힘을 살펴보세요.",
+     "challenge": "새로운 방법이 도움이 되어도 시작을 오래 망설일 수 있어요.",
+     "grow": "좋아하는 일 하나에서 난이도를 조금 올리거나, 새로운 방법을 하나만 붙여 보세요.",
+     "practice": "완전히 낯선 도전보다 익숙한 것의 작은 변화부터 시도해 보세요."
+    }
+   },
+   "mid": {
+    "title": "Mixes familiar and new",
+    "summary": "Your answers show you use what you know while staying open to new ideas.",
+    "strength": "You connect existing methods with new ideas.",
+    "challenge": "With many options, deciding where to start can take a while.",
+    "grow": "Apply one new method to something you already do, and notice the difference.",
+    "practice": "Before choosing, write down the one criterion that matters most right now.",
+    "ko": {
+     "title": "익숙함과 새로움을 섞는 편",
+     "summary": "아는 방법을 활용하면서 새로운 시도도 열어 두는 모습이 답에 담겼어요.",
+     "strength": "기존의 방법과 새 아이디어를 연결하는 힘을 살펴보세요.",
+     "challenge": "여러 방법 사이에서 무엇부터 할지 결정이 늦어질 수 있어요.",
+     "grow": "이미 하던 일 하나에 새 방법 하나를 적용해 보고 차이를 관찰해 보세요.",
+     "practice": "선택 전에 지금 가장 중요한 기준 하나를 적어 보세요."
+    }
+   },
+   "high": {
+    "title": "Explores new things",
+    "summary": "Your answers show new experiences and ideas spark your interest.",
+    "strength": "You imagine other possibilities and learn by starting.",
+    "challenge": "Interests keep multiplying, which can make it hard to finish what you start.",
+    "grow": "Pick the one idea you most want to try, and finish a small version of it.",
+    "practice": "Write new ideas down separately, and set a small finish line for what you’re doing now.",
+    "ko": {
+     "title": "새로운 것을 탐색하는 편",
+     "summary": "새로운 경험이나 아이디어를 만나면 관심이 생기는 모습이 답에 담겼어요.",
+     "strength": "다른 가능성을 떠올리고, 시작해 보며 배우는 힘을 살펴보세요.",
+     "challenge": "관심사가 계속 늘어나 끝내고 싶은 일을 마무리하기 어려울 수 있어요.",
+     "grow": "가장 해 보고 싶은 아이디어 하나를 골라, 작게라도 끝까지 만들어 보세요.",
+     "practice": "새로 떠오른 아이디어는 따로 적고, 지금 하는 일의 작은 마침표를 정해 보세요."
+    }
+   },
+   "ko": {
+    "name": "익숙함과 새로움",
+    "leftLabel": "익숙한 것을 깊이",
+    "rightLabel": "새로운 것을 넓게"
+   }
+  },
+  {
+   "id": "structure",
+   "name": "How I start and keep going",
+   "leftLabel": "Adjust as I go",
+   "rightLabel": "Plan the order first",
+   "low": {
+    "title": "Adapts in the moment",
+    "summary": "Your answers show you tend to move with the situation rather than a set plan.",
+    "strength": "You change approach as things shift, and you spot opportunities in front of you.",
+    "challenge": "You may miss when to start or how much time is left, so work piles up at once.",
+    "grow": "Turn a task into a tiny first action, and set just one start time.",
+    "practice": "Instead of a long plan, write one thing to finish today and put it where you can see it.",
+    "ko": {
+     "title": "상황에 맞춰 움직이는 편",
+     "summary": "미리 정한 순서보다 그때의 상황을 보며 움직이는 모습이 답에 담겼어요.",
+     "strength": "변화에 맞춰 방법을 바꾸고, 눈앞의 기회를 발견하는 힘을 살펴보세요.",
+     "challenge": "시작 시점이나 남은 시간을 놓쳐 일이 한꺼번에 몰릴 수 있어요.",
+     "grow": "해야 할 일을 아주 작은 첫 행동으로 바꾸고, 시작할 시각 하나만 정해 보세요.",
+     "practice": "긴 계획표 대신 오늘 끝낼 한 가지를 적고 눈에 보이는 곳에 놓아 보세요."
+    }
+   },
+   "mid": {
+    "title": "Keeps a frame, adjusts inside it",
+    "summary": "Your answers show you make the plans you need and change them when things shift.",
+    "strength": "You keep the main direction while adjusting the method.",
+    "challenge": "If you’re not clear on what must stay fixed, small exceptions can add up.",
+    "grow": "Split today into one must-do and one nice-to-do.",
+    "practice": "At the end of the day, don’t grade your plan — just choose one thing to change tomorrow.",
+    "ko": {
+     "title": "뼈대를 두고 조정하는 편",
+     "summary": "필요한 계획을 세우고 상황에 따라 바꾸는 모습이 답에 담겼어요.",
+     "strength": "기본 방향을 지키면서 방법을 조정하는 힘을 살펴보세요.",
+     "challenge": "무엇을 꼭 지킬지 분명하지 않으면 작은 예외가 쌓일 수 있어요.",
+     "grow": "오늘 꼭 할 일 하나와 여유가 있으면 할 일 하나를 나누어 보세요.",
+     "practice": "하루가 끝날 때 계획을 평가하기보다, 내일 바꿀 점 하나만 골라 보세요."
+    }
+   },
+   "high": {
+    "title": "Likes a clear order",
+    "summary": "Your answers show you feel at ease when the order and timing are set.",
+    "strength": "You prepare, remember commitments, and follow through.",
+    "challenge": "Surprises can be hard, and you may keep polishing results that are already good enough.",
+    "grow": "Show a small draft before it’s perfect, and ask for feedback.",
+    "practice": "Leave slack in your plans, and decide on one backup in case things change.",
+    "ko": {
+     "title": "순서를 정해 움직이는 편",
+     "summary": "일의 순서와 시간을 정해 두면 편안한 모습이 답에 담겼어요.",
+     "strength": "준비하고, 약속을 기억하고, 끝까지 이어 가는 힘을 살펴보세요.",
+     "challenge": "예상과 달라질 때 힘들거나, 충분히 괜찮은 결과도 계속 고치고 싶을 수 있어요.",
+     "grow": "완벽하게 준비되기 전 작은 초안을 보여 주고 의견을 받아 보세요.",
+     "practice": "계획 안에 여유를 남기고, 바뀌었을 때 쓸 대안 하나를 정해 보세요."
+    }
+   },
+   "ko": {
+    "name": "일을 시작하고 이어 가는 방식",
+    "leftLabel": "상황을 보며 조정",
+    "rightLabel": "순서를 세워 진행"
+   }
+  },
+  {
+   "id": "attunement",
+   "name": "What I notice first in people",
+   "leftLabel": "Ideas and solutions",
+   "rightLabel": "Feelings and mood",
+   "low": {
+    "title": "Speaks thoughts clearly",
+    "summary": "Your answers show you tend to think first about the core issue or the solution.",
+    "strength": "You say what you think clearly and organize problems concretely.",
+    "challenge": "If you rush to fix things, others may feel you didn’t really hear them.",
+    "grow": "Before offering a solution, ask how the other person is feeling right now.",
+    "practice": "Practice asking: “Want to find a solution together, or should I just listen first?”",
+    "ko": {
+     "title": "생각을 분명히 전하는 편",
+     "summary": "상황의 핵심이나 해결 방법을 먼저 떠올리는 모습이 답에 담겼어요.",
+     "strength": "생각을 명확히 말하고, 문제를 구체적으로 정리하는 힘을 살펴보세요.",
+     "challenge": "해결을 서두르면 상대는 마음을 충분히 듣지 못했다고 느낄 수 있어요.",
+     "grow": "방법을 말하기 전에 상대가 지금 어떻게 느끼는지 한 번 물어보세요.",
+     "practice": "“같이 방법을 찾아볼까, 먼저 들어 줄까?”라고 물어보는 연습을 해 보세요."
+    }
+   },
+   "mid": {
+    "title": "Balances my view and theirs",
+    "summary": "Your answers show you weigh both speaking clearly and noticing how others feel.",
+    "strength": "You connect different opinions and help people understand each other.",
+    "challenge": "Trying to satisfy everyone, you may share your own view late.",
+    "grow": "Repeat back the other person’s point in one sentence, then share yours in one sentence.",
+    "practice": "Instead of assuming you know how someone feels, check with them directly.",
+    "ko": {
+     "title": "내 생각과 상대 마음을 함께 보는 편",
+     "summary": "분명하게 말하는 것과 상대의 마음을 살피는 것 모두를 고려하는 모습이 답에 담겼어요.",
+     "strength": "다른 의견을 연결하고, 서로 이해하도록 돕는 힘을 살펴보세요.",
+     "challenge": "모두를 만족시키려다 자신의 생각을 늦게 말할 수 있어요.",
+     "grow": "상대의 말을 한 문장으로 확인한 뒤, 내 생각도 한 문장으로 말해 보세요.",
+     "practice": "다른 사람의 마음을 내가 정확히 안다고 단정하기보다 직접 확인해 보세요."
+    }
+   },
+   "high": {
+    "title": "Reads feelings and mood closely",
+    "summary": "Your answers show you notice first how words and moods land on people.",
+    "strength": "You notice small changes and help others feel safe to talk.",
+    "challenge": "You may take on too much responsibility for others’ reactions, or put your own feelings last.",
+    "grow": "As much as you notice others, write one sentence about your own feelings and needs today.",
+    "practice": "Practice a kind boundary: “I can’t do that right now, but I can help with this much.”",
+    "ko": {
+     "title": "마음과 분위기를 세심히 살피는 편",
+     "summary": "말이나 분위기가 사람들에게 어떻게 닿는지 먼저 살피는 모습이 답에 담겼어요.",
+     "strength": "작은 변화를 알아차리고, 다른 사람이 편하게 이야기하도록 돕는 힘을 살펴보세요.",
+     "challenge": "다른 사람의 반응을 너무 많이 책임지거나, 내 마음을 뒤로 미룰 수 있어요.",
+     "grow": "다른 사람을 살핀 만큼 오늘 내 마음과 필요도 한 문장으로 적어 보세요.",
+     "practice": "“지금은 어렵지만, 이 정도는 도울 수 있어”처럼 친절한 한계를 말해 보세요."
+    }
+   },
+   "ko": {
+    "name": "관계에서 먼저 살피는 것",
+    "leftLabel": "생각과 해결 방법",
+    "rightLabel": "마음과 분위기"
+   }
+  },
+  {
+   "id": "sensitivity",
+   "name": "How I sense and recover",
+   "leftLabel": "Stay steady amid noise",
+   "rightLabel": "Notice changes in detail",
+   "low": {
+    "title": "Stays steady amid noise",
+    "summary": "Your answers show you keep your flow even when things around you change.",
+    "strength": "You keep working through busy situations and don’t get swept up easily.",
+    "challenge": "You may notice your own tiredness — or someone else’s discomfort — late.",
+    "grow": "In the middle of busy activities, briefly check how your body and mind are doing.",
+    "practice": "Remember that an environment that’s fine for you may not be for others — ask them.",
+    "ko": {
+     "title": "자극 속에서도 흐름을 유지하는 편",
+     "summary": "주변이 조금 달라져도 하던 흐름을 이어 가는 모습이 답에 담겼어요.",
+     "strength": "복잡한 상황에서도 일을 이어 가고 분위기에 쉽게 휩쓸리지 않는 힘을 살펴보세요.",
+     "challenge": "내 피곤함이나 다른 사람의 불편함을 늦게 알아차릴 수 있어요.",
+     "grow": "바쁜 활동 중간에 몸과 마음이 어떤지 잠깐 확인해 보세요.",
+     "practice": "내게 괜찮은 환경도 다른 사람에게는 다를 수 있음을 기억하고 직접 물어보세요."
+    }
+   },
+   "mid": {
+    "title": "Adjusts to the setting",
+    "summary": "Your answers show that sometimes stimulation feels fine, and sometimes you need quiet.",
+    "strength": "You adapt to environments and find the changes you need.",
+    "challenge": "Certain sounds or schedules may build up fatigue before you notice.",
+    "grow": "Find one difference between settings that felt easy and ones that felt tiring.",
+    "practice": "Before it gets hard, make a small choice: take a short break or change seats.",
+    "ko": {
+     "title": "상황을 보며 자극을 조절하는 편",
+     "summary": "상황에 따라 주변 자극을 편하게 느끼기도 하고 조용한 시간이 필요하기도 한 모습이 답에 담겼어요.",
+     "strength": "환경에 적응하면서 필요한 변화를 찾는 힘을 살펴보세요.",
+     "challenge": "특정한 소리나 일정이 피곤함을 쌓이게 하는데 뒤늦게 알아차릴 수 있어요.",
+     "grow": "편했던 환경과 피곤했던 환경의 차이를 한 가지씩 찾아보세요.",
+     "practice": "어려워지기 전에 짧게 쉬거나 자리를 바꾸는 작은 선택을 해 보세요."
+    }
+   },
+   "high": {
+    "title": "Senses small changes",
+    "summary": "Your answers show you easily notice changes in sound, mood, or schedule.",
+    "strength": "You observe small differences and catch what others might miss.",
+    "challenge": "On busy days you may get worn out and need more quiet time to think.",
+    "grow": "Pick one task where your attention to detail helps, and do it somewhere you can focus.",
+    "practice": "Plan quiet recovery time ahead, and tell someone you trust what setting or help you need.",
+    "ko": {
+     "title": "작은 변화도 세밀히 느끼는 편",
+     "summary": "소리나 분위기, 일정의 변화가 잘 느껴지는 모습이 답에 담겼어요.",
+     "strength": "작은 차이를 관찰하고 놓치기 쉬운 부분을 발견하는 힘을 살펴보세요.",
+     "challenge": "자극이 많은 날에는 지치거나 생각을 정리할 조용한 시간이 더 필요할 수 있어요.",
+     "grow": "세심함을 쓰고 싶은 일 하나를 고르고, 집중하기 편한 환경에서 해 보세요.",
+     "practice": "조용히 쉬는 시간을 미리 만들고, 필요한 환경이나 도움을 믿을 만한 사람에게 말해 보세요."
+    }
+   },
+   "ko": {
+    "name": "자극을 느끼고 회복하는 방식",
+    "leftLabel": "자극 속에서도 흐름 유지",
+    "rightLabel": "변화를 세밀하게 느낌"
+   }
+  }
+ ],
+ "items": [
+  {
+   "id": "p01",
+   "dimension": "social",
+   "reverse": false,
+   "text": "Talking with someone during a break gives me energy again.",
+   "ko": "쉬는 시간에 누군가와 이야기하면 다시 힘이 나는 편이에요."
+  },
+  {
+   "id": "p02",
+   "dimension": "curiosity",
+   "reverse": false,
+   "text": "When I meet a new activity or topic, I want to learn more about it.",
+   "ko": "처음 보는 활동이나 주제를 만나면 일단 더 알아보고 싶어요."
+  },
+  {
+   "id": "p03",
+   "dimension": "structure",
+   "reverse": false,
+   "text": "Deciding the order of my tasks ahead of time makes it easier to start.",
+   "ko": "할 일의 순서를 미리 정해 두면 시작하기가 편해요."
+  },
+  {
+   "id": "p04",
+   "dimension": "attunement",
+   "reverse": false,
+   "text": "Before I speak, I think about how the other person might feel.",
+   "ko": "말하기 전에 상대가 어떻게 느낄지 먼저 생각하는 편이에요."
+  },
+  {
+   "id": "p05",
+   "dimension": "sensitivity",
+   "reverse": false,
+   "text": "I easily notice sounds, light, or small movements around me.",
+   "ko": "소리나 빛, 주변의 작은 움직임이 쉽게 눈에 들어오는 편이에요."
+  },
+  {
+   "id": "p06",
+   "dimension": "social",
+   "reverse": true,
+   "text": "When I want to recharge, I’d rather be alone than meet people.",
+   "ko": "기운을 되찾고 싶을 때는 사람을 만나기보다 혼자 있는 쪽을 고르는 편이에요."
+  },
+  {
+   "id": "p07",
+   "dimension": "curiosity",
+   "reverse": true,
+   "text": "I’d rather go deeper into what I already like than add new activities.",
+   "ko": "새로운 활동을 늘리기보다 이미 좋아하는 것을 더 깊게 해 보고 싶어요."
+  },
+  {
+   "id": "p08",
+   "dimension": "structure",
+   "reverse": true,
+   "text": "Rather than making a detailed plan, I start and figure it out as I go.",
+   "ko": "자세한 계획을 세우기보다 시작한 뒤 상황에 맞춰 정하는 편이에요."
+  },
+  {
+   "id": "p09",
+   "dimension": "attunement",
+   "reverse": true,
+   "text": "When a friend shares a problem, I think of solutions before feelings.",
+   "ko": "친구의 고민을 들으면 기분보다 해결 방법이 먼저 떠오르는 편이에요."
+  },
+  {
+   "id": "p10",
+   "dimension": "sensitivity",
+   "reverse": true,
+   "text": "Even when it’s a bit noisy, it’s fairly easy for me to keep focusing.",
+   "ko": "주변이 조금 시끄러워도 하던 일에 집중을 이어 가기 비교적 편해요."
+  },
+  {
+   "id": "p11",
+   "dimension": "social",
+   "reverse": false,
+   "text": "After talking or doing things in a group, I feel more energized.",
+   "ko": "여럿이 함께 대화하거나 활동하고 나면 더 활발해지는 편이에요."
+  },
+  {
+   "id": "p12",
+   "dimension": "curiosity",
+   "reverse": false,
+   "text": "Even if I have a familiar way of doing something, I want to try another way.",
+   "ko": "익숙한 방법이 있어도 다른 방법을 한 번 시험해 보고 싶어요."
+  },
+  {
+   "id": "p13",
+   "dimension": "structure",
+   "reverse": false,
+   "text": "I write down plans and assignments so I don’t forget them.",
+   "ko": "약속이나 과제를 잊지 않도록 적어 두고 확인하는 편이에요."
+  },
+  {
+   "id": "p14",
+   "dimension": "attunement",
+   "reverse": false,
+   "text": "I notice when someone in a group goes quiet or the mood shifts.",
+   "ko": "모임에서 누군가 조용해지거나 분위기가 바뀌면 잘 알아차리는 편이에요."
+  },
+  {
+   "id": "p15",
+   "dimension": "sensitivity",
+   "reverse": false,
+   "text": "On days with lots of people or plans, I need quite a bit of quiet time to recover.",
+   "ko": "사람이나 일정이 많은 날에는 조용히 회복할 시간이 꽤 필요한 편이에요."
+  },
+  {
+   "id": "p16",
+   "dimension": "social",
+   "reverse": true,
+   "text": "I get more energy from being alone or with one or two close people than from busy groups.",
+   "ko": "여러 사람과 활발하게 보내기보다 혼자나 편한 한두 명과 지낼 때 더 힘을 얻어요."
+  },
+  {
+   "id": "p17",
+   "dimension": "curiosity",
+   "reverse": true,
+   "text": "In my free time, I pick familiar favorites over unfamiliar things.",
+   "ko": "여가 시간이 생기면 낯선 것보다 익숙하고 좋아하는 것을 고르는 편이에요."
+  },
+  {
+   "id": "p18",
+   "dimension": "structure",
+   "reverse": true,
+   "text": "Instead of planning my day tightly, I pick what’s needed in the moment.",
+   "ko": "하루를 미리 촘촘하게 정해 두기보다 그때 필요한 일을 고르는 편이에요."
+  },
+  {
+   "id": "p19",
+   "dimension": "attunement",
+   "reverse": true,
+   "text": "When opinions differ, I state my view clearly before checking people’s reactions.",
+   "ko": "의견이 다를 때는 사람들의 반응을 살피기 전에 내 생각을 먼저 분명히 말하는 편이에요."
+  },
+  {
+   "id": "p20",
+   "dimension": "sensitivity",
+   "reverse": true,
+   "text": "When something unexpected happens, I get back into my rhythm fairly quickly.",
+   "ko": "예상하지 못한 변화가 생겨도 비교적 빨리 내 리듬을 다시 잡는 편이에요."
+  }
+ ],
+ "ko": {
+  "title": "나를 알아가는 질문 20",
+  "subtitle": "요즘 내 모습에 대한 자기이해 활동",
+  "instructions": [
+   "지난 몇 주의 나를 떠올려 보세요.",
+   "정답도 등급도 없어요. 가장 가까운 답을 고르면 돼요.",
+   "질문은 넘겨도 괜찮고, 이전 질문으로 돌아가 바꿀 수도 있어요."
+  ],
+  "note": "심리검사나 진단을 대신하지 않는 자기이해 활동입니다. 내 답에서 보인 방향을 함께 살펴봐요. 상황과 경험에 따라 달라질 수 있고, 나와 맞지 않는 설명은 가져가지 않아도 괜찮아요.",
+  "choices": [
+   "아니에요",
+   "때에 따라 달라요",
+   "그래요"
+  ]
+ }
+};</script>
+<script>// Standalone "My User Manual" personality test: 20 questions, results on the spot.
+// Answers stay in this browser (localStorage); nothing is sent to a server.
+(function () {
+  const root = document.getElementById("pt");
+  const KEY = "hz-personality-test";
+  let data = null;
+  let st = load() || { i: 0, answers: {}, started: false };
+
+  const lang = () => (window.hzLang && window.hzLang()) || "en";
+  const t = (en, ko) => (lang() === "ko" ? ko : en);
+  function load() { try { return JSON.parse(localStorage.getItem(KEY)); } catch { return null; } }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch {} }
+  function el(tag, attrs, ...kids) {
+    const n = document.createElement(tag);
+    for (const [k, v] of Object.entries(attrs || {})) {
+      if (v == null || v === false) continue;
+      if (k === "class") n.className = v; else if (k === "text") n.textContent = v;
+      else if (k.startsWith("on")) n.addEventListener(k.slice(2), v); else n.setAttribute(k, v);
+    }
+    for (const c of kids.flat()) if (c != null && c !== false) n.append(c instanceof Node ? c : document.createTextNode(String(c)));
+    return n;
+  }
+
+  // Data in the current language
+  function P() {
+    if (lang() !== "ko") return data;
+    const k = data.ko;
+    return { ...data, title: k.title, subtitle: k.subtitle, instructions: k.instructions, note: k.note,
+      choices: data.choices.map((c, i) => ({ ...c, label: k.choices[i] })),
+      items: data.items.map((it) => ({ ...it, text: it.ko })),
+      dimensions: data.dimensions.map((d) => ({ ...d, ...d.ko, low: { ...d.low, ...d.low.ko }, mid: { ...d.mid, ...d.mid.ko }, high: { ...d.high, ...d.high.ko } })) };
+  }
+  function score() {
+    const out = {};
+    for (const dim of data.dimensions) {
+      const items = data.items.filter((it) => it.dimension === dim.id);
+      const vals = items.map((it) => st.answers[it.id]).map((v, i) => (v == null ? null : items[i].reverse ? -v : v)).filter((v) => v != null);
+      if (vals.length < 2) { out[dim.id] = null; continue; }
+      const m = vals.reduce((a, b) => a + b, 0) / vals.length;
+      out[dim.id] = m < -0.25 ? "low" : m > 0.25 ? "high" : "mid";
+    }
+    return out;
+  }
+
+  function render() {
+    if (!data) return;
+    const p = P();
+    root.replaceChildren();
+    if (!st.started) return intro(p);
+    if (st.i >= p.items.length) return results(p);
+    card(p);
+  }
+
+  function intro(p) {
+    root.append(
+      el("ul", { class: "pt-list" }, p.instructions.map((s) => el("li", { text: s }))),
+      el("p", { class: "pt-note", text: p.note }),
+      el("button", { class: "btn", type: "button", onclick: () => { st.started = true; save(); render(); } }, t("Start the 20 questions", "질문 20개 시작하기")));
+  }
+
+  function card(p) {
+    const item = p.items[st.i], cur = st.answers[item.id];
+    const c = el("div", { class: "qcard", tabindex: "0" },
+      el("span", { class: "stamp no", text: t("NOT REALLY", "아니에요") }), el("span", { class: "stamp yes", text: t("THAT’S ME", "그래요") }),
+      el("div", { class: "qn", text: `${String(st.i + 1).padStart(2, "0")} / ${p.items.length}` }),
+      el("div", { class: "qt", text: item.text }),
+      el("div", { class: "hint" }, el("span", { text: t("← Not really", "← 아니에요") }), el("span", { text: t("That’s me →", "그래요 →") })));
+    root.append(
+      el("div", { class: "pt-progress" }, el("i", { style: `width:${(st.i / p.items.length) * 100}%` })),
+      el("div", { class: "pt-stage" }, c),
+      el("div", { class: "quiz-actions" }, p.choices.map((ch) => el("button", { type: "button", class: cur === ch.value ? "sel" : "", onclick: () => answer(ch.value) }, ch.label))),
+      el("div", { class: "quiz-sub" },
+        el("button", { type: "button", disabled: st.i === 0, onclick: () => { st.i = Math.max(0, st.i - 1); save(); render(); } }, t("← Previous", "← 이전 질문")),
+        el("button", { type: "button", onclick: () => answer(null) }, t("Skip this one", "이 질문은 넘길게요"))));
+    // swipe
+    let x0 = null, dx = 0;
+    const yes = c.querySelector(".stamp.yes"), no = c.querySelector(".stamp.no");
+    c.addEventListener("pointerdown", (e) => { x0 = e.clientX; dx = 0; c.setPointerCapture(e.pointerId); c.style.transition = "none"; });
+    c.addEventListener("pointermove", (e) => { if (x0 == null) return; dx = e.clientX - x0; c.style.transform = `translateX(${dx}px) rotate(${dx / 18}deg)`; yes.style.opacity = Math.max(0, Math.min(1, dx / 90)); no.style.opacity = Math.max(0, Math.min(1, -dx / 90)); });
+    const end = () => { if (x0 == null) return; x0 = null; c.style.transition = "transform .25s ease";
+      if (Math.abs(dx) > 90) { c.style.transform = `translateX(${dx > 0 ? 600 : -600}px) rotate(${dx / 10}deg)`; setTimeout(() => answer(dx > 0 ? 1 : -1), 180); }
+      else { c.style.transform = ""; yes.style.opacity = 0; no.style.opacity = 0; } };
+    c.addEventListener("pointerup", end); c.addEventListener("pointercancel", end);
+    c.addEventListener("keydown", (e) => { if (e.key === "ArrowRight") answer(1); else if (e.key === "ArrowLeft") answer(-1); else if (e.key === "ArrowDown") answer(0); });
+    c.focus({ preventScroll: true });
+  }
+
+  function answer(v) { st.answers[P().items[st.i].id] = v; st.i++; save(); render(); }
+
+  function results(p) {
+    const r = score();
+    const box = el("div", { class: "pt-results" });
+    for (const dim of p.dimensions) {
+      const lvl = r[dim.id], c = lvl && dim[lvl], pos = { low: 12, mid: 50, high: 88 }[lvl];
+      box.append(el("div", { class: "result" },
+        el("div", { class: "dim", text: dim.name }),
+        el("h4", { text: c ? c.title : t("Still getting to know this", "조금 더 알아가는 중") }),
+        el("p", { text: c ? c.summary : t("You answered fewer than two questions here — that’s okay.", "이 영역은 답이 적어요. 괜찮아요.") }),
+        el("div", { class: "scale-bar" }, pos != null ? el("i", { style: `left:${pos}%` }) : null),
+        el("div", { class: "scale" }, el("span", { text: dim.leftLabel }), el("span", { text: dim.rightLabel })),
+        c ? el("dl", {},
+          el("dt", { text: t("Strength", "강점") }), el("dd", { text: c.strength }),
+          el("dt", { text: t("Where you might get stuck", "막힐 수 있는 때") }), el("dd", { text: c.challenge }),
+          el("dt", { text: t("Grow it", "강점을 키우는 방법") }), el("dd", { text: c.grow }),
+          el("dt", { text: t("Try this", "도움이 되는 작은 연습") }), el("dd", { text: c.practice })) : null));
+    }
+    root.append(
+      el("h2", { class: "h3", text: t("Your user manual, so far", "지금까지의 나의 사용설명서") }),
+      el("p", { class: "pt-note", text: t("No answer is better than another. Keep what fits you — leave what doesn’t.", "더 좋은 답은 없어요. 나와 맞는 것은 가져가고, 맞지 않는 것은 두고 가요.") }),
+      box,
+      el("p", { class: "pt-note", text: p.note }),
+      el("div", { class: "pt-actions" },
+        el("button", { class: "btn ghost", type: "button", onclick: () => { st.i = 0; save(); render(); } }, t("Review my answers", "내 답 다시 보기")),
+        el("button", { class: "btn ghost", type: "button", onclick: () => { st = { i: 0, answers: {}, started: true }; save(); render(); } }, t("Start over", "처음부터 다시"))));
+  }
+
+  document.addEventListener("hz-langchange", render);
+  const inline = window.__PERSONALITY;
+  (inline ? Promise.resolve(inline) : fetch("/data/personality.json").then((r) => r.json())).then((d) => { data = d; render(); });
+})();
+</script>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-brands">
+    <div class="lockup" aria-label="Hephzibah Academy and Beulah">
+      <a class="lk" href="index.html"><svg class="lk-mark" viewBox="9 11 43 43" aria-hidden="true"><path d="M10 22h11v12h17V12h13v41H38V42H21v11H10z" fill="currentColor"/></svg><span class="lk-name"><b>Hephzibah</b><span>ACADEMY</span></span></a>
+      <span class="lk-sep" aria-hidden="true"></span>
+      <a class="lk" href="support.html"><svg class="lk-mark" viewBox="9 11 43 43" aria-hidden="true"><path fill-rule="evenodd" d="M11 12h28l9 8v9l-4 3.5 5 4.5v9l-8 7H11zM23 21v8h11v-8zM23 38v8h12v-8z" fill="currentColor"/></svg><span class="lk-name"><b>Beulah</b><span>VENTURE</span></span></a>
+    </div>
+  </div>
+  <div class="wrap"><span>Faith for life. Learning for the world.</span><span class="right">© 2026 Hephzibah Academy</span></div>
+</footer>
+<script>// Mobile menu toggle
+document.addEventListener("click", (e) => {
+  const btn = e.target.closest(".menu-btn");
+  if (!btn) return;
+  const nav = document.getElementById(btn.getAttribute("aria-controls"));
+  const open = nav.classList.toggle("open");
+  btn.setAttribute("aria-expanded", String(open));
+});
+
+document.addEventListener("click",(e)=>{const a=e.target.closest('a[href="#live-only"]');if(!a)return;e.preventDefault();note("Live classes need the full site with its server.");});
+document.addEventListener("submit",(e)=>{e.preventDefault();e.stopImmediatePropagation();note("This form needs the full site with its server.");},true);
+function note(t){const K=window.hzI18n&&window.hzLang&&window.hzLang()==="ko"?window.hzI18n.KO[t]:null;let n=document.querySelector(".preview-note");if(!n){n=document.createElement("div");n.className="preview-note";n.setAttribute("role","status");document.body.append(n);}n.textContent=K||t;clearTimeout(n._t);n._t=setTimeout(()=>n.remove(),4000);}
+</script>
+<script>// English / 한국어 toggle for the website pages.
+// Text nodes and placeholders are matched by their exact English text.
+(function () {
+  const KO = {
+    "Apply": "지원하기", "Beulah Venture": "쁄라 벤처",
+    "Tell us about your business.": "당신의 사업을 들려주세요.", "Venture 101 graduates only. We reply within 2 weeks.": "Venture 101 수료자만 지원할 수 있어요. 2주 안에 답해 드려요.",
+    "First Track": "퍼스트 트랙", "2026 cohort.": "2026년 기수.", "Our first track for gospel-based startups begins in 2026.": "복음 기반 스타트업을 위한 첫 트랙이 2026년에 시작해요.",
+    "Name and email": "이름과 이메일", "Verify your email": "이메일 인증", "Tell us about your business": "사업 소개 작성",
+    "Step 1 of 3": "1 / 3단계", "Step 2 of 3": "2 / 3단계", "Step 3 of 3 ·": "3 / 3단계 ·",
+    "Send verification code": "인증 코드 보내기", "We sent a 6-digit code to": "6자리 코드를 보냈어요:", "Verification code": "인증 코드",
+    "Verify": "인증하기", "Send a new code": "새 코드 받기", "A new code is on its way.": "새 코드를 보냈어요.",
+    "I completed Venture 101.": "Venture 101을 수료했어요.", "Venture 101 cohort or year (optional)": "Venture 101 기수 또는 연도 (선택)",
+    "Company name": "회사 이름", "Your business in one line": "한 줄 사업 소개", "Stage": "단계",
+    "Idea": "아이디어", "Building": "만드는 중", "Launched": "출시", "Revenue": "매출 발생",
+    "What problem are you solving?": "어떤 문제를 해결하나요?", "Who are your customers?": "고객은 누구인가요?",
+    "Traction so far (optional)": "지금까지의 성과 (선택)", "How does your faith shape this business?": "신앙이 이 사업에 어떻게 녹아 있나요?",
+    "Team (optional)": "팀 (선택)", "What are you asking for? (optional)": "어떤 도움을 원하시나요? (선택)", "Funding, mentoring, customers…": "투자, 멘토링, 고객 연결…",
+    "Website (optional)": "웹사이트 (선택)", "Submit application": "지원서 제출", "We reply within 2 weeks.": "2주 안에 답해 드릴게요.",
+    "Have a business? Apply to Beulah Venture →": "사업을 하고 있나요? 쁄라 벤처에 지원하세요 →",
+    "This track is for Venture 101 graduates.": "이 트랙은 Venture 101 수료자를 위한 것이에요.", "Please fill in the required fields.": "필수 항목을 채워 주세요.",
+    "Please add your name.": "이름을 입력해 주세요.", "Please add a valid email.": "올바른 이메일을 입력해 주세요.",
+    "We just sent a code. Please wait a minute before asking again.": "방금 코드를 보냈어요. 1분 뒤에 다시 요청해 주세요.",
+    "That code has expired. Please request a new one.": "코드가 만료됐어요. 새 코드를 받아 주세요.",
+    "Too many tries. Please request a new code.": "시도가 너무 많아요. 새 코드를 받아 주세요.",
+    "That code isn’t right. Please check your email and try again.": "코드가 맞지 않아요. 이메일을 확인하고 다시 입력해 주세요.",
+    "Your session expired. Please verify your email again.": "세션이 만료됐어요. 이메일을 다시 인증해 주세요.",
+    "We couldn’t send the email. Please try again in a minute.": "이메일을 보내지 못했어요. 잠시 뒤 다시 시도해 주세요.",
+    "Something went wrong.": "문제가 생겼어요.",
+    "Open the presenter screen.": "발표 화면을 열어요.", "A room code and QR code appear on the projector.": "프로젝터에 방 코드와 QR 코드가 나타나요.",
+    "Students scan with their phones.": "학생들은 휴대폰으로 스캔해요.", "No sign-up. Each joins as a random orchestra instrument, the only name shown on screen.": "가입 없이, 각자 무작위 오케스트라 악기 이름으로 참여해요. 화면에는 그 이름만 나와요.",
+    "Students answer on question slides.": "질문 슬라이드에서 학생들이 답해요.", "Answers appear on the big screen without names. Turn on review mode to approve each one first.": "답은 이름 없이 큰 화면에 나와요. 검토 모드를 켜면 하나씩 승인할 수 있어요.",
+    "The first-page worksheet stays private.": "“첫 페이지” 워크시트는 비공개예요.", "It stays on each phone and can be downloaded.": "각자의 휴대폰에만 남고 내려받을 수 있어요.",
+    "Click each instrument to hear its part alone, then all together, before the closing video.": "마지막 영상 전에 악기를 하나씩 눌러 그 파트만 듣고, 함께 들어요.",
+    "Hear the orchestra.": "오케스트라를 들어요.",
+    "Live classes need the full site with its server.": "실시간 강의는 서버가 있는 전체 사이트에서 이용할 수 있어요.", "This form needs the full site with its server.": "이 신청은 서버가 있는 전체 사이트에서 제출할 수 있어요.",
+    "Personality test": "성격 진단", "My User Manual personality test": "나의 사용설명서 성격 진단", "Personality test.": "성격 진단.",
+    "20 questions about you. See your strengths, where you might get stuck, and how to grow.": "나에 대한 질문 20개. 강점, 막힐 수 있는 때, 성장하는 방법을 알아봐요.",
+    "About 5 minutes": "약 5분", "Results right away": "결과 바로 보기", "20 questions about you. About 5 minutes.": "나에 대한 질문 20개. 약 5분이면 돼요.",
+    "Cohort": "코호트", "Learn together.": "함께 배워요.", "A small group that meets, learns, and checks in.": "함께 만나고, 배우고, 서로 점검하는 작은 모임.",
+    "How a cohort works": "코호트 진행 방식", "Live session": "실시간 강의", "The lecture, live. Everyone answers from their phone.": "실시간 강의. 모두 휴대폰으로 참여해요.",
+    "Class": "클래스", "Go deeper together in a small group.": "작은 그룹에서 더 깊이 나눠요.", "Mentoring": "멘토링", "Meet an adult mentor who has walked the road.": "먼저 길을 걸어간 어른 멘토를 만나요.",
+    "✓ Check-in": "✓ 체크인", "Every section ends with a short check-in: what I learned, how I’m doing, my next step.": "섹션마다 짧은 체크인으로 마무리해요. 배운 것, 요즘 나의 상태, 다음 한 걸음.",
+    "Sign up": "신청", "Join the next cohort.": "다음 코호트에 함께해요.", "Track": "과정",
+    "My User Manual · For High School": "나의 사용설명서 · 고등학생", "I am a": "나는", "Student": "학생", "Parent": "학부모", "Adult": "성인",
+    "Grade or age (optional)": "학년 또는 나이 (선택)", "Church (optional)": "교회 (선택)", "What do you hope to get out of it? (optional)": "무엇을 기대하나요? (선택)",
+    "If I’m under 18, a parent or guardian knows I’m signing up.": "18세 미만이라면 부모님 또는 보호자가 신청 사실을 알고 있어요.",
+    "Sign up for the cohort": "코호트 신청하기", "Sign up for a cohort": "코호트 신청", "We’ll email you when the next cohort opens.": "다음 코호트가 열리면 이메일로 알려 드릴게요.",
+    "Please choose a track.": "과정을 선택해 주세요.",
+    "Menu": "메뉴", "Academy": "아카데미", "Community": "커뮤니티", "About": "소개", "Mentors": "멘토", "Support": "후원", "Log in": "로그인",
+    "Hephzibah Academy": "헵시바 아카데미",
+    "Light and salt.": "빛과 소금.", "Light and salt": "빛과 소금", "Matthew 5:13–16": "마태복음 5:13–16", "Start learning": "배움 시작하기",
+    "LEARN / THRIVE / SHARE": "배우고 / 자라고 / 나누고",
+    "Learn": "배움", "Ask honest questions.": "솔직하게 질문해요.", "Share": "나눔", "Hear one another.": "서로의 이야기를 들어요.", "Edify one another.": "서로 세워 줘요.",
+    "Thrive": "성장", "Take one small step.": "작은 한 걸음을 내디뎌요.",
+    "Light and Salt": "빛과 소금", "A house on a hill.": "산 위의 집.", "A light for every room.": "모든 방을 비추는 빛.",
+    "For Christians worn down by the world’s values.": "세상의 가치관 속에서 지쳐 가는 그리스도인들을 위해.",
+    "To live as light — with power — every day,": "날마다 능력 있는 빛으로 살아가도록,", "as children of God.": "하나님의 자녀로.",
+    "“You are the light of the world. … Even so, let your light shine before men, that they may see your good works, and glorify your Father who is in heaven.”":
+      "“너희는 세상의 빛이라 … 이같이 너희 빛을 사람 앞에 비취게 하여 저희로 너희 착한 행실을 보고 하늘에 계신 너희 아버지께 영광을 돌리게 하라.”",
+    "Matthew 5:14–16 (WEB)": "마태복음 5:14–16 (개역한글)",
+    "Lectures": "강의", "Start with a question.": "질문으로 시작해요.", "How should we live in the age of AI?": "AI 시대, 어떻게 살아가야 할까?", "All lectures": "전체 강의",
+    "For High School": "고등학생", "My User Manual": "나의 사용설명서",
+    "Who am I made to be? Answer live from your phone.": "나는 어떤 사람으로 지음받았을까? 휴대폰으로 실시간 참여해요.",
+    "29 slides": "슬라이드 29장", "~40 min": "약 40분", "Live & interactive": "실시간 참여",
+    "Startup": "창업", "Startup Academy": "창업 아카데미", "For anyone who wants to start a company.": "창업을 꿈꾸는 누구에게나.",
+    "Coming soon": "준비 중", "Finance": "재정", "Basic Finance": "기초 재정",
+    "A Christian view of money, for life in the U.S.": "미국에서 살아가는 그리스도인의 재정관.",
+    "Give monthly.": "매달 후원하기.",
+    "Classes and monthly gifts invest in gospel-based startups through Beulah Venture.": "수강료와 정기 후원은 쁄라 벤처를 통해 복음 기반 스타트업에 투자됩니다.",
+    "Become a supporter": "후원자 되기",
+    "About · Isaiah 62:4": "소개 · 이사야 62:4",
+    "Hephzibah": "헵시바", "Beulah": "쁄라", "ACADEMY": "아카데미", "VENTURE": "벤처",
+    "My delight is in her.": "나의 기쁨이 그에게 있다.", "Married. A land made fruitful.": "결혼한 땅. 열매 맺는 땅.",
+    "After Babylon, two new names from God for a people who felt forsaken. A promise of restoration and love.": "바벨론 이후, 버림받은 듯했던 백성에게 하나님이 주신 두 새 이름. 회복과 사랑의 약속.",
+    "“Thou shalt be called Hephzibah, and thy land Beulah: for the LORD delighteth in thee.”": "“너를 헵시바라 하며 네 땅을 쁄라라 하리니 이는 여호와께서 너를 기뻐하실 것이며”",
+    "Isaiah 62:4 (KJV)": "이사야 62:4 (개역한글)",
+    "In the room right now?": "지금 강의실에 있나요?", "Enter the code on the screen.": "화면에 보이는 코드를 입력하세요.",
+    "Room code": "방 코드", "ROOM CODE": "방 코드", "Join": "입장",
+    "An adult who wants to give, teach or mentor?": "후원하고, 가르치고, 멘토가 되고 싶은 어른이신가요?", "Become a mentor": "멘토 되기",
+    "Faith for life. Learning for the world.": "삶을 위한 믿음. 세상을 위한 배움.", "© 2026 Hephzibah Academy": "© 2026 헵시바 아카데미",
+    "Learn together. One slide at a time.": "함께 배워요. 한 장씩.",
+    "Class fees invest in gospel-based startups through": "수강료는 복음 기반 스타트업에 투자됩니다 ·", "Beulah Venture": "쁄라 벤처",
+    "All": "전체", "Who am I made to be? A talk on study, money and purpose.": "나는 어떤 사람으로 지음받았을까? 공부, 돈, 목적에 대한 이야기.",
+    "Joseph Shon": "손원규", "Live answers, orchestra & video": "실시간 답변, 오케스트라, 영상",
+    "For anyone who wants to start a company — gospel-based, built to last.": "창업을 꿈꾸는 누구에게나. 복음 위에, 오래가는 회사로.",
+    "Idea": "아이디어", "Customers": "고객", "Money": "돈", "Team": "팀", "Mission": "사명",
+    "Budget": "예산", "Save": "저축", "Credit": "신용", "Taxes": "세금", "Give": "나눔",
+    "/ For High School": "/ 고등학생",
+    "Still finding my user manual — for anyone wondering what a good future looks like.": "나의 사용설명서를 찾아가는 중입니다. 좋은 미래를 고민하는 너에게.",
+    "Present live": "실시간 발표", "Preview slides": "슬라이드 미리보기", "Join as audience": "청중으로 입장", "Download slides": "슬라이드 내려받기",
+    "How it works": "진행 방법", "One slide at a time. Everyone takes part.": "한 장씩, 모두가 함께.",
+    "Open the presenter screen": "발표 화면을 여세요", "on the projector. A room code and QR code appear.": "프로젝터에 방 코드와 QR 코드가 나타나요.",
+    "Students scan with their phones.": "학생들은 휴대폰으로 스캔해요.",
+    "No sign-up — each joins as a random orchestra instrument — the only name shown on screen.": "가입 없이, 각자 무작위 오케스트라 악기 이름으로 참여해요. 화면에는 그 이름만 나와요.",
+    "Advance one slide at a time.": "한 장씩 넘겨요.", "Phones follow along automatically.": "휴대폰도 자동으로 따라와요.",
+    "On question slides, students type or tap.": "질문 슬라이드에서는 학생들이 입력하거나 눌러요.",
+    "Answers appear live on the big screen — no names. Turn on review mode to approve each message first.": "답은 이름 없이 큰 화면에 바로 나와요. 검토 모드를 켜면 하나씩 승인할 수 있어요.",
+    "The “first page” worksheet stays private": "“첫 페이지” 워크시트는 비공개예요", "on each phone, and can be downloaded.": "각자의 휴대폰에만 남고 내려받을 수 있어요.",
+    "Hear the orchestra.": "오케스트라를 들어요.", "Click each instrument to hear its part alone — then all together — before the closing video.": "마지막 영상 전에 악기를 하나씩 눌러 그 파트만 듣고, 함께 들어요.",
+    "Finish with a review.": "리뷰로 마무리해요.",
+    "Students share what they learned, review the lecture, unlock their 20-question results, and write how they’ll use their strengths and weaknesses.": "배운 것을 나누고 강의를 평가하면 20문항 결과가 열려요. 강점과 약점을 어떻게 쓸지 적어요.",
+    "Run of show": "진행 순서", "About 40 minutes.": "약 40분.", "Slides": "슬라이드", "All 29 slides.": "슬라이드 29장 전체.",
+    "Your gift keeps the light on — and multiplies.": "당신의 후원이 불을 밝히고, 더 크게 자라게 해요.",
+    "Where it goes": "후원금은 이렇게 쓰여요", "Learn & give": "배우고 나누기", "Class fees and monthly gifts.": "수강료와 정기 후원.",
+    "Invest": "투자", "Gospel-based startups through Beulah Venture.": "쁄라 벤처를 통해 복음 기반 스타트업에.",
+    "Share profit": "수익 나눔", "Companies share what they earn.": "회사가 번 것을 나눠요.",
+    "Invest more": "다시 투자", "Profits go back into new ventures.": "수익은 새 회사에 다시 투자돼요.",
+    "What we invest in": "우리가 투자하는 곳", "Value,": "가격이 아닌,", "not price.": "가치.",
+    "Gospel-based companies, built to last — creating value, not just money.": "복음 위에 세운 지속 가능한 회사. 돈이 아닌 가치를 만들어요.",
+    "Hope": "희망", "Value": "가치", "Love": "사랑", "Gospel": "복음", "For everyone who walks with us.": "함께하는 모든 이에게.",
+    "Monthly": "정기 후원", "Choose an amount.": "금액을 선택하세요.", "/ month": "/ 월", "Other": "기타", "any amount": "원하는 금액",
+    "Want to teach or mentor too? →": "가르치거나 멘토가 되고 싶나요? →",
+    "Walk with them.": "함께 걸어요.", "Adults who give, teach and guide the next generation.": "다음 세대를 후원하고, 가르치고, 이끄는 어른들.",
+    "How will you help?": "어떻게 함께하실 건가요?", "Ways to help": "함께하는 방법",
+    "Fund classes": "강의 후원", "Sponsor students.": "학생들을 후원해요.", "Career advice": "진로 조언", "Share what you’ve learned.": "경험을 나눠 주세요.",
+    "Teach a live class": "실시간 강의", "Lead a session.": "강의를 맡아 주세요.", "Give feedback": "피드백", "Review student work.": "학생들의 결과를 봐 주세요.",
+    "Through Beulah Venture.": "쁄라 벤처를 통해.",
+    "Name": "이름", "Email": "이메일", "Your field (optional)": "분야 (선택)", "e.g. Pharmacy, software, finance": "예: 약학, 소프트웨어, 금융",
+    "Note (optional)": "메모 (선택)", "Join as a mentor": "멘토로 참여하기",
+    "This page wandered off.": "페이지를 찾을 수 없어요.", "Back home": "홈으로",
+    "Online giving opens soon.": "온라인 후원은 곧 열려요.", "You’ll be taken to our secure giving page.": "안전한 후원 페이지로 이동해요.",
+    "Thank you.": "감사합니다.", "We’ll be in touch soon.": "곧 연락드릴게요.",
+    "Live classes run on the real site once it is hosted.": "실시간 강의는 실제 사이트가 열리면 이용할 수 있어요.",
+    "Preview only — forms work on the real site once it is hosted.": "미리보기 전용이에요. 실제 사이트에서 신청할 수 있어요.",
+  };
+  const original = new WeakMap();
+  let mem = null;
+  const get = () => { if (mem) return mem; try { return localStorage.getItem("hz-lang") === "ko" ? "ko" : "en"; } catch { return "en"; } };
+  const set = (v) => { mem = v; try { localStorage.setItem("hz-lang", v); } catch {} };
+  window.hzLang = get;
+
+  function apply(root) {
+    const lang = get();
+    document.documentElement.lang = lang;
+    const walker = document.createTreeWalker(root || document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode: (n) => n.parentElement && !n.parentElement.closest("script,style,[lang=he],.no-i18n,.brand,.lk") ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT,
+    });
+    let n;
+    while ((n = walker.nextNode())) {
+      if (!original.has(n)) { const key = n.nodeValue.trim(); if (!KO[key]) continue; original.set(n, n.nodeValue); }
+      const en = original.get(n), key = en.trim();
+      n.nodeValue = lang === "ko" ? en.replace(key, KO[key]) : en;
+    }
+    document.querySelectorAll("[placeholder]").forEach((el) => {
+      if (!el.dataset.en) { if (!KO[el.placeholder]) return; el.dataset.en = el.placeholder; }
+      el.placeholder = lang === "ko" ? KO[el.dataset.en] : el.dataset.en;
+    });
+    document.querySelectorAll(".lang-btn").forEach((b) => (b.textContent = lang === "ko" ? "English" : "한국어"));
+  }
+  window.hzI18n = { apply, KO };
+
+  function addButton() {
+    const nav = document.querySelector(".site-header .nav");
+    if (!nav || nav.querySelector(".lang-btn")) return;
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "lang-btn";
+    b.addEventListener("click", () => {
+      set(get() === "ko" ? "en" : "ko");
+      apply();
+      document.dispatchEvent(new CustomEvent("hz-langchange", { detail: get() }));
+    });
+    nav.append(b);
+  }
+  function init() { addButton(); apply(); }
+  document.readyState === "loading" ? document.addEventListener("DOMContentLoaded", init) : init();
+})();
+</script>
+</body>
+</html>

@@ -211,3 +211,17 @@ textarea.input { resize: vertical; min-height: 104px; line-height: 1.45; }
 html[lang="ko"] body { word-break: keep-all; }
 @media (max-width: 760px) { .nav .lang-btn { margin-top: 12px; align-self: flex-start; } }
 .names2-lead { max-width: 40ch; }
+
+/* Navigation: tighter on mid widths, collapse to the Menu button below 1080px */
+.nav a { white-space: nowrap; }
+@media (max-width: 1320px) { .nav { gap: 24px; font-size: 16px; } }
+@media (max-width: 1080px) {
+  .site-header { position: relative; }
+  .menu-btn { display: block; }
+  .nav { display: none; position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; align-items: stretch; gap: 0;
+    background: var(--paper); border-bottom: 1px solid var(--rule); padding: 8px var(--gutter) 16px; z-index: 10; }
+  .nav.open { display: flex; }
+  .nav a { padding: 14px 0; border-bottom: 1px solid var(--hair); }
+  .nav .divider { display: none; }
+  .nav .lang-btn { margin-top: 12px; align-self: flex-start; }
+}

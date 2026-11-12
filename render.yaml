@@ -1,0 +1,22 @@
+# One-click deploy of the full site (live lectures, sign-ups, applications) on Render.
+# Render dashboard → New → Blueprint → pick this repo.
+services:
+  - type: web
+    name: hephzibah-academy
+    runtime: node
+    plan: starter
+    buildCommand: echo "no build step"
+    startCommand: node server.js
+    envVars:
+      - key: HOST_PASSCODE
+        sync: false
+      - key: RESEND_API_KEY
+        sync: false
+      - key: MAIL_FROM
+        sync: false
+      - key: DATA_DIR
+        value: /var/data
+    disk:
+      name: data
+      mountPath: /var/data
+      sizeGB: 1

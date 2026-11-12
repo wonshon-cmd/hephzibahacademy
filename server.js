@@ -39,6 +39,7 @@ fs.mkdirSync(DATA_DIR, { recursive: true });
 const SUBMISSIONS_FILE = path.join(DATA_DIR, "submissions.jsonl");
 const MENTORS_FILE = path.join(DATA_DIR, "mentors.jsonl");
 const APPLICATIONS_FILE = path.join(DATA_DIR, "applications.jsonl");
+const COHORT_FILE = path.join(DATA_DIR, "cohort.jsonl");
 
 // ---------- Email (verification codes) ----------
 // Uses Resend's HTTP API when RESEND_API_KEY is set (https://resend.com).
@@ -331,6 +332,38 @@ async function api(req, res, url) {
     return res.end("\ufeff" + rows.join("\r\n"));
   }
 
+  // POST /api/cohort — sign up for a cohort (live session + class + mentoring, check-in after each)
+  if (parts[1] === "cohort" && parts.length === 2 && method === "POST") {
+    const body = await readJson(req);
+    const TRACKS = ["my-user-manual", "startup", "finance"];
+    const ROLES = ["student", "parent", "adult"];
+    const name = cleanText(body.name, 120);
+    const email = cleanText(body.email, 200).toLowerCase();
+    const track = TRACKS.includes(body.track) ? body.track : "";
+    const role = ROLES.includes(body.role) ? body.role : "";
+    const grade = cleanText(body.grade, 60);
+    const church = cleanText(body.church, 160);
+    const hope = cleanText(body.hope, 1000);
+    if (!name) throw httpError(400, "Please add your name.");
+    if (!EMAIL_RE.test(email)) throw httpError(400, "Please add a valid email.");
+    if (!track) throw httpError(400, "Please choose a track.");
+    fs.appendFile(COHORT_FILE, JSON.stringify({ at: new Date().toISOString(), name, email, track, role, grade, church, hope, guardianOk: body.guardianOk === true }) + "\n",
+      (err) => { if (err) console.error("Could not save cohort sign-up", err); });
+    return sendJson(res, 201, { ok: true });
+  }
+
+  // GET /api/cohort.csv?passcode=HOST_PASSCODE
+  if (parts[1] === "cohort.csv" && method === "GET") {
+    if (!HOST_PASSCODE || !safeEqual(url.searchParams.get("passcode") || "", HOST_PASSCODE)) throw httpError(403, "Passcode required.");
+    let text = ""; try { text = fs.readFileSync(COHORT_FILE, "utf8"); } catch {}
+    const cols = ["at", "name", "email", "track", "role", "grade", "church", "hope", "guardianOk"];
+    const esc = (v) => { let t = String(v ?? ""); if (/^[=+\-@\t\r]/.test(t)) t = "'" + t; return `"${t.replace(/"/g, '""')}"`; };
+    const rows = [cols.join(",")];
+    for (const line of text.split("\n")) { if (!line) continue; try { const r = JSON.parse(line); rows.push(cols.map((c) => esc(r[c])).join(",")); } catch {} }
+    res.writeHead(200, { "content-type": "text/csv; charset=utf-8", "cache-control": "no-store", "content-disposition": 'attachment; filename="hephzibah-cohort.csv"' });
+    return res.end("\ufeff" + rows.join("\r\n"));
+  }
+
   // POST /api/mentors — adult volunteer / donor sign-up
   if (parts[1] === "mentors" && parts.length === 2 && method === "POST") {
     const body = await readJson(req);
@@ -568,7 +601,7 @@ const TYPES = { ".html": "text/html; charset=utf-8", ".css": "text/css; charset=
   ".woff": "font/woff", ".woff2": "font/woff2", ".txt": "text/plain; charset=utf-8", ".webp": "image/webp", ".jpg": "image/jpeg",
   ".mp3": "audio/mpeg", ".m4a": "audio/mp4", ".ogg": "audio/ogg", ".wav": "audio/wav" };
 
-const ROUTES = { "/": "/index.html", "/lectures": "/lectures.html", "/present": "/present.html", "/join": "/join.html", "/support": "/support.html", "/mentors": "/mentors.html", "/apply": "/apply.html",
+const ROUTES = { "/": "/index.html", "/lectures": "/lectures.html", "/present": "/present.html", "/join": "/join.html", "/support": "/support.html", "/mentors": "/mentors.html", "/apply": "/apply.html", "/personality": "/personality.html", "/cohort": "/cohort.html",
   "/lectures/my-user-manual": "/lectures/my-user-manual.html" };
 
 function serveStatic(req, res, url) {

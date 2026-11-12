@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cohort · Hephzibah Academy</title>
+<meta name="description" content="Sign up for a Hephzibah Academy cohort: live sessions, classes and mentoring, with a check-in after each.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Hephzibah Academy — home">
+      <svg class="brand-mark" viewBox="9 11 43 43" aria-hidden="true"><path d="M10 22h11v12h17V12h13v41H38V42H21v11H10z" fill="currentColor"/></svg>
+      <span class="brand-name"><b>Hephzibah</b><span>ACADEMY</span></span>
+    </a>
+    <button class="menu-btn" type="button" aria-controls="nav" aria-expanded="false">Menu</button>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="/lectures">Academy</a>
+      <a href="/#community">Community</a>
+      <a href="/#about">About</a>
+      <a href="/cohort" aria-current="page">Cohort</a>
+      <a href="/mentors">Mentors</a>
+      <a href="/support">Support</a>
+      <a href="/apply">Apply</a>
+      <span class="divider" aria-hidden="true"></span>
+      <a class="login" href="/present">Log in <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="section" style="border-top:0">
+  <div class="wrap">
+    <p class="eyebrow">Cohort</p>
+    <h1 class="display" style="font-size:clamp(44px,6.4vw,96px)">Learn together.</h1>
+    <p class="lead" style="max-width:34ch">A small group that meets, learns, and checks in.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <p class="eyebrow">How a cohort works</p>
+    <ol class="flow cohort-flow">
+      <li><span class="num">01</span><h3>Live session</h3><p>The lecture, live. Everyone answers from their phone.</p><span class="checkin">✓ Check-in</span></li>
+      <li><span class="num">02</span><h3>Class</h3><p>Go deeper together in a small group.</p><span class="checkin">✓ Check-in</span></li>
+      <li><span class="num">03</span><h3>Mentoring</h3><p>Meet an adult mentor who has walked the road.</p><span class="checkin">✓ Check-in</span></li>
+    </ol>
+    <p class="muted" style="margin-top:20px">Every section ends with a short check-in: what I learned, how I’m doing, my next step.</p>
+  </div>
+</section>
+
+<section class="section" id="signup">
+  <div class="wrap split">
+    <div><p class="eyebrow">Sign up</p><h2 class="h2">Join the next cohort.</h2></div>
+    <form id="cohort-form" novalidate>
+      <label class="field"><span>Track</span>
+        <select class="input" id="co-track" name="track" required>
+          <option value="my-user-manual">My User Manual · For High School</option>
+          <option value="startup">Startup Academy</option>
+          <option value="finance">Basic Finance</option>
+        </select></label>
+      <fieldset class="roles"><legend class="field-legend">I am a</legend>
+        <label><input type="radio" name="role" value="student" checked> <span>Student</span></label>
+        <label><input type="radio" name="role" value="parent"> <span>Parent</span></label>
+        <label><input type="radio" name="role" value="adult"> <span>Adult</span></label>
+      </fieldset>
+      <label class="field"><span>Name</span><input class="input" id="co-name" name="name" autocomplete="name" required maxlength="120"></label>
+      <label class="field"><span>Email</span><input class="input" id="co-email" name="email" type="email" autocomplete="email" required maxlength="200"></label>
+      <label class="field"><span>Grade or age (optional)</span><input class="input" id="co-grade" name="grade" maxlength="60"></label>
+      <label class="field"><span>Church (optional)</span><input class="input" id="co-church" name="church" maxlength="160"></label>
+      <label class="field"><span>What do you hope to get out of it? (optional)</span><textarea class="input" id="co-hope" name="hope" rows="3" maxlength="1000"></textarea></label>
+      <label class="check"><input type="checkbox" id="co-guardian" name="guardianOk"><span>If I’m under 18, a parent or guardian knows I’m signing up.</span></label>
+      <button class="btn" type="submit">Sign up for the cohort <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
+      <p class="error" role="alert"></p>
+    </form>
+  </div>
+</section>
+<style>
+.flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--rule)}
+.flow li{padding:24px 28px 8px 0;position:relative;display:flex;flex-direction:column;gap:6px}
+.flow li:not(:last-child)::after{content:"→";position:absolute;right:12px;top:24px;font-size:20px;color:var(--muted)}
+.flow .num{font-size:14px;font-weight:600;letter-spacing:.18em}
+.flow h3{font-size:clamp(24px,2.4vw,34px);letter-spacing:-.02em;margin:6px 0 0}
+.flow p{margin:0;color:var(--ink-2);max-width:30ch}
+.checkin{align-self:flex-start;margin-top:10px;font-size:13px;font-weight:700;letter-spacing:.08em;padding:5px 10px;border-radius:999px;background:var(--ink);color:var(--paper)}
+@media (max-width:760px){.flow{grid-template-columns:1fr}.flow li{padding:18px 0;border-bottom:1px solid var(--hair)}.flow li::after{display:none}}
+.roles{border:0;padding:0;margin:0 0 18px;display:flex;gap:10px;flex-wrap:wrap}
+.field-legend{display:block;width:100%;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px;padding:0}
+.roles label{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border:1px solid var(--hair);border-radius:999px;background:#fff;cursor:pointer}
+.roles label:has(input:checked){border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
+.roles input{accent-color:var(--ink)}
+.check{display:flex;gap:10px;align-items:flex-start;margin:0 0 18px;font-size:15px;color:var(--ink-2)}
+.check input{width:18px;height:18px;margin-top:2px;accent-color:var(--ink)}
+select.input{appearance:auto}
+</style>
+<script>
+(() => {
+  const f = document.getElementById("cohort-form"), err = f.querySelector(".error");
+  const tr = (s) => (window.hzLang && window.hzLang() === "ko" && window.hzI18n && window.hzI18n.KO[s]) || s;
+  const want = new URLSearchParams(location.search).get("track");
+  if (want) f.track.value = want;
+  f.addEventListener("submit", async (e) => {
+    e.preventDefault(); err.textContent = "";
+    const btn = f.querySelector("button[type=submit]"); btn.disabled = true;
+    const body = { track: f.track.value, role: (f.querySelector("input[name=role]:checked") || {}).value, name: f.elements.name.value,
+      email: f.elements.email.value, grade: f.grade.value, church: f.church.value, hope: f.hope.value, guardianOk: f.guardianOk.checked };
+    try {
+      const r = await fetch("/api/cohort", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
+      const d = await r.json().catch(() => ({}));
+      if (!r.ok) throw new Error((d.error && d.error.message) || "Something went wrong.");
+      f.outerHTML = '<div><h3 class="h3">Thank you.</h3><p class="lead" style="font-size:19px">We’ll email you when the next cohort opens.</p></div>';
+      window.hzI18n && window.hzI18n.apply();
+    } catch (x) { err.textContent = tr(x.message); btn.disabled = false; }
+  });
+})();
+</script>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-brands">
+    <div class="lockup" aria-label="Hephzibah Academy and Beulah">
+      <a class="lk" href="/"><svg class="lk-mark" viewBox="9 11 43 43" aria-hidden="true"><path d="M10 22h11v12h17V12h13v41H38V42H21v11H10z" fill="currentColor"/></svg><span class="lk-name"><b>Hephzibah</b><span>ACADEMY</span></span></a>
+      <span class="lk-sep" aria-hidden="true"></span>
+      <a class="lk" href="/support"><svg class="lk-mark" viewBox="9 11 43 43" aria-hidden="true"><path fill-rule="evenodd" d="M11 12h28l9 8v9l-4 3.5 5 4.5v9l-8 7H11zM23 21v8h11v-8zM23 38v8h12v-8z" fill="currentColor"/></svg><span class="lk-name"><b>Beulah</b><span>VENTURE</span></span></a>
+    </div>
+  </div>
+  <div class="wrap"><span>Faith for life. Learning for the world.</span><span class="right">© 2026 Hephzibah Academy</span></div>
+</footer>
+<script src="/js/site.js" defer></script>
+<script src="/js/i18n.js" defer></script>
+</body>
+</html>
