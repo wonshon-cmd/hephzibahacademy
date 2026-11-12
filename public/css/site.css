@@ -162,3 +162,17 @@ textarea.input { resize: vertical; min-height: 104px; line-height: 1.45; }
 .hero-ref { margin: 28px 0 0; font-size: 13px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; }
 .hero-ref a { text-decoration: none; border-bottom: 1px solid currentColor; }
 .card[hidden] { display: none; }
+
+/* Hephzibah × Beulah lockup */
+.lockup { display: flex; align-items: center; gap: clamp(18px, 3vw, 36px); flex-wrap: wrap; }
+.lk { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
+.lk-mark { width: 30px; height: 30px; flex: none; }
+.lk-name { display: flex; flex-direction: column; line-height: 1; }
+.lk-name b { font-size: 19px; font-weight: 700; letter-spacing: -0.02em; }
+.lk-name span { font-size: 10px; font-weight: 600; letter-spacing: 0.22em; margin-top: 4px; }
+.lk-sep { width: 1px; height: 30px; background: var(--ink); }
+.lockup.big .lk-mark { width: 48px; height: 48px; }
+.lockup.big .lk-name b { font-size: 28px; }
+.lockup.big .lk-name span { font-size: 13px; margin-top: 6px; }
+.lockup.big .lk-sep { height: 48px; }
+.site-footer .footer-brands { padding-top: 32px; padding-bottom: 0; }
