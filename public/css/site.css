@@ -238,3 +238,5 @@ html[lang="ko"] body { word-break: keep-all; }
   border: 1px solid var(--rule); border-radius: 50%; background: var(--paper); font-size: 20px; font-weight: 400; color: var(--ink); }
 .names2 > .names2-plus { grid-template-columns: 1fr; gap: 0; padding: 0; line-height: 1; }
 .avatar[data-family="bible"] { background-color: var(--paper-2); background-size: 400% 300%; background-repeat: no-repeat; border: 1px solid var(--hair); }
+
+[hidden] { display: none !important; }

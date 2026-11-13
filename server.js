@@ -15,6 +15,23 @@ const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const PUBLIC = path.join(ROOT, "public");
 const PORT = Number(process.env.PORT) || 3000;
 const HOST_PASSCODE = process.env.HOST_PASSCODE || "";
+// Admin password unlocks protected lectures ("protected": true in the lecture JSON).
+// If ADMIN_PASSCODE is not set, protected lectures stay locked for everyone.
+const ADMIN_PASSCODE = process.env.ADMIN_PASSCODE || "";
+const ADMIN_SECRET = crypto.randomBytes(32);
+function adminCookie() {
+  const exp = Date.now() + 12 * 60 * 60 * 1000;
+  const sig = crypto.createHmac("sha256", ADMIN_SECRET).update("admin:" + exp).digest("base64url");
+  return `${exp}.${sig}`;
+}
+function isAdmin(req) {
+  const m = /(?:^|;\s*)hz_admin=([^;]+)/.exec(req.headers.cookie || "");
+  if (!m) return false;
+  const [exp, sig] = m[1].split(".");
+  if (!exp || !sig || Number(exp) < Date.now()) return false;
+  const want = crypto.createHmac("sha256", ADMIN_SECRET).update("admin:" + exp).digest("base64url");
+  return safeEqual(sig, want);
+}
 const ROOM_TTL_MS = 12 * 60 * 60 * 1000;
 const MAX_ROOMS = 200;
 const MAX_PARTICIPANTS = 500;
@@ -397,12 +414,30 @@ async function api(req, res, url) {
     return res.end("\ufeff" + rows.join("\r\n"));
   }
 
+  // Admin: POST /api/admin/login {passcode} · GET /api/admin/status · POST /api/admin/logout
+  if (parts[1] === "admin") {
+    if (parts[2] === "status" && method === "GET") return sendJson(res, 200, { admin: isAdmin(req) });
+    if (parts[2] === "login" && method === "POST") {
+      const body = await readJson(req);
+      await new Promise((r) => setTimeout(r, 400)); // slow down guessing
+      if (!ADMIN_PASSCODE || !safeEqual(String(body.passcode || ""), ADMIN_PASSCODE)) throw httpError(403, "Incorrect admin password.");
+      const secure = (req.headers["x-forwarded-proto"] || "").includes("https") ? "; Secure" : "";
+      res.setHeader("set-cookie", `hz_admin=${adminCookie()}; Path=/; HttpOnly; SameSite=Lax; Max-Age=43200${secure}`);
+      return sendJson(res, 200, { ok: true });
+    }
+    if (parts[2] === "logout" && method === "POST") {
+      res.setHeader("set-cookie", "hz_admin=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0");
+      return sendJson(res, 200, { ok: true });
+    }
+  }
+
   // POST /api/rooms  {lectureId, passcode}
   if (parts[1] === "rooms" && parts.length === 2 && method === "POST") {
     const body = await readJson(req);
     if (HOST_PASSCODE && !safeEqual(body.passcode || "", HOST_PASSCODE)) throw httpError(403, "Incorrect presenter passcode.");
     const lectureId = String(body.lectureId || "");
     if (!LECTURES[lectureId]) throw httpError(404, "Lecture not found.");
+    if (LECTURES[lectureId].protected && !isAdmin(req)) throw httpError(403, "This lecture needs the admin password.");
     const room = createRoom(lectureId);
     return sendJson(res, 201, { code: room.code, hostKey: room.hostKey, lectureId });
   }
@@ -623,6 +658,14 @@ function serveStatic(req, res, url) {
     res.writeHead(302, { location: `/join?code=${p.slice(3).toUpperCase()}` }); return res.end();
   }
   p = ROUTES[p.replace(/\/$/, "") || "/"] || p;
+  // Protected lectures: slide data and slide downloads need the admin cookie,
+  // or (for the data file) a live room of that lecture, so students' phones can follow along.
+  const prot = /^\/(?:data\/([\w-]+)\.json|downloads\/([\w-]+)-slides\.html)$/.exec(p);
+  const protId = prot && (prot[1] || prot[2]);
+  if (protId && LECTURES[protId] && LECTURES[protId].protected && !isAdmin(req)) {
+    const room = prot[1] && rooms.get(String(url.searchParams.get("room") || "").toUpperCase());
+    if (!room || room.lectureId !== protId) { res.writeHead(403, { "content-type": "text/plain; charset=utf-8" }); return res.end("Locked"); }
+  }
   const file = path.normalize(path.join(PUBLIC, p));
   if (!file.startsWith(PUBLIC + path.sep)) { res.writeHead(403); return res.end(); }
   fs.stat(file, (err, st) => {

@@ -34,6 +34,18 @@ slide("f02", START, "statement",
   notes=["Giving doesn’t start from self-evaluation: “I’m a Christian, so I do good things.”", "It starts from responsibility: as people who received God’s love and grace, we are stewards and agents managing what belongs to God."],
   ko_notes=["헌금과 나눔도 “나는 기독교인이니까 좋은 일을 한다”는 자기평가에서 출발하지 않습니다.", "하나님께 사랑과 은혜를 받은 사람으로서, 하나님의 것을 맡아 관리하는 청지기이자 대리인이라는 책임에서 출발합니다."])
 
+slide("f49", START, "statement",
+  {"eyebrow": "The center of this lecture", "title": "Why do I believe in God?", "subtitle": "To get my money problems solved, or to know God and live with Him?",
+   "body": ["What we seek is not only the money God might give, but God Himself."]},
+  {"eyebrow": "이 강의의 중심", "title": "하나님을 믿는 목적은\n무엇인가?", "subtitle": "돈의 문제를 해결받는 데 있는가, 하나님을 알고 그분과 함께 살아가는 데 있는가?",
+   "body": ["우리가 구하는 것은 하나님이 주실 돈만이 아니라, 하나님 자신입니다."]},
+  notes=["God gives us eternal life, and He knows our daily needs.", "But if we see our relationship with God only as “He supplies the money I need,” we trust Him when money comes and doubt Him when it runs short.", "This doesn’t mean daily needs don’t matter. We bring the hardship of not having enough to God, and we carry our responsibility for the finances entrusted to us."],
+  ko_notes=["하나님은 우리에게 영생을 주시는 분입니다. 우리의 먹고사는 필요도 아십니다.", "그러나 하나님과의 관계를 ‘필요한 돈을 채워주시는 관계’로만 이해하면, 돈이 생길 때는 믿고 부족할 때는 하나님을 의심하게 됩니다.", "그렇다고 생활의 필요가 중요하지 않다는 뜻은 아닙니다. 돈이 부족한 어려움도 하나님께 아뢰면서, 내게 맡겨진 재정을 돌볼 책임을 감당하는 것입니다."])
+slide("f50", START, "list",
+  {"eyebrow": "Trust and responsibility", "title": "Trust God.\nManage what’s entrusted, responsibly.", "subtitle": "Like health: because God gave it, we don’t skip the doctor. We exercise, prepare and take care of it.",
+   "body": ["Working, building skills, checking spending, paying off debt and preparing for the future are all part of faith", "“God provides” is not a reason to put off preparing", "But I also don’t think I can control every result by my own strength", "As stewards, we let money flow to where it’s needed"]},
+  {"eyebrow": "신뢰와 책임", "title": "하나님을 신뢰하며,\n맡겨진 돈은 책임 있게 관리한다.", "subtitle": "건강처럼: 하나님이 주셨기에 병원에 안 가는 것이 아니라, 허락하신 것을 잘 대비하고 운동하고 관리합니다.",
+   "body": ["일하고 역량을 기르고, 지출을 확인하고, 빚을 갚고, 미래를 준비하는 일도 신앙과 연결됩니다", "하나님이 채우신다는 고백이 준비를 미루는 이유가 되지는 않습니다", "동시에 모든 결과를 내 힘으로 통제할 수 있다고 생각하지도 않습니다", "청지기로서 맡겨주신 재정을 잘 관리해 필요한 곳에 흘려보냅니다"]})
 slide("f03", START, "path",
   {"eyebrow": "How we’ll work", "title": "Question first.\nThen Scripture.", "subtitle": "Scripture notes are summaries. Modern finance and math are applications.",
    "body": ["Question", "My answer", "Guess vs. actual", "Scripture", "Application"]},
@@ -188,6 +200,11 @@ slide("f34", S4, "scripture",
    "body": ["The strength Christ gives is not a promise that I’ll get the wealth I want. It’s strength to live in very different circumstances."]},
   {"eyebrow": "빌립보서 4:11–13 · 요약", "title": "미래를 준비하면서도\n내 궁극적인 안전을 어디에 두고 있나요?", "subtitle": "바울은 궁핍과 풍부, 배부름과 배고픔 속에서 자족하는 법을 배웠다고 말합니다.",
    "body": ["그리스도가 주시는 힘은 원하는 부를 반드시 얻는다는 약속보다, 서로 다른 형편 속에서도 살아가는 문맥입니다."]})
+slide("f51", S4, "questions",
+  {"eyebrow": "Philippians 4:11–13, again", "title": "In plenty and in need,\nam I getting to know God?", "subtitle": "",
+   "body": ["Am I trying to get money through God, or trying to know God whether I have money or not?", "While saying “I leave it to God,” am I putting off the responsibility that is mine?"]},
+  {"eyebrow": "다시, 빌립보서 4:11–13", "title": "풍부할 때도 궁핍할 때도\n하나님을 알아가는가?", "subtitle": "",
+   "body": ["나는 하나님을 통해 돈을 얻으려 하는가, 돈이 있는 때에도 없는 때에도 하나님을 알아가려 하는가?", "하나님께 맡긴다고 말하면서, 내가 감당할 책임은 미루고 있지 않은가?"]})
 slide("f35", S4, "statement",
   {"eyebrow": "Don’t only sacrifice today", "title": "The years you spend earning\nare your life too.", "subtitle": "While preparing for your future self, are you caring for today’s health and relationships?", "body": []},
   {"eyebrow": "현재를 희생하기만 하지 않습니다", "title": "돈을 버는 시간도\n내 인생입니다.", "subtitle": "“돈이 생기면 살겠다고 생각하지만, 미래의 나를 준비하면서 오늘의 건강과 관계도 돌보고 있나요?”", "body": []})
@@ -327,7 +344,7 @@ slide("f24", END, "closing",
 deck = {
   "id": "basic-finance", "track": "Finance", "title": "Basic Finance", "fullTitle": "Basic Finance: Living as God’s Steward",
   "subtitle": "How am I using the time, money and abilities entrusted to me?", "speaker": "Joseph Shon", "minutes": 60, "minutes2h": 120,
-  "pseudonyms": "bible", "consent": True,
+  "pseudonyms": "bible", "consent": True, "protected": True,
   "summary": "A Christian view of money for life in the U.S.: income and real life, how much is enough, card debt, taxes, houses and cars, and living to 100. Question, personal answer, guess vs. actual, Scripture, application.",
   "runOfShow": [
     {"label": "Salary and real life: where did the money go?", "slides": "5–9", "minutes": 6, "minutes2h": 12},

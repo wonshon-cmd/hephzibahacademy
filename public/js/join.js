@@ -37,7 +37,7 @@ function showCodeForm(error = "") {
 async function join(reroll = false) {
   try {
     room = await api(`/api/rooms/${code}`);
-    deck = await getJson(`/data/${room.lectureId}.json`);
+    deck = await getJson(`/data/${room.lectureId}.json?room=${code}`);
     me = store.get(key()) || { answers: {}, quizIndex: 0, sent: {}, votes: {}, worksheet: {} };
     const r = await api(`/api/rooms/${code}/join`, { token: me.token, reroll });
     Object.assign(me, { token: r.token, alias: r.alias, avatarId: r.avatarId });

@@ -10,6 +10,8 @@ services:
     envVars:
       - key: HOST_PASSCODE
         sync: false
+      - key: ADMIN_PASSCODE
+        sync: false
       - key: RESEND_API_KEY
         sync: false
       - key: MAIL_FROM

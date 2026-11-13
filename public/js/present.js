@@ -398,9 +398,35 @@ function toast(text) {
   document.body.append(el); setTimeout(() => el.remove(), 4000);
 }
 
+// Protected lecture: ask for the admin password, then reload.
+function showLock() {
+  document.title = "Hephzibah Academy";
+  app.innerHTML = `
+  <header class="site-header"><div class="wrap">
+    <a class="brand" href="/">${LOGO}<span class="brand-name"><b>Hephzibah</b><span>ACADEMY</span></span></a>
+  </div></header>
+  <main class="setup">
+    <p class="eyebrow">${t("Admin", "관리자")}</p>
+    <h1 class="h2">${t("This lecture is locked.", "이 강의는 잠겨 있어요.")}</h1>
+    <form id="unlock" style="margin-top:32px">
+      <label class="field"><span>${t("Admin password", "관리자 암호")}</span><input class="input" name="pw" type="password" autocomplete="current-password" required></label>
+      <button class="btn" type="submit">${t("Unlock", "열기")}</button>
+      <p class="error" role="alert"></p>
+    </form>
+  </main>`;
+  const f = app.querySelector("#unlock");
+  f.onsubmit = async (e) => {
+    e.preventDefault();
+    try { await api("/api/admin/login", { passcode: f.pw.value }); location.reload(); }
+    catch (err) { f.querySelector(".error").textContent = t("Incorrect password.", "암호가 맞지 않아요."); }
+  };
+}
+
 // ---------------- Boot ----------------
 (async () => {
-  [deck, instruments] = await Promise.all([getJson(`/data/${lectureId}.json`), loadInstruments()]);
+  const deckRes = await fetch(`/data/${lectureId}.json`);
+  if (deckRes.status === 403) return showLock();
+  [deck, instruments] = await Promise.all([deckRes.json(), loadInstruments()]);
   orchestra.init(instruments.filter((i) => i.kind !== "bible").map((i) => i.id));
   if (preview) return startStage();
   const code = params.get("room");

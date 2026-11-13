@@ -34,6 +34,9 @@ orchestra = must(orchestra, 'const files = await fetch("/api/audio").then((r) =>
 
 let present = read("js/present.js");
 present = present.replace(/^import .*$/gm, "");
+// Offline: the deck is embedded, so there is no locked fetch to handle.
+present = must(present, "  const deckRes = await fetch(`/data/${lectureId}.json`);\n  if (deckRes.status === 403) return showLock();\n  [deck, instruments] = await Promise.all([deckRes.json(), loadInstruments()]);",
+  "  [deck, instruments] = await Promise.all([getJson(`/data/${lectureId}.json`), loadInstruments()]);");
 // common.js also has a module-level `instruments`; rename the presenter's copy to avoid a clash.
 present = present.replace(/\binstruments\b/g, "__pins");
 present = must(present, 'const preview = params.has("preview");', "const preview = true;");

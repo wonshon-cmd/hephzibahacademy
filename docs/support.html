@@ -251,6 +251,8 @@ html[lang="ko"] body { word-break: keep-all; }
 .names2 > .names2-plus { grid-template-columns: 1fr; gap: 0; padding: 0; line-height: 1; }
 .avatar[data-family="bible"] { background-color: var(--paper-2); background-size: 400% 300%; background-repeat: no-repeat; border: 1px solid var(--hair); }
 
+[hidden] { display: none !important; }
+
 .preview-note{position:fixed;left:16px;bottom:16px;z-index:50;background:var(--ink);color:var(--paper);padding:10px 14px;border-radius:8px;font-size:14px;max-width:calc(100vw - 32px)}
 </style>
 </head>
@@ -383,7 +385,7 @@ document.addEventListener("click", (e) => {
 });
 
 document.addEventListener("click",(e)=>{const a=e.target.closest('a[href="#live-only"]');if(!a)return;e.preventDefault();note("Live classes need the full site with its server.");});
-document.addEventListener("submit",(e)=>{e.preventDefault();e.stopImmediatePropagation();note("This form needs the full site with its server.");},true);
+document.addEventListener("submit",(e)=>{if(e.target.closest("#admin-form"))return;e.preventDefault();e.stopImmediatePropagation();note("This form needs the full site with its server.");},true);
 function note(t){const K=window.hzI18n&&window.hzLang&&window.hzLang()==="ko"?window.hzI18n.KO[t]:null;let n=document.querySelector(".preview-note");if(!n){n=document.createElement("div");n.className="preview-note";n.setAttribute("role","status");document.body.append(n);}n.textContent=K||t;clearTimeout(n._t);n._t=setTimeout(()=>n.remove(),4000);}
 </script>
 <script>// English / 한국어 toggle for the website pages.
@@ -453,6 +455,46 @@ function note(t){const K=window.hzI18n&&window.hzLang&&window.hzLang()==="ko"?wi
     "Scripture notes are summaries; modern finance and math are applications.": "성경 설명은 본문의 요약이며, 현대 금융제도와 계산은 적용으로 구분해요.",
     "Finish with application and homework.": "개인 적용과 과제로 마무리해요.", "Fill in four sentences and check off five home tasks, privately.": "네 문장을 채우고, 집에서 할 다섯 가지를 혼자 체크해요.",
     "60 or 120 minutes.": "60분 또는 120분.", "All slides.": "전체 슬라이드.",
+    "Admin": "관리자",
+    "Admin password": "관리자 암호",
+    "Unlock": "열기",
+    "The big question": "중심 질문",
+    "Why do I believe in God?": "하나님을 믿는 목적은 무엇인가?",
+    "To get my money problems solved, or to know God and live with Him?": "돈의 문제를 해결받는 데 있는가, 하나님을 알고 그분과 함께 살아가는 데 있는가?",
+    "Trust God, and manage what’s entrusted responsibly.": "하나님을 신뢰하며, 맡겨진 돈은 책임 있게 관리한다.",
+    "Topics": "주제",
+    "1 hour": "1시간",
+    "2 hours": "2시간",
+    "01  Salary and real life: where did the money go?": "01  연봉과 실제 생활 — 돈은 어디 갔을까?",
+    "02  How much is enough? Money and my heart": "02  얼마면 충분할까? — 돈과 내 마음",
+    "03  Card debt, compound interest, taxes, house, car": "03  카드빚·복리·세금·집·차·절세",
+    "04  Me at 80, 90, 100: preparing a responsible future": "04  80·90·100세의 나 — 책임 있는 미래 준비",
+    "05  Work and starting a business: value and faithfulness": "05  직업과 창업 — 가치와 성실함",
+    "06  Stocks and cash flow: what do I own?": "06  주식과 현금흐름 — 무엇을 소유하는가?",
+    "07  God’s steward: whose will do I use it for?": "07  하나님의 청지기 — 누구의 뜻대로 사용하는가?",
+    "08  Offering and giving: caring for people with what’s entrusted": "08  헌금과 나눔 — 맡겨진 것으로 사람을 돌보기",
+    "09  Joseph again: why did God entrust it?": "09  다시 요셉 — 왜 맡기셨을까?",
+    "10  Time, money, talents: how am I using what I have now?": "10  시간·물질·달란트 — 지금 받은 것을 어떻게 사용하는가?",
+    "2 min": "2분",
+    "3 min": "3분",
+    "4 min": "4분",
+    "5 min": "5분",
+    "6 min": "6분",
+    "7 min": "7분",
+    "8 min": "8분",
+    "9 min": "9분",
+    "10 min": "10분",
+    "12 min": "12분",
+    "14 min": "14분",
+    "16 min": "16분",
+    "18 min": "18분",
+    "20 min": "20분",
+    "01  The first question & introduction": "01  처음 질문과 소개",
+    "02  Questions I met in Kenya": "02  케냐에서 만난 질문",
+    "03  A user manual — and faith": "03  사용설명서와 믿음",
+    "04  My first page & one next step": "04  나의 첫 페이지와 다음 한 걸음",
+    "05  The orchestra, the video & your review": "05  오케스트라, 영상, 그리고 나의 리뷰",
+    "11 min": "11분",
     "Menu": "메뉴", "Academy": "아카데미", "Community": "커뮤니티", "About": "소개", "Mentors": "멘토", "Support": "후원", "Log in": "로그인",
     "Hephzibah Academy": "헵시바 아카데미",
     "Light and salt.": "빛과 소금.", "Light and salt": "빛과 소금", "Matthew 5:13–16": "마태복음 5:13–16", "Start learning": "배움 시작하기",

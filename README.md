@@ -117,6 +117,26 @@ Sending the code by email needs a [Resend](https://resend.com) account:
 
 Without `RESEND_API_KEY`, the code is printed to the server log instead. That is enough for testing, but real applicants cannot apply this way.
 
+## Locked slides (admin password)
+
+Lectures with `"protected": true` in their JSON (both current lectures) keep their slides private.
+
+* **Public pages:** a lecture page shows only its title, a short description and the big topics.
+* **Admin access:** the slide list, presenter screen, preview and slide download need the admin password.
+* **Students:** phones in a live room can still load the slides they need.
+
+On the server, set `ADMIN_PASSCODE` as an environment variable. Signing in sets a 12-hour cookie. If the variable is not set, the slides stay locked for everyone.
+
+The static site (`docs/`) has no server. Instead, it embeds each slide deck encrypted with AES-GCM, using a key derived from the password (PBKDF2, 600,000 iterations). The browser decrypts it only when the right password is typed. Build it with:
+
+```bash
+ADMIN_PASSCODE=... python3 tools/build-static.py
+```
+
+Without `ADMIN_PASSCODE`, the static site has no slides at all. The password is never written into the repo.
+
+**Note:** this repository is public, so the slide source files (`public/data/*.json`, `tools/decks/`) can be read on GitHub. The lock protects the website only.
+
 ## Languages
 
 Every page has a 한국어 / English button. The choice is remembered on that device. Slides, speaker notes, the 20 questions and the results all have Korean versions (`ko` fields in `public/data/*.json`).

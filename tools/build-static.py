@@ -12,8 +12,7 @@ def links(s):
     s=s.replace('href="/downloads/my-user-manual-slides.html" download','href="my-user-manual-slides.html"')
     s=re.sub(r'href="/cohort\?([^"]*)"',r'href="cohort.html?\1"',s)
     s=s.replace('href="/lectures/my-user-manual"','href="my-user-manual.html"').replace('href="/lectures/basic-finance"','href="basic-finance.html"')
-    s=s.replace('href="/downloads/basic-finance-slides.html" download','href="basic-finance-slides.html"')
-    s=s.replace('const deck = await (await fetch("/data/basic-finance.json")).json();','const deck = '+open('data/basic-finance.json').read().strip()+';')
+
     for k in ['lectures','support','mentors','apply','personality','cohort']: s=s.replace(f'href="/{k}"',f'href="{k}.html"')
     s=re.sub(r'href="/#([\w-]+)"',r'href="index.html#\1"',s)
     s=s.replace('href="/"','href="index.html"')
@@ -27,17 +26,50 @@ def links(s):
     s=s.replace('<script src="/js/i18n.js" defer></script>','<script>'+i18n+'</script>')
     s=s.replace('<script src="/js/site.js" defer></script>','<script>'+sitejs+'''
 document.addEventListener("click",(e)=>{const a=e.target.closest('a[href="#live-only"]');if(!a)return;e.preventDefault();note("Live classes need the full site with its server.");});
-document.addEventListener("submit",(e)=>{e.preventDefault();e.stopImmediatePropagation();note("This form needs the full site with its server.");},true);
+document.addEventListener("submit",(e)=>{if(e.target.closest("#admin-form"))return;e.preventDefault();e.stopImmediatePropagation();note("This form needs the full site with its server.");},true);
 function note(t){const K=window.hzI18n&&window.hzLang&&window.hzLang()==="ko"?window.hzI18n.KO[t]:null;let n=document.querySelector(".preview-note");if(!n){n=document.createElement("div");n.className="preview-note";n.setAttribute("role","status");document.body.append(n);}n.textContent=K||t;clearTimeout(n._t);n._t=setTimeout(()=>n.remove(),4000);}
 </script>''')
     return s
 for src,dst in pages.items():
     s=links(open(src).read())
     open(os.path.join(dl,dst),'w').write(s)
-shutil.copy('downloads/my-user-manual-slides.html',dl); shutil.copy('downloads/basic-finance-slides.html',dl)
-shutil.copy('data/site.json',dl)
+# Slides are never published in plain form on the static site.
+for stale in ['my-user-manual-slides.html', 'basic-finance-slides.html']:
+    if os.path.exists(os.path.join(dl, stale)): os.remove(os.path.join(dl, stale))
 open(os.path.join(dl,'.nojekyll'),'w').write('')
 # Custom domain for GitHub Pages (keep in sync with Settings → Pages)
 open(os.path.join(dl,'CNAME'),'w').write('hephzibahacademy.org\n')
 open(os.path.join(dl,'404.html'),'w').write(links(open('404.html').read()))
+
+# Protected lectures: embed each slide deck encrypted with ADMIN_PASSCODE (never stored in the repo).
+import subprocess
+pw = os.environ.get('ADMIN_PASSCODE', '')
+DECRYPT = """<script>
+(() => {
+  const ENC = __ENC__;
+  const lang = () => (window.hzLang && window.hzLang()) || "en";
+  document.querySelectorAll(".admin-only").forEach((n) => n.remove());
+  const form = document.getElementById("admin-form"), err = form.querySelector(".error");
+  document.getElementById("admin-open").onclick = () => { form.hidden = !form.hidden; if (!form.hidden) document.getElementById("admin-pw").focus(); };
+  const b = (x) => Uint8Array.from(atob(x), (c) => c.charCodeAt(0));
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault(); err.textContent = "";
+    if (!ENC) { err.textContent = lang() === "ko" ? "이 사이트에는 슬라이드가 없어요." : "Slides aren’t available on this site."; return; }
+    try {
+      const base = await crypto.subtle.importKey("raw", new TextEncoder().encode(document.getElementById("admin-pw").value), "PBKDF2", false, ["deriveKey"]);
+      const key = await crypto.subtle.deriveKey({ name: "PBKDF2", salt: b(ENC.salt), iterations: ENC.iter, hash: "SHA-256" }, base, { name: "AES-GCM", length: 256 }, false, ["decrypt"]);
+      const html = await crypto.subtle.decrypt({ name: "AES-GCM", iv: b(ENC.iv) }, key, b(ENC.ct));
+      const url = URL.createObjectURL(new Blob([html], { type: "text/html" }));
+      form.replaceChildren(Object.assign(document.createElement("a"), { className: "btn", href: url, target: "_blank", textContent: lang() === "ko" ? "슬라이드 열기 →" : "Open slides →" }));
+    } catch { err.textContent = lang() === "ko" ? "암호가 맞지 않아요." : "Incorrect password."; }
+  });
+})();
+</script>"""
+for lid in ['my-user-manual', 'basic-finance']:
+    f = os.path.join(dl, lid + '.html'); page = open(f).read()
+    tag = '<script src="/js/lecture-admin.js" data-deck="%s" defer></script>' % lid
+    assert tag in page, lid
+    enc = subprocess.run(['node', os.path.join(ROOT, 'tools', 'encrypt.mjs'), os.path.join(pub, 'downloads', lid + '-slides.html')],
+                         env={**os.environ}, capture_output=True, text=True, check=True).stdout if pw else 'null'
+    open(f, 'w').write(page.replace(tag, DECRYPT.replace('__ENC__', enc)))
 print('ok')
