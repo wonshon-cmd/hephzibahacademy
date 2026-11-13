@@ -4,171 +4,219 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex">
+<meta name="theme-color" content="#fbf8f2">
 <title>함께하는 성장 노트 · Hephzibah Academy</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='13' fill='%23fbf8f2'/%3E%3Cpath d='M10 22h11v12h17V12h13v41H38V42H21v11H10z' fill='%231b2133'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&family=Gowun+Batang:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&family=Gowun+Batang:wght@400;700&family=Fraunces:ital,opsz,wght@1,9..144,400&display=swap">
 <style>
-/* Growth Note demo — a phone-first group workshop.
-   One card column; a sticky top bar with the group and the six steps. Single warm-paper look (the Hephzibah brand). */
+/* Hephzibah Academy · Growth Note (phone app).
+   Brand: warm paper, navy ink, one amber light. Lockup top-left, a 1px ink rule under the header,
+   amber serif section numbers like the printed note, one primary action pinned to the thumb. */
 :root {
-  --paper: #fbf8f2; --card: #fffdf9; --ink: #1b2133; --ink-2: #4b4640; --muted: #8b8276;
+  --paper: #fbf8f2; --paper-2: #f4ede2; --card: #fffdf9; --ink: #1b2133; --ink-2: #4b4640; --muted: #8b8276;
   --hair: rgba(120, 92, 55, 0.18); --accent: #e9a93a; --accent-ink: #a8701a; --accent-soft: #fdf1d8;
   --tA: #1d3a6b; --tB: #c0602a; --tC: #2f6b4f; --tD: #6a4c93;
   --sans: "Plus Jakarta Sans", "Noto Sans KR", system-ui, -apple-system, "Segoe UI", sans-serif;
   --kr: "Noto Sans KR", "Plus Jakarta Sans", system-ui, sans-serif;
   --serif: "Gowun Batang", Georgia, serif;
+  --latin-serif: "Fraunces", "Gowun Batang", Georgia, serif;
+  --ease: cubic-bezier(.2, .7, .1, 1);
   color-scheme: light;
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; }
-body { background: var(--paper); color: var(--ink); font-family: var(--kr); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+body { background: var(--paper); color: var(--ink); font-family: var(--kr); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; min-height: 100dvh; }
 button, input, textarea { font: inherit; color: inherit; }
 [hidden] { display: none !important; }
+.gut { padding-left: max(18px, env(safe-area-inset-left, 0px)); padding-right: max(18px, env(safe-area-inset-right, 0px)); }
+.col { max-width: 560px; margin: 0 auto; }
 
-.bar { position: sticky; top: 0; z-index: 20; background: rgba(251,248,242,.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--ink);
-  padding: calc(env(safe-area-inset-top, 0px) + 10px) max(16px, env(safe-area-inset-right, 0px)) 10px max(16px, env(safe-area-inset-left, 0px)); }
-.bar-in { max-width: 620px; margin: 0 auto; display: grid; gap: 10px; }
-.bar-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.brand { display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--ink); }
-.brand svg { width: 26px; height: 26px; }
-.brand b { font-family: var(--sans); font-size: 16px; letter-spacing: -.01em; display: block; line-height: 1; }
-.brand small { font-family: var(--sans); font-size: 8px; letter-spacing: .3em; font-weight: 600; display: block; margin-top: 3px; }
-.pill { font-size: 13px; font-weight: 700; border-radius: 999px; padding: 4px 12px; background: var(--ink); color: var(--paper); white-space: nowrap; }
-.pill.soft { background: var(--accent-soft); color: var(--accent-ink); }
-.steps { display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px; }
-.steps button { border: 0; background: none; padding: 0; cursor: pointer; display: grid; gap: 4px; text-align: left; }
-.steps button:disabled { cursor: default; }
-.steps i { display: block; height: 3px; border-radius: 3px; background: var(--hair); transition: background .3s; }
-.steps span { font-size: 11px; font-weight: 600; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.steps .done i { background: var(--ink); }
-.steps .on i { background: var(--accent); }
-.steps .on span { color: var(--ink); }
+/* Header */
+.top { position: sticky; top: 0; z-index: 20; background: rgba(251,248,242,.94); backdrop-filter: blur(10px); border-bottom: 1px solid var(--ink); padding-top: env(safe-area-inset-top, 0px); }
+.top .col { display: grid; gap: 10px; padding-block: 12px; }
+.top-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.lockup { display: inline-flex; align-items: center; gap: 9px; color: var(--ink); text-decoration: none; }
+.lockup svg { width: 28px; height: 28px; flex: none; }
+.lockup b { font-family: var(--sans); font-size: 17px; font-weight: 700; letter-spacing: -0.01em; display: block; line-height: 1; }
+.lockup small { font-family: var(--sans); font-size: 8.5px; letter-spacing: .32em; font-weight: 600; display: block; margin-top: 4px; }
+.tag { font-family: var(--sans); font-size: 10.5px; font-weight: 700; letter-spacing: .22em; color: var(--accent-ink); }
+.group-chip { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; padding: 5px 11px; border-radius: 999px; background: var(--ink); color: var(--paper); }
+.group-chip i { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+.track { display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px; }
+.track button { height: 4px; border: 0; padding: 0; border-radius: 4px; background: var(--hair); cursor: pointer; transition: background .3s; }
+.track button:disabled { cursor: default; }
+.track button.done { background: var(--ink); }
+.track button.on { background: var(--accent); }
+.where { display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; color: var(--muted); }
+.where b { color: var(--ink); }
 
-main { max-width: 620px; margin: 0 auto; padding: 24px max(16px, env(safe-area-inset-right, 0px)) calc(env(safe-area-inset-bottom, 0px) + 48px) max(16px, env(safe-area-inset-left, 0px)); display: grid; gap: 18px; }
-.screen { display: grid; gap: 18px; animation: in .35s ease both; }
-@keyframes in { from { opacity: 0; transform: translateY(8px); } }
-.eyebrow { font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--accent-ink); margin: 0; }
-h1 { font-size: clamp(30px, 8vw, 44px); line-height: 1.12; letter-spacing: -.035em; margin: 0; font-weight: 800; text-wrap: balance; }
-h2 { font-size: 24px; line-height: 1.2; letter-spacing: -.03em; margin: 0; font-weight: 800; text-wrap: balance; }
-h3 { font-size: 17px; margin: 0; font-weight: 700; }
+/* Screens */
+main { padding-block: 28px calc(120px + env(safe-area-inset-bottom, 0px)); }
+.screen { display: grid; gap: 20px; animation: rise .4s var(--ease) both; }
+@keyframes rise { from { opacity: 0; transform: translateY(10px); } }
+.sec { display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; align-items: baseline; }
+.sec .no { font-family: var(--latin-serif); font-style: italic; font-size: 44px; line-height: .9; color: var(--accent); grid-row: span 2; }
+.sec h2 { margin: 0; font-size: 26px; line-height: 1.2; letter-spacing: -.03em; font-weight: 800; }
+.sec p { margin: 0; color: var(--muted); font-size: 15px; }
+h1 { margin: 0; font-size: clamp(40px, 12vw, 56px); line-height: 1.04; letter-spacing: -.045em; font-weight: 800; }
+.dot { display: inline-block; width: .17em; height: .17em; border-radius: 50%; background: var(--accent); margin-left: .1em; box-shadow: 0 0 .25em rgba(233,169,58,.7); animation: blink 3s ease-in-out infinite; }
+@keyframes blink { 50% { opacity: .3; } }
+.tagline { font-family: var(--latin-serif); font-style: italic; color: var(--accent-ink); font-size: 19px; margin: 0; }
 p { margin: 0; }
-.lead { color: var(--ink-2); font-size: 17px; }
+.lead { color: var(--ink-2); font-size: 16px; }
 .muted { color: var(--muted); font-size: 14px; }
-.serif { font-family: var(--serif); }
-.card { background: var(--card); border: 1px solid var(--hair); border-radius: 16px; padding: 20px; display: grid; gap: 14px; box-shadow: 0 10px 30px rgba(60,45,20,.05); min-width: 0; }
-.row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
-.btn { border: 1px solid var(--ink); background: var(--ink); color: var(--paper); border-radius: 12px; padding: 14px 18px; font-weight: 700; cursor: pointer; font-size: 16px; text-align: center; box-shadow: 0 6px 18px rgba(27,33,51,.14); }
-.btn:disabled { opacity: .4; cursor: default; box-shadow: none; }
-.btn.ghost { background: transparent; color: var(--ink); box-shadow: none; }
-.btn.small { padding: 8px 12px; font-size: 14px; border-radius: 10px; }
-.btn.full { width: 100%; }
-.btn:focus-visible, .opt:focus-visible, .chip:focus-visible, .input:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
-.input { width: 100%; border: 1px solid var(--hair); background: #fffdf8; border-radius: 10px; padding: 12px 14px; font-size: 16px; min-width: 0; }
+.card { background: var(--card); border: 1px solid var(--hair); border-radius: 18px; padding: 18px; display: grid; gap: 12px; min-width: 0; }
+.card h3 { margin: 0; font-size: 15px; font-weight: 700; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.label { font-family: var(--sans); font-size: 11px; font-weight: 700; letter-spacing: .18em; color: var(--muted); text-transform: uppercase; }
+.verse { font-family: var(--serif); font-size: 22px; line-height: 1.65; text-align: center; }
+.glow { position: relative; overflow: hidden; }
+.glow::before { content: ""; position: absolute; inset: -40% -20% auto auto; width: 90%; height: 160%; background: radial-gradient(closest-side, rgba(233,169,58,.22), rgba(233,169,58,0)); pointer-events: none; animation: breathe 6s ease-in-out infinite; }
+.glow > * { position: relative; }
+@keyframes breathe { 50% { opacity: .6; transform: scale(1.06); } }
+
+/* Inputs */
+.input { width: 100%; border: 1px solid var(--hair); background: #fffdf8; border-radius: 12px; padding: 13px 14px; font-size: 16px; min-width: 0; transition: border-color .2s; }
 .input:focus { border-color: var(--ink); outline: none; }
-textarea.input { resize: vertical; min-height: 72px; }
-label.f { display: grid; gap: 6px; font-weight: 700; font-size: 15px; }
+textarea.input { resize: none; min-height: 64px; }
+label.f { display: grid; gap: 7px; font-weight: 700; font-size: 15px; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-.chip { border: 1px solid var(--hair); background: var(--card); border-radius: 999px; padding: 7px 13px; font-size: 14px; cursor: pointer; font-weight: 500; }
+.chip { border: 1px solid var(--hair); background: var(--card); border-radius: 999px; padding: 8px 14px; font-size: 14px; cursor: pointer; font-weight: 600; transition: background .15s, color .15s; }
 .chip.on { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.chip.gold { background: var(--accent-soft); border-color: transparent; color: var(--ink); }
 .chip .n { display: inline-grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; background: var(--accent); color: var(--ink); font-size: 11px; font-weight: 800; margin-right: 6px; }
+.fill-line { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px; font-family: var(--serif); font-size: 18px; line-height: 2.1; }
+.fill-line .input { width: auto; flex: 1 1 120px; padding: 6px 10px; font-family: var(--kr); font-size: 16px; border-width: 0 0 2px; border-radius: 0; background: transparent; border-color: var(--ink); }
+
+/* Buttons + action bar */
+.btn { border: 1px solid var(--ink); background: var(--ink); color: var(--paper); border-radius: 14px; padding: 15px 18px; font-weight: 700; cursor: pointer; font-size: 16px; text-align: center; transition: transform .1s, opacity .2s; }
+.btn:active { transform: scale(.98); }
+.btn:disabled { opacity: .35; cursor: default; }
+.btn.ghost { background: var(--card); color: var(--ink); border-color: var(--hair); }
+.btn.mini { padding: 7px 12px; font-size: 13px; border-radius: 999px; }
+.actions { position: fixed; left: 0; right: 0; bottom: 0; z-index: 25; background: linear-gradient(to top, var(--paper) 70%, rgba(251,248,242,0)); padding-top: 22px; padding-bottom: calc(14px + env(safe-area-inset-bottom, 0px)); }
+.actions .col { display: flex; gap: 10px; }
+.actions .btn { flex: 1; box-shadow: 0 10px 24px rgba(27,33,51,.16); }
+.actions .btn.ghost { flex: 0 0 auto; box-shadow: none; }
+.actions .btn.ghost:only-child { flex: 1; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 
 /* People */
-.av { width: 34px; height: 34px; border-radius: 50%; display: inline-grid; place-items: center; font-weight: 700; font-size: 14px; color: #fff; flex: none; background: var(--muted); }
-.av.me { box-shadow: 0 0 0 3px var(--accent); }
-.people { display: flex; flex-wrap: wrap; gap: 8px; }
-.person { display: inline-flex; align-items: center; gap: 8px; background: var(--card); border: 1px solid var(--hair); border-radius: 999px; padding: 4px 12px 4px 4px; font-size: 14px; font-weight: 600; animation: pop .45s cubic-bezier(.2,1.4,.4,1) both; }
-@keyframes pop { from { opacity: 0; transform: scale(.6); } }
-.groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 12px; }
-.group { border: 1px solid var(--hair); border-radius: 14px; padding: 14px; background: var(--card); display: grid; gap: 10px; }
-.group.mine { border: 2px solid var(--accent); background: #fffaf0; box-shadow: 0 0 0 6px rgba(233,169,58,.12); }
-.group h3 { display: flex; justify-content: space-between; align-items: center; }
-.shuffle .person { animation: shake .5s ease-in-out infinite; }
-@keyframes shake { 25% { transform: translate(-2px, 1px) rotate(-2deg); } 75% { transform: translate(2px, -1px) rotate(2deg); } }
+.av { width: 34px; height: 34px; border-radius: 50%; display: inline-grid; place-items: center; font-weight: 700; font-size: 14px; color: #fff; flex: none; }
+.av.me { box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--accent); }
+.av.sm { width: 24px; height: 24px; font-size: 11px; }
+.av.lg { width: 56px; height: 56px; font-size: 22px; }
+.crowd { display: flex; flex-wrap: wrap; gap: 6px; }
+.crowd .av { animation: pop .45s cubic-bezier(.2,1.4,.4,1) both; }
+@keyframes pop { from { opacity: 0; transform: scale(.4); } }
+.big-count { font-family: var(--sans); font-size: 64px; font-weight: 800; letter-spacing: -.05em; line-height: 1; font-variant-numeric: tabular-nums; }
+.big-count small { font-size: 18px; letter-spacing: 0; color: var(--muted); font-weight: 600; margin-left: 6px; }
+.groups { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.group { border: 1px solid var(--hair); border-radius: 16px; padding: 12px; background: var(--card); display: grid; gap: 8px; animation: rise .4s var(--ease) both; }
+.group.mine { border: 2px solid var(--accent); background: #fffaf0; grid-column: 1 / -1; }
+.group h3 { margin: 0; font-size: 14px; display: flex; justify-content: space-between; align-items: center; }
+.group .names { font-size: 13px; color: var(--ink-2); }
+.group.mine .names { font-size: 15px; font-weight: 600; color: var(--ink); }
+.shaking .av { animation: shake .45s ease-in-out infinite; }
+@keyframes shake { 25% { transform: translate(-2px, 1px) rotate(-3deg); } 75% { transform: translate(2px, -1px) rotate(3deg); } }
 
 /* Test */
-.progress { height: 6px; border-radius: 6px; background: var(--hair); overflow: hidden; }
-.progress i { display: block; height: 100%; background: var(--accent); transition: width .2s ease; }
-.q { font-size: 22px; font-weight: 800; letter-spacing: -.02em; line-height: 1.3; }
+.qhead { display: flex; justify-content: space-between; align-items: center; }
+.qno { font-family: var(--sans); font-weight: 800; font-size: 14px; font-variant-numeric: tabular-nums; }
+.qno span { color: var(--muted); font-weight: 600; }
+.bar { height: 6px; border-radius: 6px; background: var(--hair); overflow: hidden; }
+.bar i { display: block; height: 100%; background: var(--accent); transition: width .18s ease; }
+.q { font-size: 25px; font-weight: 800; letter-spacing: -.03em; line-height: 1.3; min-height: 2.6em; }
 .opts { display: grid; gap: 10px; }
-.opt { display: flex; gap: 12px; align-items: center; text-align: left; border: 1px solid var(--hair); background: var(--card); border-radius: 12px; padding: 14px; cursor: pointer; font-size: 16px; font-weight: 600; transition: transform .12s, background .12s; }
-.opt b { font-family: var(--sans); width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: var(--paper); border: 1px solid var(--hair); flex: none; font-size: 13px; }
-.opt:hover { background: #fffaf0; }
-.opt.picked { background: var(--ink); color: var(--paper); transform: scale(.98); }
-.opt.picked b { background: var(--accent); color: var(--ink); border-color: var(--accent); }
-.counts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
-.count { border-radius: 12px; padding: 10px; text-align: center; background: var(--paper); border: 1px solid var(--hair); }
-.count b { display: block; font-family: var(--sans); font-size: 26px; line-height: 1.1; font-variant-numeric: tabular-nums; }
-.count small { font-size: 12px; color: var(--muted); font-weight: 600; }
-.count.top { background: var(--accent-soft); border-color: var(--accent); }
-.type { border-top: 4px solid var(--accent); }
-.type .name { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
-.type .name b { font-size: 26px; letter-spacing: -.03em; }
-.type .name span { color: var(--muted); font-weight: 600; }
-.badge { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; border-radius: 999px; padding: 3px 10px; color: #fff; }
-.member { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: start; padding: 12px 0; border-top: 1px solid var(--hair); }
-.member:first-child { border-top: 0; padding-top: 0; }
-.member p { font-size: 15px; color: var(--ink-2); }
+.opt { display: flex; gap: 14px; align-items: center; text-align: left; border: 1px solid var(--hair); background: var(--card); border-radius: 16px; padding: 16px; cursor: pointer; font-size: 16px; font-weight: 600; transition: transform .1s, background .12s, color .12s; }
+.opt b { font-family: var(--sans); width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--paper); border: 1px solid var(--hair); flex: none; font-size: 13px; }
+.opt.picked { background: var(--ink); color: var(--paper); transform: scale(.985); }
+.opt.picked b { background: var(--accent); border-color: var(--accent); color: var(--ink); }
+.dist { display: grid; gap: 8px; }
+.dist div { display: grid; grid-template-columns: 64px 1fr 28px; gap: 10px; align-items: center; font-size: 13px; font-weight: 700; }
+.dist span.track-b { height: 10px; border-radius: 10px; background: var(--paper-2); overflow: hidden; }
+.dist span.track-b i { display: block; height: 100%; border-radius: 10px; transition: width .8s var(--ease); }
+.dist em { font-style: normal; text-align: right; font-variant-numeric: tabular-nums; color: var(--muted); }
+.type-card { border-top: 5px solid var(--accent); }
+.type-name { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.type-name b { font-size: 30px; letter-spacing: -.04em; line-height: 1.1; }
+.type-name span { font-family: var(--serif); font-size: 17px; color: var(--muted); }
+.grow { display: flex; gap: 8px; align-items: baseline; font-size: 14px; color: var(--ink-2); }
+.grow::before { content: "↗"; color: var(--accent-ink); font-weight: 800; }
+.badge { display: inline-flex; align-items: center; font-size: 12px; font-weight: 700; border-radius: 999px; padding: 2px 9px; color: #fff; }
+.feed { display: grid; gap: 12px; }
+.feed-item { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: start; animation: rise .35s var(--ease) both; }
+.feed-item b { font-size: 14px; }
+.feed-item p { font-size: 15px; color: var(--ink-2); }
 .typing { color: var(--muted); font-size: 14px; }
 .typing::after { content: "…"; animation: dots 1s steps(3) infinite; }
 @keyframes dots { 0% { content: "."; } 33% { content: ".."; } 66% { content: "..."; } }
 
-/* Compliment shower */
-.hero-name { display: flex; align-items: center; gap: 12px; }
-.hero-name .av { width: 52px; height: 52px; font-size: 20px; }
-.praise { display: grid; gap: 10px; }
-.praise-item { background: var(--accent-soft); border-radius: 14px; padding: 12px 14px; animation: pop .45s cubic-bezier(.2,1.4,.4,1) both; display: grid; gap: 4px; }
-.praise-item .who { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 14px; }
-.praise-item .who .av { width: 24px; height: 24px; font-size: 11px; }
-.praise-item p { font-family: var(--serif); font-size: 17px; }
-.rules { border-left: 3px solid var(--accent); padding-left: 12px; color: var(--ink-2); font-size: 14px; }
+/* Compliments */
+.hero { display: flex; align-items: center; gap: 14px; }
+.hero h2 { margin: 0; font-size: 26px; letter-spacing: -.03em; }
+.bubble { background: var(--accent-soft); border-radius: 18px 18px 18px 6px; padding: 12px 14px; display: grid; gap: 6px; animation: pop .45s cubic-bezier(.2,1.4,.4,1) both; transform-origin: left bottom; }
+.bubble .who { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; }
+.bubble p { font-family: var(--serif); font-size: 17px; line-height: 1.55; }
+.rule-note { font-size: 13px; color: var(--muted); border-left: 2px solid var(--accent); padding-left: 10px; }
 .three { display: grid; gap: 8px; }
-.sentence { font-family: var(--serif); font-size: 18px; line-height: 1.9; }
-.sentence .input { display: inline-block; width: auto; min-width: 0; max-width: 100%; padding: 6px 10px; font-family: var(--kr); font-size: 16px; }
+.three .input { padding-left: 40px; background-repeat: no-repeat; }
+.three label { position: relative; }
+.three label span { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); font-family: var(--sans); font-weight: 800; font-size: 13px; color: var(--accent-ink); }
 
-/* Dream table */
-.jobs { display: grid; gap: 10px; }
-.job { display: grid; gap: 4px; padding: 12px 0; border-top: 1px solid var(--hair); }
-.job:first-child { border-top: 0; padding-top: 0; }
+/* Dream */
+.job { display: grid; gap: 6px; padding-block: 12px; border-top: 1px solid var(--hair); }
+.job:first-of-type { border-top: 0; padding-top: 0; }
 .job b { font-size: 15px; }
-.job .ex { color: var(--muted); font-size: 14px; }
+.job .ex { font-family: var(--serif); font-size: 15px; color: var(--muted); }
 
-/* Done */
-.note { background: var(--card); border-radius: 18px; border: 1px solid var(--hair); overflow: hidden; box-shadow: 0 18px 50px rgba(60,45,20,.09); }
-.note-head { padding: 22px 20px; background: linear-gradient(160deg, #fff4dc, #fbf8f2); border-bottom: 1px solid var(--hair); display: grid; gap: 6px; }
-.note-body { padding: 20px; display: grid; gap: 16px; }
-.note-body dt { font-size: 13px; color: var(--muted); font-weight: 700; }
-.note-body dd { margin: 4px 0 0; font-weight: 600; }
-.verse { text-align: center; display: grid; gap: 4px; padding: 10px 0; }
-.verse p { font-family: var(--serif); font-size: 24px; }
-.verse small { font-family: var(--sans); letter-spacing: .14em; color: var(--accent-ink); font-size: 12px; font-weight: 700; }
-.candle { width: 120px; margin: 0 auto; display: block; }
-.candle .flame { transform-origin: 60px 52px; animation: flicker 2.4s ease-in-out infinite; }
-@keyframes flicker { 25% { transform: scale(1.04,.96) rotate(-2deg); } 50% { transform: scale(.97,1.05) rotate(1.5deg); } 75% { transform: scale(1.02,.98) rotate(-1deg); } }
-.toast { position: fixed; left: 50%; bottom: calc(env(safe-area-inset-bottom, 0px) + 18px); transform: translateX(-50%); background: var(--ink); color: var(--paper); padding: 10px 16px; border-radius: 10px; font-size: 14px; z-index: 40; max-width: calc(100vw - 32px); animation: in .3s ease both; }
-.demo-tag { position: fixed; right: max(12px, env(safe-area-inset-right, 0px)); bottom: calc(env(safe-area-inset-bottom, 0px) + 12px); z-index: 30; font-family: var(--sans); font-size: 11px; font-weight: 700; letter-spacing: .14em; background: var(--accent); color: var(--ink); padding: 5px 10px; border-radius: 999px; }
+/* Note */
+.note { background: var(--card); border: 1px solid var(--hair); border-radius: 20px; overflow: hidden; box-shadow: 0 20px 50px rgba(60,45,20,.10); }
+.note-top { padding: 18px 20px 14px; border-bottom: 1px solid var(--ink); display: flex; justify-content: space-between; align-items: end; gap: 10px; }
+.note-top .lockup b { font-size: 15px; }
+.note-head { padding: 20px; background: linear-gradient(160deg, #fff3d6, var(--card)); display: grid; gap: 4px; }
+.note-head h2 { margin: 0; font-size: 26px; letter-spacing: -.03em; }
+.note-body { padding: 4px 20px 20px; display: grid; }
+.note-row { display: grid; grid-template-columns: 36px 1fr; gap: 10px; padding-block: 14px; border-top: 1px solid var(--hair); }
+.note-row:first-child { border-top: 0; }
+.note-row .no { font-family: var(--latin-serif); font-style: italic; color: var(--accent); font-size: 22px; line-height: 1.1; }
+.note-row dt { font-size: 12px; color: var(--muted); font-weight: 700; }
+.note-row dd { margin: 4px 0 0; font-weight: 600; }
+.note-foot { text-align: center; padding: 18px 20px 22px; border-top: 1px solid var(--hair); display: grid; gap: 4px; }
+.note-foot p { font-family: var(--serif); font-size: 22px; }
+.note-foot small { font-family: var(--sans); letter-spacing: .16em; color: var(--accent-ink); font-size: 11px; font-weight: 700; }
+.art { display: block; margin: 0 auto; }
+.door { width: 150px; }
+.door .glow-e { animation: breathe 6s ease-in-out infinite; transform-origin: 80px 70px; }
+.candle { width: 110px; }
+.candle .flame { transform-origin: 55px 50px; animation: flicker 2.4s ease-in-out infinite; }
+@keyframes flicker { 25% { transform: scale(1.05,.95) rotate(-2deg); } 50% { transform: scale(.96,1.05) rotate(1.5deg); } 75% { transform: scale(1.02,.98) rotate(-1deg); } }
+
+.toast { position: fixed; left: 50%; bottom: calc(96px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--ink); color: var(--paper); padding: 10px 16px; border-radius: 12px; font-size: 14px; z-index: 40; max-width: calc(100vw - 32px); animation: rise .25s ease both; }
+.demo { font-family: var(--sans); font-size: 10px; font-weight: 800; letter-spacing: .18em; color: var(--accent-ink); border: 1px solid var(--accent); border-radius: 999px; padding: 2px 8px; }
+@media (min-width: 720px) { .groups { grid-template-columns: repeat(3, 1fr); } .group.mine { grid-column: span 3; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
 </style>
 </head>
 <body>
-<header class="bar" id="bar" hidden>
-  <div class="bar-in">
-    <div class="bar-top">
-      <a class="brand" href="#" aria-label="Hephzibah Academy"><svg viewBox="9 11 43 43" aria-hidden="true"><path d="M10 22h11v12h17V12h13v41H38V42H21v11H10z" fill="currentColor"/></svg><span><b>Hephzibah</b><small>ACADEMY</small></span></a>
-      <span class="pill" id="groupPill"></span>
+<header class="top gut" id="top" hidden>
+  <div class="col">
+    <div class="top-row">
+      <a class="lockup" href="/" aria-label="Hephzibah Academy"><svg viewBox="9 11 43 43" aria-hidden="true"><path d="M10 22h11v12h17V12h13v41H38V42H21v11H10z" fill="currentColor"/></svg><span><b>Hephzibah</b><small>ACADEMY</small></span></a>
+      <span class="group-chip" id="groupChip"></span>
     </div>
-    <nav class="steps" id="steps" aria-label="진행 단계"></nav>
+    <nav class="track" id="track" aria-label="단계"></nav>
+    <div class="where"><b id="whereName"></b><span id="whereNo"></span></div>
   </div>
 </header>
-<main id="app"></main>
-<span class="demo-tag">DEMO</span>
+<main class="gut"><div class="col" id="app"></div></main>
+<div class="actions gut" id="actions" hidden><div class="col" id="actionsIn"></div></div>
 
 <script>
-// ---------------------------------------------------------------------------
-// 함께하는 성장 노트 — demo. Everyone else in the room is simulated: they join,
-// get split into groups of 4–5, answer, and write strengths for you.
-// ---------------------------------------------------------------------------
+// Hephzibah Academy · 함께하는 성장 노트 — demo.
+// Everyone else in the room is simulated: they join, get split into groups of 4–5,
+// answer, and write strengths for you. Nothing leaves this page.
 const $ = (s, r = document) => r.querySelector(s);
 const app = $("#app");
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -218,7 +266,9 @@ const QUESTIONS = [
   ["요즘 키우고 싶은 모습은?", "더 기다려 주는 마음", "끝까지 해내는 힘", "필요할 때 거절하는 용기", "완벽하지 않아도 시작하는 용기"],
 ];
 
+
 const STEPS = ["시작 기도", "성격 테스트", "칭찬 샤워", "나에게 적용", "꿈과 직업", "짝 기도"];
+const LOGO = '<svg viewBox="9 11 43 43" aria-hidden="true"><path d="M10 22h11v12h17V12h13v41H38V42H21v11H10z" fill="currentColor"/></svg>';
 
 const S = {
   me: null, people: [], groups: [], group: null, step: -1, reached: -1,
@@ -226,422 +276,385 @@ const S = {
   received: [], given: {}, heroIndex: 0,
   apply: { overlap: "", unknown: "", v1: "", v2: "", cat: "", practice: "" },
   dream: { mine: {}, jobs: ["", ""], money: [], shine: "" },
-  pair: { partner: null, myReq: "", prayed: false },
+  pair: { partner: null, myReq: "" },
 };
 
-function avatar(p, extra = "") {
-  return `<span class="av ${p.me ? "me" : ""} ${extra}" style="background:${p.color}" aria-hidden="true">${esc(p.name.slice(0, 1))}</span>`;
-}
+// ---------- helpers ----------
+const av = (p, cls = "") => `<span class="av ${p.me ? "me" : ""} ${cls}" style="background:${p.color}" aria-hidden="true">${esc(p.name.slice(0, 1))}</span>`;
+const badge = (k) => `<span class="badge" style="background:${TYPES[k].color}">${TYPES[k].name}</span>`;
+const typeLabel = (keys) => keys.map((k) => TYPES[k].name).join(" + ");
+const sec = (n, title, sub) => `<div class="sec"><span class="no">${String(n).padStart(2, "0")}</span><h2>${title}</h2>${sub ? `<p>${sub}</p>` : ""}</div>`;
 function toast(msg) {
   document.querySelectorAll(".toast").forEach((t) => t.remove());
   const t = document.createElement("div"); t.className = "toast"; t.textContent = msg; document.body.append(t);
-  setTimeout(() => t.remove(), 2200);
+  setTimeout(() => t.remove(), 2000);
 }
-function typeOf(counts) {
-  const max = Math.max(...Object.values(counts));
-  return Object.keys(counts).filter((k) => counts[k] === max);
+// The pinned action bar: [{label, ghost, disabled, id, onClick}]
+function actions(list) {
+  const box = $("#actions"), inner = $("#actionsIn");
+  box.hidden = !list.length; inner.innerHTML = "";
+  for (const a of list) {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "btn" + (a.ghost ? " ghost" : ""); b.textContent = a.label; b.disabled = !!a.disabled;
+    if (a.id) b.id = a.id; b.onclick = a.onClick; inner.append(b);
+  }
 }
-function typeLabel(keys) { return keys.map((k) => TYPES[k].name).join(" + "); }
-function badge(k) { return `<span class="badge" style="background:${TYPES[k].color}">${k} ${TYPES[k].name}</span>`; }
 
-// ---------------- Top bar ----------------
-function renderBar() {
-  const bar = $("#bar");
-  bar.hidden = S.step < 0;
+// ---------- header ----------
+function renderTop() {
+  $("#top").hidden = S.step < 0;
   if (S.step < 0) return;
-  $("#groupPill").textContent = `${S.group.name} · ${S.group.members.length}명`;
-  $("#steps").innerHTML = STEPS.map((n, i) =>
-    `<button type="button" class="${i < S.step ? "done" : ""} ${i === S.step ? "on" : ""}" ${i > S.reached ? "disabled" : ""} data-go="${i}"><i></i><span>${String(i + 1).padStart(2, "0")} ${n}</span></button>`).join("");
-  $("#steps").onclick = (e) => { const b = e.target.closest("[data-go]"); if (b && !b.disabled) go(Number(b.dataset.go)); };
+  $("#groupChip").innerHTML = `<i></i>${S.group.name}`;
+  const st = Math.min(S.step, 5);
+  $("#track").innerHTML = STEPS.map((n, i) => `<button type="button" aria-label="${n}" class="${i < st || S.step > 5 ? "done" : ""} ${i === st && S.step <= 5 ? "on" : ""}" ${i > S.reached ? "disabled" : ""} data-go="${i}"></button>`).join("");
+  $("#track").onclick = (e) => { const b = e.target.closest("[data-go]"); if (b && !b.disabled) go(Number(b.dataset.go)); };
+  $("#whereName").textContent = S.step > 5 ? "나의 성장 노트" : STEPS[st];
+  $("#whereNo").textContent = S.step > 5 ? "완료" : `${st + 1} / 6`;
 }
 function go(step) {
   clearTimers();
   S.step = step; S.reached = Math.max(S.reached, step);
-  renderBar();
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  renderTop();
+  window.scrollTo({ top: 0 });
   [renderPrayer, renderTest, renderShower, renderApply, renderDream, renderPair, renderDone][step]();
 }
 
-// ---------------- 0. Join & lobby ----------------
+// ---------- join ----------
 function renderJoin() {
   app.innerHTML = `<section class="screen">
-    <p class="eyebrow">Hephzibah Academy · 방 코드 HZ27</p>
-    <h1>함께하는<br>성장 노트</h1>
-    <p class="serif lead" style="color:var(--accent-ink)">Light and salt, together.</p>
-    <p class="lead">하나님이 만드신 나를 발견하고, 서로의 빛을 비춰 주는 시간이에요.</p>
+    <div class="top-row"><a class="lockup" href="/" aria-label="Hephzibah Academy">${LOGO}<span><b>Hephzibah</b><small>ACADEMY</small></span></a><span class="demo">DEMO</span></div>
+    <svg class="art door" viewBox="0 0 160 140" aria-hidden="true">
+      <defs><radialGradient id="dg" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#e9a93a" stop-opacity=".45"/><stop offset="1" stop-color="#e9a93a" stop-opacity="0"/></radialGradient>
+      <linearGradient id="dl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6c94d"/><stop offset="1" stop-color="#fbe7a6"/></linearGradient></defs>
+      <ellipse class="glow-e" cx="80" cy="70" rx="76" ry="64" fill="url(#dg)"/>
+      <rect x="64" y="26" width="38" height="92" fill="url(#dl)"/>
+      <path d="M61 118 V23 H105 V118" fill="none" stroke="#1b2133" stroke-width="2.4"/>
+      <polygon points="64,26 44,20 44,124 64,118" fill="#fffdf9" stroke="#1b2133" stroke-width="2.4" stroke-linejoin="round"/>
+      <path d="M14 118 H146" stroke="#1b2133" stroke-width="2.4"/>
+    </svg>
+    <div style="display:grid;gap:10px">
+      <span class="tag">복음에 기반한 배움 · LEARN / THRIVE / SHARE</span>
+      <h1>함께하는<br>성장 노트<span class="dot" aria-hidden="true"></span></h1>
+      <p class="tagline">Light and salt, together.</p>
+      <p class="lead">하나님이 만드신 나를 발견하고, 서로의 빛을 비춰 줘요.</p>
+    </div>
     <form class="card" id="joinForm">
-      <label class="f" for="name">이름<input class="input" id="name" maxlength="12" autocomplete="off" placeholder="예: 지윤" required></label>
-      <button class="btn full" type="submit">입장하기</button>
-      <p class="muted">입장하면 4~5명씩 조가 랜덤으로 정해져요. 데모에서는 다른 친구들이 자동으로 들어와요.</p>
+      <label class="f" for="name">이름<input class="input" id="name" maxlength="12" autocomplete="off" placeholder="예: 지윤"></label>
+      <p class="muted">방 코드 HZ27 · 4~5명씩 랜덤 조 · 약 75분</p>
     </form>
-    <div class="row muted"><span>인원 여러 명 (4~5명씩 조)</span><span>·</span><span>약 75분</span></div>
   </section>`;
-  $("#joinForm").onsubmit = (e) => {
-    e.preventDefault();
-    const name = $("#name").value.trim() || "나";
+  const enter = () => {
+    const name = $("#name").value.trim();
+    if (!name) { toast("이름을 적어 주세요"); $("#name").focus(); return; }
     S.me = { id: "me", name, me: true, color: "#1b2133" };
     renderLobby();
   };
-  $("#name").focus();
+  $("#joinForm").onsubmit = (e) => { e.preventDefault(); enter(); };
+  actions([{ label: "입장하기", onClick: enter }]);
 }
 
+// ---------- lobby & groups ----------
 function renderLobby() {
   S.people = [S.me];
   app.innerHTML = `<section class="screen">
-    <p class="eyebrow">대기실</p>
-    <h2>친구들이 들어오고 있어요</h2>
-    <div class="card"><div class="row" style="justify-content:space-between"><h3>입장한 사람</h3><span class="pill soft" id="cnt">1명</span></div><div class="people" id="people"></div></div>
+    <span class="tag">대기실 · HZ27</span>
+    <div><div class="big-count" id="cnt">1<small>명 입장</small></div></div>
+    <div class="crowd" id="crowd">${av(S.me)}</div>
     <div id="groupsBox"></div>
   </section>`;
-  const box = $("#people");
-  const add = (p) => { box.insertAdjacentHTML("beforeend", `<span class="person">${avatar(p)}${esc(p.name)}${p.me ? " (나)" : ""}</span>`); $("#cnt").textContent = `${S.people.length}명`; };
-  add(S.me);
+  actions([{ label: "친구들을 기다리는 중…", disabled: true }]);
   const others = shuffle(NAMES).slice(0, 16);
   let tm = 200;
   others.forEach((name, i) => {
-    tm += rnd(90, 220);
-    later(tm, () => { const p = { id: "p" + i, name, color: COLORS[i % COLORS.length] }; S.people.push(p); add(p); });
+    tm += rnd(80, 200);
+    later(tm, () => {
+      const p = { id: "p" + i, name, color: COLORS[i % COLORS.length] };
+      S.people.push(p);
+      $("#crowd").insertAdjacentHTML("beforeend", av(p));
+      $("#cnt").innerHTML = `${S.people.length}<small>명 입장</small>`;
+    });
   });
-  later(tm + 500, () => {
-    box.classList.add("shuffle");
-    $("#groupsBox").innerHTML = `<p class="muted" style="text-align:center">조를 랜덤으로 나누는 중…</p>`;
-  });
-  later(tm + 1700, makeGroups);
+  later(tm + 400, () => { $("#crowd").classList.add("shaking"); $("#groupsBox").innerHTML = `<p class="muted">조를 섞는 중…</p>`; });
+  later(tm + 1500, makeGroups);
 }
-
 function makeGroups() {
-  const n = S.people.length;
-  const count = Math.ceil(n / 5);
-  const order = shuffle(S.people);
+  const count = Math.ceil(S.people.length / 5);
   S.groups = Array.from({ length: count }, (_, i) => ({ name: GROUP_NAMES[i], members: [] }));
-  order.forEach((p, i) => S.groups[i % count].members.push(p));
+  shuffle(S.people).forEach((p, i) => S.groups[i % count].members.push(p));
   S.group = S.groups.find((g) => g.members.includes(S.me));
-  $("#people").classList.remove("shuffle");
-  $("#groupsBox").innerHTML = `<div class="groups">${S.groups.map((g) => `
-    <div class="group ${g === S.group ? "mine" : ""}">
-      <h3>${g.name}${g === S.group ? `<span class="pill soft">우리 조</span>` : ""}</h3>
-      <div class="people">${g.members.map((p) => `<span class="person">${avatar(p)}${esc(p.name)}</span>`).join("")}</div>
-    </div>`).join("")}</div>
-    <button class="btn full" id="start" style="margin-top:16px">${S.group.name}로 시작하기</button>`;
-  $("#start").onclick = () => go(0);
-  $("#start").scrollIntoView({ behavior: "smooth", block: "end" });
+  const sorted = [S.group, ...S.groups.filter((g) => g !== S.group)];
+  $("#crowd").classList.remove("shaking");
+  $("#groupsBox").innerHTML = `<div class="groups">${sorted.map((g, i) => `
+    <div class="group ${g === S.group ? "mine" : ""}" style="animation-delay:${i * 80}ms">
+      <h3>${g.name}<span class="muted">${g === S.group ? "우리 조" : g.members.length + "명"}</span></h3>
+      ${g === S.group ? `<div class="crowd">${g.members.map((p) => av(p)).join("")}</div>` : ""}
+      <p class="names">${g.members.map((p) => esc(p.name)).join(" · ")}</p>
+    </div>`).join("")}</div>`;
+  actions([{ label: `${S.group.name}로 시작`, onClick: () => go(0) }]);
 }
 
-// ---------------- 01. Prayer ----------------
+// ---------- 01 prayer ----------
 function renderPrayer() {
   app.innerHTML = `<section class="screen">
-    <p class="eyebrow">01 · 시작 기도 · 3분</p>
-    <h2>함께 기도하며 시작해요</h2>
-    <div class="card" style="text-align:center;padding:32px 20px">
-      <p class="serif" style="font-size:24px;line-height:1.6">“하나님, 우리를<br>하나님의 눈으로 보게 해 주세요.”</p>
-    </div>
-    <div class="card"><h3>${S.group.name}</h3><div class="people">${S.group.members.map((p) => `<span class="person">${avatar(p)}${esc(p.name)}</span>`).join("")}</div></div>
-    <button class="btn full" id="amen">아멘 · 다음으로</button>
+    ${sec(1, "시작 기도", "3분 · 함께")}
+    <div class="card glow" style="padding:36px 20px"><p class="verse">하나님, 우리를<br>하나님의 눈으로<br>보게 해 주세요.</p></div>
+    <div class="card"><h3>${S.group.name}<span class="muted">${S.group.members.length}명</span></h3>
+      <div class="feed">${S.group.members.map((p) => `<div class="feed-item" style="align-items:center">${av(p)}<b>${esc(p.name)}${p.me ? " (나)" : ""}</b></div>`).join("")}</div></div>
   </section>`;
-  $("#amen").onclick = () => go(1);
+  actions([{ label: "아멘", onClick: () => go(1) }]);
 }
 
-// ---------------- 02. Personality test ----------------
+// ---------- 02 test ----------
 function renderTest() {
   if (S.answers.length >= QUESTIONS.length) return renderResult();
   const i = S.answers.length, q = QUESTIONS[i];
   app.innerHTML = `<section class="screen">
-    <div class="row" style="justify-content:space-between"><p class="eyebrow">02 · 성격 테스트</p><span class="muted" style="font-variant-numeric:tabular-nums">${i + 1} / ${QUESTIONS.length}</span></div>
-    <div class="progress"><i style="width:${(i / QUESTIONS.length) * 100}%"></i></div>
+    ${i === 0 ? sec(2, "성격 테스트", "20문항 · 가장 가까운 것 하나") : ""}
+    <div class="qhead"><span class="qno">${i + 1}<span> / ${QUESTIONS.length}</span></span><button class="btn ghost mini" id="auto" type="button">⚡ 빠르게</button></div>
+    <div class="bar"><i style="width:${(i / QUESTIONS.length) * 100}%"></i></div>
     <p class="q">${esc(q[0])}</p>
     <div class="opts">${["A", "B", "C", "D"].map((k, j) => `<button type="button" class="opt" data-k="${k}"><b>${k}</b>${esc(q[j + 1])}</button>`).join("")}</div>
-    <div class="row" style="justify-content:space-between">
-      <span class="muted">나와 가장 가까운 것 하나를 눌러요.</span>
-      <button class="btn ghost small" id="auto" type="button">⚡ 자동으로 빠르게</button>
-    </div>
   </section>`;
+  actions([]);
   app.querySelector(".opts").onclick = (e) => {
     const b = e.target.closest(".opt"); if (!b || app.dataset.busy) return;
-    app.dataset.busy = "1"; b.classList.add("picked");
-    S.answers.push(b.dataset.k);
-    setTimeout(() => { delete app.dataset.busy; renderTest(); }, 110);
+    app.dataset.busy = "1"; b.classList.add("picked"); S.answers.push(b.dataset.k);
+    setTimeout(() => { delete app.dataset.busy; renderTest(); }, 120);
   };
   $("#auto").onclick = autoTest;
 }
 function autoTest() {
-  // Demo: answers the remaining questions in a blur, leaning towards one type.
   const lean = pick(["A", "B", "C", "D"]);
   const step = () => {
     if (S.answers.length >= QUESTIONS.length) return renderResult();
     const k = Math.random() < 0.55 ? lean : pick(["A", "B", "C", "D"]);
-    const b = app.querySelector(`.opt[data-k="${k}"]`);
-    if (b) b.classList.add("picked");
+    const b = app.querySelector(`.opt[data-k="${k}"]`); if (b) b.classList.add("picked");
     S.answers.push(k);
-    timers.push(setTimeout(() => { renderTest(); $("#auto") && ($("#auto").disabled = true); timers.push(setTimeout(step, 70)); }, 60));
+    timers.push(setTimeout(() => { renderTest(); const a = $("#auto"); if (a) a.disabled = true; timers.push(setTimeout(step, 60)); }, 50));
   };
   step();
 }
-
 function renderResult() {
   if (!S.counts) {
     S.counts = { A: 0, B: 0, C: 0, D: 0 };
     S.answers.forEach((k) => S.counts[k]++);
-    S.myTypes = typeOf(S.counts);
+    const max = Math.max(...Object.values(S.counts));
+    S.myTypes = Object.keys(S.counts).filter((k) => S.counts[k] === max);
     S.members = S.group.members.filter((p) => !p.me).map((p) => ({ ...p, type: pick(["A", "B", "C", "D"]), line: null }));
   }
-  const main = S.myTypes[0];
   app.innerHTML = `<section class="screen">
-    <p class="eyebrow">02 · 성격 테스트 결과</p>
-    <div class="counts">${["A", "B", "C", "D"].map((k) => `<div class="count ${S.myTypes.includes(k) ? "top" : ""}"><b>${S.counts[k]}</b><small>${k} ${TYPES[k].name}</small></div>`).join("")}</div>
-    ${S.myTypes.map((k) => `<div class="card type" style="border-top-color:${TYPES[k].color}">
-      <div class="name"><b>${k} ${TYPES[k].name}</b><span>${TYPES[k].who}</span></div>
-      <p>${TYPES[k].desc}</p>
-      <p class="muted">성장 포인트: ${TYPES[k].grow}</p></div>`).join("")}
-    <div class="card">
-      <h3>돌아가며 한 줄씩 나눠요</h3>
-      <p class="muted">“나는 ${typeLabel(S.myTypes)}인데, …”</p>
-      <div class="chips" id="lineChips">
-        <button type="button" class="chip ${S.myLine === "맞는 것 같아요" ? "on" : ""}">맞는 것 같아요</button>
-        <button type="button" class="chip ${S.myLine === "좀 다른 것 같아요" ? "on" : ""}">좀 다른 것 같아요</button>
-      </div>
-      <div id="memberLines"></div>
-    </div>
-    <button class="btn full" id="next" ${S.myLine ? "" : "disabled"}>칭찬 샤워로</button>
+    ${sec(2, "나의 유형")}
+    ${S.myTypes.map((k) => `<div class="card type-card glow" style="border-top-color:${TYPES[k].color}">
+      <div class="type-name"><b>${TYPES[k].name}</b><span>${TYPES[k].who}</span></div>
+      <p>${TYPES[k].desc}</p><p class="grow">성장 포인트 · ${TYPES[k].grow}</p></div>`).join("")}
+    <div class="card"><div class="dist">${["A", "B", "C", "D"].map((k) => `<div><span>${TYPES[k].name}</span><span class="track-b"><i style="width:0;background:${TYPES[k].color}" data-w="${(S.counts[k] / 20) * 100}"></i></span><em>${S.counts[k]}</em></div>`).join("")}</div></div>
+    <div class="card"><h3>한 줄 나눔<span class="muted">“나는 ${typeLabel(S.myTypes)}인데…”</span></h3>
+      <div class="chips" id="lineChips">${["맞는 것 같아요", "좀 다른 것 같아요"].map((x) => `<button type="button" class="chip ${S.myLine === x ? "on" : ""}">${x}</button>`).join("")}</div>
+      <div class="feed" id="lines"></div></div>
   </section>`;
+  requestAnimationFrame(() => app.querySelectorAll("[data-w]").forEach((i) => (i.style.width = i.dataset.w + "%")));
+  const next = () => go(2);
+  actions([{ label: "칭찬 샤워로", id: "next", disabled: !S.myLine, onClick: next }]);
   $("#lineChips").onclick = (e) => {
     const c = e.target.closest(".chip"); if (!c) return;
     S.myLine = c.textContent; $("#lineChips").querySelectorAll(".chip").forEach((x) => x.classList.toggle("on", x === c));
-    $("#next").disabled = false; drawLines();
+    $("#next").disabled = false; draw();
   };
-  $("#next").onclick = () => go(2);
-  drawLines();
-  // Group members finish their tests and share, one by one.
+  const draw = () => {
+    const me = S.myLine ? `<div class="feed-item">${av(S.me)}<div><b>${esc(S.me.name)}</b> ${S.myTypes.map(badge).join(" ")}<p>${S.myLine}</p></div></div>` : "";
+    $("#lines").innerHTML = me + S.members.map((m) => `<div class="feed-item">${av(m)}<div><b>${esc(m.name)}</b> ${m.line ? badge(m.type) : ""}${m.line ? `<p>${m.line}</p>` : `<p class="typing">테스트 중</p>`}</div></div>`).join("");
+  };
+  draw();
   let tm = 300;
-  S.members.forEach((m) => { if (m.line) return; tm += rnd(350, 800); later(tm, () => { m.line = Math.random() < 0.75 ? "맞는 것 같아요" : "좀 다른 것 같아요"; drawLines(); }); });
-  function drawLines() {
-    const me = S.myLine ? `<div class="member">${avatar(S.me)}<div><b>${esc(S.me.name)}</b> ${S.myTypes.map(badge).join(" ")}<p>“나는 ${typeLabel(S.myTypes)}인데, ${S.myLine}.”</p></div></div>` : "";
-    $("#memberLines").innerHTML = me + S.members.map((m) => `<div class="member">${avatar(m)}<div><b>${esc(m.name)}</b> ${m.line ? badge(m.type) : ""}
-      ${m.line ? `<p>“나는 ${TYPES[m.type].name}인데, ${m.line}.”</p>` : `<p class="typing">테스트 중</p>`}</div></div>`).join("");
-  }
+  S.members.forEach((m) => { if (m.line) return; tm += rnd(300, 700); later(tm, () => { m.line = Math.random() < 0.75 ? "맞는 것 같아요" : "좀 다른 것 같아요"; draw(); }); });
 }
 
-// ---------------- 03. Compliment shower ----------------
-// Round 0: I'm the hero and friends write my strengths. Then I write three for each friend.
+// ---------- 03 compliment shower ----------
 function renderShower() {
   const heroes = [S.me, ...S.members];
   const hero = heroes[S.heroIndex] || S.me;
-  const isMe = hero.me;
   app.innerHTML = `<section class="screen">
-    <div class="row" style="justify-content:space-between"><p class="eyebrow">03 · 칭찬 샤워 · 25분</p><span class="muted">${S.heroIndex + 1} / ${heroes.length}번째 주인공</span></div>
-    <div class="hero-name">${avatar(hero)}<div><p class="muted">지금 주인공</p><h2>${esc(hero.name)}${isMe ? " (나)" : ""}</h2></div></div>
-    <p class="rules">구체적으로 말하기 · 놀리는 칭찬 하지 않기 · 외모보다 행동과 성품을 칭찬하기</p>
-    <div id="box"></div>
+    ${S.heroIndex === 0 ? sec(3, "칭찬 샤워", "한 명씩 주인공 · 장점 세 가지") : ""}
+    <div class="hero">${av(hero, "lg")}<div><span class="label">주인공 ${S.heroIndex + 1}/${heroes.length}</span><h2>${esc(hero.name)}${hero.me ? " (나)" : ""}</h2></div></div>
+    <p class="rule-note">구체적으로 · 놀리지 않기 · 외모보다 행동과 성품</p>
+    <div id="box" style="display:grid;gap:14px"></div>
   </section>`;
-  isMe ? showerReceive() : showerGive(hero);
+  hero.me ? showerReceive() : showerGive(hero);
 }
 function showerReceive() {
-  const box = $("#box");
-  const already = S.received.length > 0;
-  box.innerHTML = `<div class="card"><h3>친구들이 말해 준 나의 장점</h3><div class="praise" id="praise"></div></div>
-    <button class="btn full" id="thanks" ${already ? "" : "disabled"}>“고마워” · 다음 주인공</button>`;
-  const draw = () => { $("#praise").innerHTML = S.received.map((r) => `<div class="praise-item"><span class="who">${avatar(r.from)}${esc(r.from.name)}</span><p>“${esc(S.me.name)}의 장점 세 가지는 ${r.items.map(esc).join(", ")}야.”</p></div>`).join("") || `<p class="typing">친구들이 쓰는 중</p>`; };
+  const fresh = !S.received.length;
+  $("#box").innerHTML = `<div class="feed" id="praise"></div>`;
+  const draw = () => {
+    $("#praise").innerHTML = S.received.map((r) => `<div class="bubble"><span class="who">${av(r.from, "sm")}${esc(r.from.name)}</span><p>${r.items.map(esc).join(", ")}</p></div>`).join("")
+      + (S.received.length < S.members.length ? `<p class="typing">친구들이 쓰는 중</p>` : "");
+  };
   draw();
-  if (!already) {
-    // Friends lean towards my type's strengths, plus one from their own eye.
+  actions([{ label: "고마워", id: "thanks", disabled: fresh, onClick: () => { toast("고마워 🙂"); S.heroIndex = 1; renderShower(); } }]);
+  if (fresh) {
     const mine = S.myTypes.flatMap((k) => TYPES[k].strengths);
     const all = Object.values(TYPES).flatMap((t) => t.strengths);
-    let tm = 500;
+    let tm = 400;
     S.members.forEach((m) => {
-      tm += rnd(600, 1100);
+      tm += rnd(500, 900);
       later(tm, () => {
-        const items = shuffle(mine).slice(0, 2).concat(pick(all.filter((x) => !mine.includes(x))));
-        S.received.push({ from: m, items: shuffle(items) }); draw();
+        S.received.push({ from: m, items: shuffle(shuffle(mine).slice(0, 2).concat(pick(all.filter((x) => !mine.includes(x))))) });
+        draw();
         if (S.received.length === S.members.length) $("#thanks").disabled = false;
       });
     });
   }
-  $("#thanks").onclick = () => { toast("고마워 🙂"); S.heroIndex = 1; renderShower(); };
 }
 function showerGive(hero) {
-  const box = $("#box");
   const mem = S.members.find((m) => m.id === hero.id);
   const ideas = shuffle([...new Set(TYPES[mem.type].strengths.concat(pick(Object.values(TYPES)).strengths))]).slice(0, 6);
   const cur = S.given[hero.id] || ["", "", ""];
-  box.innerHTML = `<div class="card">
-      <h3>${esc(hero.name)}의 장점 세 가지</h3>
-      <p class="serif" style="font-size:17px">“${esc(hero.name)}의 장점 세 가지는 ___, ___, ___야.”</p>
-      <div class="three">${cur.map((v, i) => `<input class="input" id="g${i}" maxlength="30" placeholder="장점 ${i + 1}" value="${esc(v)}">`).join("")}</div>
-      <p class="muted">눌러서 빠르게 채우기</p>
-      <div class="chips" id="ideas">${ideas.map((x) => `<button type="button" class="chip">${esc(x)}</button>`).join("")}</div>
+  $("#box").innerHTML = `<div class="card">
+      <h3>${esc(hero.name)}의 장점</h3>
+      <div class="three">${cur.map((v, i) => `<label><span>${i + 1}</span><input class="input" id="g${i}" maxlength="30" aria-label="장점 ${i + 1}" value="${esc(v)}"></label>`).join("")}</div>
+      <div class="chips" id="ideas">${ideas.map((x) => `<button type="button" class="chip gold">${esc(x)}</button>`).join("")}</div>
     </div>
-    <div class="card"><h3>다른 친구들이 ${esc(hero.name)}에게</h3><div class="praise" id="others"><p class="typing">쓰는 중</p></div></div>
-    <button class="btn full" id="send">보내기 · ${S.heroIndex + 1 < S.members.length + 1 ? "다음 주인공" : "나에게 적용하기로"}</button>`;
+    <div class="feed" id="others"></div>`;
   $("#ideas").onclick = (e) => {
-    const c = e.target.closest(".chip"); if (!c) return;
+    const c = e.target.closest(".chip"); if (!c || c.disabled) return;
     const empty = [0, 1, 2].map((i) => $("#g" + i)).find((x) => !x.value.trim());
-    if (empty) { empty.value = c.textContent; c.classList.add("on"); }
+    if (empty) { empty.value = c.textContent; c.classList.replace("gold", "on"); c.disabled = true; }
   };
-  // Other friends' praise for this hero appears too.
-  const others = S.members.filter((m) => m.id !== hero.id);
   const lines = [];
   let tm = 300;
-  others.forEach((o) => { tm += rnd(500, 900); later(tm, () => {
-    lines.push(`<div class="praise-item"><span class="who">${avatar(o)}${esc(o.name)}</span><p>${shuffle(TYPES[mem.type].strengths).slice(0, 3).map(esc).join(", ")}</p></div>`);
+  S.members.filter((m) => m.id !== hero.id).forEach((o) => { tm += rnd(400, 800); later(tm, () => {
+    lines.push(`<div class="bubble"><span class="who">${av(o, "sm")}${esc(o.name)}</span><p>${shuffle(TYPES[mem.type].strengths).slice(0, 3).map(esc).join(", ")}</p></div>`);
     $("#others").innerHTML = lines.join("");
   }); });
-  $("#send").onclick = () => {
+  const last = S.heroIndex >= S.members.length;
+  actions([{ label: last ? "보내고 다음 단계로" : "보내기", onClick: () => {
     const vals = [0, 1, 2].map((i) => $("#g" + i).value.trim());
-    if (vals.filter(Boolean).length < 3) { toast("장점 세 가지를 모두 적어 주세요"); return; }
-    S.given[hero.id] = vals;
-    S.heroIndex++;
-    if (S.heroIndex > S.members.length) go(3); else renderShower();
-  };
+    if (vals.filter(Boolean).length < 3) { toast("세 가지를 채워 주세요"); return; }
+    S.given[hero.id] = vals; S.heroIndex++;
+    S.heroIndex > S.members.length ? go(3) : renderShower();
+  } }]);
 }
 
-// ---------------- 04. Apply to me ----------------
+// ---------- 04 apply ----------
 function renderApply() {
-  const got = S.received.flatMap((r) => r.items);
+  const got = [...new Set(S.received.flatMap((r) => r.items))];
   const mine = S.myTypes.flatMap((k) => TYPES[k].strengths);
-  const overlap = [...new Set(got.filter((x) => mine.includes(x)))];
-  const unknown = [...new Set(got.filter((x) => !mine.includes(x)))];
+  const overlap = got.filter((x) => mine.includes(x)), unknown = got.filter((x) => !mine.includes(x));
   const a = S.apply;
   if (!a.overlap && overlap.length) a.overlap = overlap.slice(0, 2).join(", ");
   app.innerHTML = `<section class="screen">
-    <p class="eyebrow">04 · 나에게 적용하기 · 10분</p>
-    <h2>혼자 조용히 적어요</h2>
+    ${sec(4, "나에게 적용하기", "10분 · 혼자 조용히")}
+    <div class="card"><h3>친구들이 본 나<span class="muted">● 테스트와 겹침</span></h3>
+      <div class="chips">${got.map((x) => `<span class="chip ${mine.includes(x) ? "on" : ""}">${esc(x)}</span>`).join("")}</div></div>
     <div class="card">
-      <h3>친구들이 말해 준 나의 장점</h3>
-      <div class="chips">${[...new Set(got)].map((x) => `<span class="chip ${mine.includes(x) ? "on" : ""}">${esc(x)}</span>`).join("")}</div>
-      <p class="muted">진하게 표시된 건 테스트 결과(${typeLabel(S.myTypes)})와 겹치는 장점이에요.</p>
+      <label class="f" for="ov">겹치는 장점<textarea class="input" id="ov">${esc(a.overlap)}</textarea></label>
+      <label class="f" for="un">몰랐던 내 장점<textarea class="input" id="un" placeholder="${esc(unknown[0] || "")}">${esc(a.unknown)}</textarea></label>
     </div>
-    <div class="card">
-      <label class="f" for="ov">테스트 결과와 친구들이 말해 준 장점 중 겹치는 것은?<textarea class="input" id="ov">${esc(a.overlap)}</textarea></label>
-      <label class="f" for="un">몰랐던 내 장점은?<textarea class="input" id="un" placeholder="${esc(unknown[0] || "예: 분위기를 밝게 해")}">${esc(a.unknown)}</textarea></label>
-    </div>
-    <div class="card">
-      <h3>나의 비전 한 문장</h3>
-      <p class="sentence">나는 <input class="input" id="v1" size="10" placeholder="따뜻한 말" value="${esc(a.v1)}">(으)로
-        <input class="input" id="v2" size="14" placeholder="외로운 친구들" value="${esc(a.v2)}">을(를) 돕는 사람이 되고 싶다.</p>
-    </div>
-    <div class="card">
-      <h3>이번 주 작은 실천 하나</h3>
+    <div class="card glow"><span class="label">나의 비전 한 문장</span>
+      <div class="fill-line">나는 <input class="input" id="v1" placeholder="따뜻한 말" value="${esc(a.v1)}" aria-label="무엇으로">(으)로
+        <input class="input" id="v2" placeholder="외로운 친구들" value="${esc(a.v2)}" aria-label="누구를">을(를) 돕는 사람이 되고 싶다.</div></div>
+    <div class="card"><span class="label">이번 주 작은 실천</span>
       <div class="chips" id="cat">${["지혜", "몸", "하나님", "사람"].map((c) => `<button type="button" class="chip ${a.cat === c ? "on" : ""}">${c}</button>`).join("")}</div>
-      <input class="input" id="pr" maxlength="60" placeholder="예: 새로 온 친구에게 먼저 말 걸기" value="${esc(a.practice)}">
-    </div>
-    <div class="row"><button class="btn ghost" id="fill" type="button">예시로 채우기</button><button class="btn" id="next" style="flex:1">꿈과 직업으로</button></div>
+      <input class="input" id="pr" maxlength="60" placeholder="새로 온 친구에게 먼저 말 걸기" value="${esc(a.practice)}"></div>
   </section>`;
   $("#cat").onclick = (e) => { const c = e.target.closest(".chip"); if (!c) return; a.cat = c.textContent; $("#cat").querySelectorAll(".chip").forEach((x) => x.classList.toggle("on", x === c)); };
-  $("#fill").onclick = () => {
-    $("#un").value ||= unknown[0] || "분위기를 밝게 해"; $("#v1").value ||= "따뜻한 말"; $("#v2").value ||= "외로운 친구들"; $("#pr").value ||= "새로 온 친구에게 먼저 말 걸기";
-    if (!a.cat) { a.cat = "사람"; $("#cat").querySelectorAll(".chip").forEach((x) => x.classList.toggle("on", x.textContent === "사람")); }
-  };
-  $("#next").onclick = () => {
-    Object.assign(a, { overlap: $("#ov").value.trim(), unknown: $("#un").value.trim(), v1: $("#v1").value.trim(), v2: $("#v2").value.trim(), practice: $("#pr").value.trim() });
-    if (!a.v1 || !a.v2) { toast("비전 한 문장의 빈칸을 채워 주세요"); return; }
-    go(4);
-  };
+  actions([
+    { label: "예시", ghost: true, onClick: () => {
+      $("#un").value ||= unknown[0] || "분위기를 밝게 해"; $("#v1").value ||= "따뜻한 말"; $("#v2").value ||= "외로운 친구들"; $("#pr").value ||= "새로 온 친구에게 먼저 말 걸기";
+      if (!a.cat) { a.cat = "사람"; $("#cat").querySelectorAll(".chip").forEach((x) => x.classList.toggle("on", x.textContent === "사람")); }
+    } },
+    { label: "꿈과 직업으로", onClick: () => {
+      Object.assign(a, { overlap: $("#ov").value.trim(), unknown: $("#un").value.trim(), v1: $("#v1").value.trim(), v2: $("#v2").value.trim(), practice: $("#pr").value.trim() });
+      if (!a.v1 || !a.v2) { toast("비전 빈칸을 채워 주세요"); return; }
+      go(4);
+    } },
+  ]);
 }
 
-// ---------------- 05. Dream & job ----------------
+// ---------- 05 dream ----------
 const JOBS = [["의사", "가난한 환자도 정성껏, 마음까지 돌보는 의사"], ["변호사", "정직하고, 힘없는 사람 편에 서는 변호사"],
   ["선생님", "뒤처진 한 명을 끝까지 포기하지 않는 선생님"], ["사업가", "직원을 아끼고 번 돈으로 이웃을 살리는 사업가"]];
 const MONEY = ["나와 가족", "헌금과 나눔", "다른 사람을 세우는 일", "꿈을 위한 배움"];
 function renderDream() {
   const d = S.dream;
   app.innerHTML = `<section class="screen">
-    <p class="eyebrow">05 · 꿈과 직업 · 10분</p>
-    <h2>“무엇이 될까?”보다<br>“어떤 사람이 될까?”</h2>
-    <p class="lead">직업은 내가 하는 일이에요. 하나님이 더 궁금해하시는 건 그 일 안에서 내가 어떤 사람인가예요.</p>
-    <div class="card"><div class="jobs">${JOBS.map(([j, ex], i) => `<div class="job"><b>${j}</b><span class="ex">${ex}</span>
-      <input class="input" id="job${i}" placeholder="나라면 어떤 ${j}가 되고 싶나요?" value="${esc(d.mine[j] || "")}"></div>`).join("")}</div></div>
-    <div class="card">
-      <h3>내 꿈의 직업</h3>
-      <div class="three">${[0, 1].map((i) => `<input class="input" id="dj${i}" placeholder="내 꿈 ${i + 1} · 예: 간호사, 어떤 간호사?" value="${esc(d.jobs[i])}">`).join("")}</div>
-    </div>
-    <div class="card">
-      <h3>그 일로 번 돈은 어떻게 쓰고 싶나요?</h3>
-      <p class="muted">중요한 순서대로 눌러요 (1 → 4). 다시 누르면 지워져요.</p>
-      <div class="chips" id="money"></div>
-    </div>
-    <div class="card"><label class="f" for="shine">그 자리에서 하나님의 빛을 어떻게 비출 수 있을까요?<textarea class="input" id="shine" placeholder="예: 바쁜 날에도 환자 이름을 불러 주며 인사하기">${esc(d.shine)}</textarea></label></div>
-    <div class="row"><button class="btn ghost" id="fill" type="button">예시로 채우기</button><button class="btn" id="next" style="flex:1">짝 기도로</button></div>
+    ${sec(5, "꿈과 직업", "무엇이 될까보다, 어떤 사람이 될까")}
+    <div class="card"><span class="label">이런 사람이 될 수 있어요</span>
+      ${JOBS.map(([j, ex], i) => `<div class="job"><b>${j}</b><span class="ex">${ex}</span><input class="input" id="job${i}" placeholder="나라면?" value="${esc(d.mine[j] || "")}"></div>`).join("")}</div>
+    <div class="card"><span class="label">내 꿈</span>
+      ${[0, 1].map((i) => `<input class="input" id="dj${i}" placeholder="직업 — 어떤 사람으로" value="${esc(d.jobs[i])}">`).join("")}</div>
+    <div class="card"><h3>번 돈은 어디에?<span class="muted">중요한 순서대로</span></h3><div class="chips" id="money"></div></div>
+    <div class="card"><label class="f" for="shine">그 자리에서 어떻게 빛을 비출까요?<textarea class="input" id="shine" placeholder="환자 이름을 불러 주며 인사하기">${esc(d.shine)}</textarea></label></div>
   </section>`;
-  const drawMoney = () => { $("#money").innerHTML = MONEY.map((m) => { const n = d.money.indexOf(m) + 1; return `<button type="button" class="chip ${n ? "on" : ""}">${n ? `<span class="n">${n}</span>` : ""}${m}</button>`; }).join(""); };
+  const drawMoney = () => { $("#money").innerHTML = MONEY.map((m) => { const n = d.money.indexOf(m) + 1; return `<button type="button" class="chip ${n ? "on" : ""}" data-m="${m}">${n ? `<span class="n">${n}</span>` : ""}${m}</button>`; }).join(""); };
   drawMoney();
-  $("#money").onclick = (e) => { const c = e.target.closest(".chip"); if (!c) return; const m = MONEY.find((x) => c.textContent.endsWith(x)); const i = d.money.indexOf(m); i >= 0 ? d.money.splice(i, 1) : d.money.push(m); drawMoney(); };
-  $("#fill").onclick = () => {
-    $("#dj0").value ||= "간호사 — 아픈 사람의 이야기를 끝까지 들어 주는 간호사"; $("#job2").value ||= "질문하는 학생을 반가워하는 선생님";
-    $("#shine").value ||= "바쁜 날에도 환자 이름을 불러 주며 인사하기"; if (!d.money.length) { d.money = ["헌금과 나눔", "나와 가족", "다른 사람을 세우는 일", "꿈을 위한 배움"]; drawMoney(); }
-  };
-  $("#next").onclick = () => {
-    JOBS.forEach(([j], i) => (d.mine[j] = $("#job" + i).value.trim()));
-    d.jobs = [0, 1].map((i) => $("#dj" + i).value.trim()); d.shine = $("#shine").value.trim();
-    go(5);
-  };
+  $("#money").onclick = (e) => { const c = e.target.closest(".chip"); if (!c) return; const i = d.money.indexOf(c.dataset.m); i >= 0 ? d.money.splice(i, 1) : d.money.push(c.dataset.m); drawMoney(); };
+  actions([
+    { label: "예시", ghost: true, onClick: () => {
+      $("#dj0").value ||= "간호사 — 아픈 사람의 이야기를 끝까지 들어 주는"; $("#job2").value ||= "질문을 반가워하는 선생님";
+      $("#shine").value ||= "환자 이름을 불러 주며 인사하기"; if (!d.money.length) { d.money = ["헌금과 나눔", "나와 가족", "다른 사람을 세우는 일", "꿈을 위한 배움"]; drawMoney(); }
+    } },
+    { label: "짝 기도로", onClick: () => {
+      JOBS.forEach(([j], i) => (d.mine[j] = $("#job" + i).value.trim()));
+      d.jobs = [0, 1].map((i) => $("#dj" + i).value.trim()); d.shine = $("#shine").value.trim();
+      go(5);
+    } },
+  ]);
 }
 
-// ---------------- 06. Pair prayer ----------------
+// ---------- 06 pair prayer ----------
 const REQUESTS = ["다음 주 시험 때 마음이 흔들리지 않도록", "동생이랑 덜 싸우고 먼저 사과할 수 있도록", "새 학교에서 좋은 친구를 만나도록", "할머니 건강이 회복되도록", "진로를 정할 지혜를 주시도록"];
 const VISIONS = ["웃음으로 지친 친구들을", "꼼꼼함으로 함께 일하는 사람들을", "따뜻한 말로 외로운 친구들을", "용기로 새로운 일을 시작하는 사람들을"];
 function renderPair() {
   const p = S.pair;
-  if (!p.partner) {
-    const m = pick(S.members);
-    p.partner = { ...m, vision: pick(VISIONS), req: null };
-  }
+  if (!p.partner) p.partner = { ...pick(S.members), vision: pick(VISIONS), req: null };
   const pt = p.partner;
   app.innerHTML = `<section class="screen">
-    <p class="eyebrow">06 · 짝 기도 · 5분</p>
-    <h2>오늘의 짝은 ${esc(pt.name)}</h2>
-    <p class="lead">서로의 비전과 꿈을 나누고, 그것을 위해 기도해 줘요. 다음 모임에서 “해 봤어?” 하고 물어봐 주세요.</p>
-    <div class="card">
-      <div class="hero-name">${avatar(pt)}<div><h3>${esc(pt.name)}의 비전</h3><p>“나는 ${esc(pt.vision)} 돕는 사람이 되고 싶어.”</p></div></div>
-      <div id="req"><p class="typing">${esc(pt.name)}이(가) 기도제목을 쓰는 중</p></div>
+    ${sec(6, "짝 기도", "5분 · 서로를 위해")}
+    <div class="card glow">
+      <div class="hero">${av(pt, "lg")}<div><span class="label">오늘의 짝</span><h2>${esc(pt.name)}</h2></div></div>
+      <p class="verse" style="font-size:18px;text-align:left">“나는 ${esc(pt.vision)} 돕는 사람이 되고 싶어.”</p>
+      <div id="req"><p class="typing">기도제목 쓰는 중</p></div>
     </div>
-    <div class="card">
-      <h3>나의 비전</h3>
-      <p>“나는 ${esc(S.apply.v1 || "…")}(으)로 ${esc(S.apply.v2 || "…")}을(를) 돕는 사람이 되고 싶어.”</p>
-      <label class="f" for="myreq">나의 기도제목<textarea class="input" id="myreq" placeholder="예: 이번 주 작은 실천을 끝까지 해낼 수 있도록">${esc(p.myReq)}</textarea></label>
-    </div>
-    <button class="btn full" id="pray">서로를 위해 기도했어요</button>
+    <div class="card"><span class="label">나의 비전</span>
+      <p class="verse" style="font-size:18px;text-align:left">“나는 ${esc(S.apply.v1)}(으)로 ${esc(S.apply.v2)}을(를) 돕는 사람이 되고 싶어.”</p>
+      <label class="f" for="myreq">나의 기도제목<textarea class="input" id="myreq" placeholder="이번 주 작은 실천을 끝까지 해내도록">${esc(p.myReq)}</textarea></label></div>
+    <p class="muted" style="text-align:center">다음 모임에서 “해 봤어?” 하고 물어봐 주세요.</p>
   </section>`;
-  const showReq = () => { $("#req").innerHTML = `<div class="praise-item"><span class="who">기도제목</span><p>${esc(pt.req)}</p></div>`; };
-  if (pt.req) showReq(); else later(1200, () => { pt.req = pick(REQUESTS); showReq(); });
-  $("#pray").onclick = () => { p.myReq = $("#myreq").value.trim() || "이번 주 작은 실천을 끝까지 해낼 수 있도록"; p.prayed = true; go(6); };
+  const show = () => { $("#req").innerHTML = `<div class="bubble"><span class="who">기도제목</span><p>${esc(pt.req)}</p></div>`; };
+  if (pt.req) show(); else later(1000, () => { pt.req = pick(REQUESTS); show(); });
+  actions([{ label: "기도했어요", onClick: () => { p.myReq = $("#myreq").value.trim() || "이번 주 작은 실천을 끝까지 해내도록"; go(6); } }]);
 }
 
-// ---------------- Done: my growth note ----------------
+// ---------- done: my growth note ----------
 function renderDone() {
-  S.step = 5; renderBar();
-  $("#steps").querySelectorAll("button").forEach((b) => b.classList.add("done"));
   const a = S.apply, d = S.dream;
   const got = [...new Set(S.received.flatMap((r) => r.items))];
+  const rows = [
+    ["나의 유형", `${S.myTypes.map(badge).join(" ")} <span class="muted">${S.myTypes.map((k) => TYPES[k].who).join(", ")}</span>`],
+    ["친구들이 본 나", got.map(esc).join(" · ")],
+    a.unknown && ["몰랐던 내 장점", esc(a.unknown)],
+    ["나의 비전", `<span style="font-family:var(--serif);font-size:17px">나는 ${esc(a.v1)}(으)로 ${esc(a.v2)}을(를) 돕는 사람이 되고 싶다.</span>`],
+    a.practice && [`이번 주 실천${a.cat ? " · " + a.cat : ""}`, esc(a.practice)],
+    d.jobs.some(Boolean) && ["내 꿈", d.jobs.filter(Boolean).map(esc).join("<br>")],
+    ["기도제목", `${esc(S.pair.myReq)}<br><span class="muted">짝 ${esc(S.pair.partner.name)} · ${esc(S.pair.partner.req)}</span>`],
+  ].filter(Boolean);
   app.innerHTML = `<section class="screen">
-    <svg class="candle" viewBox="0 0 120 150" aria-hidden="true">
-      <defs><radialGradient id="g" cx="50%" cy="40%" r="50%"><stop offset="0" stop-color="#e9a93a" stop-opacity=".45"/><stop offset="1" stop-color="#e9a93a" stop-opacity="0"/></radialGradient></defs>
-      <circle cx="60" cy="50" r="56" fill="url(#g)"/>
-      <rect x="38" y="70" width="44" height="66" rx="4" fill="#fffdf9" stroke="#1b2133" stroke-width="2.4"/>
-      <path d="M60 70 V58" stroke="#1b2133" stroke-width="2"/>
-      <g class="flame"><path d="M60 26 C55 34 50 41 50 47 A10 10 0 0 0 70 47 C70 41 65 34 60 26 Z" fill="#f2b632" stroke="#1b2133" stroke-width="2" stroke-linejoin="round"/></g>
-      <path d="M14 136 H106" stroke="#1b2133" stroke-width="2.4"/>
+    <svg class="art candle" viewBox="0 0 110 140" aria-hidden="true">
+      <defs><radialGradient id="cg" cx="50%" cy="40%" r="50%"><stop offset="0" stop-color="#e9a93a" stop-opacity=".5"/><stop offset="1" stop-color="#e9a93a" stop-opacity="0"/></radialGradient></defs>
+      <circle cx="55" cy="48" r="52" fill="url(#cg)"/>
+      <rect x="35" y="66" width="40" height="62" rx="4" fill="#fffdf9" stroke="#1b2133" stroke-width="2.4"/>
+      <path d="M55 66 V55" stroke="#1b2133" stroke-width="2"/>
+      <g class="flame"><path d="M55 25 C50 33 46 39 46 45 A9 9 0 0 0 64 45 C64 39 60 33 55 25 Z" fill="#f2b632" stroke="#1b2133" stroke-width="2" stroke-linejoin="round"/></g>
+      <path d="M10 128 H100" stroke="#1b2133" stroke-width="2.4"/>
     </svg>
-    <div class="note">
-      <div class="note-head">
-        <p class="eyebrow">함께하는 성장 노트</p>
-        <h2>${esc(S.me.name)}의 노트</h2>
-        <p class="muted">${S.group.name} · ${new Date().toLocaleDateString("ko-KR")}</p>
-      </div>
-      <dl class="note-body">
-        <div><dt>나의 유형</dt><dd>${S.myTypes.map(badge).join(" ")} <span class="muted">${S.myTypes.map((k) => TYPES[k].who).join(", ")}</span></dd></div>
-        <div><dt>친구들이 말해 준 나의 장점</dt><dd>${got.map(esc).join(" · ")}</dd></div>
-        ${a.unknown ? `<div><dt>몰랐던 내 장점</dt><dd>${esc(a.unknown)}</dd></div>` : ""}
-        <div><dt>나의 비전 한 문장</dt><dd class="serif" style="font-size:18px">나는 ${esc(a.v1)}(으)로 ${esc(a.v2)}을(를) 돕는 사람이 되고 싶다.</dd></div>
-        ${a.practice ? `<div><dt>이번 주 작은 실천${a.cat ? ` · ${a.cat}` : ""}</dt><dd>${esc(a.practice)}</dd></div>` : ""}
-        ${d.jobs.filter(Boolean).length ? `<div><dt>내 꿈</dt><dd>${d.jobs.filter(Boolean).map(esc).join("<br>")}</dd></div>` : ""}
-        ${d.money.length ? `<div><dt>번 돈은 이렇게</dt><dd>${d.money.map((m, i) => `${i + 1}. ${m}`).join("  ")}</dd></div>` : ""}
-        <div><dt>짝 ${esc(S.pair.partner.name)}의 기도제목</dt><dd>${esc(S.pair.partner.req)}</dd></div>
-        <div><dt>나의 기도제목</dt><dd>${esc(S.pair.myReq)}</dd></div>
-      </dl>
-    </div>
-    <div class="verse"><p>너희는 세상의 빛이라</p><small>MATTHEW 5:14–16 · COLOSSIANS 3:23</small></div>
-    <button class="btn ghost full" id="again">처음부터 다시 체험하기</button>
+    <article class="note">
+      <div class="note-top"><span class="lockup">${LOGO}<span><b>Hephzibah</b><small>ACADEMY</small></span></span><span class="tag">함께하는 성장 노트</span></div>
+      <div class="note-head"><h2>${esc(S.me.name)}의 노트</h2><p class="muted">${S.group.name} · ${new Date().toLocaleDateString("ko-KR")}</p></div>
+      <dl class="note-body">${rows.map(([k, v], i) => `<div class="note-row"><span class="no">${String(i + 1).padStart(2, "0")}</span><div><dt>${k}</dt><dd>${v}</dd></div></div>`).join("")}</dl>
+      <div class="note-foot"><p>너희는 세상의 빛이라</p><small>MATTHEW 5:14–16 · COLOSSIANS 3:23</small></div>
+    </article>
   </section>`;
-  $("#again").onclick = () => location.reload();
+  actions([{ label: "처음부터 다시", ghost: true, onClick: () => location.reload() }]);
 }
 
 renderJoin();
