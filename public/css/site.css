@@ -294,3 +294,43 @@ a.card:hover h3 { transform: translateX(4px); }
   .m-on .hill-art g[fill="none"] path { stroke-dashoffset: 0 !important; } .m-on .hill-art rect, .m-on .hill-art .rays, .m-on .hill-art .glow { opacity: 1 !important; }
 }
 
+
+/* ===== Warm tone ===== */
+:root {
+  --paper: #fbf8f2; --paper-2: #f3ece1; --ink: #1b2133; --ink-2: #4b4640; --muted: #8b8276;
+  --rule: #2a2a33; --hair: rgba(120, 92, 55, 0.18); --accent: #e9a93a;
+  --serif: "Fraunces", "Gowun Batang", Georgia, serif;
+}
+html body { background: var(--paper); }
+html .hero { background: radial-gradient(60% 70% at 92% 8%, rgba(233,169,58,.13), rgba(233,169,58,0) 70%); }
+html .site-header { background: transparent; }
+html .quote, html .names2-verse, html .names2-lead, html .mission b {
+  font-family: var(--serif); font-weight: 400; letter-spacing: -0.005em; }
+html .quote p { font-style: italic; font-size: clamp(22px, 2.3vw, 31px); line-height: 1.45; }
+html .names2-lead { font-size: clamp(22px, 2.2vw, 30px); font-style: italic; }
+html .names2-verse { font-size: 18px; font-style: italic; }
+html .mission b { font-size: 1.12em; font-style: italic; }
+html[lang="ko"] .quote p, html[lang="ko"] .names2-lead, html[lang="ko"] .names2-verse { font-style: normal; font-family: "Gowun Batang", serif; }
+html #light-and-salt { background: linear-gradient(180deg, #f6eee1, #f9f4ea); border-top-color: transparent; }
+html #light-and-salt .hill-art .glow { opacity: .95; }
+html .btn { border-radius: 12px; }
+html .btn:not(.ghost) { background: #1b2133; box-shadow: 0 6px 18px rgba(27,33,51,.14); }
+html .card { border-radius: 0; }
+html a.card:hover { background: rgba(233,169,58,.06); }
+html .tag { border-color: var(--hair); background: #fffaf0; }
+html .pillars { background: #fdfaf4; }
+html .pillar h3 { font-weight: 700; }
+html .site-footer { background: #f4ede2; }
+html .input { border-radius: 10px; background: #fffdf8; }
+html .lang-btn { border-color: var(--hair); background: #fffaf0; }
+html .spark { background: var(--accent); box-shadow: 0 0 .12em rgba(233,169,58,.6); }
+html .lang-btn:hover { background: var(--ink); color: var(--paper); }
+
+/* ===== Door illustration (hero) ===== */
+.hero .wrap { grid-template-columns: minmax(0,1fr) auto auto; align-items: center; }
+.door-art { width: clamp(260px, 30vw, 440px); height: auto; overflow: visible; color: var(--ink); }
+.door-art .door-glow { opacity: 0; animation: doorGlow 2.4s 1.4s ease forwards, doorBreath 6s 3.8s ease-in-out infinite; transform-origin: 240px 190px; }
+@keyframes doorGlow { to { opacity: 1; } }
+@keyframes doorBreath { 50% { transform: scale(1.06); opacity: .8; } }
+@media (max-width: 900px) { .hero .wrap { grid-template-columns: 1fr; } .hero .vertical { display: none; } .door-art { width: min(320px, 80vw); margin: 8px auto 0; } }
+@media (prefers-reduced-motion: reduce) { .door-art .door-glow { opacity: 1; animation: none; } }
