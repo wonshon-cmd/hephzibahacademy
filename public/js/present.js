@@ -239,6 +239,30 @@ const DOOR_SVG = `<svg class="door-art" viewBox="0 0 480 360" role="img" aria-la
       <animate id="door" attributeName="opacity" begin="1.1s" dur="0.01s" fill="freeze" values="1"/>
     </svg>`;
 
+// A lit candle with small twinkles, for the closing "candle" slide.
+const CANDLE_SVG = `<svg class="candle-art" viewBox="0 0 480 360" role="img" aria-label="A lit candle">
+      <defs>
+        <radialGradient id="candleGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0" stop-color="var(--accent, #e9a93a)" stop-opacity=".45"/>
+          <stop offset=".5" stop-color="var(--accent, #e9a93a)" stop-opacity=".14"/>
+          <stop offset="1" stop-color="var(--accent, #e9a93a)" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="flameFill" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#f6c94d"/><stop offset="1" stop-color="#f2b632"/>
+        </linearGradient>
+      </defs>
+      <ellipse class="candle-glow" cx="240" cy="130" rx="170" ry="160" fill="url(#candleGlow)"/>
+      <ellipse class="candle-floor" cx="240" cy="298" rx="120" ry="14" fill="url(#candleGlow)" opacity=".7"/>
+      <g fill="none" stroke="var(--ink)" stroke-width="2.2">
+        <path d="M60 292 H170 M310 292 H420"/>
+      </g>
+      <path d="M170 168 V282 A70 10 0 0 0 310 282 V168" fill="var(--paper)" stroke="var(--ink)" stroke-width="2.2"/>
+      <ellipse cx="240" cy="168" rx="70" ry="10" fill="var(--paper)" stroke="var(--ink)" stroke-width="2.2"/>
+      <path class="twinkle" style="animation-delay:0s" d="M178 78 L181.4 88.6 L192 92 L181.4 95.4 L178 106 L174.6 95.4 L164 92 L174.6 88.6 Z" fill="#f2b632"/><path class="twinkle" style="animation-delay:0.9s" d="M306 60 L309.4 70.6 L320 74 L309.4 77.4 L306 88 L302.6 77.4 L292 74 L302.6 70.6 Z" fill="#f2b632"/><path class="twinkle" style="animation-delay:1.7s" d="M330 126 L333.4 136.6 L344 140 L333.4 143.4 L330 154 L326.6 143.4 L316 140 L326.6 136.6 Z" fill="#f2b632"/><path class="twinkle" style="animation-delay:2.4s" d="M150 136 L153.4 146.6 L164 150 L153.4 153.4 L150 164 L146.6 153.4 L136 150 L146.6 146.6 Z" fill="#f2b632"/><path class="twinkle" style="animation-delay:3.1s" d="M272 32 L275.4 42.6 L286 46 L275.4 49.4 L272 60 L268.6 49.4 L258 46 L268.6 42.6 Z" fill="#f2b632"/>
+      <path d="M240 172 V146" stroke="var(--ink)" stroke-width="2"/>
+      <g class="flame"><path d="M240 96 C233 108 223 120 223 130 A17 17 0 0 0 257 130 C257 120 247 108 240 96 Z" fill="url(#flameFill)" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/></g>
+    </svg>`;
+
 // An opening manual, for decks with "coverArt": "manual".
 const MANUAL_SVG = `<svg class="door-art manual-art" viewBox="0 0 480 360" role="img" aria-label="A manual opening, with warm light coming from its pages">
   <defs>
@@ -297,6 +321,15 @@ function buildSlide(slide) {
     if (slide.body && slide.body[0]) c.append(h("div", { class: "accent" }), h("p", { class: "subtitle", style: "font-weight:700;color:var(--ink)", text: slide.body[0] }));
     el.append(c, doorArt());
     if (room) el.append(h("div", { class: "content" }, qrBox()));
+    return el;
+  }
+
+  if (slide.kind === "candle") {
+    el.style.gridTemplateColumns = "1.2fr 1fr"; el.style.gap = "4vw"; el.style.alignItems = "center";
+    const c = head(slide);
+    c.querySelector(".title").classList.add("candle-title");
+    const art = h("div", { class: "cover-door" }); art.innerHTML = CANDLE_SVG;
+    el.append(c, art);
     return el;
   }
 

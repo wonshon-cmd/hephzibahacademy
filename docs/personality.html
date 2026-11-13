@@ -591,6 +591,22 @@ body.phone { min-height: 100dvh; }
 .step.slow.shown { filter: none; }
 p.step.slow { display: block; }
 
+
+/* ===== Candle illustration (preview) ===== */
+.candle-art { width: clamp(260px, 30vw, 440px); height: auto; overflow: visible; }
+.candle-art .flame { transform-origin: 240px 146px; transform: scale(0); animation: flameOn .9s 1.2s cubic-bezier(.2,.7,.1,1) forwards, flicker 2.6s 2.1s ease-in-out infinite; }
+@keyframes flameOn { to { transform: scale(1); } }
+@keyframes flicker { 0%,100% { transform: scale(1) rotate(0deg); } 25% { transform: scale(1.03,.97) rotate(-1.5deg); } 50% { transform: scale(.98,1.04) rotate(1deg); } 75% { transform: scale(1.02,.99) rotate(-.5deg); } }
+.candle-art .candle-glow, .candle-art .candle-floor { opacity: 0; transform-origin: 240px 130px; animation: candleGlow 2s 1.4s ease forwards, glowBreath 4.5s 3.4s ease-in-out infinite; }
+@keyframes candleGlow { to { opacity: 1; } }
+@keyframes glowBreath { 50% { transform: scale(1.07); opacity: .78; } }
+@media (prefers-reduced-motion: reduce) { .candle-art .flame { transform: none; animation: none; } .candle-art .candle-glow, .candle-art .candle-floor { opacity: 1; animation: none; } }
+.candle-art .twinkle { transform-box: fill-box; transform-origin: center; opacity: 0; animation: twinkle 3.6s ease-in-out infinite; }
+@keyframes twinkle { 0%, 100% { opacity: 0; transform: scale(.3) rotate(0deg); } 45% { opacity: .95; transform: scale(1) rotate(20deg); } 60% { opacity: .7; } }
+.cover-door .candle-art { width: clamp(240px, 30vw, 460px); }
+.slide .title.candle-title { font-size: clamp(30px, 4.6vw, 80px); }
+@media (prefers-reduced-motion: reduce) { .candle-art .twinkle { animation: none; opacity: .8; transform: none; } }
+
 </style>
 </head>
 <body>
@@ -1455,7 +1471,7 @@ function note(t){const K=window.hzI18n&&window.hzLang&&window.hzLang()==="ko"?wi
     "Hear the orchestra.": "오케스트라를 들어요.", "Click each instrument to hear its part alone — then all together — before the closing video.": "마지막 영상 전에 악기를 하나씩 눌러 그 파트만 듣고, 함께 들어요.",
     "Finish with a review.": "리뷰로 마무리해요.",
     "Students share what they learned, review the lecture, unlock their 20-question results, and write how they’ll use their strengths and weaknesses.": "배운 것을 나누고 강의를 평가하면 20문항 결과가 열려요. 강점과 약점을 어떻게 쓸지 적어요.",
-    "Run of show": "진행 순서", "About 40 minutes.": "약 40분.", "Slides": "슬라이드", "All 34 slides.": "슬라이드 34장 전체.",
+    "Run of show": "진행 순서", "About 40 minutes.": "약 40분.", "Slides": "슬라이드", "All 36 slides.": "슬라이드 36장 전체.",
     "Your gift keeps the light on — and multiplies.": "당신의 후원이 불을 밝히고, 더 크게 자라게 해요.",
     "Where it goes": "후원금은 이렇게 쓰여요", "Learn & give": "배우고 나누기", "Class fees and monthly gifts.": "수강료와 정기 후원.",
     "Invest": "투자", "Gospel-based startups through Beulah Venture.": "쁄라 벤처를 통해 복음 기반 스타트업에.",

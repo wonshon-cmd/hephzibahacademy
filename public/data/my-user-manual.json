@@ -10,27 +10,27 @@
  "runOfShow": [
   {
    "label": "The first question & introduction",
-   "slides": "1–8",
+   "slides": "1–9",
    "minutes": 6
   },
   {
    "label": "Questions I met in Kenya",
-   "slides": "9–13",
+   "slides": "10–14",
    "minutes": 5
   },
   {
    "label": "A user manual — and faith",
-   "slides": "14–24",
+   "slides": "15–25",
    "minutes": 11
   },
   {
    "label": "My first page & one next step",
-   "slides": "25–31",
+   "slides": "26–32",
    "minutes": 9
   },
   {
    "label": "The orchestra, the video & your review",
-   "slides": "32–34",
+   "slides": "33–36",
    "minutes": 9
   }
  ],
@@ -327,36 +327,63 @@
   {
    "id": "s05",
    "section": "01 Questions",
-   "kind": "path",
+   "kind": "statement",
    "eyebrow": "Imagining my future self",
    "title": "If I get into a good school,\nthen what?",
-   "subtitle": "What does the day I dream about actually look like?",
+   "subtitle": "",
    "body": [
-    "School",
-    "Job",
-    "Money",
-    "The day after that"
+    "Study hard and get into a good school.",
+    "At a good school, land a good job.",
+    "Work hard and buy a house.",
+    "Have children.",
+    "Work even harder.",
+    "And then, near the end of my life — what about me?"
    ],
    "notes": [
-    "Right now, college and grades might feel like a huge mountain. Wanting a good school and a good job is natural.",
-    "But after you reach that goal — what do you want each morning to look like? What will you do, who will you spend time with, what will you treasure?",
-    "This isn’t a quiz about job titles. It’s about imagining the life you want. Don’t assume college is the only path."
+    "The lines appear one by one. Read each slowly.",
+    "Pause after the last line."
    ],
    "ko": {
     "section": "01 질문",
     "eyebrow": "앞으로의 나를 상상하면",
     "title": "좋은 학교에 가면,\n그다음은?",
-    "subtitle": "내가 꿈꾸는 하루는 어떤 모습일까?",
+    "subtitle": "",
     "body": [
-     "학교",
-     "직업",
-     "돈",
-     "그다음의 하루"
+     "열심히 공부해서 좋은 학교 가고",
+     "좋은 학교 가서 좋은 직장 가고",
+     "열심히 일해서 집 사고",
+     "아이를 낳고",
+     "더 열심히 일하고",
+     "그러다 나중에 죽기 전이 되면… 과연 나는?"
     ],
     "notes": [
-     "지금은 입시나 성적이 눈앞의 큰 산처럼 느껴질 수 있어요. 좋은 학교와 좋은 직업을 바라는 마음도 자연스럽습니다.",
-     "그런데 그 목표를 이루고 난 다음, 매일 아침 일어나 살아갈 하루는 어떤 모습이면 좋을까요? 무슨 일을 하고, 누구와 시간을 보내고, 무엇을 소중하게 여기고 싶을까요?",
-     "직업 이름을 맞히는 퀴즈가 아니라, 내가 바라는 삶을 떠올리는 질문이라고 설명합니다. 대학 진학을 유일한 길로 전제하지 않습니다."
+     "한 줄씩 나타납니다. 천천히 읽어 주세요.",
+     "마지막 줄 뒤에 잠깐 멈춥니다."
+    ]
+   },
+   "reveal": true,
+   "layout": "stack"
+  },
+  {
+   "id": "s05b",
+   "section": "01 Questions",
+   "kind": "statement",
+   "glow": true,
+   "eyebrow": "The question",
+   "title": "Was I made just to\nkeep running forward?",
+   "subtitle": "",
+   "body": [],
+   "notes": [
+    "[Pause 3 seconds] Let the question sit."
+   ],
+   "ko": {
+    "section": "01 질문",
+    "eyebrow": "질문",
+    "title": "나는 열심히 앞으로 달려가기 위해\n지어졌을까?",
+    "subtitle": "",
+    "body": [],
+    "notes": [
+     "[3초 멈춤] 질문이 머물도록 잠시 기다립니다."
     ]
    }
   },
@@ -1390,6 +1417,28 @@
     "I want to get to know how God made me",
     "Each instrument sounds different, and that's the point"
    ]
+  },
+  {
+   "id": "s30",
+   "section": "Closing",
+   "kind": "candle",
+   "eyebrow": "Light and salt",
+   "title": "In your own place,\nin what you’ve been given —\nshine as a child of God.",
+   "subtitle": "",
+   "body": [],
+   "notes": [
+    "Close with this. Let the candle stay on screen."
+   ],
+   "ko": {
+    "section": "마침",
+    "eyebrow": "빛과 소금",
+    "title": "각자 자기 자리에서,\n맡겨진 상황에서 빛나는\n하나님의 자녀로 살기를.",
+    "subtitle": "",
+    "body": [],
+    "notes": [
+     "이 말로 마칩니다. 촛불을 화면에 둔 채 인사합니다."
+    ]
+   }
   }
  ],
  "ko": {
