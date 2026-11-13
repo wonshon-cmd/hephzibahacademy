@@ -574,6 +574,20 @@ body.phone { min-height: 100dvh; }
 .slide-logo b { font-size: 13px; font-weight: 700; letter-spacing: -0.01em; }
 .slide-logo small { font-size: 7.5px; letter-spacing: .28em; margin-top: 2px; font-weight: 600; }
 
+/* Word cloud answers */
+.wall.cloud { columns: auto; display: flex; flex-wrap: wrap; align-content: center; justify-content: center; align-items: center; gap: 10px 22px; padding: 12px; }
+.cw { font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; color: var(--ink); transition: font-size .6s cubic-bezier(.2,.8,.2,1), color .4s; animation: cwIn .5s ease both; }
+.cw sup { font-size: .38em; font-weight: 700; color: #c48a24; margin-left: 3px; }
+.cw.hot { color: #b8791a; text-shadow: 0 0 .5em rgba(233,169,58,.35); }
+@keyframes cwIn { from { opacity: 0; transform: scale(.7); } }
+
+/* Orchestra seating (live sessions): a small seat for every student who joins */
+.pit { position: fixed; left: 50%; bottom: 70px; width: 240px; height: 84px; transform: translateX(-50%); z-index: 3; pointer-events: none; }
+.pit .podium { position: absolute; left: 50%; bottom: -2px; width: 10px; height: 10px; margin-left: -5px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px rgba(233,169,58,.7); }
+.pit .seat { position: absolute; transform: translate(-50%, -50%); font-size: 6.5px !important; opacity: .92; box-shadow: 0 0 0 1.5px var(--paper); transition: left .6s ease, top .6s ease; animation: seatIn .7s cubic-bezier(.2,1.4,.4,1) both; }
+@keyframes seatIn { from { transform: translate(-50%, -50%) scale(0); opacity: 0; } }
+@media (max-width: 700px) { .pit { display: none; } }
+
 </style>
 </head>
 <body>

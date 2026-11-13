@@ -15,6 +15,19 @@ const out = path.resolve(process.argv[3] || path.join(ROOT, "dist", `${lectureId
 const read = (p) => fs.readFileSync(path.join(PUB, p), "utf8");
 
 const deck = JSON.parse(read(`data/${lectureId}.json`));
+// Private photos ("src": "private:…") are embedded only for the encrypted static decks
+// (INCLUDE_PRIVATE=1 with ADMIN_PASSCODE). Otherwise the slide shows its placeholder instead.
+{
+  const { decryptPrivate } = await import("./private-assets.mjs");
+  const include = process.env.INCLUDE_PRIVATE === "1" && process.env.ADMIN_PASSCODE;
+  const fix = (ph) => {
+    if (!ph || !String(ph.src || "").startsWith("private:")) return;
+    const name = ph.src.slice(8);
+    if (include) ph.src = `data:image/${name.endsWith(".png") ? "png" : name.endsWith(".webp") ? "webp" : "jpeg"};base64,` + decryptPrivate(name, process.env.ADMIN_PASSCODE).toString("base64");
+    else delete ph.src;
+  };
+  for (const s of deck.slides) { fix(s.photo); fix(s.ko && s.ko.photo); }
+}
 const instruments = JSON.parse(read("data/instruments.json"));
 const bible = JSON.parse(read("data/bible.json"));
 const DATA = { [`/data/${lectureId}.json`]: deck, "/data/instruments.json": instruments, "/data/bible.json": bible, "/api/config": {} };

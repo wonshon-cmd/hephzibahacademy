@@ -135,40 +135,21 @@
   {
    "id": "s02b",
    "section": "01 Questions",
-   "kind": "choice",
+   "kind": "text-input",
    "eyebrow": "Nice to meet you — I’m Joseph",
    "title": "What kind of person\ndo you think I am?",
    "subtitle": "",
    "body": [],
    "interaction": {
-    "type": "choice",
+    "type": "text",
+    "display": "cloud",
     "prompt": "What kind of person do you think I am?",
-    "options": [
-     {
-      "value": "pharmacist",
-      "label": "Pharmacist"
-     },
-     {
-      "value": "business",
-      "label": "Business owner"
-     },
-     {
-      "value": "missionary",
-      "label": "Missionary"
-     },
-     {
-      "value": "teacher",
-      "label": "Teacher"
-     },
-     {
-      "value": "student",
-      "label": "Student"
-     }
-    ]
+    "placeholder": "e.g. a teacher",
+    "maxLength": 40
    },
    "notes": [
-    "Take a guess — what do I do? Pick one on your phone.",
-    "Watch the bars move, then say: “Let me tell you.”"
+    "Take a guess — what do I do? Type a word or two on your phone.",
+    "Answers that several people type grow bigger on the screen. Read the biggest ones, then say: “Let me tell you.”"
    ],
    "ko": {
     "section": "01 질문",
@@ -177,18 +158,12 @@
     "subtitle": "",
     "body": [],
     "notes": [
-     "제가 무슨 일을 하는 사람 같아요? 휴대폰으로 하나 골라 보세요.",
-     "투표가 다 모이면 결과를 보고 '이제 말씀드릴게요' 하고 넘어갑니다."
+     "제가 무슨 일을 하는 사람 같아요? 휴대폰에 한두 단어로 적어 보세요.",
+     "여러 명이 같은 답을 쓰면 화면에서 점점 커져요. 가장 큰 답 몇 개를 읽고 '이제 말씀드릴게요' 하고 넘어갑니다."
     ],
     "interaction": {
      "prompt": "나는 어떤 사람일까요?",
-     "options": {
-      "pharmacist": "약사",
-      "business": "사업가",
-      "missionary": "선교사",
-      "teacher": "선생님",
-      "student": "학생"
-     }
+     "placeholder": "예: 선생님"
     }
    }
   },
@@ -410,7 +385,9 @@
    "body": [],
    "photo": {
     "label": "Your own photo from Kenya",
-    "note": "Optional. Use only your own photo; don’t show identifiable children without consent. Without a photo, this slide works as text."
+    "note": "Optional. Use only your own photo; don’t show identifiable children without consent. Without a photo, this slide works as text.",
+    "src": "private:kenya.jpg",
+    "alt": "Joseph with children in Kenya"
    },
    "notes": [
     "[If you have your own photo, show it] Where I was, there was a small room, a single bed, and not enough to eat.",
@@ -430,7 +407,9 @@
     ],
     "photo": {
      "label": "직접 촬영한 케냐 사진",
-     "note": "실제 경험을 보여 줄 수 있는 사진 1장을 넣습니다. 동의 없이 식별 가능한 아동 사진을 공개하지 않고, 없으면 이 장은 텍스트만으로 진행합니다. 다른 사람의 사진을 발표자의 실제 경험처럼 사용하지 않습니다."
+     "note": "실제 경험을 보여 줄 수 있는 사진 1장을 넣습니다. 동의 없이 식별 가능한 아동 사진을 공개하지 않고, 없으면 이 장은 텍스트만으로 진행합니다. 다른 사람의 사진을 발표자의 실제 경험처럼 사용하지 않습니다.",
+     "src": "private:kenya.jpg",
+     "alt": "케냐에서 아이들과 함께"
     }
    }
   },

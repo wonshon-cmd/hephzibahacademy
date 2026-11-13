@@ -10,6 +10,7 @@ import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
+import { decryptPrivate } from "./tools/private-assets.mjs";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const PUBLIC = path.join(ROOT, "public");
@@ -18,6 +19,7 @@ const HOST_PASSCODE = process.env.HOST_PASSCODE || "";
 // Admin password unlocks protected lectures ("protected": true in the lecture JSON).
 // If ADMIN_PASSCODE is not set, protected lectures stay locked for everyone.
 const ADMIN_PASSCODE = process.env.ADMIN_PASSCODE || "";
+const privateCache = new Map(); // decrypted private images, by name
 const ADMIN_SECRET = crypto.randomBytes(32);
 function adminCookie() {
   const exp = Date.now() + 12 * 60 * 60 * 1000;
@@ -665,6 +667,19 @@ function serveStatic(req, res, url) {
   if (protId && LECTURES[protId] && LECTURES[protId].protected && !isAdmin(req)) {
     const room = prot[1] && rooms.get(String(url.searchParams.get("room") || "").toUpperCase());
     if (!room || room.lectureId !== protId) { res.writeHead(403, { "content-type": "text/plain; charset=utf-8" }); return res.end("Locked"); }
+  }
+  // Private images (encrypted in /private, see tools/private-assets.mjs): admins and live rooms only.
+  const priv = /^\/private\/([\w.-]+\.(?:jpe?g|png|webp))$/.exec(p);
+  if (priv) {
+    const room = rooms.get(String(url.searchParams.get("room") || "").toUpperCase());
+    if (!ADMIN_PASSCODE || (!isAdmin(req) && !room)) { res.writeHead(403, { "content-type": "text/plain; charset=utf-8" }); return res.end("Locked"); }
+    let buf = privateCache.get(priv[1]);
+    if (!buf) {
+      try { buf = decryptPrivate(priv[1], ADMIN_PASSCODE); privateCache.set(priv[1], buf); }
+      catch { res.writeHead(404); return res.end(); }
+    }
+    res.writeHead(200, { "content-type": TYPES[path.extname(priv[1]).toLowerCase()] || "application/octet-stream", "cache-control": "private, no-store", "x-content-type-options": "nosniff" });
+    return res.end(req.method === "HEAD" ? undefined : buf);
   }
   const file = path.normalize(path.join(PUBLIC, p));
   if (!file.startsWith(PUBLIC + path.sep)) { res.writeHead(403); return res.end(); }

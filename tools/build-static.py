@@ -69,7 +69,13 @@ for lid in ['my-user-manual', 'basic-finance']:
     f = os.path.join(dl, lid + '.html'); page = open(f).read()
     tag = '<script src="/js/lecture-admin.js" data-deck="%s" defer></script>' % lid
     assert tag in page, lid
-    enc = subprocess.run(['node', os.path.join(ROOT, 'tools', 'encrypt.mjs'), os.path.join(pub, 'downloads', lid + '-slides.html')],
-                         env={**os.environ}, capture_output=True, text=True, check=True).stdout if pw else 'null'
+    enc = 'null'
+    if pw:
+        # Build a copy of the deck that includes private photos, then encrypt it.
+        import tempfile
+        tmp = os.path.join(tempfile.mkdtemp(), lid + '-slides.html')
+        subprocess.run(['node', os.path.join(ROOT, 'tools', 'build-slides.mjs'), lid, tmp], env={**os.environ, 'INCLUDE_PRIVATE': '1'}, capture_output=True, check=True)
+        enc = subprocess.run(['node', os.path.join(ROOT, 'tools', 'encrypt.mjs'), tmp], env={**os.environ}, capture_output=True, text=True, check=True).stdout
+        os.remove(tmp)
     open(f, 'w').write(page.replace(tag, DECRYPT.replace('__ENC__', enc)))
 print('ok')

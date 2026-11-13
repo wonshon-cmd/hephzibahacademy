@@ -169,3 +169,18 @@ Adults sign up at `/mentors`. They choose how to help: fund classes, give career
 * The big screen shows only instrument names, never real names.
 * Answers to the 20 questions stay on the student's phone. Only the five summary labels (for example "mid") are sent, and only when the student submits their reflections.
 * Email is optional and requires a consent checkbox. Many students will be minors, so check what your church or organization requires (for example, parental consent) before you send any emails.
+
+## Private photos
+
+Photos that show real people (for example the Kenya photo in *My User Manual*) are never stored in the repo as plain images. They are kept encrypted in `private/` with the admin password:
+
+```bash
+ADMIN_PASSCODE=... node tools/private-assets.mjs add photo.jpg kenya.jpg
+```
+
+A slide uses one with `"src": "private:kenya.jpg"`. The server decrypts it only for admins and live rooms (so `ADMIN_PASSCODE` must be set), and `tools/build-static.py` embeds it only inside the encrypted slide decks. The plain offline deck in `public/downloads/` shows a placeholder instead.
+
+## Live extras
+
+* **Word cloud:** a text question with `"display": "cloud"` shows answers as words; the same answer typed by several people grows bigger (slide 3, "What kind of person do you think I am?").
+* **Orchestra seating:** during a live *My User Manual* session, every student who joins appears as a small instrument badge in their section (strings in front, then woodwinds, brass and percussion) at the bottom of the screen.

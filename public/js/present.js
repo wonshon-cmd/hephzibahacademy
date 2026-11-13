@@ -242,6 +242,12 @@ function doorArt() {
   return box;
 }
 
+// "private:name.jpg" images are served (decrypted) by the server to admins and live rooms only.
+function photoUrl(src) {
+  if (!src.startsWith("private:")) return src;
+  return `/private/${encodeURIComponent(src.slice(8))}` + (room ? `?room=${room.code}` : "");
+}
+
 // Small logo in the bottom corner of every slide.
 function slideLogo() {
   const box = h("div", { class: "slide-logo", "aria-hidden": "true" });
@@ -301,7 +307,7 @@ function buildSlide(slide) {
       if (ix.type === "review") c.append(h("p", { class: "subtitle", id: "reviewStats", style: "font-weight:700;color:var(--ink)" }));
       const wrap = h("div", { class: "wall-wrap" },
         h("div", { class: "wall-head" }, h("span", { text: ix.channel === "qa" ? t("Your questions", "질문") : ix.type === "review" ? t("What we learned", "우리가 배운 것") : t("Live answers", "실시간 답변") }), h("span", { id: "wallCount" })),
-        h("div", { class: "wall", id: "wall", "data-slide": ix.channel === "qa" ? "qa" : slide.id }));
+        h("div", { class: "wall" + (ix.display === "cloud" ? " cloud" : ""), id: "wall", "data-slide": ix.channel === "qa" ? "qa" : slide.id }));
       el.append(c, wrap);
     } else {
       const poll = h("div", { class: "poll", id: "poll" });
@@ -320,7 +326,7 @@ function buildSlide(slide) {
   } else if (slide.kind === "photo") {
     el.style.gridTemplateColumns = "1.1fr 1fr"; el.style.gap = "4vw";
     const pic = slide.photo.src
-      ? h("figure", { class: "photo-fig" }, h("img", { src: slide.photo.src, alt: slide.photo.alt || "" }))
+      ? h("figure", { class: "photo-fig" }, h("img", { src: photoUrl(slide.photo.src), alt: slide.photo.alt || "" }))
       : h("div", { class: "photo-slot" }, h("div", {}, h("b", { text: slide.photo.label }), h("p", { style: "max-width:36ch", text: slide.photo.note })));
     el.append(c, h("div", { class: "content" }, pic));
     return el;
@@ -392,8 +398,9 @@ function update() {
     const msgs = state.messages.filter((m) => m.slideId === key && m.status === "shown");
     const have = new Set([...wall.querySelectorAll(".msg")].map((n) => Number(n.dataset.id)));
     const want = new Set(msgs.map((m) => m.id));
-    wall.querySelectorAll(".msg").forEach((n) => { if (!want.has(Number(n.dataset.id))) n.remove(); });
-    for (const m of msgs) if (!have.has(m.id)) wall.prepend(msgCard(m, true));
+    if (wall.classList.contains("cloud")) renderCloud(wall, msgs);
+    else wall.querySelectorAll(".msg").forEach((n) => { if (!want.has(Number(n.dataset.id))) n.remove(); });
+    if (!wall.classList.contains("cloud")) for (const m of msgs) if (!have.has(m.id)) wall.prepend(msgCard(m, true));
     let empty = wall.querySelector(".wall-empty");
     if (!msgs.length && !empty) wall.append(h("p", { class: "wall-empty", text: room ? t("Waiting for the first answer…", "첫 답을 기다리고 있어요…") : t("Answers will appear here during a live session.", "실시간 발표 중에 답이 여기에 나타나요.") }));
     if (msgs.length && empty) empty.remove();
@@ -418,8 +425,67 @@ function update() {
     b.querySelector(".inroom").textContent = n ? t(`${n} in the room`, `${n}명 참여`) : insFamily(b.dataset.id);
   });
 
+  if (room && deck.pseudonyms !== "bible") renderPit();
+
   const rs = document.getElementById("reviewStats");
   if (rs) rs.textContent = state.reviews ? t(`${state.reviews} reviews · ★ ${state.rating} · ${state.submissions} reflections submitted`, `리뷰 ${state.reviews}개 · ★ ${state.rating} · 성찰 ${state.submissions}개 제출`) : "";
+}
+
+// Orchestra seating: every student who joins takes a small seat in their section,
+// laid out like an orchestra (strings in front, then woodwinds, brass, percussion).
+const PIT_ROWS = ["strings", "woodwinds", "brass", "percussion"];
+function renderPit() {
+  let pit = document.getElementById("pit");
+  if (!pit) { pit = h("div", { class: "pit", id: "pit", "aria-hidden": "true" }, h("i", { class: "podium" })); document.body.append(pit); }
+  const rows = PIT_ROWS.map(() => []);
+  for (const ins of instruments) {
+    if (ins.kind === "bible") continue;
+    const r = Math.max(0, PIT_ROWS.indexOf(ins.family.toLowerCase()));
+    for (let i = 0; i < (state.instruments[ins.id] || 0); i++) rows[r].push(`${ins.id}:${i}`);
+  }
+  const keep = new Set();
+  rows.forEach((seats, r) => {
+    // Seats fill each row from the middle outwards, like an orchestra around the conductor.
+    const R = 26 + r * 17, k = seats.length;
+    const step = Math.min(17 / R, (Math.PI * 0.9) / Math.max(1, k - 1));
+    seats.forEach((key, i) => {
+      const a = Math.PI * 1.5 + (i - (k - 1) / 2) * step;
+      let n = pit.querySelector(`[data-seat="${key}"]`);
+      if (!n) { n = avatar(key.split(":")[0], 18); n.dataset.seat = key; n.classList.add("seat"); pit.append(n); }
+      n.style.left = `calc(50% + ${(R * 1.5 * Math.cos(a)).toFixed(1)}px)`;
+      n.style.top = `calc(100% + ${(R * Math.sin(a)).toFixed(1)}px)`;
+      keep.add(key);
+    });
+  });
+  pit.querySelectorAll(".seat").forEach((n) => { if (!keep.has(n.dataset.seat)) n.remove(); });
+  pit.hidden = !keep.size;
+}
+
+// Word cloud: the same answer typed by several people grows bigger.
+function renderCloud(wall, msgs) {
+  const norm = (x) => x.toLowerCase().replace(/[\s.,!?~'"“”‘’·]+/g, " ").trim();
+  const groups = new Map();
+  for (const m of msgs) {
+    const k = norm(m.text); if (!k) continue;
+    const g = groups.get(k) || { text: m.text.trim(), n: 0, first: m.id };
+    g.n++; groups.set(k, g);
+  }
+  const list = [...groups.values()].sort((a, b) => b.n - a.n || a.first - b.first);
+  const max = Math.max(1, ...list.map((g) => g.n));
+  const old = new Map([...wall.querySelectorAll(".cw")].map((n) => [n.dataset.k, n]));
+  const frag = [];
+  for (const g of list) {
+    const k = norm(g.text);
+    const size = 18 + (max > 1 ? (g.n - 1) / (max - 1) : 0) * 46 + Math.min(g.n - 1, 4) * 2;
+    let n = old.get(k);
+    if (!n) n = h("span", { class: "cw", "data-k": k });
+    n.replaceChildren(g.text, g.n > 1 ? h("sup", { text: "×" + g.n }) : "");
+    n.style.fontSize = `clamp(14px, ${(size / 13).toFixed(2)}vw, ${Math.round(size * 1.3)}px)`;
+    n.classList.toggle("hot", g.n === max && max > 1);
+    frag.push(n);
+  }
+  wall.querySelectorAll(".cw").forEach((n) => { if (!frag.includes(n)) n.remove(); });
+  for (const n of frag) wall.append(n);
 }
 
 function msgCard(m, canHide) {
