@@ -193,4 +193,4 @@ To show the lecture to teachers or pastors as if a class were in the room, build
 DEMO=1 ADMIN_PASSCODE=... INCLUDE_PRIVATE=1 node tools/build-slides.mjs my-user-manual my-user-manual-demo.html
 ```
 
-On the server, the same mode is at `/present?lecture=my-user-manual&demo` (admin only).
+On the server, the same mode is at `/present?lecture=my-user-manual&demo` (admin only). The static site also publishes public samples (no private photos, not indexed by search engines) at `/sample/my-user-manual/` and `/sample/basic-finance/`.

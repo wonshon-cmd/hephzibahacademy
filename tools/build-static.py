@@ -78,4 +78,11 @@ for lid in ['my-user-manual', 'basic-finance']:
         enc = subprocess.run(['node', os.path.join(ROOT, 'tools', 'encrypt.mjs'), tmp], env={**os.environ}, capture_output=True, text=True, check=True).stdout
         os.remove(tmp)
     open(f, 'w').write(page.replace(tag, DECRYPT.replace('__ENC__', enc)))
+# Public sample decks with a pretend class (demo mode), at /sample/<lecture>/ — no private photos.
+for lid in ['my-user-manual', 'basic-finance']:
+    out = os.path.join(dl, 'sample', lid, 'index.html')
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    env = {k: v for k, v in os.environ.items() if k not in ('INCLUDE_PRIVATE',)}
+    env['DEMO'] = '1'
+    subprocess.run(['node', os.path.join(ROOT, 'tools', 'build-slides.mjs'), lid, out], env=env, capture_output=True, check=True)
 print('ok')
