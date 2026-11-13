@@ -28,7 +28,10 @@ for (const file of fs.readdirSync(path.join(PUBLIC, "data"))) {
   if (Array.isArray(deck.slides)) LECTURES[deck.id] = deck;
 }
 
-const AVATARS = JSON.parse(fs.readFileSync(path.join(PUBLIC, "data", "instruments.json"), "utf8"));
+const INSTRUMENTS = JSON.parse(fs.readFileSync(path.join(PUBLIC, "data", "instruments.json"), "utf8"));
+const BIBLE = JSON.parse(fs.readFileSync(path.join(PUBLIC, "data", "bible.json"), "utf8"));
+// Each lecture chooses its pseudonym set ("pseudonyms": "bible" in its JSON); default is orchestra instruments.
+const avatarPool = (room) => (LECTURES[room.lectureId].pseudonyms === "bible" ? BIBLE : INSTRUMENTS);
 const PERSONALITY = JSON.parse(fs.readFileSync(path.join(PUBLIC, "data", "personality.json"), "utf8"));
 const DIM_IDS = PERSONALITY.dimensions.map((d) => d.id);
 
@@ -143,8 +146,9 @@ function requireParticipant(room, tok) {
 
 function pickAlias(room, avoidId) {
   const used = new Set([...room.participants.values()].map((p) => p.avatarId));
-  let pool = AVATARS.filter((a) => a.id !== avoidId && !used.has(a.id));
-  if (!pool.length) pool = AVATARS.filter((a) => a.id !== avoidId);
+  const all = avatarPool(room);
+  let pool = all.filter((a) => a.id !== avoidId && !used.has(a.id));
+  if (!pool.length) pool = all.filter((a) => a.id !== avoidId);
   return pool[crypto.randomInt(pool.length)];
 }
 
@@ -494,6 +498,15 @@ async function api(req, res, url) {
     return sendJson(res, 200, { ok: true });
   }
 
+  // POST /api/rooms/:code/consent {token, research, contact} — optional consents (finance lecture)
+  if (action === "consent" && method === "POST") {
+    const p = requireParticipant(room, body.token);
+    p.consent = { research: body.research === true, contact: body.contact === true };
+    saveSubmission({ type: "consent", at: new Date().toISOString(), room: room.code, lecture: room.lectureId,
+      participant: p.id, pseudonym: p.alias, research: p.consent.research, contact: p.consent.contact });
+    return sendJson(res, 200, { ok: true });
+  }
+
   // POST /api/rooms/:code/review {token, learned, rating, review}
   // "What I learned" goes to the live wall; the rating/review is for the presenter only.
   if (action === "review" && method === "POST") {
@@ -602,7 +615,7 @@ const TYPES = { ".html": "text/html; charset=utf-8", ".css": "text/css; charset=
   ".mp3": "audio/mpeg", ".m4a": "audio/mp4", ".ogg": "audio/ogg", ".wav": "audio/wav" };
 
 const ROUTES = { "/": "/index.html", "/lectures": "/lectures.html", "/present": "/present.html", "/join": "/join.html", "/support": "/support.html", "/mentors": "/mentors.html", "/apply": "/apply.html", "/personality": "/personality.html", "/cohort": "/cohort.html",
-  "/lectures/my-user-manual": "/lectures/my-user-manual.html" };
+  "/lectures/my-user-manual": "/lectures/my-user-manual.html", "/lectures/basic-finance": "/lectures/basic-finance.html" };
 
 function serveStatic(req, res, url) {
   let p = decodeURIComponent(url.pathname);

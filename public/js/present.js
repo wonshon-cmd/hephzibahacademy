@@ -1,4 +1,4 @@
-import { api, getJson, loadInstruments, instrumentById, avatar, h, lines, store, t, tr, getLang, setLang, insName, insFamily, aliasText } from "./common.js";
+import { api, getJson, loadInstruments, instrumentById, avatar, h, lines, store, t, tr, getLang, setLang, insName, insFamily, aliasText, calculator } from "./common.js";
 import { Orchestra } from "./orchestra.js";
 
 const ARROW = '<svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>';
@@ -200,7 +200,7 @@ function buildSlide(slide) {
     el.classList.add("compact");
     const c = head(slide);
     const grid = h("div", { class: "orch", id: "orch" });
-    for (const ins of instruments) {
+    for (const ins of instruments.filter((i) => i.kind !== "bible")) {
       const b = h("button", { class: "inst", type: "button", "data-id": ins.id, onclick: () => playSolo(ins.id, b) },
         avatar(ins.id, 46), h("span", {}, h("b", { text: t(ins.name, ins.ko) }), h("small", { class: "inroom", text: t(ins.family, ins.familyKo) })));
       grid.append(b);
@@ -241,6 +241,18 @@ function buildSlide(slide) {
     el.style.gridTemplateColumns = "1.1fr 1fr"; el.style.gap = "4vw";
     el.append(c, h("div", { class: "content" }, h("div", { class: "photo-slot" }, h("div", {}, h("b", { text: slide.photo.label }), h("p", { style: "max-width:36ch", text: slide.photo.note })))));
     return el;
+  } else if (ix && ix.type === "calculator") {
+    el.classList.add("compact");
+    c.append(calculator(t));
+    el.append(c);
+    return el;
+  } else if (ix && ix.type === "estimate") {
+    el.classList.add("compact");
+    c.append(h("div", { class: "tabs", style: "margin-top:24px" }, ix.categories.map((cat) => h("span", { class: "tag", style: "font-size:clamp(13px,1.1vw,16px)" }, cat.label))));
+    c.append(h("ul", { class: "blist" }, slide.body.map((b, i) => h("li", {}, h("span", { text: String(i + 1).padStart(2, "0") }), b))));
+  } else if (ix && ix.type === "checklist") {
+    el.classList.add("compact");
+    c.append(h("ul", { class: "blist", style: "grid-template-columns:1fr" }, slide.body.map((b, i) => h("li", { style: "font-size:clamp(16px,1.5vw,24px);padding:12px 0" }, h("span", { text: String(i + 1).padStart(2, "0") }), b))));
   } else if (ix && ix.type === "private") {
     c.append(h("ul", { class: "blist" }, ix.fields.map((f, i) => h("li", {}, h("span", { text: String(i + 1).padStart(2, "0") }), f.label))));
     c.append(h("p", { class: "subtitle", style: "font-size:clamp(14px,1.2vw,18px);color:var(--muted)", text: t("✎ Write this on your phone. ", "✎ 휴대폰에 적어 보세요. ") + ix.privacy }));
@@ -309,7 +321,7 @@ function update() {
       o.querySelector(".num").textContent = total ? `${n} · ${Math.round((n / total) * 100)}%` : "0";
       o.querySelector(".bar i").style.width = total ? `${(n / total) * 100}%` : "0";
     });
-    document.getElementById("wallCount").textContent = total ? `${total}${t(" votes", "표")}` : "";
+    document.getElementById("wallCount").textContent = total ? `${total}${t(total === 1 ? " vote" : " votes", "표")}` : "";
   }
 
   const orch = document.getElementById("orch");
@@ -384,7 +396,7 @@ function toast(text) {
 // ---------------- Boot ----------------
 (async () => {
   [deck, instruments] = await Promise.all([getJson(`/data/${lectureId}.json`), loadInstruments()]);
-  orchestra.init(instruments.map((i) => i.id));
+  orchestra.init(instruments.filter((i) => i.kind !== "bible").map((i) => i.id));
   if (preview) return startStage();
   const code = params.get("room");
   const saved = store.get("hephzibah-host");

@@ -1,4 +1,4 @@
-import { api, getJson, loadInstruments, instrumentById, avatar, h, lines, store, scorePersonality, t, tr, getLang, setLang, insFamily, aliasText } from "./common.js";
+import { api, getJson, loadInstruments, instrumentById, avatar, h, lines, store, scorePersonality, t, tr, getLang, setLang, insFamily, aliasText, calculator } from "./common.js";
 
 const app = document.getElementById("app");
 const params = new URLSearchParams(location.search);
@@ -20,7 +20,7 @@ function showCodeForm(error = "") {
     h("main", { class: "phone-main", style: "padding-top:10vh" },
       h("p", { class: "eyebrow", text: "Hephzibah Academy" }),
       h("h1", { class: "phone-title", style: "font-size:40px" }, t("Join the lecture", "강의 입장")),
-      h("p", { class: "phone-sub", text: t("Enter the code on the big screen. No sign-up, no real name — you’ll join as an orchestra instrument.", "큰 화면의 코드를 입력하세요. 가입도 실명도 필요 없어요. 오케스트라 악기 이름으로 참여해요.") }),
+      h("p", { class: "phone-sub", text: t("Enter the code on the big screen. No sign-up, no real name — you’ll join with a pseudonym.", "큰 화면의 코드를 입력하세요. 가입도 실명도 필요 없어요. 가명으로 참여해요.") }),
       langButton(() => showCodeForm(error)),
       (() => {
         const f = h("form", {},
@@ -43,6 +43,7 @@ async function join(reroll = false) {
     Object.assign(me, { token: r.token, alias: r.alias, avatarId: r.avatarId });
     save();
     if (!me.confirmed) return showReveal();
+    if (deck.consent && !me.consented) return showConsent();
     startLive();
   } catch (err) {
     if (err.status === 401 || err.status === 404) store.del(key());
@@ -50,18 +51,39 @@ async function join(reroll = false) {
   }
 }
 
+function showConsent() {
+  const research = h("input", { type: "checkbox", id: "c-research" }), contact = h("input", { type: "checkbox", id: "c-contact" });
+  const btn = h("button", { class: "btn", type: "button", style: "width:100%", onclick: async () => {
+    btn.disabled = true;
+    try { await api(`/api/rooms/${code}/consent`, { token: me.token, research: research.checked, contact: contact.checked }); } catch {}
+    me.consented = true; save(); startLive();
+  } }, t("Continue", "계속하기"));
+  app.replaceChildren(h("main", { class: "phone-main" },
+    h("p", { class: "eyebrow", text: t("Before we start", "시작하기 전에") }),
+    h("h1", { class: "phone-title", text: t("How your answers are used", "정보 이용 안내") }),
+    h("div", { class: "panel" }, h("ul", { style: "margin:0;padding-left:18px;line-height:1.7;color:var(--ink-2)" },
+      h("li", { text: t("Income, assets and debt are asked as ranges. You can skip any question.", "소득·자산·부채는 범위로 묻고, 어떤 질문이든 건너뛸 수 있어요.") }),
+      h("li", { text: t("Only totals appear on the big screen. Your own numbers are never shown.", "큰 화면에는 집계만 나와요. 개인의 숫자는 보이지 않아요.") }),
+      h("li", { text: t("Spending checks, the calculator and your notes stay on this phone.", "지출 비교, 계산기, 메모는 이 휴대폰에만 남아요.") }))),
+    h("div", { class: "panel" },
+      h("p", { style: "margin:0 0 12px;font-weight:700;color:var(--ink)", text: t("Optional", "선택 동의") }),
+      h("label", { class: "check" }, research, h("span", { text: t("My anonymous answers may be used for research.", "익명 응답을 연구에 활용하는 데 동의해요.") })),
+      h("label", { class: "check" }, contact, h("span", { text: t("I’m open to being contacted about counseling later.", "향후 상담 연락을 받는 데 동의해요.") }))),
+    h("div", { style: "margin-top:18px" }, btn)));
+}
+
 function showReveal() {
   const ins = instrumentById(me.avatarId);
   app.replaceChildren(h("main", { class: "phone-main" },
     h("div", { class: "reveal" },
-      h("p", { class: "eyebrow", text: t("In today’s orchestra, you are the", "오늘 오케스트라에서 당신은") }),
+      h("p", { class: "eyebrow", text: deck.pseudonyms === "bible" ? t("Today your name is", "오늘 당신의 이름은") : t("In today’s orchestra, you are the", "오늘 오케스트라에서 당신은") }),
       avatar(me.avatarId, 120),
       h("h1", { text: aliasText(me.alias, me.avatarId) }),
       h("p", { class: "muted", text: insFamily(me.avatarId) }),
       h("p", { class: "phone-sub", style: "margin-top:18px", text: t("This is the only name shown on the big screen.", "큰 화면에는 이 이름만 나와요.") }), langButton(showReveal)),
     h("div", { class: "stack" },
-      h("button", { class: "btn", type: "button", onclick: () => { me.confirmed = true; save(); startLive(); } }, t("That’s me — let’s go", "좋아요, 시작할게요")),
-      h("button", { class: "btn ghost", type: "button", onclick: () => join(true) }, t("Try another instrument", "다른 악기 뽑기")))));
+      h("button", { class: "btn", type: "button", onclick: () => { me.confirmed = true; save(); deck.consent && !me.consented ? showConsent() : startLive(); } }, t("That’s me — let’s go", "좋아요, 시작할게요")),
+      h("button", { class: "btn ghost", type: "button", onclick: () => join(true) }, deck.pseudonyms === "bible" ? t("Try another name", "다른 이름 뽑기") : t("Try another instrument", "다른 악기 뽑기")))));
 }
 
 // ---------------- Live ----------------
@@ -109,6 +131,9 @@ function render() {
   if (ix && ix.type === "choice") main.append(choicePanel(slide));
   else if (ix && ix.type === "text") main.append(textPanel(slide));
   else if (ix && ix.type === "private") main.append(worksheetPanel(slide));
+  else if (ix && ix.type === "estimate") main.append(estimatePanel(slide));
+  else if (ix && ix.type === "calculator") main.append(h("div", { class: "panel" }, h("h3", { text: ix.prompt }), h("p", { text: t("Try your own numbers. Nothing is sent anywhere.", "내 숫자로 계산해 보세요. 어디에도 전송되지 않아요.") }), calculator(t)));
+  else if (ix && ix.type === "checklist") main.append(checklistPanel(slide));
   else if (ix && ix.type === "review") main.append(reviewFlow(slide));
   else if (slide.kind === "orchestra") main.append(h("div", { class: "panel" }, h("h3", {}, t(`Listen for the ${aliasText(me.alias, me.avatarId).replace(/ \d+$/, "")}!`, `${aliasText(me.alias, me.avatarId).replace(/ \d+$/, "")} 소리를 들어 보세요!`)),
     h("p", { text: t("The presenter will play each instrument alone — then all together. Your instrument has its own part.", "악기를 하나씩 들려준 다음 함께 연주해요. 내 악기에도 나만의 파트가 있어요.") })));
@@ -117,7 +142,7 @@ function render() {
   else main.append(h("div", { class: "panel" }, h("p", { style: "margin:0", text: t("Follow along on the big screen. Questions will pop up here.", "큰 화면을 따라오세요. 질문이 나오면 여기에 떠요.") })));
 
   if (slide.kind !== "review") {
-    if (!me.quizDone && room.slideIndex < reviewIdx) main.append(quizInvite());
+    if (deck.id === "my-user-manual" && !me.quizDone && room.slideIndex < reviewIdx) main.append(quizInvite());
     if (!(ix && ix.channel === "qa")) main.append(askPanel());
   }
 }
@@ -190,6 +215,49 @@ function askPanel() {
   return d;
 }
 
+// ---- Guess vs. actual (private)
+function estimatePanel(slide) {
+  const ix = slide.interaction;
+  me.estimate ||= {};
+  const money = (n) => "$" + Math.round(n).toLocaleString("en-US");
+  const rows = ix.categories.map((cat) => {
+    const v = (me.estimate[cat.id] ||= {});
+    const g = h("input", { class: "input", type: "number", inputmode: "decimal", min: "0", placeholder: t("Guess", "예상"), value: v.guess ?? "" });
+    const a = h("input", { class: "input", type: "number", inputmode: "decimal", min: "0", placeholder: t("Actual", "실제"), value: v.actual ?? "" });
+    const d = h("span", { class: "est-diff" });
+    const upd = () => {
+      v.guess = g.value; v.actual = a.value; save();
+      d.textContent = g.value !== "" && a.value !== "" ? (a.value - g.value >= 0 ? "+" : "−") + money(Math.abs(a.value - g.value)) : "";
+      total();
+    };
+    g.oninput = upd; a.oninput = upd;
+    return [h("div", { class: "est-row" }, h("b", { text: cat.label }), g, a), d, upd];
+  });
+  const sum = h("p", { class: "muted", style: "margin:12px 0 0;font-size:15px" });
+  function total() {
+    let gs = 0, as = 0, ok = false;
+    for (const cat of ix.categories) { const v = me.estimate[cat.id] || {}; if (v.guess !== "" && v.guess != null && v.actual !== "" && v.actual != null) { gs += +v.guess; as += +v.actual; ok = true; } }
+    sum.textContent = ok ? t(`Guessed ${money(gs)} · actual ${money(as)} · difference ${money(Math.abs(as - gs))}`, `예상 ${money(gs)} · 실제 ${money(as)} · 차이 ${money(Math.abs(as - gs))}`) : "";
+  }
+  const box = h("div", { class: "panel" }, h("h3", { text: ix.prompt }),
+    h("p", { text: t("Guess first, then check your bank or card app for the last 30 days. Only you can see this.", "먼저 예상하고, 은행·카드 앱에서 지난 30일 내역을 확인해 보세요. 나만 볼 수 있어요.") }),
+    h("div", { class: "est" }, h("div", { class: "est-row head" }, h("span"), h("span", { text: t("Guess", "예상") }), h("span", { text: t("Actual", "실제") })),
+      rows.flatMap(([row, d]) => [row, d])), sum);
+  rows.forEach(([, , upd]) => upd());
+  return box;
+}
+
+// ---- Home tasks (private checklist)
+function checklistPanel(slide) {
+  me.checks ||= {};
+  const list = h("ul", { class: "checks" }, slide.body.map((item, i) => {
+    const cb = h("input", { type: "checkbox" }); cb.checked = !!me.checks[slide.id + i];
+    cb.onchange = () => { me.checks[slide.id + i] = cb.checked; save(); };
+    return h("li", {}, h("label", {}, cb, h("span", { text: item })));
+  }));
+  return h("div", { class: "panel" }, h("h3", { text: slide.interaction.prompt }), list);
+}
+
 // ---- Private worksheet
 function worksheetPanel(slide) {
   const ix = slide.interaction;
@@ -206,7 +274,7 @@ function worksheetPanel(slide) {
 
 function downloadRecord() {
   const ws = tr(deck.slides.find((s) => s.interaction && s.interaction.type === "private"));
-  const out = [t("My User Manual · Page One", "나의 사용설명서 · 첫 페이지"), `Hephzibah Academy · ${new Date().toLocaleDateString()}`, ""];
+  const out = [deck.id === "my-user-manual" ? t("My User Manual · Page One", "나의 사용설명서 · 첫 페이지") : ws.interaction.prompt, `Hephzibah Academy · ${new Date().toLocaleDateString()}`, ""];
   for (const f of ws.interaction.fields) out.push(f.label, me.worksheet[f.id] || "—", "");
   if (me.reflection) out.push(t("How I’ll use my strengths", "내 강점을 이렇게 쓸게요"), me.reflection.useStrength || "—", "", t("How I’ll work with my weaknesses", "내 약점을 이렇게 다룰게요"), me.reflection.useWeakness || "—", "");
   const blob = new Blob([out.join("\n")], { type: "text/plain" });

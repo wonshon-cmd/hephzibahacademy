@@ -77,6 +77,25 @@ The site needs a server that runs Node, because live rooms use Server-Sent Event
 * Run the service as a **single instance**. Live rooms are kept in memory, so restarting the server ends any active session. Submissions are written to disk and survive restarts.
 * Submissions are saved to `DATA_DIR/submissions.jsonl`, one JSON record per line. The host CSV export reads from this file. These records are what you would use later to send job matches by email.
 
+## Live lecture: *Basic Finance*
+
+`/lectures/basic-finance` is the second live lecture: *Basic Finance: Living as God’s Steward* (기초재정 — 하나님의 청지기로 살아가기). It runs 60 or 120 minutes in 10 sections.
+
+The slide content lives in `tools/decks/basic_finance.py`. To regenerate `public/data/basic-finance.json`, run:
+
+```bash
+python3 tools/decks/basic_finance.py
+```
+
+How it differs from *My User Manual*:
+
+* Participants get Bible-character pseudonyms with portraits (`"pseudonyms": "bible"`) instead of instruments.
+* There is a consent screen with two optional checkboxes: research use and future counseling contact.
+* Some slides are private tools that stay on each phone: a spending guess-vs-actual check, a credit-card payoff calculator and a home-tasks checklist.
+* Income and life situation are asked as polls, so only totals show on screen.
+
+Sections 4–9 currently have title slides only.
+
 ## Beulah Venture applications
 
 `/apply` is the First Track 2026 application ("Tell us about your business"). It is for Venture 101 graduates, and the page says you reply within 2 weeks.

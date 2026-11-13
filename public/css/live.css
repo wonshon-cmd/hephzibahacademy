@@ -170,3 +170,24 @@ body.phone { min-height: 100dvh; }
 /* Fit a 16:9 player inside whatever space the slide leaves */
 .video-frame { height: 100%; container-type: size; }
 .video-frame iframe { width: min(100cqw, 100cqh * 16 / 9); height: min(100cqh, 100cqw * 9 / 16); max-height: none; aspect-ratio: auto; }
+
+/* Card payoff calculator */
+.calc { display: grid; gap: 14px; margin-top: 18px; max-width: 720px; }
+.calc-in { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.calc-in .field { margin: 0; }
+.calc-out { display: grid; gap: 8px; }
+.calc-row { display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 2px 16px; padding: 14px 16px; border: 1px solid var(--hair); border-radius: 10px; background: #fff; }
+.calc-row b { font-size: clamp(20px, 2vw, 30px); letter-spacing: -0.02em; text-align: right; }
+.calc-row small { grid-column: 1 / -1; color: var(--muted); font-size: 14px; }
+.calc-row.strong { border-color: var(--ink); }
+.calc-note { margin: 0; color: var(--muted); font-size: 13px; }
+@media (max-width: 640px) { .calc-in { grid-template-columns: 1fr; } }
+.est { display: grid; gap: 10px; }
+.est-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; align-items: center; }
+.est-row.head { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.est-row .input { padding: 10px 12px; font-size: 16px; }
+.est-diff { font-weight: 700; font-variant-numeric: tabular-nums; }
+.checks { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.checks label { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border: 1px solid var(--hair); border-radius: 10px; background: #fff; cursor: pointer; }
+.checks input { width: 20px; height: 20px; margin-top: 1px; accent-color: var(--ink); flex: none; }
+.checks label:has(input:checked) span { text-decoration: line-through; color: var(--muted); }

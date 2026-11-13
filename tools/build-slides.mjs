@@ -16,7 +16,8 @@ const read = (p) => fs.readFileSync(path.join(PUB, p), "utf8");
 
 const deck = JSON.parse(read(`data/${lectureId}.json`));
 const instruments = JSON.parse(read("data/instruments.json"));
-const DATA = { [`/data/${lectureId}.json`]: deck, "/data/instruments.json": instruments, "/api/config": {} };
+const bible = JSON.parse(read("data/bible.json"));
+const DATA = { [`/data/${lectureId}.json`]: deck, "/data/instruments.json": instruments, "/data/bible.json": bible, "/api/config": {} };
 
 function must(src, a, b) {
   if (!src.includes(a)) throw new Error(`build-slides: expected text not found: ${a.slice(0, 60)}`);
@@ -25,9 +26,6 @@ function must(src, a, b) {
 
 let common = read("js/common.js");
 common = must(common, "export const getJson = (url) => fetch(url).then((r) => r.json());", "const getJson = (url) => Promise.resolve(__DATA[url]);");
-common = must(common, "let instruments = null;", "let __ins = null;");
-common = must(common, 'instruments ||= await getJson("/data/instruments.json");\n  return instruments;', '__ins ||= await getJson("/data/instruments.json");\n  return __ins;');
-common = must(common, "(instruments || []).find", "(__ins || []).find");
 common = common.replace(/^export /gm, "");
 
 let orchestra = read("js/orchestra.js").replace(/^export /gm, "");
@@ -36,6 +34,8 @@ orchestra = must(orchestra, 'const files = await fetch("/api/audio").then((r) =>
 
 let present = read("js/present.js");
 present = present.replace(/^import .*$/gm, "");
+// common.js also has a module-level `instruments`; rename the presenter's copy to avoid a clash.
+present = present.replace(/\binstruments\b/g, "__pins");
 present = must(present, 'const preview = params.has("preview");', "const preview = true;");
 present = must(present, 'const lectureId = params.get("lecture") || "my-user-manual";', `const lectureId = ${JSON.stringify(lectureId)};`);
 present = must(present, '`<span class="muted">${t("Preview — no audience connected", "미리보기 · 청중 연결 없음")}</span>`',

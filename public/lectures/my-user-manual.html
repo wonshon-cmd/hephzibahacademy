@@ -90,6 +90,7 @@
 .steps b{display:block;color:var(--ink);font-size:19px}
 .steps li span{display:block;margin-top:4px}
 .ros .row{display:grid;grid-template-columns:1fr auto auto;gap:24px;padding:20px 0;border-top:1px solid var(--hair);font-size:18px}
+.ros .ros-head{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .ros .row span{color:var(--muted);font-variant-numeric:tabular-nums}
 .outline{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1px;background:var(--hair);border:1px solid var(--hair)}
 .outline li{background:var(--paper);padding:20px 22px;min-height:132px;display:flex;flex-direction:column;gap:8px}
@@ -99,12 +100,14 @@
 </style>
 <script type="module">
 const deck = await (await fetch("/data/my-user-manual.json")).json();
-const label = { en: { choice: "Live poll", text: "Live answers", private: "Private", review: "Review", qa: "Q&A", orchestra: "Sound", video: "Video", slides: "Slides", min: "min" },
-  ko: { choice: "실시간 투표", text: "실시간 답변", private: "비공개", review: "리뷰", qa: "질문", orchestra: "소리", video: "영상", slides: "슬라이드", min: "분" } };
+const label = { en: { choice: "Live poll", text: "Live answers", private: "Private", review: "Review", qa: "Q&A", estimate: "Guess vs. actual", calculator: "Calculator", checklist: "Checklist", orchestra: "Sound", video: "Video", slides: "Slides", min: "min" },
+  ko: { choice: "실시간 투표", text: "실시간 답변", private: "비공개", review: "리뷰", qa: "질문", estimate: "예상 vs 실제", calculator: "계산기", checklist: "체크리스트", orchestra: "소리", video: "영상", slides: "슬라이드", min: "분" } };
 function render() {
   const lang = (window.hzLang && window.hzLang()) || "en", L = label[lang];
-  document.getElementById("runofshow").innerHTML = deck.runOfShow.map((r, i) =>
-    `<div class="row"><b>${lang === "ko" ? deck.ko.runOfShow[i] : r.label}</b><span>${L.slides} ${r.slides}</span><span>${r.minutes} ${L.min}</span></div>`).join("");
+  const two = deck.runOfShow.some((r) => r.minutes2h);
+  document.getElementById("runofshow").innerHTML = (two ? `<div class="row ros-head"><b></b><span>${lang === "ko" ? "1시간" : "1 hour"}</span><span>${lang === "ko" ? "2시간" : "2 hours"}</span></div>` : "") +
+    deck.runOfShow.map((r, i) => `<div class="row"><b>${String(i + 1).padStart(2, "0")}&nbsp;&nbsp;${lang === "ko" ? deck.ko.runOfShow[i] : r.label}</b>` +
+      (two ? `<span>${r.minutes} ${L.min}</span><span>${r.minutes2h} ${L.min}</span>` : `<span>${L.slides} ${r.slides}</span><span>${r.minutes} ${L.min}</span>`) + `</div>`).join("");
   const ol = document.getElementById("outline"); ol.replaceChildren();
   deck.slides.forEach((s, i) => {
     const li = document.createElement("li");

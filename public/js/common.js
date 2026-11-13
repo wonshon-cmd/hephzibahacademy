@@ -19,7 +19,10 @@ export const getJson = (url) => fetch(url).then((r) => r.json());
 
 let instruments = null;
 export async function loadInstruments() {
-  instruments ||= await getJson("/data/instruments.json");
+  if (!instruments) {
+    const [ins, bible] = await Promise.all([getJson("/data/instruments.json"), getJson("/data/bible.json").catch(() => [])]);
+    instruments = [...ins, ...(bible || []).map((b) => ({ ...b, kind: "bible", family: "Bible", familyKo: "성경 인물" }))];
+  }
   return instruments;
 }
 export const instrumentById = (id) => (instruments || []).find((i) => i.id === id);
@@ -31,7 +34,11 @@ export function avatar(id, size = 44) {
   el.className = "avatar";
   el.dataset.family = ins ? ins.family.toLowerCase() : "";
   el.style.setProperty("--size", size + "px");
-  el.textContent = ins ? ins.abbr : "?";
+  if (ins && ins.kind === "bible") {
+    el.dataset.family = "bible";
+    el.style.backgroundImage = "url(/img/bible-avatars.png)";
+    el.style.backgroundPosition = `${(ins.col / 3) * 100}% ${(ins.row / 2) * 100}%`;
+  } else el.textContent = ins ? ins.abbr : "?";
   el.setAttribute("aria-hidden", "true");
   return el;
 }
@@ -94,6 +101,7 @@ export function tr(slide) {
     const ki = k.interaction || {};
     out.interaction = { ...slide.interaction, ...ki };
     if (slide.interaction.options) out.interaction.options = slide.interaction.options.map((o) => ({ ...o, label: (ki.options && ki.options[o.value]) || o.label }));
+    if (slide.interaction.categories) out.interaction.categories = slide.interaction.categories.map((c) => ({ ...c, label: (ki.categories && ki.categories[c.id]) || c.label }));
     if (slide.interaction.fields) out.interaction.fields = slide.interaction.fields.map((f) => ({ ...f, ...((ki.fields && ki.fields[f.id]) || {}) }));
   }
   return out;
@@ -105,4 +113,43 @@ export function insFamily(id) { const i = instrumentById(id); return i ? t(i.fam
 export function aliasText(alias, id) {
   const i = instrumentById(id);
   return i && alias ? alias.replace(i.name, t(i.name, i.ko)) : alias || t("Guest", "손님");
+}
+
+// ---------- Credit card payoff ----------
+// Simulates month by month. Minimum payment = 1% of balance + that month's interest, at least $25.
+export function cardPayoff(balance, aprPct, payment) {
+  const r = Math.max(0, aprPct) / 100 / 12;
+  let bal = Math.max(0, balance), months = 0, interest = 0;
+  while (bal > 0.005 && months < 1200) {
+    const i = bal * r;
+    const pay = payment == null ? Math.max(25, bal * 0.01 + i) : payment;
+    if (pay <= i) return { months: Infinity, interest: Infinity };
+    interest += i; bal = bal + i - pay; months++;
+  }
+  return { months, interest };
+}
+
+export function calculator(t) {
+  const money = (n) => (isFinite(n) ? "$" + Math.round(n).toLocaleString("en-US") : "—");
+  const dur = (m) => !isFinite(m) ? t("Never (payment too small)", "갚을 수 없음 (납부액이 너무 적음)")
+    : m >= 24 ? t(`${(m / 12).toFixed(1)} years`, `${(m / 12).toFixed(1)}년`) : t(`${m} months`, `${m}개월`);
+  const field = (label, val, step) => {
+    const input = h("input", { class: "input", type: "number", inputmode: "decimal", min: "0", step, value: String(val) });
+    return [h("label", { class: "field" }, h("span", { text: label }), input), input];
+  };
+  const [fb, bal] = field(t("Card balance ($)", "카드 잔액 ($)"), 5000, "100");
+  const [fa, apr] = field(t("Interest rate (APR %)", "연 이자율 (APR %)"), 24, "0.1");
+  const [fp, pay] = field(t("What I can pay each month ($)", "매달 갚을 수 있는 금액 ($)"), 300, "10");
+  const out = h("div", { class: "calc-out" });
+  const run = () => {
+    const b = +bal.value || 0, a = +apr.value || 0, p = +pay.value || 0;
+    const mn = cardPayoff(b, a, null), fx = cardPayoff(b, a, p);
+    out.replaceChildren(
+      h("div", { class: "calc-row" }, h("span", { text: t("Minimum payments only", "최소 납부액만") }), h("b", { text: dur(mn.months) }), h("small", { text: t(`Interest ${money(mn.interest)}`, `이자 ${money(mn.interest)}`) })),
+      h("div", { class: "calc-row strong" }, h("span", { text: t(`Paying ${money(p)} a month`, `매달 ${money(p)}씩`) }), h("b", { text: dur(fx.months) }), h("small", { text: t(`Interest ${money(fx.interest)}`, `이자 ${money(fx.interest)}`) })));
+  };
+  [bal, apr, pay].forEach((i) => i.addEventListener("input", run));
+  run();
+  return h("div", { class: "calc" }, h("div", { class: "calc-in" }, fb, fa, fp), out,
+    h("p", { class: "calc-note", text: t("Minimum payment assumed: 1% of the balance plus interest, at least $25. Your card may differ.", "최소 납부액 가정: 잔액의 1% + 이자, 최소 $25. 카드사마다 다를 수 있어요.") }));
 }
