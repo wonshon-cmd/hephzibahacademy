@@ -55,7 +55,6 @@
           <li><b>Verify your email</b></li>
           <li><b>Tell us about your business</b></li>
         </ol>
-        <button class="btn" type="button" id="btn-apply">Apply <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
       </div>
 
       <form id="step-email" class="panel-form" hidden novalidate>
@@ -129,7 +128,8 @@ select.input{appearance:auto}
     return d;
   }
   const fail = (form, e) => { form.querySelector(".error").textContent = tr(e.message); form.querySelector("button[type=submit]").disabled = false; };
-  $("btn-apply").onclick = () => { show("step-email"); $("ap-name").focus(); };
+  // The Apply button is hidden for now; re-add <button id="btn-apply"> to open applications.
+  const openBtn = $("btn-apply"); if (openBtn) openBtn.onclick = () => { show("step-email"); $("ap-name").focus(); };
   async function sendCode(form) {
     email = $("ap-email").value.trim();
     await post("/api/apply/start", { name: $("ap-name").value, email, lang: lang() });
