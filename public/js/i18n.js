@@ -137,7 +137,7 @@
     "In the room right now?": "지금 강의실에 있나요?", "Enter the code on the screen.": "화면에 보이는 코드를 입력하세요.",
     "Room code": "방 코드", "ROOM CODE": "방 코드", "Join": "입장",
     "An adult who wants to give, teach or mentor?": "후원하고, 가르치고, 멘토가 되고 싶은 어른이신가요?", "Become a mentor": "멘토 되기",
-    "Faith for life. Learning for the world.": "삶을 위한 믿음. 세상을 위한 배움.", "© 2026 Hephzibah Academy": "© 2026 헵시바 아카데미",
+    "501(c)(3) applied, status pending.": "501(c)(3) 신청 완료, 승인 대기 중.", "Faith for life. Learning for the world.": "삶을 위한 믿음. 세상을 위한 배움.", "© 2026 Hephzibah Academy": "© 2026 헵시바 아카데미",
     "Learn together. One slide at a time.": "함께 배워요. 한 장씩.",
     "Class fees invest in gospel-based startups through": "수강료는 복음 기반 스타트업에 투자됩니다 ·", "Beulah Venture": "쁄라 벤처",
     "All": "전체", "Who am I made to be? A talk on study, money and purpose.": "나는 어떤 사람으로 지음받았을까? 공부, 돈, 목적에 대한 이야기.",
