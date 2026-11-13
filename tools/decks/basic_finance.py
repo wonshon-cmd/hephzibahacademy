@@ -43,9 +43,9 @@ slide("f49", START, "statement",
   ko_notes=["하나님은 우리에게 영생을 주시는 분입니다. 우리의 먹고사는 필요도 아십니다.", "그러나 하나님과의 관계를 ‘필요한 돈을 채워주시는 관계’로만 이해하면, 돈이 생길 때는 믿고 부족할 때는 하나님을 의심하게 됩니다.", "그렇다고 생활의 필요가 중요하지 않다는 뜻은 아닙니다. 돈이 부족한 어려움도 하나님께 아뢰면서, 내게 맡겨진 재정을 돌볼 책임을 감당하는 것입니다."])
 slide("f50", START, "list",
   {"eyebrow": "Trust and responsibility", "title": "Trust God.\nManage what’s entrusted, responsibly.", "subtitle": "Like health: because God gave it, we don’t skip the doctor. We exercise, prepare and take care of it.",
-   "body": ["Working, building skills, checking spending, paying off debt and preparing for the future are all part of faith", "“God provides” is not a reason to put off preparing", "But I also don’t think I can control every result by my own strength", "As stewards, we let money flow to where it’s needed"]},
+   "body": ["Working, building skills, checking spending, paying off debt and preparing for the future are all part of faith", "“God provides” is not a reason to put off preparing", "But I also don’t think I can control every result by my own strength", "As stewards, we let money flow to where it’s needed", "Knowing God, and faithfully caring for the life He allowed and the finances entrusted to us: we teach both together"]},
   {"eyebrow": "신뢰와 책임", "title": "하나님을 신뢰하며,\n맡겨진 돈은 책임 있게 관리한다.", "subtitle": "건강처럼: 하나님이 주셨기에 병원에 안 가는 것이 아니라, 허락하신 것을 잘 대비하고 운동하고 관리합니다.",
-   "body": ["일하고 역량을 기르고, 지출을 확인하고, 빚을 갚고, 미래를 준비하는 일도 신앙과 연결됩니다", "하나님이 채우신다는 고백이 준비를 미루는 이유가 되지는 않습니다", "동시에 모든 결과를 내 힘으로 통제할 수 있다고 생각하지도 않습니다", "청지기로서 맡겨주신 재정을 잘 관리해 필요한 곳에 흘려보냅니다"]})
+   "body": ["일하고 역량을 기르고, 지출을 확인하고, 빚을 갚고, 미래를 준비하는 일도 신앙과 연결됩니다", "하나님이 채우신다는 고백이 준비를 미루는 이유가 되지는 않습니다", "동시에 모든 결과를 내 힘으로 통제할 수 있다고 생각하지도 않습니다", "청지기로서 맡겨주신 재정을 잘 관리해 필요한 곳에 흘려보냅니다", "하나님을 알아가며, 허락하신 삶과 맡겨진 재정을 성실히 돌보는 것. 이 두 가지를 함께 가르칩니다"]})
 slide("f03", START, "path",
   {"eyebrow": "How we’ll work", "title": "Question first.\nThen Scripture.", "subtitle": "Scripture notes are summaries. Modern finance and math are applications.",
    "body": ["Question", "My answer", "Guess vs. actual", "Scripture", "Application"]},
@@ -201,9 +201,9 @@ slide("f34", S4, "scripture",
   {"eyebrow": "빌립보서 4:11–13 · 요약", "title": "미래를 준비하면서도\n내 궁극적인 안전을 어디에 두고 있나요?", "subtitle": "바울은 궁핍과 풍부, 배부름과 배고픔 속에서 자족하는 법을 배웠다고 말합니다.",
    "body": ["그리스도가 주시는 힘은 원하는 부를 반드시 얻는다는 약속보다, 서로 다른 형편 속에서도 살아가는 문맥입니다."]})
 slide("f51", S4, "questions",
-  {"eyebrow": "Philippians 4:11–13, again", "title": "In plenty and in need,\nam I getting to know God?", "subtitle": "",
+  {"eyebrow": "Philippians 4:11–13, again", "title": "In plenty and in need,\nam I getting to know God?", "subtitle": "Paul’s confession is about strength to live in Christ, not only in plenty but also in need.",
    "body": ["Am I trying to get money through God, or trying to know God whether I have money or not?", "While saying “I leave it to God,” am I putting off the responsibility that is mine?"]},
-  {"eyebrow": "다시, 빌립보서 4:11–13", "title": "풍부할 때도 궁핍할 때도\n하나님을 알아가는가?", "subtitle": "",
+  {"eyebrow": "다시, 빌립보서 4:11–13", "title": "풍부할 때도 궁핍할 때도\n하나님을 알아가는가?", "subtitle": "바울의 고백은 풍부할 때뿐 아니라 궁핍할 때도 그리스도 안에서 살아갈 힘에 관한 것입니다.",
    "body": ["나는 하나님을 통해 돈을 얻으려 하는가, 돈이 있는 때에도 없는 때에도 하나님을 알아가려 하는가?", "하나님께 맡긴다고 말하면서, 내가 감당할 책임은 미루고 있지 않은가?"]})
 slide("f35", S4, "statement",
   {"eyebrow": "Don’t only sacrifice today", "title": "The years you spend earning\nare your life too.", "subtitle": "While preparing for your future self, are you caring for today’s health and relationships?", "body": []},
