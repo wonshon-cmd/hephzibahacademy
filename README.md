@@ -222,3 +222,7 @@ Each lecture page shows its instructor and a **Reviews** section; the Academy li
 `/churches` offers every lecture to a church on one monthly plan by church size (up to 100, 100–300, 300–1,000, 1,000+), used live, as a recording, or tried first through the samples, plus follow-up (Growth Note, personality test, cohort check-ins, mentors, speakers; mentor counseling is coming later). Prices currently read "Contact us". Inquiries are saved to `DATA_DIR/churches.jsonl`; download them at `/api/churches.csv?passcode=YOUR_HOST_PASSCODE`.
 
 The Growth Note also has a big-screen version for the room at `/sample/growth-note/live/`: the pretend class joins, is split into groups, and the screen follows the six steps (group test progress, the room's type mix, the compliment wall, vision sentences, dreams and money priorities, pair prayer with a timer). → / Space next, ← back, F full screen.
+
+## Members-only pages
+
+`/churches` and `/speakers` show their title, then ask for church, affiliation, role and email before showing the rest. On the server the email gets a 6-digit code (needs `RESEND_API_KEY`; without it the code is printed to the log), and confirming it sets a 30-day cookie. Visitors are saved to `DATA_DIR/visitors.jsonl`; download them at `/api/gate.csv?passcode=YOUR_HOST_PASSCODE`. The static site has no server, so there the email is confirmed by typing it twice and the page is remembered on that device; the content is still in the page source.

@@ -24,10 +24,11 @@ def links(s):
     s=s.replace('<script src="/js/personality-test.js" defer></script>','<script>window.__PERSONALITY='+pjson+';</script>\n<script>'+ptjs+'</script>')
     s=s.replace('<link rel="stylesheet" href="/css/site.css">','<style>\n'+css+'\n.preview-note{position:fixed;left:16px;bottom:16px;z-index:50;background:var(--ink);color:var(--paper);padding:10px 14px;border-radius:8px;font-size:14px;max-width:calc(100vw - 32px)}\n</style>')
     s=s.replace('<script src="/js/i18n.js" defer></script>','<script>'+i18n+'</script>')
+    s=s.replace('<script src="/js/gate.js" defer></script>','<script>'+open('js/gate.js').read()+'</script>')
     s=s.replace('<script src="/js/reviews.js" defer></script>','<script>window.__REVIEWS='+open('data/reviews.json').read().strip()+';</script>\n<script>'+open('js/reviews.js').read()+'</script>')
     s=s.replace('<script src="/js/site.js" defer></script>','<script>'+sitejs+'''
 document.addEventListener("click",(e)=>{const a=e.target.closest('a[href="#live-only"]');if(!a)return;e.preventDefault();note("Live classes need the full site with its server.");});
-document.addEventListener("submit",(e)=>{if(e.target.closest("#admin-form"))return;e.preventDefault();e.stopImmediatePropagation();note("This form needs the full site with its server.");},true);
+document.addEventListener("submit",(e)=>{if(e.target.closest("#admin-form,#gate-form"))return;e.preventDefault();e.stopImmediatePropagation();note("This form needs the full site with its server.");},true);
 function note(t){const K=window.hzI18n&&window.hzLang&&window.hzLang()==="ko"?window.hzI18n.KO[t]:null;let n=document.querySelector(".preview-note");if(!n){n=document.createElement("div");n.className="preview-note";n.setAttribute("role","status");document.body.append(n);}n.textContent=K||t;clearTimeout(n._t);n._t=setTimeout(()=>n.remove(),4000);}
 </script>''')
     return s

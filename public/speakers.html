@@ -41,6 +41,24 @@
     <p class="lead" style="max-width:34ch">Pastors, ministers, staff and church members. Your faith in real life is the lesson.</p>
   </div>
 </section>
+<section class="section" data-gate="speakers" id="gate">
+  <div class="wrap split">
+    <div><p class="eyebrow">Members</p><h2 class="h2">Tell us who you are.</h2><p class="lead" style="font-size:18px;margin-top:12px">Confirm your email to see this page.</p></div>
+    <form id="gate-form" novalidate>
+      <label class="field gate-step1"><span>Church</span><input class="input" name="church" required maxlength="200" autocomplete="organization"></label>
+      <label class="field gate-step1"><span>Affiliation</span><input class="input" name="affiliation" required maxlength="200" placeholder="e.g. Denomination, presbytery, ministry"></label>
+      <label class="field gate-step1"><span>Role</span><select class="input" name="role" required>
+        <option value="">Choose…</option><option value="pastor">Pastor</option><option value="minister">Minister</option><option value="elder">Elder</option>
+        <option value="deacon">Deacon</option><option value="kwonsa">Kwonsa</option><option value="staff">Ministry staff</option><option value="member">Church member</option><option value="other">Other</option></select></label>
+      <label class="field gate-step1"><span>Email</span><input class="input" name="email" type="email" required maxlength="200" autocomplete="email"></label>
+      <div id="gate-step2" hidden><label class="field"><span></span><input class="input" name="confirm" maxlength="200" autocomplete="one-time-code"></label></div>
+      <button class="btn" type="submit">Continue <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
+      <p class="error" role="alert"></p>
+    </form>
+  </div>
+</section>
+<div id="gated" hidden>
+
 
 <section class="section">
   <div class="wrap">
@@ -107,6 +125,8 @@ f.addEventListener("submit", async (e) => {
   } catch (x) { err.textContent = x.message; btn.disabled = false; }
 });
 </script>
+</div>
+<script src="/js/gate.js" defer></script>
 </main>
 <footer class="site-footer">
   <div class="wrap footer-brands">

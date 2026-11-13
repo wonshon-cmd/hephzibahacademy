@@ -34,6 +34,21 @@ function isAdmin(req) {
   const want = crypto.createHmac("sha256", ADMIN_SECRET).update("admin:" + exp).digest("base64url");
   return safeEqual(sig, want);
 }
+// Members-only pages: a signed 30-day cookie per page after email confirmation.
+const GATE_SECRET = crypto.randomBytes(32);
+const gateCodes = new Map(); // "kind:email" -> {rec, codeHash, expires, tries, sentAt}
+function gateCookie(kind) {
+  const exp = Date.now() + 30 * 86400 * 1000;
+  return `${exp}.${crypto.createHmac("sha256", GATE_SECRET).update(kind + ":" + exp).digest("base64url")}`;
+}
+function hasGate(req, kind) {
+  if (!/^[a-z]+$/.test(kind)) return false;
+  const m = new RegExp(`(?:^|;\\s*)hz_gate_${kind}=([^;]+)`).exec(req.headers.cookie || "");
+  if (!m) return false;
+  const [exp, sig] = m[1].split(".");
+  if (!exp || !sig || Number(exp) < Date.now()) return false;
+  return safeEqual(sig, crypto.createHmac("sha256", GATE_SECRET).update(kind + ":" + exp).digest("base64url"));
+}
 const ROOM_TTL_MS = 12 * 60 * 60 * 1000;
 const MAX_ROOMS = 200;
 const MAX_PARTICIPANTS = 500;
@@ -62,6 +77,7 @@ const SUBMISSIONS_FILE = path.join(DATA_DIR, "submissions.jsonl");
 const MENTORS_FILE = path.join(DATA_DIR, "mentors.jsonl");
 const SPEAKERS_FILE = path.join(DATA_DIR, "speakers.jsonl");
 const CHURCHES_FILE = path.join(DATA_DIR, "churches.jsonl");
+const GATE_FILE = path.join(DATA_DIR, "visitors.jsonl");
 const APPLICATIONS_FILE = path.join(DATA_DIR, "applications.jsonl");
 const COHORT_FILE = path.join(DATA_DIR, "cohort.jsonl");
 
@@ -422,6 +438,55 @@ async function api(req, res, url) {
     const count = list.length;
     const rating = count ? Math.round((list.reduce((a, b) => a + b.rating, 0) / count) * 10) / 10 : null;
     return sendJson(res, 200, { count, rating, reviews: list.filter((r) => r.text).slice(0, 24) });
+  }
+
+  // Members-only pages (Churches, Speakers). POST /api/gate/start {kind, church, affiliation, role, email}
+  // emails a 6-digit code; POST /api/gate/verify {kind, email, code} sets a 30-day cookie; GET /api/gate/status?kind=.
+  if (parts[1] === "gate") {
+    const KINDS = ["churches", "speakers"];
+    if (parts[2] === "status" && method === "GET") return sendJson(res, 200, { ok: hasGate(req, String(url.searchParams.get("kind") || "")) });
+    const body = await readJson(req);
+    const kind = KINDS.includes(body.kind) ? body.kind : "";
+    if (!kind) throw httpError(400, "Unknown page.");
+    if (parts[2] === "start" && method === "POST") {
+      const rec = { kind, church: cleanText(body.church, 200), affiliation: cleanText(body.affiliation, 200), role: cleanText(body.role, 60), email: cleanText(body.email, 200).toLowerCase() };
+      if (!rec.church || !rec.affiliation || !rec.role) throw httpError(400, "Please fill in every field.");
+      if (!EMAIL_RE.test(rec.email)) throw httpError(400, "Please add a valid email.");
+      const now = Date.now(), key = kind + ":" + rec.email, prev = gateCodes.get(key);
+      if (prev && now - prev.sentAt < 60_000) throw httpError(429, "We just sent a code. Please wait a minute before asking again.");
+      if (gateCodes.size > 5000) for (const [k, v] of gateCodes) if (v.expires < now) gateCodes.delete(k);
+      const code = String(crypto.randomInt(100000, 1000000));
+      gateCodes.set(key, { rec, codeHash: hash(code + key), expires: now + 15 * 60_000, tries: 0, sentAt: now });
+      const ko = body.lang === "ko";
+      const sent = await sendEmail(rec.email, ko ? `헵시바 아카데미 인증 코드: ${code}` : `Your Hephzibah Academy code: ${code}`,
+        ko ? `안녕하세요.\n\n인증 코드는 ${code} 입니다. 15분 동안 유효해요.\n\n헵시바 아카데미` : `Hello,\n\nYour verification code is ${code}. It expires in 15 minutes.\n\nHephzibah Academy`);
+      return sendJson(res, 200, { ok: true, delivered: sent.delivered });
+    }
+    if (parts[2] === "verify" && method === "POST") {
+      const key = kind + ":" + cleanText(body.email, 200).toLowerCase();
+      const v = gateCodes.get(key);
+      if (!v || v.expires < Date.now()) throw httpError(400, "That code has expired. Please request a new one.");
+      if (++v.tries > 5) { gateCodes.delete(key); throw httpError(429, "Too many tries. Please request a new code."); }
+      if (!safeEqual(hash(String(body.code || "").trim() + key), v.codeHash)) throw httpError(400, "That code isn’t right. Please check your email and try again.");
+      gateCodes.delete(key);
+      fs.appendFile(GATE_FILE, JSON.stringify({ at: new Date().toISOString(), ...v.rec }) + "\n", (err) => { if (err) console.error("Could not save visitor", err); });
+      const secure = (req.headers["x-forwarded-proto"] || "").includes("https") ? "; Secure" : "";
+      res.setHeader("set-cookie", `hz_gate_${kind}=${gateCookie(kind)}; Path=/; HttpOnly; SameSite=Lax; Max-Age=${30 * 86400}${secure}`);
+      return sendJson(res, 200, { ok: true });
+    }
+    throw httpError(404, "Not found.");
+  }
+
+  // GET /api/gate.csv?passcode=HOST_PASSCODE — who unlocked the Churches / Speakers pages
+  if (parts[1] === "gate.csv" && method === "GET") {
+    if (!HOST_PASSCODE || !safeEqual(url.searchParams.get("passcode") || "", HOST_PASSCODE)) throw httpError(403, "Passcode required.");
+    let text = ""; try { text = fs.readFileSync(GATE_FILE, "utf8"); } catch {}
+    const cols = ["at", "kind", "church", "affiliation", "role", "email"];
+    const esc = (v) => { let t = String(v ?? ""); if (/^[=+\-@\t\r]/.test(t)) t = "'" + t; return `"${t.replace(/"/g, '""')}"`; };
+    const rows = [cols.join(",")];
+    for (const line of text.split("\n")) { if (!line) continue; try { const r = JSON.parse(line); rows.push(cols.map((c) => esc(r[c])).join(",")); } catch {} }
+    res.writeHead(200, { "content-type": "text/csv; charset=utf-8", "cache-control": "no-store", "content-disposition": 'attachment; filename="hephzibah-visitors.csv"' });
+    return res.end("\ufeff" + rows.join("\r\n"));
   }
 
   // POST /api/churches — church plan inquiries
