@@ -347,6 +347,18 @@ html .lang-btn:hover { background: var(--ink); color: var(--paper); }
 @media (max-width: 900px) { .hero .wrap { grid-template-columns: 1fr; } .hero .vertical { display: none; } .door-art { width: min(320px, 80vw); margin: 8px auto 0; } }
 @media (prefers-reduced-motion: reduce) { .door-art .door-glow { opacity: 1; animation: none; } }
 .site-footer .wrap.legal { padding-top: 0; padding-bottom: 24px; font-size: 13px; color: var(--muted); }
+/* Course reviews */
+.rv-sum { display: flex; align-items: baseline; gap: 12px; margin: 0 0 20px; }
+.rv-sum b { font-size: 44px; letter-spacing: -0.04em; line-height: 1; }
+.rv-stars { color: #c9a35f; letter-spacing: 2px; }
+.rv-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+.rv-list li { background: #fffdf9; border: 1px solid var(--hair); border-radius: 14px; padding: 16px; display: grid; gap: 8px; }
+.rv-list p { margin: 0; }
+.rv-list small { color: var(--muted); }
+.instructor { display: flex; gap: 16px; align-items: center; }
+.instructor .ph { width: 56px; height: 56px; border-radius: 50%; background: var(--ink); color: var(--paper); display: grid; place-items: center; font-weight: 700; font-size: 22px; flex: none; }
+.instructor b { display: block; font-size: 19px; }
+.instructor span { color: var(--muted); font-size: 15px; }
 
 .preview-note{position:fixed;left:16px;bottom:16px;z-index:50;background:var(--ink);color:var(--paper);padding:10px 14px;border-radius:8px;font-size:14px;max-width:calc(100vw - 32px)}
 </style>
@@ -397,7 +409,7 @@ html .lang-btn:hover { background: var(--ink); color: var(--paper); }
         <span class="tag">For High School</span>
         <h3>My User Manual</h3>
         <p>Who am I made to be? A talk on study, money and purpose.</p>
-        <div class="meta"><span>Joseph Shon</span><span>29 slides</span><span>~40 min</span><span>Live answers, orchestra &amp; video</span></div>
+        <div class="meta"><span>Instructor: Joseph Shon</span><span>~40 min</span><span>Live answers, orchestra &amp; video</span><span data-rating="my-user-manual" hidden></span></div>
       </div>
       <span class="go" aria-hidden="true"><svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
     </a>
@@ -417,7 +429,7 @@ html .lang-btn:hover { background: var(--ink); color: var(--paper); }
         <span class="tag">Finance</span>
         <h3>Basic Finance</h3>
         <p>Living as God’s steward. A Christian view of money, for life in the U.S.</p>
-        <div class="meta"><span>Joseph Shon</span><span>60 or 120 min</span><span>Live & interactive</span></div>
+        <div class="meta"><span>Instructor: Joseph Shon</span><span>60 or 120 min</span><span>Live & interactive</span><span data-rating="basic-finance" hidden></span></div>
       </div>
       <span class="go" aria-hidden="true"><svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
     </a>
@@ -452,6 +464,44 @@ html .lang-btn:hover { background: var(--ink); color: var(--paper); }
   <div class="wrap"><span>Faith for life. Learning for the world.</span><span class="right">© 2026 Hephzibah Academy</span></div>
   <div class="wrap legal"><span>501(c)(3) applied, status pending.</span></div>
 </footer>
+<script>window.__REVIEWS={
+  "_note": "Reviews shown on the static site. Add real, approved reviews only: {\"name\": \"Violin\", \"rating\": 5, \"text\": \"...\", \"date\": \"2026-12-01\"}.",
+  "my-user-manual": [],
+  "basic-finance": []
+};</script>
+<script>// Course reviews and ratings.
+// Fills [data-reviews="lectureId"] (a list) and [data-rating="lectureId"] (a short "★ 4.8 · 12 reviews" label).
+// Live site: /api/reviews/<id> (reviews students leave at the end of each live class).
+// Static site: window.__REVIEWS (public/data/reviews.json, curated).
+(() => {
+  const ko = () => (window.hzLang && window.hzLang()) === "ko";
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const stars = (n) => "★★★★★".slice(0, Math.round(n)) + "☆☆☆☆☆".slice(0, 5 - Math.round(n));
+  async function load(id) {
+    try { const r = await fetch(`/api/reviews/${id}`); if (r.ok) return await r.json(); } catch {}
+    const list = ((window.__REVIEWS || {})[id] || []).filter((x) => x && x.rating);
+    const count = list.length;
+    return { count, rating: count ? Math.round((list.reduce((a, b) => a + b.rating, 0) / count) * 10) / 10 : null, reviews: list };
+  }
+  function render() {
+    const ids = new Set([...document.querySelectorAll("[data-reviews],[data-rating]")].map((n) => n.dataset.reviews || n.dataset.rating));
+    ids.forEach(async (id) => {
+      const d = await load(id);
+      document.querySelectorAll(`[data-rating="${id}"]`).forEach((n) => {
+        n.hidden = !d.count;
+        n.textContent = d.count ? `★ ${d.rating} · ${ko() ? `리뷰 ${d.count}개` : `${d.count} review${d.count === 1 ? "" : "s"}`}` : "";
+      });
+      document.querySelectorAll(`[data-reviews="${id}"]`).forEach((box) => {
+        const head = d.count ? `<p class="rv-sum"><b>${d.rating}</b><span class="rv-stars" aria-hidden="true">${stars(d.rating)}</span><span>${ko() ? `리뷰 ${d.count}개` : `${d.count} review${d.count === 1 ? "" : "s"}`}</span></p>` : "";
+        const items = d.reviews.filter((r) => r.text).slice(0, 12).map((r) => `<li><span class="rv-stars" aria-label="${r.rating}/5">${stars(r.rating)}</span><p>${esc(r.text)}</p><small>${esc(r.name || "")}${r.date ? " · " + esc(r.date) : ""}</small></li>`).join("");
+        box.innerHTML = head + (items ? `<ul class="rv-list">${items}</ul>` : `<p class="muted">${ko() ? "아직 리뷰가 없어요. 수업이 끝나면 학생들의 리뷰가 여기에 남아요." : "No reviews yet. Students leave a review at the end of each class."}</p>`);
+      });
+    });
+  }
+  document.addEventListener("DOMContentLoaded", render);
+  document.addEventListener("hz-langchange", render);
+})();
+</script>
 <script>// Mobile menu toggle
 document.addEventListener("click", (e) => {
   const btn = e.target.closest(".menu-btn");
@@ -639,7 +689,7 @@ function note(t){const K=window.hzI18n&&window.hzLang&&window.hzLang()==="ko"?wi
     "In the room right now?": "지금 강의실에 있나요?", "Enter the code on the screen.": "화면에 보이는 코드를 입력하세요.",
     "Room code": "방 코드", "ROOM CODE": "방 코드", "Join": "입장",
     "An adult who wants to give, teach or mentor?": "후원하고, 가르치고, 멘토가 되고 싶은 어른이신가요?", "Become a mentor": "멘토 되기",
-    "501(c)(3) applied, status pending.": "501(c)(3) 신청 완료, 승인 대기 중.", "Speakers": "강사", "Tell young people your story.": "여러분의 이야기를 청년들에게 들려주세요.", "Pastors, ministers, staff and church members. Your faith in real life is the lesson.": "목사님, 전도사님, 간사님, 성도님. 삶 속의 믿음이 곧 수업입니다.", "Five steps.": "다섯 단계.", "Tell us who you are and the story you’d share.": "어떤 분인지, 어떤 이야기를 나누고 싶은지 알려 주세요.", "Review": "심사", "Upload": "자료 올리기", "Send your outline or slides. We help shape it.": "개요나 슬라이드를 보내 주세요. 함께 다듬어요.", "Schedule": "일정", "Pick your dates. We share contacts and details.": "날짜를 고르시면 담당자 연락처와 안내를 드려요.", "Speak and get paid": "강의와 사례비", "An honorarium for every session.": "강의마다 사례비를 드려요.", "Share your story.": "이야기를 나눠 주세요.", "Gospel-based learning, told by real lives.": "복음에 기반한 배움, 삶으로 전하는 이야기.", "I serve as": "섬기는 자리", "Pastor": "목사", "Minister": "전도사", "Ministry staff": "간사", "Church member": "성도", "Phone (optional)": "전화번호 (선택)", "Church or organization": "교회 또는 단체", "Your work or field": "하시는 일", "Talk title": "강의 제목", "Your story in a few lines": "나누실 이야기를 몇 줄로", "When are you available? (optional)": "가능한 시간 (선택)", "Link to past talks or slides (optional)": "이전 강의나 자료 링크 (선택)", "Apply to speak": "강사 지원하기", "We’ll reply within 2 weeks.": "2주 안에 답해 드릴게요.", "Faith for life. Learning for the world.": "삶을 위한 믿음. 세상을 위한 배움.", "© 2026 Hephzibah Academy": "© 2026 헵시바 아카데미",
+    "501(c)(3) applied, status pending.": "501(c)(3) 신청 완료, 승인 대기 중.", "Speakers": "강사", "Tell young people your story.": "여러분의 이야기를 청년들에게 들려주세요.", "Pastors, ministers, staff and church members. Your faith in real life is the lesson.": "목사님, 전도사님, 간사님, 성도님. 삶 속의 믿음이 곧 수업입니다.", "Five steps.": "다섯 단계.", "Tell us who you are and the story you’d share.": "어떤 분인지, 어떤 이야기를 나누고 싶은지 알려 주세요.", "Review": "심사", "Upload": "자료 올리기", "Send your outline or slides. We help shape it.": "개요나 슬라이드를 보내 주세요. 함께 다듬어요.", "Schedule": "일정", "Pick your dates. We share contacts and details.": "날짜를 고르시면 담당자 연락처와 안내를 드려요.", "Speak and get paid": "강의와 사례비", "An honorarium for every session.": "강의마다 사례비를 드려요.", "Share your story.": "이야기를 나눠 주세요.", "Gospel-based learning, told by real lives.": "복음에 기반한 배움, 삶으로 전하는 이야기.", "I serve as": "섬기는 자리", "Pastor": "목사", "Minister": "전도사", "Ministry staff": "간사", "Church member": "성도", "Phone (optional)": "전화번호 (선택)", "Church or organization": "교회 또는 단체", "Your work or field": "하시는 일", "Talk title": "강의 제목", "Your story in a few lines": "나누실 이야기를 몇 줄로", "When are you available? (optional)": "가능한 시간 (선택)", "Link to past talks or slides (optional)": "이전 강의나 자료 링크 (선택)", "Apply to speak": "강사 지원하기", "We’ll reply within 2 weeks.": "2주 안에 답해 드릴게요.", "Instructor": "강사", "Pharmacist · 10 years running a company · 27 trips to Kenya": "약사 · 회사 운영 10년 · 케냐 27번", "Reviews": "리뷰", "What students say.": "학생들의 리뷰.", "Instructor: Joseph Shon": "강사: 손원규", "Faith for life. Learning for the world.": "삶을 위한 믿음. 세상을 위한 배움.", "© 2026 Hephzibah Academy": "© 2026 헵시바 아카데미",
     "Learn together. One slide at a time.": "함께 배워요. 한 장씩.",
     "Class fees invest in gospel-based startups through": "수강료는 복음 기반 스타트업에 투자됩니다 ·", "Beulah Venture": "쁄라 벤처",
     "All": "전체", "Who am I made to be? A talk on study, money and purpose.": "나는 어떤 사람으로 지음받았을까? 공부, 돈, 목적에 대한 이야기.",

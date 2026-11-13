@@ -345,6 +345,18 @@ html .lang-btn:hover { background: var(--ink); color: var(--paper); }
 @media (max-width: 900px) { .hero .wrap { grid-template-columns: 1fr; } .hero .vertical { display: none; } .door-art { width: min(320px, 80vw); margin: 8px auto 0; } }
 @media (prefers-reduced-motion: reduce) { .door-art .door-glow { opacity: 1; animation: none; } }
 .site-footer .wrap.legal { padding-top: 0; padding-bottom: 24px; font-size: 13px; color: var(--muted); }
+/* Course reviews */
+.rv-sum { display: flex; align-items: baseline; gap: 12px; margin: 0 0 20px; }
+.rv-sum b { font-size: 44px; letter-spacing: -0.04em; line-height: 1; }
+.rv-stars { color: #c9a35f; letter-spacing: 2px; }
+.rv-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+.rv-list li { background: #fffdf9; border: 1px solid var(--hair); border-radius: 14px; padding: 16px; display: grid; gap: 8px; }
+.rv-list p { margin: 0; }
+.rv-list small { color: var(--muted); }
+.instructor { display: flex; gap: 16px; align-items: center; }
+.instructor .ph { width: 56px; height: 56px; border-radius: 50%; background: var(--ink); color: var(--paper); display: grid; place-items: center; font-weight: 700; font-size: 22px; flex: none; }
+.instructor b { display: block; font-size: 19px; }
+.instructor span { color: var(--muted); font-size: 15px; }
 
 /* ---------- Presenter stage ---------- */
 body.stage-body { height: 100vh; height: 100dvh; overflow: hidden; }

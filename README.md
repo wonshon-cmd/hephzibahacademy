@@ -212,3 +212,7 @@ It is a single self-contained file, `public/sample/growth-note/index.html`; noth
 ## Speakers
 
 `/speakers` invites pastors, ministers, ministry staff and church members to share their story with young people. The page shows the five steps (apply → review → upload → schedule → speak and get paid) and an application form. Applications are saved to `DATA_DIR/speakers.jsonl` with `status: "applied"`; download them at `/api/speakers.csv?passcode=YOUR_HOST_PASSCODE`. Review, upload, scheduling and payment are handled by the team for now.
+
+## Reviews and instructors
+
+Each lecture page shows its instructor and a **Reviews** section; the Academy list shows each course's rating. Reviews come from the review students leave at the end of a live class (stored in `submissions.jsonl`, shown under their class pseudonym, never a real name) through `GET /api/reviews/<lectureId>`. The static site has no server, so it shows only curated reviews from `public/data/reviews.json`.

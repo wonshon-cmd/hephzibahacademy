@@ -405,6 +405,24 @@ async function api(req, res, url) {
     return sendJson(res, 201, { ok: true });
   }
 
+  // GET /api/reviews/:lectureId — rating and reviews students left at the end of live classes
+  // (plus curated ones in public/data/reviews.json). Names are the class pseudonyms, never real names.
+  if (parts[1] === "reviews" && parts[2] && method === "GET") {
+    const id = parts[2];
+    if (!LECTURES[id]) throw httpError(404, "Lecture not found.");
+    let list = [];
+    try { list = (JSON.parse(fs.readFileSync(path.join(PUBLIC, "data", "reviews.json"), "utf8"))[id] || []).filter((r) => r && r.rating); } catch {}
+    let text = ""; try { text = fs.readFileSync(SUBMISSIONS_FILE, "utf8"); } catch {}
+    for (const line of text.split("\n")) {
+      if (!line) continue;
+      try { const r = JSON.parse(line); if (r.type === "review" && r.lecture === id && r.rating) list.push({ name: r.instrument || "", rating: r.rating, text: r.review || "", date: (r.at || "").slice(0, 10) }); } catch {}
+    }
+    list.sort((a, b) => String(b.date).localeCompare(String(a.date)));
+    const count = list.length;
+    const rating = count ? Math.round((list.reduce((a, b) => a + b.rating, 0) / count) * 10) / 10 : null;
+    return sendJson(res, 200, { count, rating, reviews: list.filter((r) => r.text).slice(0, 24) });
+  }
+
   // POST /api/speakers — speaker applications (pastors, ministers, staff, members)
   if (parts[1] === "speakers" && parts.length === 2 && method === "POST") {
     const body = await readJson(req);
