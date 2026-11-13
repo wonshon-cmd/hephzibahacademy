@@ -128,7 +128,7 @@ function onKey(e) {
 // Slides with "reveal": true show their list items one click at a time.
 function forward() {
   const nextStep = document.querySelector("#stage .step:not(.shown)");
-  if (nextStep) { nextStep.classList.add("shown"); return; }
+  if (nextStep) { nextStep.classList.add("shown"); autoReveal(); return; }
   go(state.slideIndex + 1);
 }
 
@@ -172,7 +172,25 @@ function render() {
   const drawer = document.getElementById("drawer");
   if (!drawer.hidden && drawer.dataset.mode === "notes") fillNotes();
   update();
+  autoReveal();
   if (demo) demoSlide(slide);
+}
+
+// Items that used to need a click ("reveal" lists, "titleSteps" titles) now appear on their own,
+// slowly, one after another. Pressing → still shows the next one right away.
+let revealTimer = null;
+function autoReveal() {
+  clearTimeout(revealTimer);
+  const tick = (first) => {
+    const next = document.querySelector("#stage .step:not(.shown)");
+    if (!next) return;
+    revealTimer = setTimeout(() => {
+      const n = document.querySelector("#stage .step:not(.shown)");
+      if (n) n.classList.add("shown");
+      tick(false);
+    }, first ? 900 : next.classList.contains("slow") ? 1500 : 1200);
+  };
+  tick(true);
 }
 
 function head(slide, compact) {

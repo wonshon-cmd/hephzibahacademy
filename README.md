@@ -39,7 +39,7 @@ The Hephzibah Academy website, with live, interactive lectures. The presenter sh
    4. write how they could use their strengths and work with their weaknesses,
    5. can leave an email, with a consent checkbox, to receive job matches later.
 
-Presenter keys: `→`/`Space` next (on slides marked `"reveal": true`, this first shows the list one line at a time) · `←` back · `N` speaker notes · `Q` big QR code · `F` fullscreen · `Esc` close.
+Presenter keys: `→`/`Space` next (on slides marked `"reveal": true` or `"titleSteps": true`, lines appear one by one on their own; → shows the next one right away) · `←` back · `N` speaker notes · `Q` big QR code · `F` fullscreen · `Esc` close.
 Toolbar: **Review first** holds each message until you approve it. **Queue** holds pending messages, audience questions and hidden messages. **Export** downloads a CSV of this room's reviews, reflections and emails.
 
 ## Run it
