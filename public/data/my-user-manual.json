@@ -20,17 +20,17 @@
   },
   {
    "label": "A user manual — and faith",
-   "slides": "14–23",
+   "slides": "14–24",
    "minutes": 11
   },
   {
    "label": "My first page & one next step",
-   "slides": "24–30",
+   "slides": "25–31",
    "minutes": 9
   },
   {
    "label": "The orchestra, the video & your review",
-   "slides": "31–33",
+   "slides": "32–34",
    "minutes": 9
   }
  ],
@@ -908,16 +908,38 @@
    }
   },
   {
+   "id": "s18b",
+   "section": "03 The user manual",
+   "kind": "statement",
+   "glow": true,
+   "eyebrow": "Psalm 139:14",
+   "title": "I praise you because I am\nfearfully and wonderfully made.",
+   "subtitle": "Your works are wonderful, I know that full well.",
+   "body": [],
+   "notes": [
+    "Read the verse slowly.",
+    "This is a thankful confession: God made me, and what He makes is wonderful."
+   ],
+   "ko": {
+    "section": "03 사용설명서",
+    "eyebrow": "시편 139:14",
+    "title": "내가 주께 감사하옴은\n나를 지으심이 심히 기묘하심이라.",
+    "subtitle": "주께서 하시는 일이 기이함을 내 영혼이 매우 잘 아나이다.",
+    "body": [],
+    "notes": [
+     "말씀을 천천히 읽어 주세요.",
+     "지으심을 감사하는 고백입니다. 하나님이 나를 만드셨고, 그분이 하시는 일은 기이합니다."
+    ]
+   }
+  },
+  {
    "id": "s19",
    "section": "03 The user manual",
    "kind": "faith-practice",
    "eyebrow": "This is how I want to ask",
    "title": "“God,\nwho am I?”",
-   "subtitle": "Reading Scripture, praying, and talking with people I trust.",
-   "body": [
-    "Psalm 139:14 · Thankful to be wonderfully made",
-    "Ephesians 2:10 · An invitation to good works"
-   ],
+   "subtitle": "",
+   "body": [],
    "notes": [
     "In Scripture we meet the confession that we are made by God, and an invitation toward good works. The lines on screen are summaries, not direct quotes.",
     "I use “user manual” less to mean my whole career is written on one page, and more as a picture of getting to know myself, little by little, before God.",
@@ -927,11 +949,8 @@
     "section": "03 사용설명서",
     "eyebrow": "저는 이렇게 질문하고 싶습니다",
     "title": "“하나님,\n저는 어떤 사람인가요?”",
-    "subtitle": "말씀을 읽고, 기도하고, 믿을 만한 사람과 이야기하며.",
-    "body": [
-     "시편 139:14 · 지으심을 감사하는 고백",
-     "에베소서 2:10 · 선한 일을 향한 초대"
-    ],
+    "subtitle": "",
+    "body": [],
     "notes": [
      "우리는 성경에서 하나님이 지으신 존재라는 고백과, 선한 일을 향한 초대를 만납니다. 화면의 문장은 성경 구절의 요약이지 직접 인용은 아닙니다.",
      "저는 사용설명서라는 말을, 평생의 진로가 한 장에 다 적혀 있다는 뜻보다 하나님 앞에서 나를 조금씩 알아가는 비유로 사용하고 싶어요.",
@@ -972,9 +991,7 @@
    "eyebrow": "After hearing my story",
    "title": "Your path\nmay look different.",
    "subtitle": "Your surroundings, personality, gifts and dreams are different.",
-   "body": [
-    "Today: not one answer, but one question about you."
-   ],
+   "body": [],
    "notes": [
     "My story isn’t an answer that applies to you exactly. We all have different circumstances, personalities, gifts and dreams.",
     "Not everyone needs to start a business or go to Kenya. Start your own questions right where you live.",
@@ -985,9 +1002,7 @@
     "eyebrow": "오늘 제 이야기를 듣고",
     "title": "여러분의 길은\n또 다를 수 있습니다.",
     "subtitle": "환경도, 성격도, 재능도, 꿈도 다르니까요.",
-    "body": [
-     "오늘은 답 하나보다, 나를 향한 질문 하나."
-    ],
+    "body": [],
     "notes": [
      "제 이야기가 여러분에게 그대로 적용되는 정답은 아닙니다. 우리는 환경도 성격도 재능도 꿈도 다르니까요.",
      "모두가 사업을 하거나 케냐에 가야 하는 것은 아닙니다. 여러분이 살아가는 곳에서, 여러분만의 질문을 시작해 보면 좋겠습니다.",
@@ -1055,7 +1070,7 @@
      },
      {
       "id": "strength",
-      "label": "Something I’m good at, or want to try more",
+      "label": "My personality, and how I was made",
       "placeholder": "Small things and things you’re still learning count."
      },
      {
@@ -1095,7 +1110,7 @@
        "placeholder": "어떤 일을 할 때 조금 즐겁거나 편안한가요?"
       },
       "strength": {
-       "label": "내가 잘하거나 더 해 보고 싶은 것",
+       "label": "나의 성격과 지어진 형태",
        "placeholder": "작은 일도, 아직 배우고 있는 일도 괜찮아요."
       },
       "value": {
@@ -1207,8 +1222,8 @@
    "section": "Closing",
    "kind": "closing",
    "eyebrow": "HEPHZIBAH ACADEMY",
-   "title": "Cheering you on\nas you discover who you are.",
-   "subtitle": "I’m still finding my user manual, too.",
+   "title": "I’m still finding\nmy user manual, too.",
+   "subtitle": "",
    "body": [
     "Thank you for listening and thinking with me."
    ],
@@ -1227,8 +1242,8 @@
    "ko": {
     "section": "마침",
     "eyebrow": "HEPHZIBAH ACADEMY",
-    "title": "너라는 사람을\n알아가는 여정을 응원해.",
-    "subtitle": "저도 계속 제 사용설명서를 찾아가는 중입니다.",
+    "title": "저도 계속 제 사용설명서를\n찾아가는 중입니다.",
+    "subtitle": "",
     "body": [
      "함께 들어 주고, 생각해 줘서 고맙습니다."
     ],
