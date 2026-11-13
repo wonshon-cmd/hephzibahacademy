@@ -1191,7 +1191,7 @@ function autoReveal() {
       const n = document.querySelector("#stage .step:not(.shown)");
       if (n) n.classList.add("shown");
       tick(false);
-    }, first ? 900 : next.classList.contains("slow") ? 1500 : 1200);
+    }, (first ? 900 : next.classList.contains("slow") ? 1500 : 1200) * (demo ? 0.5 : 1)); // demo runs faster
   };
   tick(true);
 }
@@ -1664,9 +1664,9 @@ function demoStart() {
   const pool = __pins.filter((i) => i.kind !== "bible");
   const bible = deck.pseudonyms === "bible";
   const names = bible ? __pins.filter((i) => i.kind === "bible") : pool;
-  let tm = 1200;
+  let tm = 800;
   for (let i = 0; i < 24; i++) {
-    tm += rnd(500, 1500);
+    tm += rnd(250, 750);
     setTimeout(() => {
       const ins = names[(i * 5 + 3) % names.length];
       const n = demoPeople.filter((p) => p.avatarId === ins.id).length + 1;
@@ -1688,9 +1688,9 @@ function demoSlide(slide) {
     const tally = (state.votes[slide.id] = {});
     const weights = ix.options.map((o, i) => (ix.options.length - i) * rnd(0.6, 1.4));
     const sum = weights.reduce((a, b) => a + b, 0);
-    let tm = 600;
+    let tm = 400;
     for (let v = 0; v < 22; v++) {
-      tm += rnd(200, 650);
+      tm += rnd(100, 330);
       let x = Math.random() * sum, k = 0;
       while (x > weights[k] && k < weights.length - 1) x -= weights[k++];
       const val = ix.options[k].value;
@@ -1700,14 +1700,14 @@ function demoSlide(slide) {
   const answers = slide.demo || [];
   const key = ix.channel === "qa" ? "qa" : slide.id;
   if ((ix.type === "text" || ix.type === "review") && answers.length && !state.messages.some((m) => m.slideId === key)) {
-    let tm = 900;
+    let tm = 500;
     for (const text of answers) {
-      tm += rnd(ix.display === "cloud" ? 350 : 900, ix.display === "cloud" ? 900 : 2000);
+      tm += rnd(ix.display === "cloud" ? 180 : 450, ix.display === "cloud" ? 450 : 1000);
       later(tm, () => { const p = person(); state.messages.push({ id: demoNextId++, slideId: key, channel: ix.channel || "slide", status: "shown", text, alias: p.alias, avatarId: p.avatarId }); });
     }
     if (ix.type === "review") {
       let n = 0, sumR = 0;
-      for (let i = 0; i < 14; i++) later(1200 + i * 700, () => { n++; sumR += Math.random() < 0.75 ? 5 : 4; state.reviews = n; state.rating = (sumR / n).toFixed(1); state.submissions = Math.max(0, n - 3); });
+      for (let i = 0; i < 14; i++) later(600 + i * 350, () => { n++; sumR += Math.random() < 0.75 ? 5 : 4; state.reviews = n; state.rating = (sumR / n).toFixed(1); state.submissions = Math.max(0, n - 3); });
     }
   }
 }
