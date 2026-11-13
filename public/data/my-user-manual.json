@@ -934,7 +934,7 @@
    "notes": [
     "Over the last ten years — studying, working, running a company — there were failures and a lot happened. Looking back, it was a truly happy and grateful time.",
     "Because I moved from only asking what I should do to holding onto why, and I slowly learned what makes me happy.",
-    "Be careful not to suggest you must be perfectly happy every day, or that anxiety comes from a lack of faith. Close with: “So I’m excited for the next ten years, too.”"
+    "Be careful not to suggest you must be perfectly happy every day, or that anxiety comes from a lack of faith."
    ],
    "ko": {
     "section": "04 다음 한 걸음",
@@ -945,7 +945,7 @@
     "notes": [
      "지난 10년 동안 공부하고, 일하고, 회사를 운영하면서 실패도 있었고 많은 일이 있었습니다. 그 시간을 돌아보면 제게는 정말 행복하고 감사한 시간이었습니다.",
      "무엇을 해야 하는가만 생각하던 데서 왜 해야 하는가를 붙잡게 되었고, 무엇을 할 때 행복한 사람인지 조금씩 알아가게 되었기 때문입니다.",
-     "지금도 매일 완벽하게 행복해야 한다는 메시지가 되지 않도록 주의합니다. 현재 불안하거나 힘든 마음이 믿음이나 목적이 부족해서라고 연결하지 않습니다. '그래서 앞으로의 10년도 기대됩니다'로 마무리합니다."
+     "지금도 매일 완벽하게 행복해야 한다는 메시지가 되지 않도록 주의합니다. 현재 불안하거나 힘든 마음이 믿음이나 목적이 부족해서라고 연결하지 않습니다."
     ]
    }
   },
@@ -953,8 +953,8 @@
    "id": "s21",
    "section": "04 One next step",
    "kind": "statement",
-   "eyebrow": "After hearing my story",
-   "title": "Your path\nmay look different.",
+   "eyebrow": "",
+   "title": "God made each of you differently,\nand each for a reason.",
    "subtitle": "Your surroundings, personality, gifts and dreams are different.",
    "body": [],
    "notes": [
@@ -964,8 +964,8 @@
    ],
    "ko": {
     "section": "04 다음 한 걸음",
-    "eyebrow": "오늘 제 이야기를 듣고",
-    "title": "여러분의 길은\n또 다를 수 있습니다.",
+    "eyebrow": "",
+    "title": "하나님께서 여러분을 다 다르게 만드신 데에는\n각자의 이유가 있습니다.",
     "subtitle": "환경도, 성격도, 재능도, 꿈도 다르니까요.",
     "body": [],
     "notes": [
