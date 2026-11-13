@@ -32,7 +32,7 @@ The Hephzibah Academy website, with live, interactive lectures. The presenter sh
    * **Q&A**: students can send questions at any time. The closing slide shows them.
 5. **The orchestra** (slide 31): click an instrument to hear only its part, then press **All together**.
 6. **Video** (slide 32): *Morricone conducts Morricone: The Mission (Gabriel's Oboe)*, embedded from YouTube.
-7. **Review** (slide 35): on their phones, students
+7. **Review** (slide 36): on their phones, students
    1. write one thing they learned (it appears on the big screen),
    2. rate and review the lecture,
    3. unlock their personality results (strengths, challenges, ways to grow),
@@ -220,3 +220,5 @@ Each lecture page shows its instructor and a **Reviews** section; the Academy li
 ## For churches
 
 `/churches` offers every lecture to a church on one monthly plan by church size (up to 100, 100–300, 300–1,000, 1,000+), used live, as a recording, or tried first through the samples, plus follow-up (Growth Note, personality test, cohort check-ins, mentors, speakers; mentor counseling is coming later). Prices currently read "Contact us". Inquiries are saved to `DATA_DIR/churches.jsonl`; download them at `/api/churches.csv?passcode=YOUR_HOST_PASSCODE`.
+
+The Growth Note also has a big-screen version for the room at `/sample/growth-note/live/`: the pretend class joins, is split into groups, and the screen follows the six steps (group test progress, the room's type mix, the compliment wall, vision sentences, dreams and money priorities, pair prayer with a timer). → / Space next, ← back, F full screen.

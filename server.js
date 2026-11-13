@@ -728,7 +728,7 @@ const TYPES = { ".html": "text/html; charset=utf-8", ".css": "text/css; charset=
 
 const ROUTES = { "/": "/index.html", "/lectures": "/lectures.html", "/present": "/present.html", "/join": "/join.html", "/support": "/support.html", "/mentors": "/mentors.html", "/apply": "/apply.html", "/personality": "/personality.html", "/cohort": "/cohort.html", "/speakers": "/speakers.html", "/churches": "/churches.html",
   "/lectures/my-user-manual": "/lectures/my-user-manual.html", "/lectures/basic-finance": "/lectures/basic-finance.html",
-  "/sample/growth-note": "/sample/growth-note/index.html" };
+  "/sample/growth-note": "/sample/growth-note/index.html", "/sample/growth-note/live": "/sample/growth-note/live/index.html" };
 
 function serveStatic(req, res, url) {
   let p = decodeURIComponent(url.pathname);
