@@ -153,3 +153,36 @@ export function calculator(t) {
   return h("div", { class: "calc" }, h("div", { class: "calc-in" }, fb, fa, fp), out,
     h("p", { class: "calc-note", text: t("Minimum payment assumed: 1% of the balance plus interest, at least $25. Your card may differ.", "최소 납부액 가정: 잔액의 1% + 이자, 최소 $25. 카드사마다 다를 수 있어요.") }));
 }
+
+// ---------- Compound growth (retirement) ----------
+export function futureValue(monthly, annualPct, years) {
+  const r = annualPct / 100 / 12, n = Math.max(0, Math.round(years * 12));
+  return r === 0 ? monthly * n : monthly * ((Math.pow(1 + r, n) - 1) / r);
+}
+
+export function compoundCalc(t) {
+  const money = (n) => "$" + Math.round(n).toLocaleString("en-US");
+  const field = (label, val, step) => {
+    const input = h("input", { class: "input", type: "number", inputmode: "decimal", min: "0", step, value: String(val) });
+    return [h("label", { class: "field" }, h("span", { text: label }), input), input];
+  };
+  const [f1, monthly] = field(t("Save each month ($)", "매달 저축 ($)"), 300, "50");
+  const [f2, start] = field(t("Start age", "시작 나이"), 25, "1");
+  const [f3, retire] = field(t("Retire at", "은퇴 나이"), 65, "1");
+  const [f4, rate] = field(t("Yearly return (%)", "연 수익률 (%)"), 6, "0.5");
+  const out = h("div", { class: "calc-out" });
+  const run = () => {
+    const m = +monthly.value || 0, s = +start.value || 0, rt = +retire.value || 0, r = +rate.value || 0;
+    const yrs = Math.max(0, rt - s), late = Math.max(0, yrs - 10);
+    const fv = futureValue(m, r, yrs), fvLate = futureValue(m, r, late);
+    out.replaceChildren(
+      h("div", { class: "calc-row strong" }, h("span", { text: t(`Start at ${s} · ${yrs} years`, `${s}세 시작 · ${yrs}년`) }), h("b", { text: money(fv) }),
+        h("small", { text: t(`You put in ${money(m * yrs * 12)}; growth adds ${money(fv - m * yrs * 12)}`, `넣은 돈 ${money(m * yrs * 12)} · 불어난 돈 ${money(fv - m * yrs * 12)}`) })),
+      h("div", { class: "calc-row" }, h("span", { text: t(`Start 10 years later (${s + 10}) · ${late} years`, `10년 늦게 시작 (${s + 10}세) · ${late}년`) }), h("b", { text: money(fvLate) }),
+        h("small", { text: t(`You put in ${money(m * late * 12)}`, `넣은 돈 ${money(m * late * 12)}`) })));
+  };
+  [monthly, start, retire, rate].forEach((i) => i.addEventListener("input", run));
+  run();
+  return h("div", { class: "calc" }, h("div", { class: "calc-in", style: "grid-template-columns:repeat(4,minmax(0,1fr))" }, f1, f2, f3, f4), out,
+    h("p", { class: "calc-note", text: t("Example only: assumes the same monthly amount and a steady yearly return, before taxes and inflation.", "예시일 뿐이에요: 매달 같은 금액, 일정한 수익률을 가정하며 세금과 인플레이션은 빼고 계산했어요.") }));
+}

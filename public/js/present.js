@@ -1,4 +1,4 @@
-import { api, getJson, loadInstruments, instrumentById, avatar, h, lines, store, t, tr, getLang, setLang, insName, insFamily, aliasText, calculator } from "./common.js";
+import { api, getJson, loadInstruments, instrumentById, avatar, h, lines, store, t, tr, getLang, setLang, insName, insFamily, aliasText, calculator, compoundCalc } from "./common.js";
 import { Orchestra } from "./orchestra.js";
 
 const ARROW = '<svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>';
@@ -244,6 +244,11 @@ function buildSlide(slide) {
   } else if (ix && ix.type === "calculator") {
     el.classList.add("compact");
     c.append(calculator(t));
+    el.append(c);
+    return el;
+  } else if (ix && ix.type === "compound") {
+    el.classList.add("compact");
+    c.append(compoundCalc(t));
     el.append(c);
     return el;
   } else if (ix && ix.type === "estimate") {

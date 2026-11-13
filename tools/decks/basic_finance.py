@@ -154,13 +154,33 @@ slide("f19", S3, "list",
    "body": ["집: 이자·재산세·보험·수리·거래비용", "차: 금융비용·보험·정비·주차·가치 하락"]})
 
 SECTIONS = [
-  ("f20", ("04 Living to 80, 90, 100", "04 80·90·100세의 나"), "Section four", "네 번째", "Me at 80, 90, 100:\npreparing a responsible future", "80·90·100세의 나 —\n책임 있는 미래 준비"),
   ("f25", ("05 Work and starting a business", "05 직업과 창업"), "Section five", "다섯 번째", "Work and starting a business:\nvalue and faithfulness", "직업과 창업 —\n가치와 성실함"),
   ("f26", ("06 Stocks and cash flow", "06 주식과 현금흐름"), "Section six", "여섯 번째", "Stocks and cash flow:\nwhat do I own?", "주식과 현금흐름 —\n무엇을 소유하는가?"),
   ("f27", ("07 God’s steward", "07 하나님의 청지기"), "Section seven", "일곱 번째", "God’s steward:\nwhose will do I use it for?", "하나님의 청지기 —\n누구의 뜻대로 사용하는가?"),
   ("f28", ("08 Offering and giving", "08 헌금과 나눔"), "Section eight", "여덟 번째", "Offering and giving:\ncaring for people with what’s entrusted", "헌금과 나눔 —\n맡겨진 것으로 사람을 돌보기"),
   ("f29", ("09 Joseph again", "09 다시 요셉"), "Section nine", "아홉 번째", "Joseph again:\nwhy did God entrust it?", "다시 요셉 —\n왜 맡기셨을까?"),
 ]
+S4 = ("04 Living to 80, 90, 100", "04 80·90·100세의 나")
+slide("f20", S4, "list",
+  {"eyebrow": "Section four", "title": "Am I ready to live\nto 80, 90, 100?", "subtitle": "Retiring at 65, how many years do I need to prepare for?",
+   "body": ["To 80 · 15 years", "To 90 · 25 years", "To 100 · 35 years"]},
+  {"eyebrow": "네 번째 · 책임 있는 미래 준비", "title": "나는 80·90·100세까지\n살 준비가 되어 있는가?", "subtitle": "65세에 은퇴한다면, 준비할 기간은?",
+   "body": ["80세까지 · 15년", "90세까지 · 25년", "100세까지 · 35년"]})
+slide("f30", S4, "statement",
+  {"eyebrow": "After the paycheck", "title": "Your paycheck stops.\nYour needs don’t.", "subtitle": "Housing, food, medicine and care, caregiving, and the cost of relationships.",
+   "body": ["Compare today’s living costs with future needs, including inflation."]},
+  {"eyebrow": "급여가 멈춘 뒤", "title": "급여가 멈춰도\n필요한 것은 남습니다.", "subtitle": "집, 먹을 것, 약과 의료, 돌봄, 관계를 위한 비용입니다.",
+   "body": ["인플레이션을 반영해 현재의 생활비와 미래의 필요를 비교합니다."]})
+slide("f31", S4, "list",
+  {"eyebrow": "401(k) · IRA", "title": "Retirement accounts,\nexplained.", "subtitle": "",
+   "body": ["Workplace retirement plans and personal retirement accounts", "How Traditional and Roth are taxed", "Company match, eligibility to contribute, withdrawal rules"]},
+  {"eyebrow": "401(k) · IRA", "title": "은퇴계좌,\n이렇게 다릅니다.", "subtitle": "",
+   "body": ["직장 은퇴제도와 개인 은퇴계좌", "Traditional과 Roth의 세금 처리", "회사 매칭·납입 자격·인출 조건"]})
+slide("f32", S4, "compound",
+  {"eyebrow": "Compound growth activity", "title": "Change when you start,\nhow long, and how much.", "subtitle": "Try it on your phone. The numbers are examples, not a promise of returns.", "body": []},
+  {"eyebrow": "복리 활동", "title": "시작 시점·기간·납입액을\n바꿔봅니다.", "subtitle": "휴대폰에서 직접 바꿔 보세요. 수익률은 예시이며 보장이 아닙니다.", "body": []},
+  interaction={"type": "compound", "prompt": "Compound growth"}, ko_ix={"prompt": "복리 계산"})
+
 for sid, sec, ey_en, ey_ko, t_en, t_ko in SECTIONS:
     slide(sid, sec, "section", {"eyebrow": ey_en, "title": t_en, "subtitle": "", "body": []}, {"eyebrow": ey_ko, "title": t_ko, "subtitle": "", "body": []},
           notes=["(Content for this section is coming.)"], ko_notes=["(이 섹션 내용은 추가 예정)"])
@@ -203,13 +223,13 @@ deck = {
     {"label": "Salary and real life: where did the money go?", "slides": "5–9", "minutes": 6, "minutes2h": 12},
     {"label": "How much is enough? Money and my heart", "slides": "10–15", "minutes": 6, "minutes2h": 12},
     {"label": "Card debt, compound interest, taxes, house, car", "slides": "16–19", "minutes": 10, "minutes2h": 20},
-    {"label": "Me at 80, 90, 100: preparing a responsible future", "slides": "20", "minutes": 9, "minutes2h": 18},
-    {"label": "Work and starting a business: value and faithfulness", "slides": "21", "minutes": 8, "minutes2h": 16},
-    {"label": "Stocks and cash flow: what do I own?", "slides": "22", "minutes": 7, "minutes2h": 14},
-    {"label": "God’s steward: whose will do I use it for?", "slides": "23", "minutes": 6, "minutes2h": 12},
-    {"label": "Offering and giving: caring for people with what’s entrusted", "slides": "24", "minutes": 4, "minutes2h": 8},
-    {"label": "Joseph again: why did God entrust it?", "slides": "25", "minutes": 2, "minutes2h": 5},
-    {"label": "Personal application and homework", "slides": "26–29", "minutes": 2, "minutes2h": 3}],
+    {"label": "Me at 80, 90, 100: preparing a responsible future", "slides": "20–23", "minutes": 9, "minutes2h": 18},
+    {"label": "Work and starting a business: value and faithfulness", "slides": "24", "minutes": 8, "minutes2h": 16},
+    {"label": "Stocks and cash flow: what do I own?", "slides": "25", "minutes": 7, "minutes2h": 14},
+    {"label": "God’s steward: whose will do I use it for?", "slides": "26", "minutes": 6, "minutes2h": 12},
+    {"label": "Offering and giving: caring for people with what’s entrusted", "slides": "27", "minutes": 4, "minutes2h": 8},
+    {"label": "Joseph again: why did God entrust it?", "slides": "28", "minutes": 2, "minutes2h": 5},
+    {"label": "Personal application and homework", "slides": "29–32", "minutes": 2, "minutes2h": 3}],
   "ko": {"title": "기초재정", "fullTitle": "기초재정 — 하나님의 청지기로 살아가기", "subtitle": "내게 맡겨진 시간과 물질과 능력을 어떻게 사용하고 있는가", "track": "재정", "speaker": "손원규",
     "summary": "미국에서 살아가는 그리스도인의 재정관: 연봉과 실제 생활, 얼마면 충분한가, 카드빚과 복리, 세금, 집과 차, 100세 준비. 질문 → 개인 응답 → 예상과 실제 비교 → 성경 본문 → 적용.",
     "runOfShow": ["연봉과 실제 생활 — 돈은 어디 갔을까?", "얼마면 충분할까? — 돈과 내 마음", "카드빚·복리·세금·집·차·절세", "80·90·100세의 나 — 책임 있는 미래 준비", "직업과 창업 — 가치와 성실함", "주식과 현금흐름 — 무엇을 소유하는가?", "하나님의 청지기 — 누구의 뜻대로 사용하는가?", "헌금과 나눔 — 맡겨진 것으로 사람을 돌보기", "다시 요셉 — 왜 맡기셨을까?", "개인 적용과 과제"]},

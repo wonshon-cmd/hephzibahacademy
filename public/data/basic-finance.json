@@ -31,43 +31,43 @@
   },
   {
    "label": "Me at 80, 90, 100: preparing a responsible future",
-   "slides": "20",
+   "slides": "20–23",
    "minutes": 9,
    "minutes2h": 18
   },
   {
    "label": "Work and starting a business: value and faithfulness",
-   "slides": "21",
+   "slides": "24",
    "minutes": 8,
    "minutes2h": 16
   },
   {
    "label": "Stocks and cash flow: what do I own?",
-   "slides": "22",
+   "slides": "25",
    "minutes": 7,
    "minutes2h": 14
   },
   {
    "label": "God’s steward: whose will do I use it for?",
-   "slides": "23",
+   "slides": "26",
    "minutes": 6,
    "minutes2h": 12
   },
   {
    "label": "Offering and giving: caring for people with what’s entrusted",
-   "slides": "24",
+   "slides": "27",
    "minutes": 4,
    "minutes2h": 8
   },
   {
    "label": "Joseph again: why did God entrust it?",
-   "slides": "25",
+   "slides": "28",
    "minutes": 2,
    "minutes2h": 5
   },
   {
    "label": "Personal application and homework",
-   "slides": "26–29",
+   "slides": "29–32",
    "minutes": 2,
    "minutes2h": 3
   }
@@ -730,23 +730,100 @@
   {
    "id": "f20",
    "section": "04 Living to 80, 90, 100",
-   "kind": "section",
+   "kind": "list",
    "eyebrow": "Section four",
-   "title": "Me at 80, 90, 100:\npreparing a responsible future",
-   "subtitle": "",
-   "body": [],
-   "notes": [
-    "(Content for this section is coming.)"
+   "title": "Am I ready to live\nto 80, 90, 100?",
+   "subtitle": "Retiring at 65, how many years do I need to prepare for?",
+   "body": [
+    "To 80 · 15 years",
+    "To 90 · 25 years",
+    "To 100 · 35 years"
    ],
+   "notes": [],
    "ko": {
     "section": "04 80·90·100세의 나",
-    "eyebrow": "네 번째",
-    "title": "80·90·100세의 나 —\n책임 있는 미래 준비",
+    "eyebrow": "네 번째 · 책임 있는 미래 준비",
+    "title": "나는 80·90·100세까지\n살 준비가 되어 있는가?",
+    "subtitle": "65세에 은퇴한다면, 준비할 기간은?",
+    "body": [
+     "80세까지 · 15년",
+     "90세까지 · 25년",
+     "100세까지 · 35년"
+    ],
+    "notes": []
+   }
+  },
+  {
+   "id": "f30",
+   "section": "04 Living to 80, 90, 100",
+   "kind": "statement",
+   "eyebrow": "After the paycheck",
+   "title": "Your paycheck stops.\nYour needs don’t.",
+   "subtitle": "Housing, food, medicine and care, caregiving, and the cost of relationships.",
+   "body": [
+    "Compare today’s living costs with future needs, including inflation."
+   ],
+   "notes": [],
+   "ko": {
+    "section": "04 80·90·100세의 나",
+    "eyebrow": "급여가 멈춘 뒤",
+    "title": "급여가 멈춰도\n필요한 것은 남습니다.",
+    "subtitle": "집, 먹을 것, 약과 의료, 돌봄, 관계를 위한 비용입니다.",
+    "body": [
+     "인플레이션을 반영해 현재의 생활비와 미래의 필요를 비교합니다."
+    ],
+    "notes": []
+   }
+  },
+  {
+   "id": "f31",
+   "section": "04 Living to 80, 90, 100",
+   "kind": "list",
+   "eyebrow": "401(k) · IRA",
+   "title": "Retirement accounts,\nexplained.",
+   "subtitle": "",
+   "body": [
+    "Workplace retirement plans and personal retirement accounts",
+    "How Traditional and Roth are taxed",
+    "Company match, eligibility to contribute, withdrawal rules"
+   ],
+   "notes": [],
+   "ko": {
+    "section": "04 80·90·100세의 나",
+    "eyebrow": "401(k) · IRA",
+    "title": "은퇴계좌,\n이렇게 다릅니다.",
     "subtitle": "",
+    "body": [
+     "직장 은퇴제도와 개인 은퇴계좌",
+     "Traditional과 Roth의 세금 처리",
+     "회사 매칭·납입 자격·인출 조건"
+    ],
+    "notes": []
+   }
+  },
+  {
+   "id": "f32",
+   "section": "04 Living to 80, 90, 100",
+   "kind": "compound",
+   "eyebrow": "Compound growth activity",
+   "title": "Change when you start,\nhow long, and how much.",
+   "subtitle": "Try it on your phone. The numbers are examples, not a promise of returns.",
+   "body": [],
+   "interaction": {
+    "type": "compound",
+    "prompt": "Compound growth"
+   },
+   "notes": [],
+   "ko": {
+    "section": "04 80·90·100세의 나",
+    "eyebrow": "복리 활동",
+    "title": "시작 시점·기간·납입액을\n바꿔봅니다.",
+    "subtitle": "휴대폰에서 직접 바꿔 보세요. 수익률은 예시이며 보장이 아닙니다.",
     "body": [],
-    "notes": [
-     "(이 섹션 내용은 추가 예정)"
-    ]
+    "notes": [],
+    "interaction": {
+     "prompt": "복리 계산"
+    }
    }
   },
   {

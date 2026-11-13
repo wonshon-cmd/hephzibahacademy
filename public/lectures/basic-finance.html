@@ -90,8 +90,8 @@
 </style>
 <script type="module">
 const deck = await (await fetch("/data/basic-finance.json")).json();
-const label = { en: { choice: "Live poll", text: "Live answers", private: "Private", review: "Review", qa: "Q&A", estimate: "Guess vs. actual", calculator: "Calculator", checklist: "Checklist", orchestra: "Sound", video: "Video", slides: "Slides", min: "min" },
-  ko: { choice: "실시간 투표", text: "실시간 답변", private: "비공개", review: "리뷰", qa: "질문", estimate: "예상 vs 실제", calculator: "계산기", checklist: "체크리스트", orchestra: "소리", video: "영상", slides: "슬라이드", min: "분" } };
+const label = { en: { choice: "Live poll", text: "Live answers", private: "Private", review: "Review", qa: "Q&A", estimate: "Guess vs. actual", calculator: "Calculator", compound: "Calculator", checklist: "Checklist", orchestra: "Sound", video: "Video", slides: "Slides", min: "min" },
+  ko: { choice: "실시간 투표", text: "실시간 답변", private: "비공개", review: "리뷰", qa: "질문", estimate: "예상 vs 실제", calculator: "계산기", compound: "계산기", checklist: "체크리스트", orchestra: "소리", video: "영상", slides: "슬라이드", min: "분" } };
 function render() {
   const lang = (window.hzLang && window.hzLang()) || "en", L = label[lang];
   const two = deck.runOfShow.some((r) => r.minutes2h);

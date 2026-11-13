@@ -1,4 +1,4 @@
-import { api, getJson, loadInstruments, instrumentById, avatar, h, lines, store, scorePersonality, t, tr, getLang, setLang, insFamily, aliasText, calculator } from "./common.js";
+import { api, getJson, loadInstruments, instrumentById, avatar, h, lines, store, scorePersonality, t, tr, getLang, setLang, insFamily, aliasText, calculator, compoundCalc } from "./common.js";
 
 const app = document.getElementById("app");
 const params = new URLSearchParams(location.search);
@@ -134,6 +134,7 @@ function render() {
   else if (ix && ix.type === "estimate") main.append(estimatePanel(slide));
   else if (ix && ix.type === "calculator") main.append(h("div", { class: "panel" }, h("h3", { text: ix.prompt }), h("p", { text: t("Try your own numbers. Nothing is sent anywhere.", "내 숫자로 계산해 보세요. 어디에도 전송되지 않아요.") }), calculator(t)));
   else if (ix && ix.type === "checklist") main.append(checklistPanel(slide));
+  else if (ix && ix.type === "compound") main.append(h("div", { class: "panel" }, h("h3", { text: ix.prompt }), h("p", { text: t("Change the numbers and compare. Nothing is sent anywhere.", "숫자를 바꿔 비교해 보세요. 어디에도 전송되지 않아요.") }), compoundCalc(t)));
   else if (ix && ix.type === "review") main.append(reviewFlow(slide));
   else if (slide.kind === "orchestra") main.append(h("div", { class: "panel" }, h("h3", {}, t(`Listen for the ${aliasText(me.alias, me.avatarId).replace(/ \d+$/, "")}!`, `${aliasText(me.alias, me.avatarId).replace(/ \d+$/, "")} 소리를 들어 보세요!`)),
     h("p", { text: t("The presenter will play each instrument alone — then all together. Your instrument has its own part.", "악기를 하나씩 들려준 다음 함께 연주해요. 내 악기에도 나만의 파트가 있어요.") })));
