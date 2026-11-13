@@ -7,13 +7,13 @@ pub=os.path.join(ROOT,'public'); dl=os.path.abspath(sys.argv[1]) if len(sys.argv
 os.chdir(pub); os.makedirs(dl,exist_ok=True)
 css=open('css/site.css').read(); livecss=open('css/live.css').read(); ptjs=open('js/personality-test.js').read(); pjson=open('data/personality.json').read().strip(); sitejs=open('js/site.js').read(); i18n=open('js/i18n.js').read()
 deckjson=open('data/my-user-manual.json').read().strip()
-pages={'index.html':'index.html','lectures.html':'lectures.html','support.html':'support.html','mentors.html':'mentors.html','speakers.html':'speakers.html','apply.html':'apply.html','personality.html':'personality.html','cohort.html':'cohort.html','lectures/my-user-manual.html':'my-user-manual.html','lectures/basic-finance.html':'basic-finance.html'}
+pages={'index.html':'index.html','lectures.html':'lectures.html','support.html':'support.html','mentors.html':'mentors.html','speakers.html':'speakers.html','churches.html':'churches.html','apply.html':'apply.html','personality.html':'personality.html','cohort.html':'cohort.html','lectures/my-user-manual.html':'my-user-manual.html','lectures/basic-finance.html':'basic-finance.html'}
 def links(s):
     s=s.replace('href="/downloads/my-user-manual-slides.html" download','href="my-user-manual-slides.html"')
     s=re.sub(r'href="/cohort\?([^"]*)"',r'href="cohort.html?\1"',s)
     s=s.replace('href="/lectures/my-user-manual"','href="my-user-manual.html"').replace('href="/lectures/basic-finance"','href="basic-finance.html"')
 
-    for k in ['lectures','support','mentors','apply','personality','cohort','speakers']: s=s.replace(f'href="/{k}"',f'href="{k}.html"')
+    for k in ['lectures','support','mentors','apply','personality','cohort','speakers','churches']: s=s.replace(f'href="/{k}"',f'href="{k}.html"')
     s=re.sub(r'href="/#([\w-]+)"',r'href="index.html#\1"',s)
     s=s.replace('href="/"','href="index.html"')
     s=re.sub(r'href="/(present|join)[^"]*"','href="#live-only"',s)

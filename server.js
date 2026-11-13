@@ -61,6 +61,7 @@ fs.mkdirSync(DATA_DIR, { recursive: true });
 const SUBMISSIONS_FILE = path.join(DATA_DIR, "submissions.jsonl");
 const MENTORS_FILE = path.join(DATA_DIR, "mentors.jsonl");
 const SPEAKERS_FILE = path.join(DATA_DIR, "speakers.jsonl");
+const CHURCHES_FILE = path.join(DATA_DIR, "churches.jsonl");
 const APPLICATIONS_FILE = path.join(DATA_DIR, "applications.jsonl");
 const COHORT_FILE = path.join(DATA_DIR, "cohort.jsonl");
 
@@ -423,6 +424,32 @@ async function api(req, res, url) {
     return sendJson(res, 200, { count, rating, reviews: list.filter((r) => r.text).slice(0, 24) });
   }
 
+  // POST /api/churches — church plan inquiries
+  if (parts[1] === "churches" && parts.length === 2 && method === "POST") {
+    const body = await readJson(req);
+    const SIZES = ["small", "medium", "large", "xl"];
+    const rec = { at: new Date().toISOString(), size: SIZES.includes(body.size) ? body.size : "" };
+    for (const [k, n] of [["church", 200], ["name", 120], ["email", 200], ["phone", 40], ["note", 1000]]) rec[k] = cleanText(body[k], n);
+    rec.email = rec.email.toLowerCase();
+    if (!rec.size) throw httpError(400, "Choose your church size.");
+    if (!rec.church || !rec.name) throw httpError(400, "Please add your church and name.");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(rec.email)) throw httpError(400, "Please add a valid email.");
+    fs.appendFile(CHURCHES_FILE, JSON.stringify(rec) + "\n", (err) => { if (err) console.error("Could not save church inquiry", err); });
+    return sendJson(res, 201, { ok: true });
+  }
+
+  // GET /api/churches.csv?passcode=HOST_PASSCODE
+  if (parts[1] === "churches.csv" && method === "GET") {
+    if (!HOST_PASSCODE || !safeEqual(url.searchParams.get("passcode") || "", HOST_PASSCODE)) throw httpError(403, "Passcode required.");
+    let text = ""; try { text = fs.readFileSync(CHURCHES_FILE, "utf8"); } catch {}
+    const cols = ["at", "size", "church", "name", "email", "phone", "note"];
+    const esc = (v) => { let t = String(v ?? ""); if (/^[=+\-@\t\r]/.test(t)) t = "'" + t; return `"${t.replace(/"/g, '""')}"`; };
+    const rows = [cols.join(",")];
+    for (const line of text.split("\n")) { if (!line) continue; try { const r = JSON.parse(line); rows.push(cols.map((c) => esc(r[c])).join(",")); } catch {} }
+    res.writeHead(200, { "content-type": "text/csv; charset=utf-8", "cache-control": "no-store", "content-disposition": 'attachment; filename="hephzibah-churches.csv"' });
+    return res.end("\ufeff" + rows.join("\r\n"));
+  }
+
   // POST /api/speakers — speaker applications (pastors, ministers, staff, members)
   if (parts[1] === "speakers" && parts.length === 2 && method === "POST") {
     const body = await readJson(req);
@@ -699,7 +726,7 @@ const TYPES = { ".html": "text/html; charset=utf-8", ".css": "text/css; charset=
   ".woff": "font/woff", ".woff2": "font/woff2", ".txt": "text/plain; charset=utf-8", ".webp": "image/webp", ".jpg": "image/jpeg",
   ".mp3": "audio/mpeg", ".m4a": "audio/mp4", ".ogg": "audio/ogg", ".wav": "audio/wav" };
 
-const ROUTES = { "/": "/index.html", "/lectures": "/lectures.html", "/present": "/present.html", "/join": "/join.html", "/support": "/support.html", "/mentors": "/mentors.html", "/apply": "/apply.html", "/personality": "/personality.html", "/cohort": "/cohort.html", "/speakers": "/speakers.html",
+const ROUTES = { "/": "/index.html", "/lectures": "/lectures.html", "/present": "/present.html", "/join": "/join.html", "/support": "/support.html", "/mentors": "/mentors.html", "/apply": "/apply.html", "/personality": "/personality.html", "/cohort": "/cohort.html", "/speakers": "/speakers.html", "/churches": "/churches.html",
   "/lectures/my-user-manual": "/lectures/my-user-manual.html", "/lectures/basic-finance": "/lectures/basic-finance.html",
   "/sample/growth-note": "/sample/growth-note/index.html" };
 

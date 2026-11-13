@@ -216,3 +216,7 @@ It is a single self-contained file, `public/sample/growth-note/index.html`; noth
 ## Reviews and instructors
 
 Each lecture page shows its instructor and a **Reviews** section; the Academy list shows each course's rating. Reviews come from the review students leave at the end of a live class (stored in `submissions.jsonl`, shown under their class pseudonym, never a real name) through `GET /api/reviews/<lectureId>`. The static site has no server, so it shows only curated reviews from `public/data/reviews.json`.
+
+## For churches
+
+`/churches` offers every lecture to a church on one monthly plan by church size (up to 100, 100–300, 300–1,000, 1,000+), used live, as a recording, or tried first through the samples, plus follow-up (Growth Note, personality test, cohort check-ins, mentors, speakers; mentor counseling is coming later). Prices currently read "Contact us". Inquiries are saved to `DATA_DIR/churches.jsonl`; download them at `/api/churches.csv?passcode=YOUR_HOST_PASSCODE`.
