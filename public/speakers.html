@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Speakers · Hephzibah Academy</title>
+<meta name="description" content="Mentor, teach, and fund the next generation.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400;1,9..144,500&family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Hephzibah Academy — home">
+      <svg class="brand-mark" viewBox="9 11 43 43" aria-hidden="true"><path d="M10 22h11v12h17V12h13v41H38V42H21v11H10z" fill="currentColor"/></svg>
+      <span class="brand-name"><b>Hephzibah</b><span>ACADEMY</span></span>
+    </a>
+    <button class="menu-btn" type="button" aria-controls="nav" aria-expanded="false">Menu</button>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="/lectures">Academy</a>
+      <a href="/#community">Community</a>
+      <a href="/#about">About</a>
+      <a href="/cohort">Cohort</a>
+      <a href="/mentors">Mentors</a>
+      <a href="/speakers" aria-current="page">Speakers</a>
+      <a href="/support">Support</a>
+      <span class="divider" aria-hidden="true"></span>
+      <a class="login" href="/present">Log in <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="section" style="border-top:0">
+  <div class="wrap">
+    <p class="eyebrow">Speakers</p>
+    <h1 class="display" style="font-size:clamp(40px,6vw,88px)">Tell young people your story.</h1>
+    <p class="lead" style="max-width:34ch">Pastors, ministers, staff and church members. Your faith in real life is the lesson.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head"><div><p class="eyebrow">How it works</p><h2 class="h2">Five steps.</h2></div></div>
+    <ol class="sp-steps">
+      <li><span class="n">01</span><b>Apply</b><small>Tell us who you are and the story you’d share.</small></li>
+      <li><span class="n">02</span><b>Review</b><small>We reply within 2 weeks.</small></li>
+      <li><span class="n">03</span><b>Upload</b><small>Send your outline or slides. We help shape it.</small></li>
+      <li><span class="n">04</span><b>Schedule</b><small>Pick your dates. We share contacts and details.</small></li>
+      <li><span class="n">05</span><b>Speak and get paid</b><small>An honorarium for every session.</small></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section" id="apply">
+  <div class="wrap split">
+    <div><p class="eyebrow">Apply</p><h2 class="h2">Share your story.</h2><p class="lead" style="font-size:18px;margin-top:12px">Gospel-based learning, told by real lives.</p></div>
+    <form id="speaker" novalidate>
+      <fieldset class="ways"><legend class="field-legend">I serve as</legend>
+        <label class="way"><input type="radio" name="role" value="pastor"><span><b>Pastor</b></span></label>
+        <label class="way"><input type="radio" name="role" value="minister"><span><b>Minister</b></span></label>
+        <label class="way"><input type="radio" name="role" value="staff"><span><b>Ministry staff</b></span></label>
+        <label class="way"><input type="radio" name="role" value="member"><span><b>Church member</b></span></label>
+      </fieldset>
+      <label class="field"><span>Name</span><input class="input" name="name" autocomplete="name" required maxlength="120"></label>
+      <label class="field"><span>Email</span><input class="input" name="email" type="email" autocomplete="email" required maxlength="200"></label>
+      <label class="field"><span>Phone (optional)</span><input class="input" name="phone" type="tel" autocomplete="tel" maxlength="40"></label>
+      <label class="field"><span>Church or organization</span><input class="input" name="church" maxlength="200"></label>
+      <label class="field"><span>Your work or field</span><input class="input" name="field" maxlength="200" placeholder="e.g. Nurse, business owner, youth pastor"></label>
+      <label class="field"><span>Talk title</span><input class="input" name="title" required maxlength="200"></label>
+      <label class="field"><span>Your story in a few lines</span><textarea class="input" name="story" required maxlength="2000" rows="5"></textarea></label>
+      <label class="field"><span>When are you available? (optional)</span><input class="input" name="availability" maxlength="300" placeholder="e.g. Saturdays in spring"></label>
+      <label class="field"><span>Link to past talks or slides (optional)</span><input class="input" name="link" type="url" maxlength="400" placeholder="https://"></label>
+      <button class="btn" type="submit">Apply to speak <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
+      <p class="error" id="s-err" role="alert"></p>
+    </form>
+  </div>
+</section>
+<style>
+.sp-steps{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));border-top:1px solid var(--rule)}
+.sp-steps li{display:grid;gap:6px;align-content:start;padding:22px 20px 22px 0;border-bottom:1px solid var(--hair)}
+.sp-steps .n{font-family:var(--serif, Georgia, serif);font-style:italic;font-size:32px;line-height:1;color:var(--accent)}
+.sp-steps b{font-size:19px;letter-spacing:-.01em}
+.sp-steps small{color:var(--muted);font-size:15px}
+.ways{border:0;padding:0;margin:0 0 24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.field-legend{font-weight:600;margin-bottom:10px;padding:0}
+.way{display:flex;gap:12px;align-items:center;padding:14px 16px;border:1px solid var(--hair);border-radius:var(--radius);background:#fff;cursor:pointer}
+.way:has(input:checked){border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
+.way input{width:18px;height:18px;flex:none;accent-color:var(--ink)}
+</style>
+<script>
+const f = document.getElementById("speaker"), err = document.getElementById("s-err");
+f.addEventListener("submit", async (e) => {
+  e.preventDefault(); err.textContent = "";
+  const btn = f.querySelector("button"); btn.disabled = true;
+  const el = f.elements;
+  const body = { role: (f.querySelector('input[name="role"]:checked') || {}).value || "", name: el.name.value, email: el.email.value, phone: el.phone.value,
+    church: el.church.value, field: el.field.value, title: el.title.value, story: el.story.value, availability: el.availability.value, link: el.link.value };
+  try {
+    const r = await fetch("/api/speakers", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
+    const d = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error((d.error && d.error.message) || "Something went wrong.");
+    f.outerHTML = '<div id="thanks"><h3 class="h3">Thank you.</h3><p class="lead" style="font-size:19px">We’ll reply within 2 weeks.</p></div>'; window.hzI18n && window.hzI18n.apply();
+  } catch (x) { err.textContent = x.message; btn.disabled = false; }
+});
+</script>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-brands">
+    <div class="lockup" aria-label="Hephzibah Academy and Beulah">
+      <a class="lk" href="/"><svg class="lk-mark" viewBox="9 11 43 43" aria-hidden="true"><path d="M10 22h11v12h17V12h13v41H38V42H21v11H10z" fill="currentColor"/></svg><span class="lk-name"><b>Hephzibah</b><span>ACADEMY</span></span></a>
+      <span class="lk-sep" aria-hidden="true"></span>
+      <a class="lk" href="https://beulahventure.com/" target="_blank" rel="noopener"><svg class="lk-mark" viewBox="9 11 43 43" aria-hidden="true"><path fill-rule="evenodd" d="M11 12h28l9 8v9l-4 3.5 5 4.5v9l-8 7H11zM23 21v8h11v-8zM23 38v8h12v-8z" fill="currentColor"/></svg><span class="lk-name"><b>Beulah</b><span>VENTURE CAPITAL</span></span></a>
+    </div>
+  </div>
+  <div class="wrap"><span>Faith for life. Learning for the world.</span><span class="right">© 2026 Hephzibah Academy</span></div>
+  <div class="wrap legal"><span>501(c)(3) applied, status pending.</span></div>
+</footer>
+<script src="/js/site.js" defer></script>
+<script src="/js/i18n.js" defer></script>
+</body>
+</html>

@@ -7,7 +7,7 @@
   --muted: #6b7183;
   --rule: #111a2e;
   --hair: rgba(17, 26, 46, 0.14);
-  --accent: #f2c230;
+  --accent: #e4c58c;
   --ok: #1f9d55;
   --radius: 6px;
   --gutter: clamp(16px, 4.2vw, 64px);
@@ -298,11 +298,11 @@ a.card:hover h3 { transform: translateX(4px); }
 /* ===== Warm tone ===== */
 :root {
   --paper: #fbf8f2; --paper-2: #f3ece1; --ink: #1b2133; --ink-2: #4b4640; --muted: #8b8276;
-  --rule: #2a2a33; --hair: rgba(120, 92, 55, 0.18); --accent: #e9a93a;
+  --rule: #2a2a33; --hair: rgba(120, 92, 55, 0.18); --accent: #e4c58c;
   --serif: "Fraunces", "Gowun Batang", Georgia, serif;
 }
 html body { background: var(--paper); }
-html .hero { background: radial-gradient(60% 70% at 92% 8%, rgba(233,169,58,.13), rgba(233,169,58,0) 70%); }
+html .hero { background: radial-gradient(60% 70% at 92% 8%, rgba(228,197,140,0.09), rgba(228,197,140,0.0) 70%); }
 html .site-header { background: transparent; }
 html .quote, html .names2-verse, html .names2-lead, html .mission b {
   font-family: var(--serif); font-weight: 400; letter-spacing: -0.005em; }
@@ -316,14 +316,14 @@ html #light-and-salt .hill-art .glow { opacity: .95; }
 html .btn { border-radius: 12px; }
 html .btn:not(.ghost) { background: #1b2133; box-shadow: 0 6px 18px rgba(27,33,51,.14); }
 html .card { border-radius: 0; }
-html a.card:hover { background: rgba(233,169,58,.06); }
+html a.card:hover { background: rgba(228,197,140,0.04); }
 html .tag { border-color: var(--hair); background: #fffaf0; }
 html .pillars { background: #fdfaf4; }
 html .pillar h3 { font-weight: 700; }
 html .site-footer { background: #f4ede2; }
 html .input { border-radius: 10px; background: #fffdf8; }
 html .lang-btn { border-color: var(--hair); background: #fffaf0; }
-html .spark { background: var(--accent); box-shadow: 0 0 .12em rgba(233,169,58,.6); }
+html .spark { background: var(--accent); box-shadow: 0 0 .12em rgba(228,197,140,0.42); }
 html .lang-btn:hover { background: var(--ink); color: var(--paper); }
 
 /* ===== Door illustration (hero) ===== */

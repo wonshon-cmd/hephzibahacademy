@@ -208,3 +208,7 @@ On the server, the same mode is at `/present?lecture=my-user-manual&demo` (admin
 7. Pair prayer, then a summary "growth note".
 
 It is a single self-contained file, `public/sample/growth-note/index.html`; nothing is sent to a server.
+
+## Speakers
+
+`/speakers` invites pastors, ministers, ministry staff and church members to share their story with young people. The page shows the five steps (apply → review → upload → schedule → speak and get paid) and an application form. Applications are saved to `DATA_DIR/speakers.jsonl` with `status: "applied"`; download them at `/api/speakers.csv?passcode=YOUR_HOST_PASSCODE`. Review, upload, scheduling and payment are handled by the team for now.

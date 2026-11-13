@@ -19,7 +19,7 @@
   --muted: #6b7183;
   --rule: #111a2e;
   --hair: rgba(17, 26, 46, 0.14);
-  --accent: #f2c230;
+  --accent: #e4c58c;
   --ok: #1f9d55;
   --radius: 6px;
   --gutter: clamp(16px, 4.2vw, 64px);
@@ -310,11 +310,11 @@ a.card:hover h3 { transform: translateX(4px); }
 /* ===== Warm tone ===== */
 :root {
   --paper: #fbf8f2; --paper-2: #f3ece1; --ink: #1b2133; --ink-2: #4b4640; --muted: #8b8276;
-  --rule: #2a2a33; --hair: rgba(120, 92, 55, 0.18); --accent: #e9a93a;
+  --rule: #2a2a33; --hair: rgba(120, 92, 55, 0.18); --accent: #e4c58c;
   --serif: "Fraunces", "Gowun Batang", Georgia, serif;
 }
 html body { background: var(--paper); }
-html .hero { background: radial-gradient(60% 70% at 92% 8%, rgba(233,169,58,.13), rgba(233,169,58,0) 70%); }
+html .hero { background: radial-gradient(60% 70% at 92% 8%, rgba(228,197,140,0.09), rgba(228,197,140,0.0) 70%); }
 html .site-header { background: transparent; }
 html .quote, html .names2-verse, html .names2-lead, html .mission b {
   font-family: var(--serif); font-weight: 400; letter-spacing: -0.005em; }
@@ -328,14 +328,14 @@ html #light-and-salt .hill-art .glow { opacity: .95; }
 html .btn { border-radius: 12px; }
 html .btn:not(.ghost) { background: #1b2133; box-shadow: 0 6px 18px rgba(27,33,51,.14); }
 html .card { border-radius: 0; }
-html a.card:hover { background: rgba(233,169,58,.06); }
+html a.card:hover { background: rgba(228,197,140,0.04); }
 html .tag { border-color: var(--hair); background: #fffaf0; }
 html .pillars { background: #fdfaf4; }
 html .pillar h3 { font-weight: 700; }
 html .site-footer { background: #f4ede2; }
 html .input { border-radius: 10px; background: #fffdf8; }
 html .lang-btn { border-color: var(--hair); background: #fffaf0; }
-html .spark { background: var(--accent); box-shadow: 0 0 .12em rgba(233,169,58,.6); }
+html .spark { background: var(--accent); box-shadow: 0 0 .12em rgba(228,197,140,0.42); }
 html .lang-btn:hover { background: var(--ink); color: var(--paper); }
 
 /* ===== Door illustration (hero) ===== */
@@ -365,6 +365,7 @@ html .lang-btn:hover { background: var(--ink); color: var(--paper); }
       <a href="index.html#about">About</a>
       <a href="cohort.html">Cohort</a>
       <a href="mentors.html">Mentors</a>
+      <a href="speakers.html">Speakers</a>
       <a href="support.html">Support</a>
       <span class="divider" aria-hidden="true"></span>
       <a class="login" href="#live-only">Log in <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
@@ -572,7 +573,7 @@ function note(t){const K=window.hzI18n&&window.hzLang&&window.hzLang()==="ko"?wi
     "In the room right now?": "지금 강의실에 있나요?", "Enter the code on the screen.": "화면에 보이는 코드를 입력하세요.",
     "Room code": "방 코드", "ROOM CODE": "방 코드", "Join": "입장",
     "An adult who wants to give, teach or mentor?": "후원하고, 가르치고, 멘토가 되고 싶은 어른이신가요?", "Become a mentor": "멘토 되기",
-    "501(c)(3) applied, status pending.": "501(c)(3) 신청 완료, 승인 대기 중.", "Faith for life. Learning for the world.": "삶을 위한 믿음. 세상을 위한 배움.", "© 2026 Hephzibah Academy": "© 2026 헵시바 아카데미",
+    "501(c)(3) applied, status pending.": "501(c)(3) 신청 완료, 승인 대기 중.", "Speakers": "강사", "Tell young people your story.": "여러분의 이야기를 청년들에게 들려주세요.", "Pastors, ministers, staff and church members. Your faith in real life is the lesson.": "목사님, 전도사님, 간사님, 성도님. 삶 속의 믿음이 곧 수업입니다.", "Five steps.": "다섯 단계.", "Tell us who you are and the story you’d share.": "어떤 분인지, 어떤 이야기를 나누고 싶은지 알려 주세요.", "Review": "심사", "Upload": "자료 올리기", "Send your outline or slides. We help shape it.": "개요나 슬라이드를 보내 주세요. 함께 다듬어요.", "Schedule": "일정", "Pick your dates. We share contacts and details.": "날짜를 고르시면 담당자 연락처와 안내를 드려요.", "Speak and get paid": "강의와 사례비", "An honorarium for every session.": "강의마다 사례비를 드려요.", "Share your story.": "이야기를 나눠 주세요.", "Gospel-based learning, told by real lives.": "복음에 기반한 배움, 삶으로 전하는 이야기.", "I serve as": "섬기는 자리", "Pastor": "목사", "Minister": "전도사", "Ministry staff": "간사", "Church member": "성도", "Phone (optional)": "전화번호 (선택)", "Church or organization": "교회 또는 단체", "Your work or field": "하시는 일", "Talk title": "강의 제목", "Your story in a few lines": "나누실 이야기를 몇 줄로", "When are you available? (optional)": "가능한 시간 (선택)", "Link to past talks or slides (optional)": "이전 강의나 자료 링크 (선택)", "Apply to speak": "강사 지원하기", "We’ll reply within 2 weeks.": "2주 안에 답해 드릴게요.", "Faith for life. Learning for the world.": "삶을 위한 믿음. 세상을 위한 배움.", "© 2026 Hephzibah Academy": "© 2026 헵시바 아카데미",
     "Learn together. One slide at a time.": "함께 배워요. 한 장씩.",
     "Class fees invest in gospel-based startups through": "수강료는 복음 기반 스타트업에 투자됩니다 ·", "Beulah Venture": "쁄라 벤처",
     "All": "전체", "Who am I made to be? A talk on study, money and purpose.": "나는 어떤 사람으로 지음받았을까? 공부, 돈, 목적에 대한 이야기.",

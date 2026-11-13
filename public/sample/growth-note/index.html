@@ -16,7 +16,7 @@
    amber serif section numbers like the printed note, one primary action pinned to the thumb. */
 :root {
   --paper: #fbf8f2; --paper-2: #f4ede2; --card: #fffdf9; --ink: #1b2133; --ink-2: #4b4640; --muted: #8b8276;
-  --hair: rgba(120, 92, 55, 0.18); --accent: #e9a93a; --accent-ink: #a8701a; --accent-soft: #fdf1d8;
+  --hair: rgba(120, 92, 55, 0.18); --accent: #e4c58c; --accent-ink: #9a8152; --accent-soft: #f9f3e6;
   --tA: #1d3a6b; --tB: #c0602a; --tC: #2f6b4f; --tD: #6a4c93;
   --sans: "Plus Jakarta Sans", "Noto Sans KR", system-ui, -apple-system, "Segoe UI", sans-serif;
   --kr: "Noto Sans KR", "Plus Jakarta Sans", system-ui, sans-serif;
@@ -61,7 +61,7 @@ main { padding-block: 28px calc(120px + env(safe-area-inset-bottom, 0px)); }
 .sec h2 { margin: 0; font-size: 26px; line-height: 1.2; letter-spacing: -.03em; font-weight: 800; }
 .sec p { margin: 0; color: var(--muted); font-size: 15px; }
 h1 { margin: 0; font-size: clamp(40px, 12vw, 56px); line-height: 1.04; letter-spacing: -.045em; font-weight: 800; }
-.dot { display: inline-block; width: .17em; height: .17em; border-radius: 50%; background: var(--accent); margin-left: .1em; box-shadow: 0 0 .25em rgba(233,169,58,.7); animation: blink 3s ease-in-out infinite; }
+.dot { display: inline-block; width: .17em; height: .17em; border-radius: 50%; background: var(--accent); margin-left: .1em; box-shadow: 0 0 .25em rgba(228,197,140,0.49); animation: blink 3s ease-in-out infinite; }
 @keyframes blink { 50% { opacity: .3; } }
 .tagline { font-family: var(--latin-serif); font-style: italic; color: var(--accent-ink); font-size: 19px; margin: 0; }
 p { margin: 0; }
@@ -72,7 +72,7 @@ p { margin: 0; }
 .label { font-family: var(--sans); font-size: 11px; font-weight: 700; letter-spacing: .18em; color: var(--muted); text-transform: uppercase; }
 .verse { font-family: var(--serif); font-size: 22px; line-height: 1.65; text-align: center; }
 .glow { position: relative; overflow: hidden; }
-.glow::before { content: ""; position: absolute; inset: -40% -20% auto auto; width: 90%; height: 160%; background: radial-gradient(closest-side, rgba(233,169,58,.22), rgba(233,169,58,0)); pointer-events: none; animation: breathe 6s ease-in-out infinite; }
+.glow::before { content: ""; position: absolute; inset: -40% -20% auto auto; width: 90%; height: 160%; background: radial-gradient(closest-side, rgba(228,197,140,0.15), rgba(228,197,140,0.0)); pointer-events: none; animation: breathe 6s ease-in-out infinite; }
 .glow > * { position: relative; }
 @keyframes breathe { 50% { opacity: .6; transform: scale(1.06); } }
 
@@ -175,7 +175,7 @@ label.f { display: grid; gap: 7px; font-weight: 700; font-size: 15px; }
 .note { background: var(--card); border: 1px solid var(--hair); border-radius: 20px; overflow: hidden; box-shadow: 0 20px 50px rgba(60,45,20,.10); }
 .note-top { padding: 18px 20px 14px; border-bottom: 1px solid var(--ink); display: flex; justify-content: space-between; align-items: end; gap: 10px; }
 .note-top .lockup b { font-size: 15px; }
-.note-head { padding: 20px; background: linear-gradient(160deg, #fff3d6, var(--card)); display: grid; gap: 4px; }
+.note-head { padding: 20px; background: linear-gradient(160deg, #fbf5ea, var(--card)); display: grid; gap: 4px; }
 .note-head h2 { margin: 0; font-size: 26px; letter-spacing: -.03em; }
 .note-body { padding: 4px 20px 20px; display: grid; }
 .note-row { display: grid; grid-template-columns: 36px 1fr; gap: 10px; padding-block: 14px; border-top: 1px solid var(--hair); }
@@ -324,8 +324,8 @@ function renderJoin() {
   app.innerHTML = `<section class="screen">
     <div class="top-row"><a class="lockup" href="/" aria-label="Hephzibah Academy">${LOGO}<span><b>Hephzibah</b><small>ACADEMY</small></span></a><span class="demo">DEMO</span></div>
     <svg class="art door" viewBox="0 0 160 140" aria-hidden="true">
-      <defs><radialGradient id="dg" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#e9a93a" stop-opacity=".45"/><stop offset="1" stop-color="#e9a93a" stop-opacity="0"/></radialGradient>
-      <linearGradient id="dl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6c94d"/><stop offset="1" stop-color="#fbe7a6"/></linearGradient></defs>
+      <defs><radialGradient id="dg" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#e4c58c" stop-opacity=".45"/><stop offset="1" stop-color="#e4c58c" stop-opacity="0"/></radialGradient>
+      <linearGradient id="dl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4e2b5"/><stop offset="1" stop-color="#fbf2dc"/></linearGradient></defs>
       <ellipse class="glow-e" cx="80" cy="70" rx="76" ry="64" fill="url(#dg)"/>
       <rect x="64" y="26" width="38" height="92" fill="url(#dl)"/>
       <path d="M61 118 V23 H105 V118" fill="none" stroke="#1b2133" stroke-width="2.4"/>
@@ -640,11 +640,11 @@ function renderDone() {
   ].filter(Boolean);
   app.innerHTML = `<section class="screen">
     <svg class="art candle" viewBox="0 0 110 140" aria-hidden="true">
-      <defs><radialGradient id="cg" cx="50%" cy="40%" r="50%"><stop offset="0" stop-color="#e9a93a" stop-opacity=".5"/><stop offset="1" stop-color="#e9a93a" stop-opacity="0"/></radialGradient></defs>
+      <defs><radialGradient id="cg" cx="50%" cy="40%" r="50%"><stop offset="0" stop-color="#e4c58c" stop-opacity=".5"/><stop offset="1" stop-color="#e4c58c" stop-opacity="0"/></radialGradient></defs>
       <circle cx="55" cy="48" r="52" fill="url(#cg)"/>
       <rect x="35" y="66" width="40" height="62" rx="4" fill="#fffdf9" stroke="#1b2133" stroke-width="2.4"/>
       <path d="M55 66 V55" stroke="#1b2133" stroke-width="2"/>
-      <g class="flame"><path d="M55 25 C50 33 46 39 46 45 A9 9 0 0 0 64 45 C64 39 60 33 55 25 Z" fill="#f2b632" stroke="#1b2133" stroke-width="2" stroke-linejoin="round"/></g>
+      <g class="flame"><path d="M55 25 C50 33 46 39 46 45 A9 9 0 0 0 64 45 C64 39 60 33 55 25 Z" fill="#ecd29a" stroke="#1b2133" stroke-width="2" stroke-linejoin="round"/></g>
       <path d="M10 128 H100" stroke="#1b2133" stroke-width="2.4"/>
     </svg>
     <article class="note">
