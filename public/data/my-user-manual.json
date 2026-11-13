@@ -987,7 +987,6 @@
     "Where do I want my money to go?",
     "What am I good at?",
     "When do I feel joy?",
-    "What kind of neighbor do I want to be?",
     "Who am I before God?"
    ],
    "notes": [
@@ -1005,7 +1004,6 @@
      "돈은 어디에 쓰고 싶을까?",
      "나는 무엇을 잘할까?",
      "언제 기쁨을 느낄까?",
-     "어떤 이웃이 되고 싶을까?",
      "하나님 앞에서 나는 어떤 사람일까?"
     ],
     "notes": [
@@ -1030,7 +1028,7 @@
     "fields": [
      {
       "id": "joy",
-      "label": "Moments my heart lights up",
+      "label": "When I’m happiest",
       "placeholder": "What makes you feel a little happier or more at ease?"
      },
      {
@@ -1071,7 +1069,7 @@
      "privacy": "내 기록으로 남겨요. 공개 화면에는 올라가지 않아요.",
      "fields": {
       "joy": {
-       "label": "내 마음이 밝아지는 순간",
+       "label": "내가 가장 행복할 때",
        "placeholder": "어떤 일을 할 때 조금 즐겁거나 편안한가요?"
       },
       "strength": {
