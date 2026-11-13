@@ -178,8 +178,18 @@ function render() {
 function head(slide, compact) {
   return h("div", { class: "content" },
     h("p", { class: "eyebrow", text: slide.eyebrow }),
-    h("h1", { class: "title" }, lines(slide.title)),
-    slide.subtitle ? h("p", { class: "subtitle", text: slide.subtitle }) : null);
+    h("h1", { class: "title" }, slide.titleSteps ? titleSteps(slide.title) : lines(slide.title)),
+    slide.subtitle ? h("p", { class: "subtitle" + (slide.titleSteps ? " step slow" : ""), text: slide.subtitle }) : null);
+}
+
+// "titleSteps": true — each sentence of the title appears on its own click, slowly.
+function titleSteps(text) {
+  const frag = document.createDocumentFragment();
+  String(text).split("\n").forEach((line, i) => {
+    if (i) frag.append(document.createElement("br"));
+    line.split(/(?<=[.!?])\s+/).forEach((part, j) => { if (j) frag.append(" "); frag.append(h("span", { class: "step slow", text: part })); });
+  });
+  return frag;
 }
 
 // The open-door illustration from the home page, used on the cover slide.
