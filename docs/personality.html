@@ -545,6 +545,15 @@ body.phone { min-height: 100dvh; }
 .checks label:has(input:checked) span { text-decoration: line-through; color: var(--muted); }
 @media (max-width: 900px) { .calc-in[style] { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; } }
 
+/* Click-to-reveal list items and stacked lists */
+.blist.stack { grid-template-columns: 1fr; }
+.blist.stack li { padding: 12px 0; }
+.step { opacity: 0; transform: translateY(10px); transition: opacity .5s ease, transform .5s ease; }
+.step.shown { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .step { transform: none; transition: none; } }
+.photo-fig { margin: 0; }
+.photo-fig img { width: 100%; max-height: 64vh; object-fit: cover; border-radius: 6px; display: block; }
+
 </style>
 </head>
 <body>
@@ -1396,7 +1405,7 @@ function note(t){const K=window.hzI18n&&window.hzLang&&window.hzLang()==="ko"?wi
     "Idea": "아이디어", "Customers": "고객", "Money": "돈", "Team": "팀", "Mission": "사명",
     "Budget": "예산", "Save": "저축", "Credit": "신용", "Taxes": "세금", "Give": "나눔",
     "/ For High School": "/ 고등학생",
-    "Still finding my user manual — for anyone wondering what a good future looks like.": "나의 사용설명서를 찾아가는 중입니다. 좋은 미래를 고민하는 너에게.",
+    "For a life that shines in the image God made.": "하나님이 지으신 형상대로 빛나는 삶을 위해.",
     "Present live": "실시간 발표", "Preview slides": "슬라이드 미리보기", "Join as audience": "청중으로 입장", "Download slides": "슬라이드 내려받기",
     "How it works": "진행 방법", "One slide at a time. Everyone takes part.": "한 장씩, 모두가 함께.",
     "Open the presenter screen": "발표 화면을 여세요", "on the projector. A room code and QR code appear.": "프로젝터에 방 코드와 QR 코드가 나타나요.",
@@ -1409,7 +1418,7 @@ function note(t){const K=window.hzI18n&&window.hzLang&&window.hzLang()==="ko"?wi
     "Hear the orchestra.": "오케스트라를 들어요.", "Click each instrument to hear its part alone — then all together — before the closing video.": "마지막 영상 전에 악기를 하나씩 눌러 그 파트만 듣고, 함께 들어요.",
     "Finish with a review.": "리뷰로 마무리해요.",
     "Students share what they learned, review the lecture, unlock their 20-question results, and write how they’ll use their strengths and weaknesses.": "배운 것을 나누고 강의를 평가하면 20문항 결과가 열려요. 강점과 약점을 어떻게 쓸지 적어요.",
-    "Run of show": "진행 순서", "About 40 minutes.": "약 40분.", "Slides": "슬라이드", "All 29 slides.": "슬라이드 29장 전체.",
+    "Run of show": "진행 순서", "About 40 minutes.": "약 40분.", "Slides": "슬라이드", "All 33 slides.": "슬라이드 33장 전체.",
     "Your gift keeps the light on — and multiplies.": "당신의 후원이 불을 밝히고, 더 크게 자라게 해요.",
     "Where it goes": "후원금은 이렇게 쓰여요", "Learn & give": "배우고 나누기", "Class fees and monthly gifts.": "수강료와 정기 후원.",
     "Invest": "투자", "Gospel-based startups through Beulah Venture.": "쁄라 벤처를 통해 복음 기반 스타트업에.",

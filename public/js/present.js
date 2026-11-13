@@ -107,7 +107,7 @@ function startStage() {
   document.getElementById("notes").onclick = () => toggleDrawer("notes");
   document.getElementById("lang").onclick = () => { setLang(getLang() === "ko" ? "en" : "ko"); startStage(); };
   document.getElementById("prev").onclick = () => go(state.slideIndex - 1);
-  document.getElementById("next").onclick = () => go(state.slideIndex + 1);
+  document.getElementById("next").onclick = forward;
   if (!keysBound) { document.addEventListener("keydown", onKey); keysBound = true; }
   if (room && !connected) { connected = true; connect(); }
   renderedSlide = -1;
@@ -116,12 +116,19 @@ function startStage() {
 
 function onKey(e) {
   if (e.target.closest("input, textarea")) return;
-  if (["ArrowRight", "PageDown", " "].includes(e.key)) { e.preventDefault(); go(state.slideIndex + 1); }
+  if (["ArrowRight", "PageDown", " "].includes(e.key)) { e.preventDefault(); forward(); }
   else if (["ArrowLeft", "PageUp"].includes(e.key)) { e.preventDefault(); go(state.slideIndex - 1); }
   else if (e.key === "n" || e.key === "N") toggleDrawer("notes");
   else if ((e.key === "q" || e.key === "Q") && room) toggleQr();
   else if (e.key === "f" || e.key === "F") document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen?.();
   else if (e.key === "Escape") { document.getElementById("qrOverlay").hidden = true; document.getElementById("drawer").hidden = true; }
+}
+
+// Slides with "reveal": true show their list items one click at a time.
+function forward() {
+  const nextStep = document.querySelector("#stage .step:not(.shown)");
+  if (nextStep) { nextStep.classList.add("shown"); return; }
+  go(state.slideIndex + 1);
 }
 
 async function go(i) {
@@ -239,7 +246,10 @@ function buildSlide(slide) {
     c.append(box);
   } else if (slide.kind === "photo") {
     el.style.gridTemplateColumns = "1.1fr 1fr"; el.style.gap = "4vw";
-    el.append(c, h("div", { class: "content" }, h("div", { class: "photo-slot" }, h("div", {}, h("b", { text: slide.photo.label }), h("p", { style: "max-width:36ch", text: slide.photo.note })))));
+    const pic = slide.photo.src
+      ? h("figure", { class: "photo-fig" }, h("img", { src: slide.photo.src, alt: slide.photo.alt || "" }))
+      : h("div", { class: "photo-slot" }, h("div", {}, h("b", { text: slide.photo.label }), h("p", { style: "max-width:36ch", text: slide.photo.note })));
+    el.append(c, h("div", { class: "content" }, pic));
     return el;
   } else if (ix && ix.type === "calculator") {
     el.classList.add("compact");
@@ -263,7 +273,7 @@ function buildSlide(slide) {
     c.append(h("p", { class: "subtitle", style: "font-size:clamp(14px,1.2vw,18px);color:var(--muted)", text: t("✎ Write this on your phone. ", "✎ 휴대폰에 적어 보세요. ") + ix.privacy }));
   } else if (Array.isArray(slide.body) && slide.body.length && slide.kind !== "cover" && slide.kind !== "closing") {
     if (slide.body.length === 1) c.append(h("div", { class: "accent" }), h("p", { class: "subtitle", style: "font-weight:700;color:var(--ink)", text: slide.body[0] }));
-    else c.append(h("ul", { class: "blist" }, slide.body.map((b, i) => h("li", {}, h("span", { text: String(i + 1).padStart(2, "0") }), b))));
+    else c.append(h("ul", { class: "blist" + (slide.layout === "stack" ? " stack" : "") }, slide.body.map((b, i) => h("li", { class: slide.reveal ? "step" : null }, h("span", { text: String(i + 1).padStart(2, "0") }), b))));
   } else if (slide.body && slide.body.length) {
     c.append(h("div", { class: "accent" }), h("p", { class: "subtitle", style: "font-weight:700;color:var(--ink)", text: slide.body[0] }));
   }

@@ -20,26 +20,26 @@ The Hephzibah Academy website, with live, interactive lectures. The presenter sh
 | Beulah Venture application | `/apply` |
 | Support (monthly giving) | `/support` |
 
-### The live lecture: *My User Manual* (29 slides, about 40 minutes)
+### The live lecture: *My User Manual* (33 slides, about 40 minutes)
 
 1. The presenter clicks **Start live session**. A room code and QR code appear on screen.
 2. Students scan the QR code. No sign-up is needed, and no real names are used. Each student gets a random **orchestra instrument** (Violin, Oboe, Tuba, and so on) and can roll again for a different one.
 3. While they wait, students can swipe through the **20 self-reflection questions**. Their results stay locked until the end.
 4. The presenter moves through the slides one at a time (← / → keys), and the phones follow along.
-   * **Poll** (slide 2): bars on the screen update live.
-   * **Live answers** (slides 10, 17, 24): each answer appears on the screen as a card with the student's instrument name.
-   * **Private worksheet** (slide 23): stays on the phone and can be downloaded.
+   * **Poll** (slides 2 and 3): bars on the screen update live.
+   * **Live answers** (slides 12, 21, 28): each answer appears on the screen as a card with the student's instrument name.
+   * **Private worksheet** (slide 27): stays on the phone and can be downloaded.
    * **Q&A**: students can send questions at any time. The closing slide shows them.
-5. **The orchestra** (slide 27): click an instrument to hear only its part, then press **All together**.
-6. **Video** (slide 28): *Morricone conducts Morricone: The Mission (Gabriel's Oboe)*, embedded from YouTube.
-7. **Review** (slide 29): on their phones, students
+5. **The orchestra** (slide 31): click an instrument to hear only its part, then press **All together**.
+6. **Video** (slide 32): *Morricone conducts Morricone: The Mission (Gabriel's Oboe)*, embedded from YouTube.
+7. **Review** (slide 33): on their phones, students
    1. write one thing they learned (it appears on the big screen),
    2. rate and review the lecture,
    3. unlock their personality results (strengths, challenges, ways to grow),
    4. write how they could use their strengths and work with their weaknesses,
    5. can leave an email, with a consent checkbox, to receive job matches later.
 
-Presenter keys: `→`/`Space` next · `←` back · `N` speaker notes · `Q` big QR code · `F` fullscreen · `Esc` close.
+Presenter keys: `→`/`Space` next (on slides marked `"reveal": true`, this first shows the list one line at a time) · `←` back · `N` speaker notes · `Q` big QR code · `F` fullscreen · `Esc` close.
 Toolbar: **Review first** holds each message until you approve it. **Queue** holds pending messages, audience questions and hidden messages. **Export** downloads a CSV of this room's reviews, reflections and emails.
 
 ## Run it
