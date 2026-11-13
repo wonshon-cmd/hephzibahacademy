@@ -164,8 +164,48 @@
     "interaction": {
      "prompt": "나는 어떤 사람일까요?",
      "placeholder": "예: 선생님"
-    }
-   }
+    },
+    "demo": [
+     "선생님",
+     "목사님",
+     "선교사",
+     "선생님",
+     "의사",
+     "선교사",
+     "목사님",
+     "사업가",
+     "선생님",
+     "선교사",
+     "약사",
+     "코치",
+     "선생님",
+     "선교사",
+     "교수님",
+     "목사님",
+     "선교사",
+     "CEO"
+    ]
+   },
+   "demo": [
+    "Teacher",
+    "Pastor",
+    "Missionary",
+    "Teacher",
+    "Doctor",
+    "Missionary",
+    "Pastor",
+    "Business owner",
+    "Teacher",
+    "Missionary",
+    "Pharmacist",
+    "Coach",
+    "Teacher",
+    "Missionary",
+    "Professor",
+    "Pastor",
+    "Missionary",
+    "CEO"
+   ]
   },
   {
    "id": "s03",
@@ -485,8 +525,28 @@
     "interaction": {
      "prompt": "언제, 나답게 살아 있다고 느껴요?",
      "placeholder": "예: 친구와 농구하면서 한참 웃었을 때"
-    }
-   }
+    },
+    "demo": [
+     "방과 후에 친구들이랑 농구할 때",
+     "밤에 음악 들으면서 그림 그릴 때",
+     "동생이 내 농담에 웃을 때",
+     "주일에 교회에서 봉사할 때",
+     "가족한테 저녁 해 줄 때",
+     "친구 수학 문제 도와줄 때",
+     "찬양팀에서 기타 칠 때",
+     "강아지랑 산책할 때"
+    ]
+   },
+   "demo": [
+    "Playing basketball with my friends after school",
+    "Drawing late at night with music on",
+    "When my little sister laughs at my jokes",
+    "Serving at church on Sunday",
+    "Cooking dinner for my family",
+    "Helping a friend with math",
+    "Playing guitar in worship band",
+    "Long walks with my dog"
+   ]
   },
   {
    "id": "s10b",
@@ -799,8 +859,22 @@
     "interaction": {
      "prompt": "내 모습 하나를, 다른 각도에서 보면?",
      "placeholder": "예: 결정이 느려도 중요한 일을 신중하게 살펴볼 수 있어요"
-    }
-   }
+    },
+    "demo": [
+     "조용하다 → 잘 들어 준다",
+     "걱정이 많다 → 미리 준비한다",
+     "고집이 세다 → 쉽게 포기하지 않는다",
+     "금방 질린다 → 새로운 걸 잘 시도한다",
+     "예민하다 → 친구가 힘든 걸 먼저 안다"
+    ]
+   },
+   "demo": [
+    "I'm quiet → I listen well",
+    "I worry a lot → I plan ahead",
+    "I'm stubborn → I don't give up easily",
+    "I get bored fast → I like trying new things",
+    "I'm sensitive → I notice when friends are sad"
+   ]
   },
   {
    "id": "s18",
@@ -1078,8 +1152,24 @@
     "interaction": {
      "prompt": "이번 주에 나는…",
      "placeholder": "예: 친한 선생님께 제가 잘하는 것을 하나 물어볼래요."
-    }
-   }
+    },
+    "demo": [
+     "엄마한테 내가 뭘 잘하는지 물어보기",
+     "학교 연극 오디션 보기",
+     "매일 아침 5분 기도하기",
+     "감사한 것 3가지 적기",
+     "토요일에 푸드뱅크 봉사하기",
+     "반에 새로 온 친구에게 먼저 말 걸기"
+    ]
+   },
+   "demo": [
+    "Ask my mom what she thinks I'm good at",
+    "Try out for the school play",
+    "Pray for 5 minutes every morning",
+    "Write down 3 things I'm thankful for",
+    "Volunteer at the food bank on Saturday",
+    "Talk to the new kid in class"
+   ]
   },
   {
    "id": "s25",
@@ -1149,9 +1239,21 @@
     "interaction": {
      "prompt": "궁금한 점이 있나요?",
      "placeholder": "무엇이든 물어보세요. 이름은 보이지 않아요."
-    }
+    },
+    "demo": [
+     "하고 싶은 일을 어떻게 알게 되셨어요?",
+     "휴학할 때 부모님은 괜찮으셨어요?",
+     "케냐에서 가장 힘들었던 건 뭐예요?",
+     "아직 좋아하는 게 뭔지 모르겠으면요?"
+    ]
    },
-   "glow": true
+   "glow": true,
+   "demo": [
+    "How did you know what you wanted to do?",
+    "Were your parents okay with you taking a year off?",
+    "What was the hardest thing in Kenya?",
+    "What if I still don't know what I like?"
+   ]
   },
   {
    "id": "s27",
@@ -1254,8 +1356,24 @@
      "3~4분을 줍니다. 배운 것은 악기 이름과 함께 화면에 나옵니다. 실명은 나오지 않아요.",
      "강의를 평가하면 20문항 결과가 휴대폰에서 열립니다.",
      "강점과 약점을 어떻게 쓸지 적고, 원하면 나중에 직업 추천을 받을 이메일을 남길 수 있어요. 이메일은 선택이고 동의가 필요하다고 안내합니다."
+    ],
+    "demo": [
+     "만들어진 것에는 이유가 있다 — 나도",
+     "약점에도 다른 면이 있다",
+     "아직 다 몰라도 괜찮다",
+     "'무엇'보다 '왜'를 먼저 묻기",
+     "하나님이 나를 어떻게 만드셨는지 알고 싶어졌다",
+     "악기마다 소리가 다른 게 오케스트라다"
     ]
-   }
+   },
+   "demo": [
+    "Everything that's made has a reason — me too",
+    "My weaknesses can have another side",
+    "It's okay not to know everything yet",
+    "Ask 'why' before 'what'",
+    "I want to get to know how God made me",
+    "Each instrument sounds different, and that's the point"
+   ]
   }
  ],
  "ko": {

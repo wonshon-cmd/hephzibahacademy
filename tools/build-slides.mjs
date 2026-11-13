@@ -53,6 +53,9 @@ present = must(present, "  const deckRes = await fetch(`/data/${lectureId}.json`
 // common.js also has a module-level `instruments`; rename the presenter's copy to avoid a clash.
 present = present.replace(/\binstruments\b/g, "__pins");
 present = must(present, 'const preview = params.has("preview");', "const preview = true;");
+// DEMO=1: a pretend class joins and answers on each slide (for introducing the lecture).
+const DEMO = process.env.DEMO === "1";
+if (DEMO) present = must(present, 'const demo = params.has("demo");', "const demo = true;");
 present = must(present, 'const lectureId = params.get("lecture") || "my-user-manual";', `const lectureId = ${JSON.stringify(lectureId)};`);
 present = must(present, '`<span class="muted">${t("Preview — no audience connected", "미리보기 · 청중 연결 없음")}</span>`',
   '`<span class="muted">${t("Arrow keys to move · N for notes · F for fullscreen", "화살표로 이동 · N 노트 · F 전체 화면")}</span>`');
@@ -76,6 +79,7 @@ ${css}
 </head>
 <body>
 <div id="app"></div>
+${DEMO ? `<script>${read("js/qr.js")}</script>` : ""}
 <script type="module">
 const __DATA = ${JSON.stringify(DATA)};
 ${common}

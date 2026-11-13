@@ -7,6 +7,7 @@ const LOGO = '<svg class="brand-mark" viewBox="9 11 43 43" aria-hidden="true"><p
 const params = new URLSearchParams(location.search);
 const lectureId = params.get("lecture") || "my-user-manual";
 const preview = params.has("preview");
+const demo = params.has("demo"); // simulated audience, for showing the lecture to others
 const app = document.getElementById("app");
 
 let deck, instruments, room = null; // room: {code, hostKey}
@@ -15,8 +16,8 @@ let renderedSlide = -1;
 let keysBound = false, connected = false;
 const orchestra = new Orchestra();
 
-const joinUrl = () => `${location.origin}/j/${room.code}`;
-const joinHost = () => `${location.host}/j/`;
+const joinUrl = () => demo ? `https://hephzibahacademy.org/j/${room.code}` : `${location.origin}/j/${room.code}`;
+const joinHost = () => demo ? "hephzibahacademy.org/j/" : `${location.host}/j/`;
 
 function qrSvg(url) {
   try { return window.makeQR ? window.makeQR(url) : ""; } catch { return ""; }
@@ -109,7 +110,7 @@ function startStage() {
   document.getElementById("prev").onclick = () => go(state.slideIndex - 1);
   document.getElementById("next").onclick = forward;
   if (!keysBound) { document.addEventListener("keydown", onKey); keysBound = true; }
-  if (room && !connected) { connected = true; connect(); }
+  if (room && !connected && !demo) { connected = true; connect(); }
   renderedSlide = -1;
   render();
 }
@@ -139,6 +140,7 @@ async function go(i) {
 }
 
 async function hostOp(body) {
+  if (demo) { if (body.op === "status") { const m = state.messages.find((x) => x.id === body.id); if (m) m.status = body.status; update(); } return; }
   try { await api(`/api/rooms/${room.code}/host`, { key: room.hostKey, ...body }); }
   catch (err) { toast(err.message); }
 }
@@ -170,6 +172,7 @@ function render() {
   const drawer = document.getElementById("drawer");
   if (!drawer.hidden && drawer.dataset.mode === "notes") fillNotes();
   update();
+  if (demo) demoSlide(slide);
 }
 
 function head(slide, compact) {
@@ -577,6 +580,7 @@ function showLock() {
   if (deckRes.status === 403) return showLock();
   [deck, instruments] = await Promise.all([deckRes.json(), loadInstruments()]);
   orchestra.init(instruments.filter((i) => i.kind !== "bible").map((i) => i.id));
+  if (demo) { demoStart(); return startStage(); }
   if (preview) return startStage();
   const code = params.get("room");
   const saved = store.get("hephzibah-host");
@@ -585,3 +589,64 @@ function showLock() {
   }
   showSetup();
 })();
+
+// ---------------- Demo mode ----------------
+// For introducing the lecture: a pretend class joins one by one, and answers,
+// votes and reviews arrive over a few seconds on each slide, as in a real session.
+let demoTimers = [], demoNextId = 1;
+const demoPeople = [];
+const rnd = (a, b) => a + Math.random() * (b - a);
+
+function demoStart() {
+  room = { code: "HZ27", hostKey: "demo", lectureId };
+  const pool = instruments.filter((i) => i.kind !== "bible");
+  const bible = deck.pseudonyms === "bible";
+  const names = bible ? instruments.filter((i) => i.kind === "bible") : pool;
+  let tm = 1200;
+  for (let i = 0; i < 24; i++) {
+    tm += rnd(500, 1500);
+    setTimeout(() => {
+      const ins = names[(i * 5 + 3) % names.length];
+      const n = demoPeople.filter((p) => p.avatarId === ins.id).length + 1;
+      demoPeople.push({ avatarId: ins.id, alias: n > 1 ? `${ins.name} ${n}` : ins.name });
+      state.participants = state.online = demoPeople.length;
+      state.instruments[ins.id] = (state.instruments[ins.id] || 0) + 1;
+      update();
+    }, tm);
+  }
+}
+
+function demoSlide(slide) {
+  demoTimers.forEach(clearTimeout); demoTimers = [];
+  const later = (ms, fn) => demoTimers.push(setTimeout(() => { fn(); update(); }, ms));
+  const person = () => demoPeople[Math.floor(Math.random() * demoPeople.length)] || { avatarId: "violin", alias: "Violin" };
+  const ix = slide.interaction;
+  if (!ix) return;
+  if (ix.type === "choice" && !state.votes[slide.id]) {
+    const tally = (state.votes[slide.id] = {});
+    const weights = ix.options.map((o, i) => (ix.options.length - i) * rnd(0.6, 1.4));
+    const sum = weights.reduce((a, b) => a + b, 0);
+    let tm = 600;
+    for (let v = 0; v < 22; v++) {
+      tm += rnd(200, 650);
+      let x = Math.random() * sum, k = 0;
+      while (x > weights[k] && k < weights.length - 1) x -= weights[k++];
+      const val = ix.options[k].value;
+      later(tm, () => (tally[val] = (tally[val] || 0) + 1));
+    }
+  }
+  const answers = slide.demo || [];
+  const key = ix.channel === "qa" ? "qa" : slide.id;
+  if ((ix.type === "text" || ix.type === "review") && answers.length && !state.messages.some((m) => m.slideId === key)) {
+    let tm = 900;
+    for (const text of answers) {
+      tm += rnd(ix.display === "cloud" ? 350 : 900, ix.display === "cloud" ? 900 : 2000);
+      later(tm, () => { const p = person(); state.messages.push({ id: demoNextId++, slideId: key, channel: ix.channel || "slide", status: "shown", text, alias: p.alias, avatarId: p.avatarId }); });
+    }
+    if (ix.type === "review") {
+      let n = 0, sumR = 0;
+      for (let i = 0; i < 14; i++) later(1200 + i * 700, () => { n++; sumR += Math.random() < 0.75 ? 5 : 4; state.reviews = n; state.rating = (sumR / n).toFixed(1); state.submissions = Math.max(0, n - 3); });
+    }
+  }
+}
+

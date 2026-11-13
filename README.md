@@ -184,3 +184,13 @@ A slide uses one with `"src": "private:kenya.jpg"`. The server decrypts it only 
 
 * **Word cloud:** a text question with `"display": "cloud"` shows answers as words; the same answer typed by several people grows bigger (slide 3, "What kind of person do you think I am?").
 * **Orchestra seating:** during a live *My User Manual* session, every student who joins appears as a small instrument badge in their section (strings in front, then woodwinds, brass and percussion) at the bottom of the screen.
+
+## Demo deck (for introducing the lecture)
+
+To show the lecture to teachers or pastors as if a class were in the room, build a demo deck: a pretend class joins one by one, polls fill up, and sample answers (the `demo` lists in the lecture JSON) appear on each question slide.
+
+```bash
+DEMO=1 ADMIN_PASSCODE=... INCLUDE_PRIVATE=1 node tools/build-slides.mjs my-user-manual my-user-manual-demo.html
+```
+
+On the server, the same mode is at `/present?lecture=my-user-manual&demo` (admin only).
