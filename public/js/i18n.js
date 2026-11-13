@@ -105,6 +105,7 @@
     "04  My first page & one next step": "04  나의 첫 페이지와 다음 한 걸음",
     "05  The orchestra, the video & your review": "05  오케스트라, 영상, 그리고 나의 리뷰",
     "11 min": "11분",
+    "Startup & Business Academy": "창업/비즈니스 아카데미", "For anyone dreaming of starting a business, or already running one.": "창업을 꿈꾸고 이미 사업을 운영하고 계신 누구에게나.",
     "Menu": "메뉴", "Academy": "아카데미", "Community": "커뮤니티", "About": "소개", "Mentors": "멘토", "Support": "후원", "Log in": "로그인",
     "Hephzibah Academy": "헵시바 아카데미",
     "Light and salt.": "빛과 소금.", "Light and salt": "빛과 소금", "Matthew 5:13–16": "마태복음 5:13–16", "Start learning": "배움 시작하기",
