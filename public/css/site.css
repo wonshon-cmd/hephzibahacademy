@@ -348,3 +348,8 @@ html .lang-btn:hover { background: var(--ink); color: var(--paper); }
 .instructor b { display: block; font-size: 19px; }
 .instructor span { color: var(--muted); font-size: 15px; }
 .hero-intro { margin: 18px 0 0; font-size: clamp(17px, 1.6vw, 22px); color: var(--ink-2); max-width: 32ch; }
+.lang-btn.lang-mobile { display: none; }
+@media (max-width: 1080px) {
+  .lang-btn.lang-mobile { display: inline-block; margin-left: auto; margin-right: 10px; }
+  .nav .lang-btn { display: none; }
+}

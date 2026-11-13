@@ -360,6 +360,11 @@ html .lang-btn:hover { background: var(--ink); color: var(--paper); }
 .instructor b { display: block; font-size: 19px; }
 .instructor span { color: var(--muted); font-size: 15px; }
 .hero-intro { margin: 18px 0 0; font-size: clamp(17px, 1.6vw, 22px); color: var(--ink-2); max-width: 32ch; }
+.lang-btn.lang-mobile { display: none; }
+@media (max-width: 1080px) {
+  .lang-btn.lang-mobile { display: inline-block; margin-left: auto; margin-right: 10px; }
+  .nav .lang-btn { display: none; }
+}
 
 .preview-note{position:fixed;left:16px;bottom:16px;z-index:50;background:var(--ink);color:var(--paper);padding:10px 14px;border-radius:8px;font-size:14px;max-width:calc(100vw - 32px)}
 </style>
@@ -797,6 +802,13 @@ function note(t){const K=window.hzI18n&&window.hzLang&&window.hzLang()==="ko"?wi
       document.dispatchEvent(new CustomEvent("hz-langchange", { detail: get() }));
     });
     nav.append(b);
+    // On phones the nav folds into "Menu", so show a second button beside it.
+    const menu = document.querySelector(".site-header .menu-btn");
+    if (menu) {
+      const m = b.cloneNode(true); m.classList.add("lang-mobile");
+      m.addEventListener("click", () => b.click());
+      menu.before(m);
+    }
   }
   function init() { addButton(); apply(); }
   document.readyState === "loading" ? document.addEventListener("DOMContentLoaded", init) : init();

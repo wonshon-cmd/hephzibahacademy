@@ -220,6 +220,13 @@
       document.dispatchEvent(new CustomEvent("hz-langchange", { detail: get() }));
     });
     nav.append(b);
+    // On phones the nav folds into "Menu", so show a second button beside it.
+    const menu = document.querySelector(".site-header .menu-btn");
+    if (menu) {
+      const m = b.cloneNode(true); m.classList.add("lang-mobile");
+      m.addEventListener("click", () => b.click());
+      menu.before(m);
+    }
   }
   function init() { addButton(); apply(); }
   document.readyState === "loading" ? document.addEventListener("DOMContentLoaded", init) : init();
