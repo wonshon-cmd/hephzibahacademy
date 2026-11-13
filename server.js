@@ -652,7 +652,8 @@ const TYPES = { ".html": "text/html; charset=utf-8", ".css": "text/css; charset=
   ".mp3": "audio/mpeg", ".m4a": "audio/mp4", ".ogg": "audio/ogg", ".wav": "audio/wav" };
 
 const ROUTES = { "/": "/index.html", "/lectures": "/lectures.html", "/present": "/present.html", "/join": "/join.html", "/support": "/support.html", "/mentors": "/mentors.html", "/apply": "/apply.html", "/personality": "/personality.html", "/cohort": "/cohort.html",
-  "/lectures/my-user-manual": "/lectures/my-user-manual.html", "/lectures/basic-finance": "/lectures/basic-finance.html" };
+  "/lectures/my-user-manual": "/lectures/my-user-manual.html", "/lectures/basic-finance": "/lectures/basic-finance.html",
+  "/sample/growth-note": "/sample/growth-note/index.html" };
 
 function serveStatic(req, res, url) {
   let p = decodeURIComponent(url.pathname);

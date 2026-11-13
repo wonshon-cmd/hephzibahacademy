@@ -194,3 +194,17 @@ DEMO=1 ADMIN_PASSCODE=... INCLUDE_PRIVATE=1 node tools/build-slides.mjs my-user-
 ```
 
 On the server, the same mode is at `/present?lecture=my-user-manual&demo` (admin only). The static site also publishes public samples (no private photos, not indexed by search engines) at `/sample/my-user-manual/` and `/sample/basic-finance/`.
+
+## Growth Note demo (함께하는 성장 노트)
+
+`/sample/growth-note/` is a phone-first demo of the group workshop from the printed *함께하는 성장 노트* (about 75 minutes, groups of 4–5). Everyone else in the room is simulated:
+
+1. Enter a name. Friends join, and everyone is split into random groups of 4–5.
+2. Opening prayer.
+3. Personality test: 20 questions, one tap each (a "⚡ 자동으로 빠르게" button fills it in for demos). Types: A 리더형 (느헤미야), B 열정형 (베드로), C 돌봄형 (바나바), D 신중형 (누가). Group members' results and one-line shares appear.
+4. Compliment shower: friends write three strengths for you, then you write three for each friend.
+5. Apply to me: overlap between the test and friends' words, a strength you didn't know, a one-sentence vision and one small practice.
+6. Dream and job, and how to use the money earned.
+7. Pair prayer, then a summary "growth note".
+
+It is a single self-contained file, `public/sample/growth-note/index.html`; nothing is sent to a server.

@@ -85,4 +85,7 @@ for lid in ['my-user-manual', 'basic-finance']:
     env = {k: v for k, v in os.environ.items() if k not in ('INCLUDE_PRIVATE',)}
     env['DEMO'] = '1'
     subprocess.run(['node', os.path.join(ROOT, 'tools', 'build-slides.mjs'), lid, out], env=env, capture_output=True, check=True)
+# Growth Note demo app (self-contained page).
+os.makedirs(os.path.join(dl, 'sample', 'growth-note'), exist_ok=True)
+shutil.copyfile(os.path.join(pub, 'sample', 'growth-note', 'index.html'), os.path.join(dl, 'sample', 'growth-note', 'index.html'))
 print('ok')
