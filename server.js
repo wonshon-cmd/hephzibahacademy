@@ -332,12 +332,12 @@ async function api(req, res, url) {
     const answers = {};
     for (const [k, max] of Object.entries(F)) answers[k] = cleanText(body[k], max);
     for (const k of ["company", "oneLiner", "problem", "customers", "values"]) if (!answers[k]) throw httpError(400, "Please fill in the required fields.");
-    const record = { at: new Date().toISOString(), track: "First Track 2026", name: sess.name, email: sess.email, emailVerified: true, venture101: true, ...answers };
+    const record = { at: new Date().toISOString(), track: "First Track 2027", name: sess.name, email: sess.email, emailVerified: true, venture101: true, ...answers };
     fs.appendFile(APPLICATIONS_FILE, JSON.stringify(record) + "\n", (err) => { if (err) console.error("Could not save application", err); });
     appSessions.delete(body.token);
     sendEmail(sess.email, body.lang === "ko" ? "쁄라 벤처 지원이 접수되었어요" : "We received your Beulah Venture application",
-      body.lang === "ko" ? `${sess.name}님, 지원해 주셔서 감사해요.\n\n2주 안에 답장드릴게요.\n\n쁄라 벤처 · First Track 2026`
-                         : `Thank you, ${sess.name}.\n\nWe’ll reply within 2 weeks.\n\nBeulah Venture · First Track 2026`).catch(() => {});
+      body.lang === "ko" ? `${sess.name}님, 지원해 주셔서 감사해요.\n\n2주 안에 답장드릴게요.\n\n쁄라 벤처 · First Track 2027`
+                         : `Thank you, ${sess.name}.\n\nWe’ll reply within 2 weeks.\n\nBeulah Venture · First Track 2027`).catch(() => {});
     return sendJson(res, 201, { ok: true });
   }
 

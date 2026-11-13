@@ -98,7 +98,7 @@ Sections 4–9 currently have title slides only.
 
 ## Beulah Venture applications
 
-`/apply` is the First Track 2026 application ("Tell us about your business"). It is for Venture 101 graduates, and the page says you reply within 2 weeks.
+`/apply` is the First Track 2027 application ("Tell us about your business"). It is for Venture 101 graduates, and the page says you reply within 2 weeks.
 
 The applicant goes through three steps:
 
