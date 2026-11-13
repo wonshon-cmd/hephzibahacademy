@@ -227,3 +227,13 @@ html[lang="ko"] body { word-break: keep-all; }
 }
 .later { margin: 14px 0 0; font-size: 12px; color: var(--muted); letter-spacing: 0.02em; }
 .card:has(+ .later) { border-bottom: 1px solid var(--rule); }
+
+/* About: Hephzibah + Beulah pairing */
+.names2 dd { display: grid; gap: 6px; }
+.names2 .nm-mean { font-size: clamp(20px, 2vw, 28px); color: var(--ink); letter-spacing: -0.01em; }
+.names2 .nm-tag { font-size: 16px; color: var(--ink-2); }
+.names2 .nm-role { font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+.names2 > .names2-plus { display: block; border-bottom: 0; padding: 0; margin: -14px 0; font-size: 28px; font-weight: 300; color: var(--muted); line-height: 1; }
+.names2 > .names2-plus { display: grid; place-items: center; width: 34px; height: 34px; margin: -17px 0; position: relative; z-index: 1;
+  border: 1px solid var(--rule); border-radius: 50%; background: var(--paper); font-size: 20px; font-weight: 400; color: var(--ink); }
+.names2 > .names2-plus { grid-template-columns: 1fr; gap: 0; padding: 0; line-height: 1; }
