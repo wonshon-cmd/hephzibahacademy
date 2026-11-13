@@ -74,7 +74,7 @@ body.stage-body #app { height: 100%; display: flex; flex-direction: column; }
 @keyframes beat { 50% { transform: scale(1.12); } }
 .inst b { display: block; font-size: 16px; }
 .inst small { color: var(--muted); font-size: 12px; font-weight: 600; }
-.orch-actions { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
+.orch-actions { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; align-items: center; }
 
 /* Video */
 .slide.video { grid-template-rows: auto minmax(0, 1fr); gap: 16px; padding-top: clamp(16px, 3vh, 32px); padding-bottom: clamp(16px, 3vh, 32px); }
@@ -254,3 +254,4 @@ p.step.slow { display: block; }
 .cover-door .candle-art { width: clamp(240px, 30vw, 460px); }
 .slide .title.candle-title { font-size: clamp(30px, 4.6vw, 80px); }
 @media (prefers-reduced-motion: reduce) { .candle-art .twinkle { animation: none; opacity: .8; transform: none; } }
+.slide .title.small { font-size: clamp(28px, 4.4vw, 76px); line-height: 1.12; }

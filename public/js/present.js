@@ -196,7 +196,7 @@ function autoReveal() {
 function head(slide, compact) {
   return h("div", { class: "content" },
     h("p", { class: "eyebrow", text: slide.eyebrow }),
-    h("h1", { class: "title" }, slide.titleSteps ? titleSteps(slide.title) : lines(slide.title)),
+    h("h1", { class: "title" + (slide.small ? " small" : "") }, slide.titleSteps ? titleSteps(slide.title) : lines(slide.title)),
     slide.subtitle ? h("p", { class: "subtitle" + (slide.titleSteps ? " step slow" : ""), text: slide.subtitle }) : null);
 }
 
@@ -357,7 +357,12 @@ function buildSlide(slide) {
     }
     const together = h("button", { class: "btn", type: "button", onclick: () => playAll(together) }, t("▶ All together", "▶ 함께 연주"));
     const stop = h("button", { class: "btn ghost", type: "button", onclick: () => { orchestra.stop(); markPlaying([]); } }, t("■ Stop", "■ 정지"));
-    c.append(grid, h("div", { class: "orch-actions" }, together, stop));
+    const status = h("span", { class: "muted", style: "font-size:14px", text: t("Loading real instrument sounds…", "실제 악기 소리를 불러오는 중…") });
+    c.append(grid, h("div", { class: "orch-actions" }, together, stop, status));
+    orchestra.loadSamples(instruments.filter((i) => i.kind !== "bible").map((i) => i.id)).then(() => {
+      const n = Object.values(orchestra.samples).reduce((a, b) => a + Object.keys(b).length, 0);
+      status.textContent = n ? "" : t("Couldn’t load the recordings — using built-in sounds.", "녹음을 불러오지 못해 기본 소리로 재생해요.");
+    });
     el.append(c);
     return el;
   }

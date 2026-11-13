@@ -30,7 +30,7 @@
   },
   {
    "label": "The orchestra, the video & your review",
-   "slides": "31–34",
+   "slides": "31–36",
    "minutes": 9
   }
  ],
@@ -1225,6 +1225,55 @@
      "끝나면 잠깐 멈춘 뒤: \"오늘 배운 것을 휴대폰에 적어 주세요.\""
     ]
    }
+  },
+  {
+   "id": "s28b",
+   "section": "Closing",
+   "kind": "statement",
+   "glow": true,
+   "eyebrow": "Isaiah 55:8–9",
+   "title": "“For my thoughts are not your thoughts,\nneither are your ways my ways,”\ndeclares the Lord.",
+   "subtitle": "“As the heavens are higher than the earth, so are my ways higher than your ways and my thoughts than your thoughts.”",
+   "body": [],
+   "notes": [
+    "Read slowly."
+   ],
+   "ko": {
+    "section": "마침",
+    "eyebrow": "이사야 55:8–9",
+    "title": "이는 내 생각이 너희의 생각과 다르며\n내 길은 너희의 길과 다름이니라.",
+    "subtitle": "여호와의 말씀이니라. 이는 하늘이 땅보다 높음 같이 내 길은 너희의 길보다 높으며 내 생각은 너희의 생각보다 높음이니라.",
+    "body": [],
+    "notes": [
+     "천천히 읽어 주세요."
+    ]
+   },
+   "small": true
+  },
+  {
+   "id": "s28c",
+   "section": "Closing",
+   "kind": "statement",
+   "glow": true,
+   "eyebrow": "",
+   "title": "We can’t know what each of our lives will look like,\nbut through each one of you,\nGod is doing something truly great.",
+   "subtitle": "",
+   "body": [],
+   "notes": [
+    "Say it slowly, looking around the room."
+   ],
+   "ko": {
+    "section": "마침",
+    "eyebrow": "",
+    "title": "우리 각자의 삶이 어떻게 될지는 알 수 없지만,\n하나님은 여러분 한 사람 한 사람을 통해\n정말로 큰 역사를 만들어 가고 계십니다.",
+    "subtitle": "",
+    "body": [],
+    "notes": [
+     "천천히, 학생들을 한 명씩 바라보며 말합니다."
+    ]
+   },
+   "titleSteps": true,
+   "small": true
   },
   {
    "id": "s29",

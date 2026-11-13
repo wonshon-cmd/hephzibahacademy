@@ -5,9 +5,19 @@
 // together, the parts make a whole. Sounds are synthesized in the browser,
 // so no audio files are required.
 //
-// Want real recordings instead? Drop licensed clips into /public/audio/
-// named after the instrument id (e.g. audio/oboe.mp3, audio/tuba.m4a).
-// When a file exists it is used instead of the synthesizer.
+// Sound: real recorded instrument samples, one file per note, from the FluidR3_GM
+// soundfont (Frank Wen, MIT licence) as published by midi-js-soundfonts
+// (Benjamin Gleitzman). They load from the web when the deck opens; any note that
+// fails to load falls back to the small synthesizer below.
+//
+// Full-length recordings can also be dropped into /public/audio/ named after the
+// instrument id (e.g. audio/oboe.mp3); they take priority over both.
+
+const SAMPLE_BASE = "https://gleitz.github.io/midi-js-soundfonts/FluidR3_GM/";
+const GM = { violin: "violin", viola: "viola", cello: "cello", bass: "contrabass", harp: "orchestral_harp", timpani: "timpani",
+  flute: "flute", oboe: "oboe", clarinet: "clarinet", bassoon: "bassoon", horn: "french_horn", trumpet: "trumpet", trombone: "trombone", tuba: "tuba" };
+const NOTE_NAMES = ["C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B"];
+const noteName = (m) => NOTE_NAMES[m % 12] + (Math.floor(m / 12) - 1);
 
 const BPM = 84;
 const BEAT = 60 / BPM;
@@ -142,6 +152,27 @@ function voice(ctx, out, id, midi, t, dur, vel) {
   return nodes;
 }
 
+// One recorded note. Sustained instruments are held for the note's length and
+// faded; harp and timpani ring out naturally.
+function sampleVoice(ctx, out, id, buf, t, dur, vel) {
+  const src = ctx.createBufferSource(); src.buffer = buf;
+  const g = ctx.createGain(); src.connect(g).connect(out);
+  const peak = Math.max(0.05, vel) * 0.85;
+  const ring = id === "harp" || id === "timpani";
+  g.gain.setValueAtTime(0.0001, t);
+  g.gain.exponentialRampToValueAtTime(peak, t + (ring ? 0.005 : 0.03));
+  let end;
+  if (ring) end = t + Math.min(buf.duration, 3.2);
+  else {
+    const hold = Math.min(dur, buf.duration - 0.15);
+    g.gain.setValueAtTime(peak, t + Math.max(0.04, hold - 0.05));
+    g.gain.exponentialRampToValueAtTime(0.0001, t + hold + 0.28);
+    end = t + hold + 0.3;
+  }
+  src.start(t); src.stop(end);
+  return [src];
+}
+
 function impulse(ctx, seconds = 2.4) {
   const len = Math.floor(ctx.sampleRate * seconds);
   const buf = ctx.createBuffer(2, len, ctx.sampleRate);
@@ -153,7 +184,28 @@ function impulse(ctx, seconds = 2.4) {
 }
 
 export class Orchestra {
-  constructor() { this.ctx = null; this.active = []; this.timer = null; this.files = {}; this.onend = null; }
+  constructor() { this.ctx = null; this.active = []; this.timer = null; this.files = {}; this.onend = null; this.samples = {}; }
+
+  // Fetches and decodes every note each part needs. Returns when all are in (or failed).
+  loadSamples(ids) {
+    if (this.loading) return this.loading;
+    this.setup();
+    const jobs = [];
+    for (const id of ids) {
+      if (!GM[id]) continue;
+      const notes = [...new Set(part(id).map((n) => n[2]))];
+      this.samples[id] = {};
+      for (const m of notes) {
+        jobs.push(fetch(`${SAMPLE_BASE}${GM[id]}-mp3/${noteName(m)}.mp3`)
+          .then((r) => { if (!r.ok) throw new Error(r.status); return r.arrayBuffer(); })
+          .then((ab) => new Promise((res, rej) => this.ctx.decodeAudioData(ab, res, rej)))
+          .then((buf) => { this.samples[id][m] = buf; })
+          .catch(() => {}));
+      }
+    }
+    this.loading = Promise.all(jobs);
+    return this.loading;
+  }
 
   async init(ids) {
     // Optional recordings dropped into /public/audio/ (listed by the server).
@@ -194,8 +246,10 @@ export class Orchestra {
       if (this.files[id]) {
         const a = new Audio(this.files[id]); a.play().catch(() => {}); this.active.push(a); continue;
       }
+      const bank = this.samples[id] || {};
       for (const [beat, len, midi, vel] of part(id)) {
-        this.active.push(...voice(this.ctx, out, id, midi, t0 + beat * BEAT, len * BEAT * 0.98, vel));
+        const t = t0 + beat * BEAT, d = len * BEAT * 0.98;
+        this.active.push(...(bank[midi] ? sampleVoice(this.ctx, out, id, bank[midi], t, d, vel) : voice(this.ctx, out, id, midi, t, d, vel)));
       }
     }
     this.timer = setTimeout(() => { this.active = []; this.onend && this.onend(); }, this.duration * 1000);

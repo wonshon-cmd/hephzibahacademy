@@ -20,7 +20,7 @@ The Hephzibah Academy website, with live, interactive lectures. The presenter sh
 | Beulah Venture application | `/apply` |
 | Support (monthly giving) | `/support` |
 
-### The live lecture: *My User Manual* (34 slides, about 40 minutes)
+### The live lecture: *My User Manual* (36 slides, about 40 minutes)
 
 1. The presenter clicks **Start live session**. A room code and QR code appear on screen.
 2. Students scan the QR code. No sign-up is needed, and no real names are used. Each student gets a random **orchestra instrument** (Violin, Oboe, Tuba, and so on) and can roll again for a different one.
@@ -32,7 +32,7 @@ The Hephzibah Academy website, with live, interactive lectures. The presenter sh
    * **Q&A**: students can send questions at any time. The closing slide shows them.
 5. **The orchestra** (slide 31): click an instrument to hear only its part, then press **All together**.
 6. **Video** (slide 32): *Morricone conducts Morricone: The Mission (Gabriel's Oboe)*, embedded from YouTube.
-7. **Review** (slide 33): on their phones, students
+7. **Review** (slide 35): on their phones, students
    1. write one thing they learned (it appears on the big screen),
    2. rate and review the lecture,
    3. unlock their personality results (strengths, challenges, ways to grow),
@@ -162,7 +162,7 @@ Adults sign up at `/mentors`. They choose how to help: fund classes, give career
 * `public/data/my-user-manual.json`: slides, speaker notes and interactions, in English (translated from the original Korean talk).
 * `public/data/personality.json`: the 20 questions and the results text for the 5 areas. This is a self-reflection activity, not a validated psychological test.
 * `public/data/instruments.json`: the instrument pseudonyms.
-* `public/audio/`: optional real recordings for the orchestra slide. See `public/audio/README.txt`. Without them, the instruments are synthesized in the browser, playing an original short piece written for this demo.
+* Orchestra sounds: each part of an original short piece is played with real recorded instrument samples (FluidR3_GM soundfont by Frank Wen, MIT licence, via midi-js-soundfonts by Benjamin Gleitzman), loaded from the web when the orchestra slide opens. If they can't load, a built-in synthesizer plays instead. Full recordings dropped into `public/audio/` (see `public/audio/README.txt`) take priority.
 
 ## Privacy notes
 
