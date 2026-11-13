@@ -208,9 +208,37 @@ const DOOR_SVG = `<svg class="door-art" viewBox="0 0 480 360" role="img" aria-la
       <animate id="door" attributeName="opacity" begin="1.1s" dur="0.01s" fill="freeze" values="1"/>
     </svg>`;
 
+// An opening manual, for decks with "coverArt": "manual".
+const MANUAL_SVG = `<svg class="door-art manual-art" viewBox="0 0 480 360" role="img" aria-label="A manual opening, with warm light coming from its pages">
+  <defs>
+    <radialGradient id="manGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#e9a93a" stop-opacity=".42"/><stop offset=".55" stop-color="#e9a93a" stop-opacity=".12"/><stop offset="1" stop-color="#e9a93a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="manLight" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6c94d"/><stop offset="1" stop-color="#fbe7a6"/></linearGradient>
+  </defs>
+  <ellipse class="door-glow" cx="240" cy="190" rx="210" ry="180" fill="url(#manGlow)"/>
+  <path d="M80 300 H400" fill="none" stroke="var(--ink)" stroke-width="2.2"/>
+  <rect x="240" y="96" width="122" height="196" fill="url(#manLight)" stroke="var(--ink)" stroke-width="2.2"/>
+  <g stroke="var(--ink)" stroke-width="1.6" opacity=".55"><path d="M258 132 H342 M258 152 H342 M258 172 H330 M258 192 H342 M258 212 H318 M258 232 H342 M258 252 H326"/></g>
+  <polygon points="240,96 362,96 362,292 240,292" fill="var(--paper)" stroke="var(--ink)" stroke-width="2.2" stroke-linejoin="round">
+    <animate attributeName="points" begin="manOpen.begin" dur="1.7s" fill="freeze" calcMode="spline" keyTimes="0;.5;1" keySplines=".4 0 .6 1;.2 .7 .1 1"
+      values="240,96 362,96 362,292 240,292; 240,96 252,70 252,318 240,292; 240,96 118,96 118,292 240,292"/>
+  </polygon>
+  <rect x="118" y="96" width="122" height="196" fill="url(#manLight)" stroke="var(--ink)" stroke-width="2.2" opacity="0">
+    <animate attributeName="opacity" begin="manOpen.begin+0.85s" dur=".6s" from="0" to=".75" fill="freeze"/></rect>
+  <g opacity="0" stroke="var(--ink)" stroke-width="1.6"><path d="M138 132 H222 M138 152 H222 M150 172 H222 M138 192 H222 M162 212 H222 M138 232 H222 M154 252 H222" opacity=".55"/>
+    <set attributeName="opacity" begin="manOpen.begin+1.2s" to="1" fill="freeze"/></g>
+  <g class="manual-title" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" fill="var(--ink)" text-anchor="middle">
+    <text x="301" y="186" font-size="17" letter-spacing="2">MY USER</text><text x="301" y="208" font-size="17" letter-spacing="2">MANUAL</text>
+    <set attributeName="opacity" begin="manOpen.begin+0.2s" to="0" fill="freeze"/>
+  </g>
+  <path d="M240 96 V292" stroke="var(--ink)" stroke-width="2.2"/>
+  <animate id="manOpen" attributeName="opacity" begin="1.1s" dur="0.01s" fill="freeze" values="1"/>
+</svg>`;
+
 function doorArt() {
   const box = h("div", { class: "cover-door" });
-  box.innerHTML = DOOR_SVG;
+  box.innerHTML = deck.coverArt === "manual" ? MANUAL_SVG : DOOR_SVG;
   return box;
 }
 
