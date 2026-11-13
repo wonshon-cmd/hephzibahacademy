@@ -18,7 +18,7 @@ START = ("Start", "시작")
 S1 = ("01 Salary and real life", "01 연봉과 실제 생활")
 S2 = ("02 How much is enough?", "02 얼마면 충분할까?")
 S3 = ("03 Card debt, interest, taxes, house, car", "03 카드빚·복리·세금·집·차·절세")
-END = ("10 Application and homework", "10 개인 적용과 과제")
+END = ("10 Time, money, talents", "10 시간·물질·달란트")
 
 slide("f01", START, "cover",
   {"eyebrow": "HEPHZIBAH ACADEMY", "title": "Basic Finance:\nliving as God’s steward.", "subtitle": "How am I using the time, money and abilities entrusted to me?", "body": ["Basic Finance"]},
@@ -153,14 +153,14 @@ slide("f19", S3, "list",
   {"eyebrow": "집·차·절세", "title": "공제가 되면 더 비싼 것을\n사도 이득일까요?", "subtitle": "세금이 줄었다는 사실보다, 모든 비용을 계산한 뒤 무엇이 남는지 확인합시다.",
    "body": ["집: 이자·재산세·보험·수리·거래비용", "차: 금융비용·보험·정비·주차·가치 하락"]})
 
-SECTIONS = [
-  ("f25", ("05 Work and starting a business", "05 직업과 창업"), "Section five", "다섯 번째", "Work and starting a business:\nvalue and faithfulness", "직업과 창업 —\n가치와 성실함"),
-  ("f26", ("06 Stocks and cash flow", "06 주식과 현금흐름"), "Section six", "여섯 번째", "Stocks and cash flow:\nwhat do I own?", "주식과 현금흐름 —\n무엇을 소유하는가?"),
-  ("f27", ("07 God’s steward", "07 하나님의 청지기"), "Section seven", "일곱 번째", "God’s steward:\nwhose will do I use it for?", "하나님의 청지기 —\n누구의 뜻대로 사용하는가?"),
-  ("f28", ("08 Offering and giving", "08 헌금과 나눔"), "Section eight", "여덟 번째", "Offering and giving:\ncaring for people with what’s entrusted", "헌금과 나눔 —\n맡겨진 것으로 사람을 돌보기"),
-  ("f29", ("09 Joseph again", "09 다시 요셉"), "Section nine", "아홉 번째", "Joseph again:\nwhy did God entrust it?", "다시 요셉 —\n왜 맡기셨을까?"),
-]
 S4 = ("04 Living to 80, 90, 100", "04 80·90·100세의 나")
+S5 = ("05 Work and starting a business", "05 직업과 창업")
+S6 = ("06 Stocks and cash flow", "06 주식과 현금흐름")
+S7 = ("07 God’s steward", "07 하나님의 청지기")
+S8 = ("08 Offering and giving", "08 헌금과 나눔")
+S9 = ("09 Joseph again", "09 다시 요셉")
+
+# ---- 4
 slide("f20", S4, "list",
   {"eyebrow": "Section four", "title": "Am I ready to live\nto 80, 90, 100?", "subtitle": "Retiring at 65, how many years do I need to prepare for?",
    "body": ["To 80 · 15 years", "To 90 · 25 years", "To 100 · 35 years"]},
@@ -173,17 +173,127 @@ slide("f30", S4, "statement",
    "body": ["인플레이션을 반영해 현재의 생활비와 미래의 필요를 비교합니다."]})
 slide("f31", S4, "list",
   {"eyebrow": "401(k) · IRA", "title": "Retirement accounts,\nexplained.", "subtitle": "",
-   "body": ["Workplace retirement plans and personal retirement accounts", "How Traditional and Roth are taxed", "Company match, eligibility to contribute, withdrawal rules"]},
+   "body": ["Workplace retirement plans and personal retirement accounts", "How Traditional and Roth are taxed", "Company match, eligibility to contribute, withdrawal rules", "The assets you actually invest in inside the account"]},
   {"eyebrow": "401(k) · IRA", "title": "은퇴계좌,\n이렇게 다릅니다.", "subtitle": "",
-   "body": ["직장 은퇴제도와 개인 은퇴계좌", "Traditional과 Roth의 세금 처리", "회사 매칭·납입 자격·인출 조건"]})
+   "body": ["직장 은퇴제도와 개인 은퇴계좌", "Traditional과 Roth의 세금 처리", "회사 매칭·납입 자격·인출 조건", "계좌 안에서 실제로 투자하는 자산"]})
 slide("f32", S4, "compound",
-  {"eyebrow": "Compound growth activity", "title": "Change when you start,\nhow long, and how much.", "subtitle": "Try it on your phone. The numbers are examples, not a promise of returns.", "body": []},
-  {"eyebrow": "복리 활동", "title": "시작 시점·기간·납입액을\n바꿔봅니다.", "subtitle": "휴대폰에서 직접 바꿔 보세요. 수익률은 예시이며 보장이 아닙니다.", "body": []},
+  {"eyebrow": "Compound growth activity", "title": "Change when you start,\nhow long, and how much.", "subtitle": "Assumed returns aren’t guaranteed. Think about taxes, fees and inflation too.", "body": []},
+  {"eyebrow": "복리 활동", "title": "시작 시점·기간·납입액을\n바꿔봅니다.", "subtitle": "가정 수익률은 보장되지 않으며 세금·수수료·물가를 함께 고려합니다.", "body": []},
   interaction={"type": "compound", "prompt": "Compound growth"}, ko_ix={"prompt": "복리 계산"})
+slide("f33", S4, "scripture",
+  {"eyebrow": "Genesis 41:33–36, 47–57 · summary", "title": "Joseph didn’t assume\nthe good years would last.", "subtitle": "He prepared for the famine.", "body": []},
+  {"eyebrow": "창세기 41:33–36, 47–57 · 요약", "title": "요셉은 풍년이 계속될 것으로\n여기지 않았습니다.", "subtitle": "흉년을 준비했습니다.", "body": []})
+slide("f34", S4, "scripture",
+  {"eyebrow": "Philippians 4:11–13 · summary", "title": "Where is my\nultimate security?", "subtitle": "Paul learned contentment in need and in plenty, full and hungry.",
+   "body": ["The strength Christ gives is not a promise that I’ll get the wealth I want. It’s strength to live in very different circumstances."]},
+  {"eyebrow": "빌립보서 4:11–13 · 요약", "title": "미래를 준비하면서도\n내 궁극적인 안전을 어디에 두고 있나요?", "subtitle": "바울은 궁핍과 풍부, 배부름과 배고픔 속에서 자족하는 법을 배웠다고 말합니다.",
+   "body": ["그리스도가 주시는 힘은 원하는 부를 반드시 얻는다는 약속보다, 서로 다른 형편 속에서도 살아가는 문맥입니다."]})
+slide("f35", S4, "statement",
+  {"eyebrow": "Don’t only sacrifice today", "title": "The years you spend earning\nare your life too.", "subtitle": "While preparing for your future self, are you caring for today’s health and relationships?", "body": []},
+  {"eyebrow": "현재를 희생하기만 하지 않습니다", "title": "돈을 버는 시간도\n내 인생입니다.", "subtitle": "“돈이 생기면 살겠다고 생각하지만, 미래의 나를 준비하면서 오늘의 건강과 관계도 돌보고 있나요?”", "body": []})
 
-for sid, sec, ey_en, ey_ko, t_en, t_ko in SECTIONS:
-    slide(sid, sec, "section", {"eyebrow": ey_en, "title": t_en, "subtitle": "", "body": []}, {"eyebrow": ey_ko, "title": t_ko, "subtitle": "", "body": []},
-          notes=["(Content for this section is coming.)"], ko_notes=["(이 섹션 내용은 추가 예정)"])
+# ---- 5
+slide("f25", S5, "statement",
+  {"eyebrow": "Section five · work and starting a business", "title": "Whose life got better\nbecause of my work?", "subtitle": "“I worked hard, so I deserve better treatment.” Then how did my effort make someone’s life better?", "body": []},
+  {"eyebrow": "다섯 번째 · 직업과 창업", "title": "나의 수고로 누구의 삶이\n어떻게 좋아졌을까요?", "subtitle": "“열심히 일했으니 더 좋은 대우를 받아야 한다고 생각합니다. 그렇다면…”", "body": []})
+slide("f36", S5, "text-input",
+  {"eyebrow": "One recent example", "title": "Write one thing\nyour work made better.", "subtitle": "",
+   "body": ["Solved a customer’s problem", "Saved a coworker time", "Cut mistakes and rework", "Built trust"]},
+  {"eyebrow": "최근 사례 하나", "title": "내 일로 나아진 것\n하나를 적어 보세요.", "subtitle": "",
+   "body": ["고객의 문제를 해결한 일", "동료의 시간을 줄여준 일", "실수와 재작업을 줄인 일", "신뢰를 만든 일"]},
+  interaction={"type": "text", "prompt": "One recent example", "placeholder": "e.g. I fixed a billing error that saved a customer hours", "maxLength": 180},
+  ko_ix={"prompt": "최근 사례 하나", "placeholder": "예: 고객의 청구 오류를 바로잡아 몇 시간을 아껴 드렸어요"})
+slide("f37", S5, "list",
+  {"eyebrow": "Starting a business", "title": "Is it what I want to make,\nor what they actually need?", "subtitle": "",
+   "body": ["Salary and human dignity are different things. Capable people can still lose their jobs.", "Am I building skills and trust I can explain outside my job title?", "Mission is not a word to justify unfair treatment. Ask what value you give the company, and how the company treats its people."]},
+  {"eyebrow": "창업", "title": "내가 만들고 싶은 것인가요,\n상대가 실제로 필요로 하는 것인가요?", "subtitle": "",
+   "body": ["연봉과 사람의 존엄은 구분합니다. 역량이 있어도 실직할 수 있습니다.", "직함 밖에서도 설명할 수 있는 역량과 신뢰를 준비하고 있나요?", "사명은 부당한 대우를 정당화하는 말이 아닙니다. 회사에 주는 가치와 함께 회사가 직원을 어떻게 대하는지도 묻습니다."]})
+
+# ---- 6
+slide("f26", S6, "list",
+  {"eyebrow": "Section six · stocks and cash flow", "title": "Why did I buy\nthis stock?", "subtitle": "A stock is owning part of a company. Its price is the market’s view, not always its real value or its goodness.",
+   "body": ["Whose problem does the company solve?", "How does it make a profit?", "Does it treat employees, customers and suppliers fairly?", "Do its strengths and my reason to invest still hold?", "Are the price and the risk reasonable?"]},
+  {"eyebrow": "여섯 번째 · 주식과 현금흐름", "title": "나는 왜 이 주식을\n샀는가?", "subtitle": "주식은 기업의 일부를 소유하는 것입니다. 주가는 시장의 평가이며, 실제 가치나 도덕적 선함과 항상 일치하지는 않습니다.",
+   "body": ["누구의 어떤 문제를 해결하는 기업인가?", "어떻게 이익을 남기는가?", "직원·고객·협력업체를 공정하게 대하는가?", "경쟁력과 투자 이유가 유지되는가?", "가격과 위험은 적절한가?"]})
+slide("f38", S6, "choice",
+  {"eyebrow": "Be honest", "title": "How many times a day\ndo you check your stocks?", "subtitle": "Not the count, but the reason: information, or anxiety, comparison and hurry?"},
+  {"eyebrow": "솔직하게", "title": "하루에 주식창을\n몇 번 보는가?", "subtitle": "횟수보다 이유를 묻습니다. 필요한 정보인가요, 불안·비교·조급함인가요?"},
+  interaction={"type": "choice", "prompt": "Times a day I check stocks", "options": [
+    {"value": "0", "label": "I don’t own stocks"}, {"value": "1", "label": "Rarely / once"}, {"value": "2-5", "label": "2–5 times"}, {"value": "6-20", "label": "6–20 times"}, {"value": "20p", "label": "More than 20"}]},
+  ko_ix={"prompt": "하루에 주식창을 보는 횟수", "options": {"0": "주식이 없어요", "1": "거의 안 봄 / 한 번", "2-5": "2–5번", "6-20": "6–20번", "20p": "20번 이상"}},
+  notes=["Does my account balance decide today’s gratitude and mood?"], ko_notes=["계좌 잔액이 오늘의 감사와 기분을 결정하나요?"])
+slide("f39", S6, "list",
+  {"eyebrow": "Beyond the number", "title": "If my stocks hit\n₩1–2 billion…", "subtitle": "Separate what’s on the screen from what you can actually use.",
+   "body": ["Market value · cost basis · gain", "Taxes · costs · money you can actually use", "Cash flow from a job, business, rental or investment: compare management, risk and net profit, not just income"]},
+  {"eyebrow": "숫자 너머", "title": "주식이 10억·20억 원이\n되었을 때도", "subtitle": "화면의 숫자와 실제로 쓸 수 있는 돈을 구분합니다.",
+   "body": ["평가액 · 취득원가 · 차익", "세금 · 비용 · 사용 가능한 금액", "직업·사업·임대·투자의 현금흐름은 수입뿐 아니라 관리·위험·순수익까지 비교합니다"]})
+slide("f40", S6, "choice",
+  {"eyebrow": "Emergency check", "title": "If your paycheck stopped tomorrow,\nhow many months could you last?", "subtitle": "Only totals are shown."},
+  {"eyebrow": "비상 점검", "title": "내일부터 급여가 멈추면\n몇 개월을 버틸 수 있나요?", "subtitle": "화면에는 집계만 보여요."},
+  interaction={"type": "choice", "prompt": "Months I could last", "options": [
+    {"value": "lt1", "label": "Less than 1"}, {"value": "1-3", "label": "1–3 months"}, {"value": "3-6", "label": "3–6 months"}, {"value": "6-12", "label": "6–12 months"}, {"value": "12p", "label": "12 months or more"}, {"value": "unsure", "label": "I don’t know"}]},
+  ko_ix={"prompt": "버틸 수 있는 기간", "options": {"lt1": "1개월 미만", "1-3": "1–3개월", "3-6": "3–6개월", "6-12": "6–12개월", "12p": "12개월 이상", "unsure": "잘 모르겠다"}},
+  notes=["2 Thessalonians 3:6–13 warns against being unwilling to work while burdening the community. Don’t use it to call every investment return speculation."],
+  ko_notes=["데살로니가후서 3:6–13은 일할 의사가 없으면서 공동체에 부담을 주는 태도를 경계하는 문맥입니다. 모든 투자수익을 투기로 규정하는 근거로 사용하지 않습니다."])
+
+# ---- 7
+slide("f27", S7, "scripture",
+  {"eyebrow": "Section seven · Psalm 50:9–15 · 1 Chronicles 29:14", "title": "Does God really\nneed my money?", "subtitle": "God isn’t someone whose lack we must fill. We give from what we received.", "body": []},
+  {"eyebrow": "일곱 번째 · 시편 50:9–15 · 역대상 29:14", "title": "하나님이 과연\n내 돈을 필요로 하실까요?", "subtitle": "하나님은 부족한 것을 우리가 채워드려야 하는 분이 아닙니다. 우리는 받은 것으로 드리고 살아갑니다.", "body": []})
+slide("f41", S7, "statement",
+  {"eyebrow": "A steward’s question", "title": "Not “What do I want to do\nwith this money?”", "subtitle": "But “How will I respond to the will of the Owner who entrusted it to me?”", "body": []},
+  {"eyebrow": "청지기의 질문", "title": "“이 돈으로 내가 무엇을\n하고 싶은가?”에서", "subtitle": "“이 돈을 맡긴 주인의 뜻에 어떻게 응답할 것인가?”로", "body": []})
+slide("f42", S7, "questions",
+  {"eyebrow": "“I’ll earn a lot for God’s kingdom.”", "title": "Really?", "subtitle": "",
+   "body": ["Can I live for God’s kingdom even without money?", "Am I postponing today’s love, saying I’ll give once I earn more?", "Do I talk about big future gifts while neglecting fairness to my employees?", "Will I stay honest and love people even if the business doesn’t grow?"]},
+  {"eyebrow": "“하나님 나라를 위해 돈을 많이 벌겠습니다.”", "title": "정말 그런가요?", "subtitle": "",
+   "body": ["돈이 없어도 하나님 나라를 위해 살 수 있는가?", "더 벌면 나누겠다고 하면서 오늘의 사랑을 미루고 있는가?", "미래의 큰 헌금을 말하면서 직원에게 공정할 책임은 놓치고 있는가?", "사업이 커지지 않아도 정직하고 사람을 사랑할 것인가?"]})
+slide("f43", S7, "list",
+  {"eyebrow": "Three passages", "title": "Faith, first fruits,\nand remembering.", "subtitle": "",
+   "body": ["Cain and Abel · Genesis 4:3–7, Hebrews 11:4: not just the price of the offering, but faith and life", "First fruits · Proverbs 3:9–10: do I honor God to fill my barns, or give because I honor Him?", "Remembering in plenty · Deuteronomy 8:11–18: do I remember God as my wealth grows, or think I earned it alone?"]},
+  {"eyebrow": "세 본문", "title": "믿음, 첫 열매,\n그리고 기억", "subtitle": "",
+   "body": ["가인과 아벨 · 창세기 4:3–7, 히브리서 11:4: 제물의 가격만이 아니라 믿음과 삶", "첫 열매 · 잠언 3:9–10: 창고를 채우기 위해 하나님을 공경하나요, 하나님을 공경하기 때문에 드리나요?", "풍요 속의 기억 · 신명기 8:11–18: 재산이 늘 때 하나님을 기억하나요? 내 능력만으로 얻었다고 생각하지 않나요?"]})
+slide("f44", S7, "statement",
+  {"eyebrow": "Wealth and poverty", "title": "Whatever my situation,\nam I carrying my responsibility?", "subtitle": "Wealth doesn’t prove God’s special favor. Poverty doesn’t automatically prove deeper faith.",
+   "body": ["Simplicity can be contentment, but it’s different from handing my responsibilities to others. And the wealthy should ask whether others carry unfair burdens for their comfort."]},
+  {"eyebrow": "부와 가난", "title": "어떤 형편이든, 맡겨진 책임을\n감당하고 있는가?", "subtitle": "부는 하나님의 특별한 총애를 증명하지 않습니다. 가난도 더 높은 신앙을 자동으로 증명하지 않습니다.",
+   "body": ["청빈은 자족하는 태도일 수 있지만, 감당할 책임을 다른 사람에게 넘기는 것과는 구분합니다. 부유한 사람에게도 자신의 풍요를 위해 다른 사람이 부당한 부담을 지고 있지 않은지 묻습니다."]})
+
+# ---- 8
+slide("f28", S8, "statement",
+  {"eyebrow": "Section eight · offering and giving", "title": "Giving doesn’t prove\nI’m a good person.", "subtitle": "It isn’t a fee for God’s approval. From the grace we received in Christ, as stewards of what is God’s, we care for the people He loves.",
+   "body": ["Giving isn’t only for the wealthy. A good purpose isn’t enough: how it’s delivered and managed must be honest too."]},
+  {"eyebrow": "여덟 번째 · 헌금과 나눔", "title": "헌금과 나눔은 내가 좋은 사람임을\n증명하는 일이 아닙니다.", "subtitle": "하나님께 인정받기 위한 비용도 아닙니다. 그리스도 안에서 받은 은혜를 바탕으로, 하나님의 것을 맡은 사람으로서 그분이 사랑하시는 사람을 돌보는 일입니다.",
+   "body": ["나눔은 부유한 사람만의 일이 아닙니다. 선한 목적만으로 충분하지 않고, 전달하고 관리하는 과정도 정직해야 합니다."]})
+slide("f45", S8, "photo",
+  {"eyebrow": "U.S. spending and Kenya", "title": "One real case\nfrom Kenya.", "subtitle": "Do I see the person receiving as the object of my good deed, or as someone God loves?",
+   "photo": {"label": "Your own example", "note": "Compare a U.S. spending example with one support you actually gave in Kenya. Use verified costs and results only."}},
+  {"eyebrow": "미국의 소비와 케냐", "title": "케냐에서 실제 지원한\n사례 하나", "subtitle": "나는 받는 사람을 내 선행의 대상으로 보나요, 하나님이 사랑하시는 한 사람으로 보고 있나요?",
+   "photo": {"label": "직접 지원한 사례", "note": "미국에서의 소비와 케냐에서 실제 지원한 사례 하나를 비교합니다. 확인된 비용과 결과만 사용합니다."}})
+slide("f46", S8, "scripture",
+  {"eyebrow": "Matthew 25:35–40 · 1 John 3:16–18", "title": "Loving people means\nmeeting real needs.", "subtitle": "Alongside wanting to share the gospel, we treat every person as precious, whatever their faith.",
+   "body": ["Loving souls includes responding to needs for food, medical care, housing and care."]},
+  {"eyebrow": "마태복음 25:35–40 · 요한일서 3:16–18", "title": "영혼을 사랑하는 일에는\n필요에 응답하는 행동도 포함됩니다.", "subtitle": "복음을 전하고 싶은 마음과 함께, 신앙 유무와 상관없이 사람을 소중히 대합니다.",
+   "body": ["식사·치료·주거·돌봄의 필요에 응답합니다."]})
+
+# ---- 9
+slide("f29", S9, "list",
+  {"eyebrow": "Section nine · Joseph again", "title": "Why did God\nentrust it to him?", "subtitle": "",
+   "body": ["Genesis 41:50–52 · Manasseh and Ephraim: names that confess recovery and fruit given in suffering", "Genesis 45:5–8, 50:20 · Joseph saw his position as preserving the lives of his family and many people", "Genesis 50:1 · When his father died, he wept and kissed him. Behind the prime minister was a son who loved his father."]},
+  {"eyebrow": "아홉 번째 · 다시 요셉", "title": "왜 맡기셨을까?", "subtitle": "",
+   "body": ["창세기 41:50–52 · 므낫세와 에브라임: 고난 가운데 주신 회복과 열매에 대한 고백", "창세기 45:5–8, 50:20 · 요셉은 자신의 자리를 가족과 많은 사람의 생명을 보존하는 일로 이해합니다", "창세기 50:1 · 아버지가 죽자 얼굴에 엎드려 울며 입을 맞춥니다. 총리라는 지위 뒤에도 아버지를 사랑하는 아들이 있었습니다."]})
+slide("f47", S9, "statement",
+  {"eyebrow": "Joseph’s story", "title": "Because of what I’ve been entrusted,\nwhose life is getting better?", "subtitle": "Who I am becoming matters as much as what I will become.", "body": []},
+  {"eyebrow": "요셉의 이야기", "title": "내게 맡겨진 것 때문에\n누구의 삶이 나아지고 있습니까?", "subtitle": "무엇이 될 것인가만큼 어떤 사람이 되어가는지도 중요합니다.", "body": []},
+  notes=["Joseph’s story is not that everyone who endures suffering becomes rich. God was with him in prison.", "He did the work in front of him, noticed the worries of the people beside him, and once he had authority, he cared for his family.", "Who I am becoming matters as much as what I will become. Because of the money, time and abilities entrusted to me, whose life is getting better?"],
+  ko_notes=["“요셉의 이야기는 고난을 견디면 모두 부자가 된다는 이야기가 아닙니다. 감옥에서도 하나님이 함께하셨습니다.", "그는 맡은 일을 감당했고, 곁에 있는 사람의 근심을 알아보았고, 권한을 얻은 뒤에는 가족을 돌보았습니다.", "무엇이 될 것인가만큼 어떤 사람이 되어가는지도 중요합니다. 내게 맡겨진 돈과 시간과 능력 때문에 누구의 삶이 나아지고 있습니까?”"])
+
+# ---- 10
+slide("f48", END, "scripture",
+  {"eyebrow": "Section ten · Matthew 25:14–30", "title": "Time, money, talents:\nhow am I using what I have now?", "subtitle": "Faithfulness with what’s entrusted, not a formula for growing wealth.",
+   "body": ["Apply it to time, abilities, relationships and opportunities."]},
+  {"eyebrow": "열 번째 · 마태복음 25:14–30", "title": "시간·물질·달란트 —\n지금 받은 것을 어떻게 사용하는가?", "subtitle": "재산 증식의 공식이 아니라, 맡겨진 것에 대한 신실함입니다.",
+   "body": ["시간·능력·관계·기회까지 적용합니다."]})
 
 slide("f21", END, "statement",
   {"eyebrow": "Using it well", "title": "Using life well isn’t\nfilling every hour with output.", "subtitle": "Resting, getting care, being with family, staying beside someone who grieves: this too is treasuring the life entrusted to us.", "body": []},
@@ -229,12 +339,17 @@ deck = {
     {"label": "God’s steward: whose will do I use it for?", "slides": "26", "minutes": 6, "minutes2h": 12},
     {"label": "Offering and giving: caring for people with what’s entrusted", "slides": "27", "minutes": 4, "minutes2h": 8},
     {"label": "Joseph again: why did God entrust it?", "slides": "28", "minutes": 2, "minutes2h": 5},
-    {"label": "Personal application and homework", "slides": "29–32", "minutes": 2, "minutes2h": 3}],
+    {"label": "Time, money, talents: how am I using what I have now?", "slides": "29–32", "minutes": 2, "minutes2h": 3}],
   "ko": {"title": "기초재정", "fullTitle": "기초재정 — 하나님의 청지기로 살아가기", "subtitle": "내게 맡겨진 시간과 물질과 능력을 어떻게 사용하고 있는가", "track": "재정", "speaker": "손원규",
     "summary": "미국에서 살아가는 그리스도인의 재정관: 연봉과 실제 생활, 얼마면 충분한가, 카드빚과 복리, 세금, 집과 차, 100세 준비. 질문 → 개인 응답 → 예상과 실제 비교 → 성경 본문 → 적용.",
-    "runOfShow": ["연봉과 실제 생활 — 돈은 어디 갔을까?", "얼마면 충분할까? — 돈과 내 마음", "카드빚·복리·세금·집·차·절세", "80·90·100세의 나 — 책임 있는 미래 준비", "직업과 창업 — 가치와 성실함", "주식과 현금흐름 — 무엇을 소유하는가?", "하나님의 청지기 — 누구의 뜻대로 사용하는가?", "헌금과 나눔 — 맡겨진 것으로 사람을 돌보기", "다시 요셉 — 왜 맡기셨을까?", "개인 적용과 과제"]},
+    "runOfShow": ["연봉과 실제 생활 — 돈은 어디 갔을까?", "얼마면 충분할까? — 돈과 내 마음", "카드빚·복리·세금·집·차·절세", "80·90·100세의 나 — 책임 있는 미래 준비", "직업과 창업 — 가치와 성실함", "주식과 현금흐름 — 무엇을 소유하는가?", "하나님의 청지기 — 누구의 뜻대로 사용하는가?", "헌금과 나눔 — 맡겨진 것으로 사람을 돌보기", "다시 요셉 — 왜 맡기셨을까?", "시간·물질·달란트 — 지금 받은 것을 어떻게 사용하는가?"]},
   "slides": S,
 }
+# Fill in slide ranges for the run of show from the section of each slide.
+order = [S1, S2, S3, S4, S5, S6, S7, S8, S9, END]
+for k, sec in enumerate(order):
+    idx = [n for n, sl in enumerate(S, 1) if sl["section"] == sec[0]]
+    if idx: deck["runOfShow"][k]["slides"] = f"{idx[0]}–{idx[-1]}" if len(idx) > 1 else str(idx[0])
 root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 json.dump(deck, open(os.path.join(root, "public", "data", "basic-finance.json"), "w"), ensure_ascii=False, indent=1)
 print(len(S), "slides")
