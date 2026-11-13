@@ -25,12 +25,12 @@
   },
   {
    "label": "My first page & one next step",
-   "slides": "25–31",
+   "slides": "25–30",
    "minutes": 9
   },
   {
    "label": "The orchestra, the video & your review",
-   "slides": "32–35",
+   "slides": "31–34",
    "minutes": 9
   }
  ],
@@ -1087,68 +1087,6 @@
      }
     }
    }
-  },
-  {
-   "id": "s24",
-   "section": "04 One next step",
-   "kind": "commitment",
-   "eyebrow": "Question four · 60 seconds",
-   "title": "This week —\nwhat’s one thing you could try?",
-   "subtitle": "One small experiment in getting to know yourself.",
-   "body": [
-    "Listen to a friend for 10 minutes",
-    "Spend 20 minutes on something I love",
-    "Ask a trusted adult what my strengths are",
-    "Pause and ask God a question"
-   ],
-   "interaction": {
-    "type": "text",
-    "prompt": "This week, I will…",
-    "placeholder": "e.g. Ask a teacher I trust what they think I’m good at.",
-    "maxLength": 160
-   },
-   "notes": [
-    "No need to choose a career or make a grand plan. Pick one action small enough to try once this week.",
-    "Adding when makes it more concrete. Doing something you already do — on purpose — counts too. Afterwards, notice how it felt. [Wait 60 seconds]",
-    "Only share if they want to, without names. Never follow up on whether they kept a public promise, and don’t make sharing a condition of participating."
-   ],
-   "ko": {
-    "section": "04 다음 한 걸음",
-    "eyebrow": "네 번째 질문 · 60초",
-    "title": "이번 주,\n한 번 해 볼 수 있는 건?",
-    "subtitle": "나를 조금 더 알아가는 작은 시도 하나.",
-    "body": [
-     "친구의 이야기를 10분 들어 보기",
-     "좋아하는 일을 20분 해 보기",
-     "믿을 만한 어른에게 내 장점 물어보기",
-     "잠깐 멈춰 하나님께 질문해 보기"
-    ],
-    "notes": [
-     "진로를 정하거나 거창한 계획을 세울 필요는 없습니다. 이번 주 안에 한 번 해 볼 수 있을 만큼 작은 행동을 하나 골라 보세요.",
-     "언제 할지도 적으면 조금 더 구체적이겠죠. 이미 하고 있는 일을 의식적으로 다시 해 보는 것도 좋습니다. 해 본 다음 내 마음이 어땠는지 짧게 돌아보면 더 좋고요. [60초 기다리기]",
-     "원하면 자신의 다짐만 이름 없이 나눕니다. 공개한 약속을 지켰는지 추궁하거나, 공개를 참여의 조건으로 삼지 않습니다."
-    ],
-    "interaction": {
-     "prompt": "이번 주에 나는…",
-     "placeholder": "예: 친한 선생님께 제가 잘하는 것을 하나 물어볼래요."
-    },
-    "demo": [
-     "엄마한테 내가 뭘 잘하는지 물어보기",
-     "학교 연극 오디션 보기",
-     "매일 아침 5분 기도하기",
-     "감사한 것 3가지 적기",
-     "토요일에 푸드뱅크 봉사하기",
-     "반에 새로 온 친구에게 먼저 말 걸기"
-    ]
-   },
-   "demo": [
-    "Ask my mom what she thinks I'm good at",
-    "Try out for the school play",
-    "Pray for 5 minutes every morning",
-    "Write down 3 things I'm thankful for",
-    "Volunteer at the food bank on Saturday",
-    "Talk to the new kid in class"
-   ]
   },
   {
    "id": "s25",
