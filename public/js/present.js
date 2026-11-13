@@ -163,7 +163,7 @@ function render() {
   if (renderedSlide !== state.slideIndex) orchestra.stop();
   renderedSlide = state.slideIndex;
   const stage = document.getElementById("stage");
-  stage.replaceChildren(buildSlide(slide));
+  stage.replaceChildren(buildSlide(slide), slideLogo());
   document.getElementById("pos").textContent = `${String(state.slideIndex + 1).padStart(2, "0")} / ${deck.slides.length}`;
   document.getElementById("bar").style.width = `${((state.slideIndex + 1) / deck.slides.length) * 100}%`;
   document.getElementById("section").textContent = slide.section;
@@ -179,14 +179,59 @@ function head(slide, compact) {
     slide.subtitle ? h("p", { class: "subtitle", text: slide.subtitle }) : null);
 }
 
+// The open-door illustration from the home page, used on the cover slide.
+const DOOR_SVG = `<svg class="door-art" viewBox="0 0 480 360" role="img" aria-label="An open door with warm light coming through">
+      <defs>
+        <radialGradient id="doorGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0" stop-color="var(--accent, #e9a93a)" stop-opacity=".42"/>
+          <stop offset=".55" stop-color="var(--accent, #e9a93a)" stop-opacity=".12"/>
+          <stop offset="1" stop-color="var(--accent, #e9a93a)" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="doorLight" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#f6c94d"/><stop offset="1" stop-color="#fbe7a6"/>
+        </linearGradient>
+      </defs>
+      <ellipse class="door-glow" cx="240" cy="190" rx="200" ry="190" fill="url(#doorGlow)"/>
+      <rect class="door-light" x="188" y="68" width="104" height="232" fill="url(#doorLight)"/>
+      <g fill="none" stroke="var(--ink)" stroke-width="2.2" stroke-linejoin="miter">
+        <path d="M180 300 V60 H300 V300"/>
+        <path d="M188 300 V68 H292 V300"/>
+        <path d="M40 300 H180 M300 300 H440 M188 300 H292" />
+      </g>
+      <polygon class="door-panel" points="190,70 290,70 290,300 190,300" fill="var(--paper)" stroke="var(--ink)" stroke-width="2.2" stroke-linejoin="miter">
+        <animate attributeName="points" begin="door.begin" dur="1.6s" fill="freeze" calcMode="spline" keySplines=".2 .7 .1 1"
+          values="190,70 290,70 290,300 190,300; 190,70 130,52 130,314 190,300"/>
+      </polygon>
+      <circle class="door-knob" cx="242" cy="186" r="4.2" fill="var(--paper)" stroke="var(--ink)" stroke-width="2">
+        <animate attributeName="cx" begin="door.begin" dur="1.6s" fill="freeze" calcMode="spline" keySplines=".2 .7 .1 1" values="278;141"/>
+      </circle>
+      <animate id="door" attributeName="opacity" begin="1.1s" dur="0.01s" fill="freeze" values="1"/>
+    </svg>`;
+
+function doorArt() {
+  const box = h("div", { class: "cover-door" });
+  box.innerHTML = DOOR_SVG;
+  return box;
+}
+
+// Small logo in the bottom corner of every slide.
+function slideLogo() {
+  const box = h("div", { class: "slide-logo", "aria-hidden": "true" });
+  box.innerHTML = '<svg viewBox="9 11 43 43"><path d="M10 22h11v12h17V12h13v41H38V42H21v11H10z" fill="currentColor"/></svg><span><b>Hephzibah</b><small>ACADEMY</small></span>';
+  return box;
+}
+
 function buildSlide(slide) {
-  const el = h("section", { class: "slide", "aria-live": "polite", "data-kind": slide.kind });
+  const el = h("section", { class: "slide" + (slide.glow ? " glow" : ""), "aria-live": "polite", "data-kind": slide.kind });
   const ix = slide.interaction;
 
-  if (slide.kind === "cover" && room) {
-    el.style.gridTemplateColumns = "1fr auto"; el.style.gap = "5vw";
-    const c = head(slide); c.append(h("div", { class: "accent" }), h("p", { class: "subtitle", style: "font-weight:700;color:var(--ink)", text: slide.body[0] }));
-    el.append(c, h("div", { class: "content" }, qrBox()));
+  if (slide.kind === "cover") {
+    el.style.gridTemplateColumns = room ? "1fr auto auto" : "1fr auto"; el.style.gap = "4vw"; el.style.alignItems = "center";
+    const c = head(slide);
+    c.querySelector(".title").append(h("span", { class: "spark", "aria-hidden": "true" }));
+    if (slide.body && slide.body[0]) c.append(h("div", { class: "accent" }), h("p", { class: "subtitle", style: "font-weight:700;color:var(--ink)", text: slide.body[0] }));
+    el.append(c, doorArt());
+    if (room) el.append(h("div", { class: "content" }, qrBox()));
     return el;
   }
 
