@@ -1043,8 +1043,8 @@
      },
      {
       "id": "question",
-      "label": "A question I want to keep asking",
-      "placeholder": "To myself, to God, or to someone I trust"
+      "label": "Why God made me",
+      "placeholder": "Write as much as you sense right now."
      }
     ]
    },
@@ -1081,8 +1081,8 @@
        "placeholder": "사람, 관계, 가치, 돕고 싶은 일…"
       },
       "question": {
-       "label": "앞으로 붙잡고 싶은 질문",
-       "placeholder": "나에게, 하나님께, 믿을 만한 사람에게 묻고 싶은 것"
+       "label": "하나님이 나를 만드신 이유",
+       "placeholder": "지금 생각나는 만큼 적어 보세요."
       }
      }
     }
