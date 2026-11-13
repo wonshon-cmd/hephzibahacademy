@@ -20,19 +20,19 @@ The Hephzibah Academy website, with live, interactive lectures. The presenter sh
 | Beulah Venture application | `/apply` |
 | Support (monthly giving) | `/support` |
 
-### The live lecture: *My User Manual* (36 slides, about 40 minutes)
+### The live lecture: *My User Manual* (35 slides, about 40 minutes)
 
 1. The presenter clicks **Start live session**. A room code and QR code appear on screen.
 2. Students scan the QR code. No sign-up is needed, and no real names are used. Each student gets a random **orchestra instrument** (Violin, Oboe, Tuba, and so on) and can roll again for a different one.
 3. While they wait, students can swipe through the **20 self-reflection questions**. Their results stay locked until the end.
 4. The presenter moves through the slides one at a time (← / → keys), and the phones follow along.
    * **Poll** (slides 2 and 3): bars on the screen update live.
-   * **Live answers** (slides 13, 22, 30): each answer appears on the screen as a card with the student's instrument name.
-   * **Private worksheet** (slide 29): stays on the phone and can be downloaded.
+   * **Live answers** (slides 21, 29): each answer appears on the screen as a card with the student's instrument name.
+   * **Private worksheet** (slide 28): stays on the phone and can be downloaded.
    * **Q&A**: students can send questions at any time. The closing slide shows them.
-5. **The orchestra** (slide 33): click an instrument to hear only its part, then press **All together**.
-6. **Video** (slide 34): *Morricone conducts Morricone: The Mission (Gabriel's Oboe)*, embedded from YouTube.
-7. **Review** (slide 35): on their phones, students
+5. **The orchestra** (slide 32): click an instrument to hear only its part, then press **All together**.
+6. **Video** (slide 33): *Morricone conducts Morricone: The Mission (Gabriel's Oboe)*, embedded from YouTube.
+7. **Review** (slide 34): on their phones, students
    1. write one thing they learned (it appears on the big screen),
    2. rate and review the lecture,
    3. unlock their personality results (strengths, challenges, ways to grow),

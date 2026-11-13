@@ -15,22 +15,22 @@
   },
   {
    "label": "Questions I met in Kenya",
-   "slides": "10–14",
+   "slides": "10–13",
    "minutes": 5
   },
   {
    "label": "A user manual — and faith",
-   "slides": "15–25",
+   "slides": "14–24",
    "minutes": 11
   },
   {
    "label": "My first page & one next step",
-   "slides": "26–32",
+   "slides": "25–31",
    "minutes": 9
   },
   {
    "label": "The orchestra, the video & your review",
-   "slides": "33–36",
+   "slides": "32–35",
    "minutes": 9
   }
  ],
@@ -513,70 +513,6 @@
    "glow": true
   },
   {
-   "id": "s10",
-   "section": "02 A different scene",
-   "kind": "text-input",
-   "eyebrow": "Question two · 45 seconds",
-   "title": "When do you feel\nmost alive — most like you?",
-   "subtitle": "",
-   "body": [
-    "A moment you lost track of time",
-    "A moment you laughed with someone",
-    "A moment you helped, even a little"
-   ],
-   "interaction": {
-    "type": "text",
-    "prompt": "When do you feel most alive — most like you?",
-    "placeholder": "e.g. Laughing with friends while playing basketball",
-    "maxLength": 180
-   },
-   "notes": [
-    "Think of a recent moment when you lost track of time. Sports, drawing, gaming, listening to a friend, resting alone — all fine.",
-    "Type it in a few words. If nothing comes to mind, write something you’d like to try. [Wait 45 seconds]",
-    "Read a few answers from the screen — no names. For me, I found I’m happiest spending time with kids, helping someone, and sharing. Your answer can be different from mine."
-   ],
-   "ko": {
-    "section": "02 다른 장면",
-    "eyebrow": "두 번째 질문 · 45초",
-    "title": "언제,\n나답게 살아 있다고 느끼나요?",
-    "subtitle": "",
-    "body": [
-     "시간 가는 줄 몰랐던 순간",
-     "누군가와 함께 웃었던 순간",
-     "작게라도 도움이 되었던 순간"
-    ],
-    "notes": [
-     "최근에 시간 가는 줄 몰랐던 순간 하나를 떠올려 보세요. 운동, 그림, 게임, 친구의 이야기를 듣는 일, 혼자 쉬는 시간도 괜찮아요.",
-     "지금 떠오르는 장면을 짧게 적어 봅니다. 기억이 잘 안 나면 '앞으로 해 보고 싶은 것'을 적어도 괜찮습니다. [45초 기다리기]",
-     "원하는 사람의 문장만 이름 없이 함께 봅니다. 저는 아이들과 시간을 보내고, 누군가를 돕고, 나누는 순간에 행복을 느낀다는 것을 알아갔습니다. 여러분의 답은 제 답과 달라도 괜찮아요."
-    ],
-    "interaction": {
-     "prompt": "언제, 나답게 살아 있다고 느껴요?",
-     "placeholder": "예: 친구와 농구하면서 한참 웃었을 때"
-    },
-    "demo": [
-     "방과 후에 친구들이랑 농구할 때",
-     "밤에 음악 들으면서 그림 그릴 때",
-     "동생이 내 농담에 웃을 때",
-     "주일에 교회에서 봉사할 때",
-     "가족한테 저녁 해 줄 때",
-     "친구 수학 문제 도와줄 때",
-     "찬양팀에서 기타 칠 때",
-     "강아지랑 산책할 때"
-    ]
-   },
-   "demo": [
-    "Playing basketball with my friends after school",
-    "Drawing late at night with music on",
-    "When my little sister laughs at my jokes",
-    "Serving at church on Sunday",
-    "Cooking dinner for my family",
-    "Helping a friend with math",
-    "Playing guitar in worship band",
-    "Long walks with my dog"
-   ]
-  },
-  {
    "id": "s10b",
    "section": "02 A different scene",
    "kind": "statement",
@@ -591,8 +527,8 @@
     "Time with the people I love and care about."
    ],
    "notes": [
-    "Click → to reveal each line.",
-    "Share your own happiest moments after hearing theirs."
+    "Lines appear one by one.",
+    "Share your own happiest times."
    ],
    "ko": {
     "section": "02 다른 장면",
@@ -605,8 +541,8 @@
      "내가 사랑하고 아끼는 사람들과 보내는 시간"
     ],
     "notes": [
-     "→를 누를 때마다 한 줄씩 나타납니다.",
-     "학생들의 답을 본 다음, 내가 가장 행복했던 시간을 나눕니다."
+     "한 줄씩 나타납니다.",
+     "내가 가장 행복했던 시간을 나눕니다."
     ]
    },
    "glow": true
@@ -854,7 +790,7 @@
    "id": "s17",
    "section": "03 The user manual",
    "kind": "reframe-input",
-   "eyebrow": "Question three · 60 seconds",
+   "eyebrow": "Question two · 60 seconds",
    "title": "Take one part of you —\nand look from another angle.",
    "subtitle": "",
    "body": [
@@ -874,7 +810,7 @@
    ],
    "ko": {
     "section": "03 사용설명서",
-    "eyebrow": "세 번째 질문 · 60초",
+    "eyebrow": "두 번째 질문 · 60초",
     "title": "내 모습 하나를,\n다른 각도에서 보면?",
     "subtitle": "",
     "body": [
@@ -1083,7 +1019,7 @@
    "id": "s23",
    "section": "04 One next step",
    "kind": "worksheet",
-   "eyebrow": "Question four · 2 minutes",
+   "eyebrow": "Question three · 2 minutes",
    "title": "My user manual:\npage one.",
    "subtitle": "Write only what you know now. It’s okay if it changes later.",
    "body": [],
@@ -1121,7 +1057,7 @@
    ],
    "ko": {
     "section": "04 다음 한 걸음",
-    "eyebrow": "네 번째 질문 · 2분",
+    "eyebrow": "세 번째 질문 · 2분",
     "title": "나의 사용설명서\n첫 페이지.",
     "subtitle": "지금 아는 만큼만 적어도 좋아요. 나중에 바뀌어도 괜찮아요.",
     "body": [],
@@ -1158,7 +1094,7 @@
    "id": "s24",
    "section": "04 One next step",
    "kind": "commitment",
-   "eyebrow": "Question five · 60 seconds",
+   "eyebrow": "Question four · 60 seconds",
    "title": "This week —\nwhat’s one thing you could try?",
    "subtitle": "One small experiment in getting to know yourself.",
    "body": [
@@ -1180,7 +1116,7 @@
    ],
    "ko": {
     "section": "04 다음 한 걸음",
-    "eyebrow": "다섯 번째 질문 · 60초",
+    "eyebrow": "네 번째 질문 · 60초",
     "title": "이번 주,\n한 번 해 볼 수 있는 건?",
     "subtitle": "나를 조금 더 알아가는 작은 시도 하나.",
     "body": [
