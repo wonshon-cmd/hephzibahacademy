@@ -397,7 +397,7 @@ function makeGroups() {
 function renderPrayer() {
   app.innerHTML = `<section class="screen">
     ${sec(1, "시작 기도", "3분 · 함께")}
-    <div class="card glow" style="padding:36px 20px"><p class="verse">하나님, 우리를<br>하나님의 눈으로<br>보게 해 주세요.</p></div>
+    <div class="card glow" style="padding:36px 20px"><p class="verse">하나님, 우리가<br>하나님이 지으신 형상대로<br>살아가게 해 주세요.</p></div>
     <div class="card"><h3>${S.group.name}<span class="muted">${S.group.members.length}명</span></h3>
       <div class="feed">${S.group.members.map((p) => `<div class="feed-item" style="align-items:center">${av(p)}<b>${esc(p.name)}${p.me ? " (나)" : ""}</b></div>`).join("")}</div></div>
   </section>`;
@@ -552,18 +552,13 @@ function renderApply() {
     <div class="card glow"><span class="label">나의 비전 한 문장</span>
       <div class="fill-line">나는 <input class="input" id="v1" placeholder="따뜻한 말" value="${esc(a.v1)}" aria-label="무엇으로">(으)로
         <input class="input" id="v2" placeholder="외로운 친구들" value="${esc(a.v2)}" aria-label="누구를">을(를) 돕는 사람이 되고 싶다.</div></div>
-    <div class="card"><span class="label">이번 주 작은 실천</span>
-      <div class="chips" id="cat">${["지혜", "몸", "하나님", "사람"].map((c) => `<button type="button" class="chip ${a.cat === c ? "on" : ""}">${c}</button>`).join("")}</div>
-      <input class="input" id="pr" maxlength="60" placeholder="새로 온 친구에게 먼저 말 걸기" value="${esc(a.practice)}"></div>
   </section>`;
-  $("#cat").onclick = (e) => { const c = e.target.closest(".chip"); if (!c) return; a.cat = c.textContent; $("#cat").querySelectorAll(".chip").forEach((x) => x.classList.toggle("on", x === c)); };
   actions([
     { label: "예시", ghost: true, onClick: () => {
-      $("#un").value ||= unknown[0] || "분위기를 밝게 해"; $("#v1").value ||= "따뜻한 말"; $("#v2").value ||= "외로운 친구들"; $("#pr").value ||= "새로 온 친구에게 먼저 말 걸기";
-      if (!a.cat) { a.cat = "사람"; $("#cat").querySelectorAll(".chip").forEach((x) => x.classList.toggle("on", x.textContent === "사람")); }
+      $("#un").value ||= unknown[0] || "분위기를 밝게 해"; $("#v1").value ||= "따뜻한 말"; $("#v2").value ||= "외로운 친구들";
     } },
     { label: "꿈과 직업으로", onClick: () => {
-      Object.assign(a, { overlap: $("#ov").value.trim(), unknown: $("#un").value.trim(), v1: $("#v1").value.trim(), v2: $("#v2").value.trim(), practice: $("#pr").value.trim() });
+      Object.assign(a, { overlap: $("#ov").value.trim(), unknown: $("#un").value.trim(), v1: $("#v1").value.trim(), v2: $("#v2").value.trim() });
       if (!a.v1 || !a.v2) { toast("비전 빈칸을 채워 주세요"); return; }
       go(4);
     } },
@@ -579,22 +574,21 @@ function renderDream() {
   app.innerHTML = `<section class="screen">
     ${sec(5, "꿈과 직업", "무엇이 될까보다, 어떤 사람이 될까")}
     <div class="card"><span class="label">이런 사람이 될 수 있어요</span>
-      ${JOBS.map(([j, ex], i) => `<div class="job"><b>${j}</b><span class="ex">${ex}</span><input class="input" id="job${i}" placeholder="나라면?" value="${esc(d.mine[j] || "")}"></div>`).join("")}</div>
+      ${JOBS.map(([j, ex], i) => `<div class="job"><b>${j}</b><span class="ex">${ex}</span></div>`).join("")}</div>
     <div class="card"><span class="label">내 꿈</span>
       ${[0, 1].map((i) => `<input class="input" id="dj${i}" placeholder="직업 — 어떤 사람으로" value="${esc(d.jobs[i])}">`).join("")}</div>
     <div class="card"><h3>번 돈은 어디에?<span class="muted">중요한 순서대로</span></h3><div class="chips" id="money"></div></div>
-    <div class="card"><label class="f" for="shine">그 자리에서 어떻게 빛을 비출까요?<textarea class="input" id="shine" placeholder="환자 이름을 불러 주며 인사하기">${esc(d.shine)}</textarea></label></div>
+    <div class="card"><label class="f" for="shine">그 자리에서 어떻게 빛나는 하나님의 자녀로 살 수 있을까요?<textarea class="input" id="shine" placeholder="환자 이름을 불러 주며 인사하기">${esc(d.shine)}</textarea></label></div>
   </section>`;
   const drawMoney = () => { $("#money").innerHTML = MONEY.map((m) => { const n = d.money.indexOf(m) + 1; return `<button type="button" class="chip ${n ? "on" : ""}" data-m="${m}">${n ? `<span class="n">${n}</span>` : ""}${m}</button>`; }).join(""); };
   drawMoney();
   $("#money").onclick = (e) => { const c = e.target.closest(".chip"); if (!c) return; const i = d.money.indexOf(c.dataset.m); i >= 0 ? d.money.splice(i, 1) : d.money.push(c.dataset.m); drawMoney(); };
   actions([
     { label: "예시", ghost: true, onClick: () => {
-      $("#dj0").value ||= "간호사 — 아픈 사람의 이야기를 끝까지 들어 주는"; $("#job2").value ||= "질문을 반가워하는 선생님";
+      $("#dj0").value ||= "간호사 — 아픈 사람의 이야기를 끝까지 들어 주는";
       $("#shine").value ||= "환자 이름을 불러 주며 인사하기"; if (!d.money.length) { d.money = ["헌금과 나눔", "나와 가족", "다른 사람을 세우는 일", "꿈을 위한 배움"]; drawMoney(); }
     } },
     { label: "짝 기도로", onClick: () => {
-      JOBS.forEach(([j], i) => (d.mine[j] = $("#job" + i).value.trim()));
       d.jobs = [0, 1].map((i) => $("#dj" + i).value.trim()); d.shine = $("#shine").value.trim();
       go(5);
     } },
