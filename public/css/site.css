@@ -297,12 +297,12 @@ a.card:hover h3 { transform: translateX(4px); }
 
 /* ===== Warm tone ===== */
 :root {
-  --paper: #fbf8f2; --paper-2: #f3ece1; --ink: #1b2133; --ink-2: #4b4640; --muted: #8b8276;
-  --rule: #2a2a33; --hair: rgba(120, 92, 55, 0.18); --accent: #e4c58c;
+  --paper: #fcfcfa; --paper-2: #f3f2ee; --ink: #1b2133; --ink-2: #4b4640; --muted: #8b8276;
+  --rule: #2a2a33; --hair: rgba(60, 60, 50, 0.14); --accent: #e4c58c;
   --serif: "Fraunces", "Gowun Batang", Georgia, serif;
 }
 html body { background: var(--paper); }
-html .hero { background: radial-gradient(60% 70% at 92% 8%, rgba(228,197,140,0.09), rgba(228,197,140,0.0) 70%); }
+html .hero { background: radial-gradient(60% 70% at 92% 8%, rgba(228,197,140,0.06), rgba(228,197,140,0) 70%); }
 html .site-header { background: transparent; }
 html .quote, html .names2-verse, html .names2-lead, html .mission b {
   font-family: var(--serif); font-weight: 400; letter-spacing: -0.005em; }
@@ -311,18 +311,18 @@ html .names2-lead { font-size: clamp(22px, 2.2vw, 30px); font-style: italic; }
 html .names2-verse { font-size: 18px; font-style: italic; }
 html .mission b { font-size: 1.12em; font-style: italic; }
 html[lang="ko"] .quote p, html[lang="ko"] .names2-lead, html[lang="ko"] .names2-verse { font-style: normal; font-family: "Gowun Batang", serif; }
-html #light-and-salt { background: linear-gradient(180deg, #f6eee1, #f9f4ea); border-top-color: transparent; }
+html #light-and-salt { background: linear-gradient(180deg, #f7f6f2, #fbfaf7); border-top-color: transparent; }
 html #light-and-salt .hill-art .glow { opacity: .95; }
 html .btn { border-radius: 12px; }
 html .btn:not(.ghost) { background: #1b2133; box-shadow: 0 6px 18px rgba(27,33,51,.14); }
 html .card { border-radius: 0; }
 html a.card:hover { background: rgba(228,197,140,0.04); }
-html .tag { border-color: var(--hair); background: #fffaf0; }
-html .pillars { background: #fdfaf4; }
+html .tag { border-color: var(--hair); background: #fefdfa; }
+html .pillars { background: #fefefc; }
 html .pillar h3 { font-weight: 700; }
-html .site-footer { background: #f4ede2; }
-html .input { border-radius: 10px; background: #fffdf8; }
-html .lang-btn { border-color: var(--hair); background: #fffaf0; }
+html .site-footer { background: #f4f3ef; }
+html .input { border-radius: 10px; background: #ffffff; }
+html .lang-btn { border-color: var(--hair); background: #fefdfa; }
 html .spark { background: var(--accent); box-shadow: 0 0 .12em rgba(228,197,140,0.42); }
 html .lang-btn:hover { background: var(--ink); color: var(--paper); }
 
@@ -340,7 +340,7 @@ html .lang-btn:hover { background: var(--ink); color: var(--paper); }
 .rv-sum b { font-size: 44px; letter-spacing: -0.04em; line-height: 1; }
 .rv-stars { color: #c9a35f; letter-spacing: 2px; }
 .rv-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
-.rv-list li { background: #fffdf9; border: 1px solid var(--hair); border-radius: 14px; padding: 16px; display: grid; gap: 8px; }
+.rv-list li { background: #ffffff; border: 1px solid var(--hair); border-radius: 14px; padding: 16px; display: grid; gap: 8px; }
 .rv-list p { margin: 0; }
 .rv-list small { color: var(--muted); }
 .instructor { display: flex; gap: 16px; align-items: center; }
