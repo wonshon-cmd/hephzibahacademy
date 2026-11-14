@@ -42,9 +42,9 @@ slide("f49", START, "statement",
   notes=["God gives us eternal life, and He knows our daily needs.", "But if we see our relationship with God only as “He supplies the money I need,” we trust Him when money comes and doubt Him when it runs short.", "This doesn’t mean daily needs don’t matter. We bring the hardship of not having enough to God, and we carry our responsibility for the finances entrusted to us."],
   ko_notes=["하나님은 우리에게 영생을 주시는 분입니다. 우리의 먹고사는 필요도 아십니다.", "그러나 하나님과의 관계를 ‘필요한 돈을 채워주시는 관계’로만 이해하면, 돈이 생길 때는 믿고 부족할 때는 하나님을 의심하게 됩니다.", "그렇다고 생활의 필요가 중요하지 않다는 뜻은 아닙니다. 돈이 부족한 어려움도 하나님께 아뢰면서, 내게 맡겨진 재정을 돌볼 책임을 감당하는 것입니다."])
 slide("f50", START, "list",
-  {"eyebrow": "Trust and responsibility", "title": "Trust God.\nManage what’s entrusted, responsibly.", "subtitle": "Like health: because God gave it, we don’t skip the doctor. We exercise, prepare and take care of it.",
+  {"eyebrow": "Trust and responsibility", "title": "How to trust God\nand manage what’s entrusted, responsibly.", "subtitle": "Like health: because God gave it, we don’t skip the doctor. We exercise, prepare and take care of it.",
    "body": ["Working, building skills, checking spending, paying off debt and preparing for the future are all part of faith", "“God provides” is not a reason to put off preparing", "But I also don’t think I can control every result by my own strength", "As stewards, we let money flow to where it’s needed", "Knowing God, and faithfully caring for the life He allowed and the finances entrusted to us: we teach both together"]},
-  {"eyebrow": "신뢰와 책임", "title": "하나님을 신뢰하며,\n맡겨진 돈은 책임 있게 관리한다.", "subtitle": "건강처럼: 하나님이 주셨기에 병원에 안 가는 것이 아니라, 허락하신 것을 잘 대비하고 운동하고 관리합니다.",
+  {"eyebrow": "신뢰와 책임", "title": "하나님을 신뢰하며,\n맡겨진 돈은 책임 있게 관리하는 법.", "subtitle": "건강처럼: 하나님이 주셨기에 병원에 안 가는 것이 아니라, 허락하신 것을 잘 대비하고 운동하고 관리합니다.",
    "body": ["일하고 역량을 기르고, 지출을 확인하고, 빚을 갚고, 미래를 준비하는 일도 신앙과 연결됩니다", "하나님이 채우신다는 고백이 준비를 미루는 이유가 되지는 않습니다", "동시에 모든 결과를 내 힘으로 통제할 수 있다고 생각하지도 않습니다", "청지기로서 맡겨주신 재정을 잘 관리해 필요한 곳에 흘려보냅니다", "하나님을 알아가며, 허락하신 삶과 맡겨진 재정을 성실히 돌보는 것. 이 두 가지를 함께 가르칩니다"]})
 slide("f03", START, "path",
   {"eyebrow": "How we’ll work", "title": "Question first.\nThen Scripture.", "subtitle": "Scripture notes are summaries. Modern finance and math are applications.",
