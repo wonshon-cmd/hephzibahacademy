@@ -163,7 +163,7 @@
     "Your gift keeps the light on — and multiplies.": "당신의 후원이 더 많은 불을 밝히고, 더 크게 자라게 합니다.",
     "Where it goes": "후원금은 이렇게 쓰여요", "Learn & give": "배우고 나누기", "Class fees and monthly gifts.": "수강료와 정기 후원.",
     "Invest": "투자", "Gospel-based startups through Beulah Venture.": "쁄라 벤처를 통해 복음 기반 스타트업에.",
-    "Share profit": "수익 나눔", "Companies share what they earn.": "회사가 번 것을 나눠요.",
+    "Share profit": "수익 나눔", "Companies give back to Hephzibah.": "회사가 번 것을 다시 헵시바로.",
     "Invest more": "다시 투자", "Profits go back into new ventures.": "수익은 새 회사에 다시 투자돼요.",
     "What we invest in": "우리가 투자하는 곳", "Value,": "가격이 아닌,", "not price.": "가치.",
     "Gospel-based companies, built to last — creating value, not just money.": "복음 위에 세운 지속 가능한 회사. 돈이 아닌 가치를 만들어요.",
