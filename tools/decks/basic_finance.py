@@ -35,10 +35,10 @@ slide("f02", START, "statement",
   ko_notes=["헌금과 나눔도 “나는 기독교인이니까 좋은 일을 한다”는 자기평가에서 출발하지 않습니다.", "하나님께 사랑과 은혜를 받은 사람으로서, 하나님의 것을 맡아 관리하는 청지기이자 대리인이라는 책임에서 출발합니다."])
 
 slide("f49", START, "statement",
-  {"eyebrow": "The center of this lecture", "title": "Why do I believe in God?", "subtitle": "To get my money problems solved, or to know God and live with Him?",
-   "body": ["What we seek is not only the money God might give, but God Himself."]},
-  {"eyebrow": "이 강의의 중심", "title": "하나님을 믿는 목적은\n무엇인가?", "subtitle": "돈의 문제를 해결받는 데 있는가, 하나님을 알고 그분과 함께 살아가는 데 있는가?",
-   "body": ["우리가 구하는 것은 하나님이 주실 돈만이 아니라, 하나님 자신입니다."]},
+  {"eyebrow": "The center of this lecture", "title": "How do I trust God\nand manage what’s entrusted responsibly?", "subtitle": "",
+   "body": []},
+  {"eyebrow": "이 강의의 중심", "title": "하나님을 신뢰하며,\n맡겨진 돈은 책임 있게 관리하는\n방법은 무엇인가?", "subtitle": "",
+   "body": []},
   notes=["God gives us eternal life, and He knows our daily needs.", "But if we see our relationship with God only as “He supplies the money I need,” we trust Him when money comes and doubt Him when it runs short.", "This doesn’t mean daily needs don’t matter. We bring the hardship of not having enough to God, and we carry our responsibility for the finances entrusted to us."],
   ko_notes=["하나님은 우리에게 영생을 주시는 분입니다. 우리의 먹고사는 필요도 아십니다.", "그러나 하나님과의 관계를 ‘필요한 돈을 채워주시는 관계’로만 이해하면, 돈이 생길 때는 믿고 부족할 때는 하나님을 의심하게 됩니다.", "그렇다고 생활의 필요가 중요하지 않다는 뜻은 아닙니다. 돈이 부족한 어려움도 하나님께 아뢰면서, 내게 맡겨진 재정을 돌볼 책임을 감당하는 것입니다."])
 slide("f50", START, "list",
@@ -352,14 +352,14 @@ deck = {
     {"label": "Card debt, compound interest, taxes, house, car", "slides": "16–19", "minutes": 10, "minutes2h": 20},
     {"label": "Me at 80, 90, 100: preparing a responsible future", "slides": "20–23", "minutes": 9, "minutes2h": 18},
     {"label": "Work and starting a business: value and faithfulness", "slides": "24", "minutes": 8, "minutes2h": 16},
-    {"label": "Stocks and cash flow: what do I own?", "slides": "25", "minutes": 7, "minutes2h": 14},
+    {"label": "Stocks and cash flow: what do I own, and why?", "slides": "25", "minutes": 7, "minutes2h": 14},
     {"label": "God’s steward: whose will do I use it for?", "slides": "26", "minutes": 6, "minutes2h": 12},
     {"label": "Offering and giving: caring for people with what’s entrusted", "slides": "27", "minutes": 4, "minutes2h": 8},
     {"label": "Joseph again: why did God entrust it?", "slides": "28", "minutes": 2, "minutes2h": 5},
     {"label": "Time, money, talents: how am I using what I have now?", "slides": "29–32", "minutes": 2, "minutes2h": 3}],
   "ko": {"title": "기초재정", "fullTitle": "기초재정 — 하나님의 청지기로 살아가기", "subtitle": "내게 맡겨진 시간과 물질과 능력을 어떻게 사용하고 있는가", "track": "재정", "speaker": "손원규",
     "summary": "미국에서 살아가는 그리스도인의 재정관: 연봉과 실제 생활, 얼마면 충분한가, 카드빚과 복리, 세금, 집과 차, 100세 준비. 질문 → 개인 응답 → 예상과 실제 비교 → 성경 본문 → 적용.",
-    "runOfShow": ["연봉과 실제 생활 — 돈은 어디 갔을까?", "얼마면 충분할까? — 돈과 내 마음", "카드빚·복리·세금·집·차·절세", "80·90·100세의 나 — 책임 있는 미래 준비", "직업과 창업 — 가치와 성실함", "주식과 현금흐름 — 무엇을 소유하는가?", "하나님의 청지기 — 누구의 뜻대로 사용하는가?", "헌금과 나눔 — 맡겨진 것으로 사람을 돌보기", "다시 요셉 — 왜 맡기셨을까?", "시간·물질·달란트 — 지금 받은 것을 어떻게 사용하는가?"]},
+    "runOfShow": ["연봉과 실제 생활 — 돈은 어디 갔을까?", "얼마면 충분할까? — 돈과 내 마음", "카드빚·복리·세금·집·차·절세", "80·90·100세의 나 — 책임 있는 미래 준비", "직업과 창업 — 가치와 성실함", "주식과 현금흐름 — 무엇을 왜 소유하는가?", "하나님의 청지기 — 누구의 뜻대로 사용하는가?", "헌금과 나눔 — 맡겨진 것으로 사람을 돌보기", "다시 요셉 — 왜 맡기셨을까?", "시간·물질·달란트 — 지금 받은 것을 어떻게 사용하는가?"]},
   "slides": S,
 }
 # Fill in slide ranges for the run of show from the section of each slide.

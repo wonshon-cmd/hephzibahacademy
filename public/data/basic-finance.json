@@ -43,7 +43,7 @@
    "minutes2h": 16
   },
   {
-   "label": "Stocks and cash flow: what do I own?",
+   "label": "Stocks and cash flow: what do I own, and why?",
    "slides": "33–36",
    "minutes": 7,
    "minutes2h": 14
@@ -86,7 +86,7 @@
    "카드빚·복리·세금·집·차·절세",
    "80·90·100세의 나 — 책임 있는 미래 준비",
    "직업과 창업 — 가치와 성실함",
-   "주식과 현금흐름 — 무엇을 소유하는가?",
+   "주식과 현금흐름 — 무엇을 왜 소유하는가?",
    "하나님의 청지기 — 누구의 뜻대로 사용하는가?",
    "헌금과 나눔 — 맡겨진 것으로 사람을 돌보기",
    "다시 요셉 — 왜 맡기셨을까?",
@@ -153,11 +153,9 @@
    "section": "Start",
    "kind": "statement",
    "eyebrow": "The center of this lecture",
-   "title": "Why do I believe in God?",
-   "subtitle": "To get my money problems solved, or to know God and live with Him?",
-   "body": [
-    "What we seek is not only the money God might give, but God Himself."
-   ],
+   "title": "How do I trust God\nand manage what’s entrusted responsibly?",
+   "subtitle": "",
+   "body": [],
    "notes": [
     "God gives us eternal life, and He knows our daily needs.",
     "But if we see our relationship with God only as “He supplies the money I need,” we trust Him when money comes and doubt Him when it runs short.",
@@ -166,11 +164,9 @@
    "ko": {
     "section": "시작",
     "eyebrow": "이 강의의 중심",
-    "title": "하나님을 믿는 목적은\n무엇인가?",
-    "subtitle": "돈의 문제를 해결받는 데 있는가, 하나님을 알고 그분과 함께 살아가는 데 있는가?",
-    "body": [
-     "우리가 구하는 것은 하나님이 주실 돈만이 아니라, 하나님 자신입니다."
-    ],
+    "title": "하나님을 신뢰하며,\n맡겨진 돈은 책임 있게 관리하는\n방법은 무엇인가?",
+    "subtitle": "",
+    "body": [],
     "notes": [
      "하나님은 우리에게 영생을 주시는 분입니다. 우리의 먹고사는 필요도 아십니다.",
      "그러나 하나님과의 관계를 ‘필요한 돈을 채워주시는 관계’로만 이해하면, 돈이 생길 때는 믿고 부족할 때는 하나님을 의심하게 됩니다.",
