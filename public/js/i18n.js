@@ -185,8 +185,10 @@
   };
   const original = new WeakMap();
   let mem = null;
-  const get = () => { if (mem) return mem; try { return localStorage.getItem("hz-lang") === "ko" ? "ko" : "en"; } catch { return "en"; } };
-  const set = (v) => { mem = v; try { localStorage.setItem("hz-lang", v); } catch {} };
+  // Every new visit opens in English; a Korean choice lasts only for this browsing session.
+  try { localStorage.removeItem("hz-lang"); } catch {}
+  const get = () => { if (mem) return mem; try { return sessionStorage.getItem("hz-lang") === "ko" ? "ko" : "en"; } catch { return "en"; } };
+  const set = (v) => { mem = v; try { sessionStorage.setItem("hz-lang", v); } catch {} };
   window.hzLang = get;
 
   function apply(root) {

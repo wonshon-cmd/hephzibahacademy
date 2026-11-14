@@ -86,9 +86,9 @@ export function scorePersonality(data, answers) {
 let memLang = null;
 export function getLang() {
   if (memLang) return memLang;
-  try { return localStorage.getItem("hz-lang") === "ko" ? "ko" : "en"; } catch { return "en"; }
+  try { return sessionStorage.getItem("hz-lang") === "ko" ? "ko" : "en"; } catch { return "en"; }
 }
-export function setLang(v) { memLang = v; try { localStorage.setItem("hz-lang", v); } catch {} document.documentElement.lang = v; }
+export function setLang(v) { memLang = v; try { sessionStorage.setItem("hz-lang", v); } catch {} document.documentElement.lang = v; }
 export const t = (en, ko) => (getLang() === "ko" ? ko : en);
 
 // Slide in the current language (Korean fields live under slide.ko).
