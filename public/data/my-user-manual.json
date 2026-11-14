@@ -9,35 +9,45 @@
  "summary": "A short, honest talk about asking “why?” — about study, money, work and happiness — and slowly discovering who God made you to be. Every student joins as an orchestra instrument, answers on their phone, and sees the room’s answers live on screen. It ends with the orchestra, a video, and a personal reflection.",
  "runOfShow": [
   {
-   "label": "The first question & introduction",
+   "label": "Opening: who am I?",
    "slides": "1–9",
-   "minutes": 6
+   "minutes": 7
   },
   {
-   "label": "Questions I met in Kenya",
+   "label": "What I met in Kenya",
    "slides": "10–13",
    "minutes": 5
   },
   {
-   "label": "A user manual — and faith",
-   "slides": "14–24",
-   "minutes": 11
+   "label": "Made for a reason",
+   "slides": "14–17",
+   "minutes": 4
   },
   {
-   "label": "My first page & one next step",
-   "slides": "25–30",
-   "minutes": 9
+   "label": "Seeing it differently",
+   "slides": "18–21",
+   "minutes": 6
   },
   {
-   "label": "The orchestra, the video & your review",
-   "slides": "31–36",
-   "minutes": 9
+   "label": "Before the One who made me",
+   "slides": "22–24",
+   "minutes": 3
+  },
+  {
+   "label": "My first page",
+   "slides": "25–29",
+   "minutes": 7
+  },
+  {
+   "label": "Closing: orchestra, video & review",
+   "slides": "30–36",
+   "minutes": 8
   }
  ],
  "slides": [
   {
    "id": "s01",
-   "section": "Start",
+   "section": "01 Opening: who am I?",
    "kind": "cover",
    "eyebrow": "HEPHZIBAH ACADEMY",
    "title": "My User Manual",
@@ -51,7 +61,7 @@
     "You don’t need to finish figuring out your life today. Let’s just think about it together."
    ],
    "ko": {
-    "section": "시작",
+    "section": "01 시작: 나는 어떤 사람일까?",
     "eyebrow": "HEPHZIBAH ACADEMY",
     "title": "나의 사용 설명서",
     "subtitle": "하나님이 지으신 형상대로 빛나는 삶을 위해",
@@ -67,7 +77,7 @@
   },
   {
    "id": "s02",
-   "section": "01 Questions",
+   "section": "01 Opening: who am I?",
    "kind": "choice",
    "eyebrow": "Question one",
    "title": "What’s taking up\nmost of your mind lately?",
@@ -109,7 +119,7 @@
     "Read out two or three of the results. Don’t ask who picked what. Connect it: “I wrestled with that too.”"
    ],
    "ko": {
-    "section": "01 질문",
+    "section": "01 시작: 나는 어떤 사람일까?",
     "eyebrow": "첫 번째 질문",
     "title": "요즘 머릿속을\n가장 많이 차지하는 건?",
     "subtitle": "",
@@ -134,7 +144,7 @@
   },
   {
    "id": "s02b",
-   "section": "01 Questions",
+   "section": "01 Opening: who am I?",
    "kind": "text-input",
    "eyebrow": "Nice to meet you — I’m Joseph",
    "title": "What kind of person\ndo you think I am?",
@@ -152,7 +162,7 @@
     "Answers that several people type grow bigger on the screen. Read the biggest ones, then say: “Let me tell you.”"
    ],
    "ko": {
-    "section": "01 질문",
+    "section": "01 시작: 나는 어떤 사람일까?",
     "eyebrow": "반가워요, 저는 손원규입니다",
     "title": "나는 어떤 사람일까요?",
     "subtitle": "",
@@ -209,7 +219,7 @@
   },
   {
    "id": "s03",
-   "section": "01 Questions",
+   "section": "01 Opening: who am I?",
    "kind": "intro",
    "eyebrow": "Here’s me",
    "title": "Pharmacist. Company.\nKenya. And a student again.",
@@ -227,7 +237,7 @@
     "Don’t present the numbers as achievements — keep it short, and make them curious about how different experiences connect."
    ],
    "ko": {
-    "section": "01 질문",
+    "section": "01 시작: 나는 어떤 사람일까?",
     "eyebrow": "저는요",
     "title": "약사. 회사. 케냐.\n그리고 다시 학생.",
     "subtitle": "“도대체 뭐 하는 사람이에요?”",
@@ -249,7 +259,7 @@
   },
   {
    "id": "s03b",
-   "section": "01 Questions",
+   "section": "01 Opening: who am I?",
    "kind": "statement",
    "eyebrow": "Back then",
    "title": "The strange me.",
@@ -268,7 +278,7 @@
     "Share honestly — this is who I was."
    ],
    "ko": {
-    "section": "01 질문",
+    "section": "01 시작: 나는 어떤 사람일까?",
     "eyebrow": "그때의 나",
     "title": "이상했던 나.",
     "subtitle": "",
@@ -287,7 +297,7 @@
   },
   {
    "id": "s04",
-   "section": "01 Questions",
+   "section": "01 Opening: who am I?",
    "kind": "question",
    "eyebrow": "But one question was always there",
    "title": "Why?",
@@ -304,7 +314,7 @@
     "Have you ever asked something like that? Don’t ask for answers — just give them a moment to think."
    ],
    "ko": {
-    "section": "01 질문",
+    "section": "01 시작: 나는 어떤 사람일까?",
     "eyebrow": "하지만 항상 있었던 질문은",
     "title": "왜?",
     "subtitle": "",
@@ -326,7 +336,7 @@
   },
   {
    "id": "s05",
-   "section": "01 Questions",
+   "section": "01 Opening: who am I?",
    "kind": "statement",
    "eyebrow": "Imagining my future self",
    "title": "If I get into a good school,\nthen what?",
@@ -344,7 +354,7 @@
     "Pause after the last line."
    ],
    "ko": {
-    "section": "01 질문",
+    "section": "01 시작: 나는 어떤 사람일까?",
     "eyebrow": "앞으로의 나를 상상하면",
     "title": "좋은 학교에 가면,\n그다음은?",
     "subtitle": "",
@@ -366,7 +376,7 @@
   },
   {
    "id": "s05b",
-   "section": "01 Questions",
+   "section": "01 Opening: who am I?",
    "kind": "statement",
    "glow": true,
    "eyebrow": "The question",
@@ -377,7 +387,7 @@
     "[Pause 3 seconds] Let the question sit."
    ],
    "ko": {
-    "section": "01 질문",
+    "section": "01 시작: 나는 어떤 사람일까?",
     "eyebrow": "질문",
     "title": "나는 그냥 열심히\n달려가기 위해 지어졌을까?",
     "subtitle": "",
@@ -389,7 +399,7 @@
   },
   {
    "id": "s06",
-   "section": "01 Questions",
+   "section": "01 Opening: who am I?",
    "kind": "statement",
    "eyebrow": "The question that stopped me",
    "title": "Do I work to live?\nOr live to work?",
@@ -401,7 +411,7 @@
     "[Pause 3 seconds] The question didn’t lead straight to an answer. But I couldn’t just walk past it."
    ],
    "ko": {
-    "section": "01 질문",
+    "section": "01 시작: 나는 어떤 사람일까?",
     "eyebrow": "멈춰 서게 만든 질문",
     "title": "살아가기 위해 일할까?\n일하기 위해 살아갈까?",
     "subtitle": "언젠가 돌아봤을 때, 어떤 삶이었다고 말하고 싶을까?",
@@ -415,7 +425,7 @@
   },
   {
    "id": "s07",
-   "section": "02 A different scene",
+   "section": "02 What I met in Kenya",
    "kind": "number",
    "eyebrow": "Carrying that question",
    "title": "So for a while,\nI stopped.",
@@ -429,7 +439,7 @@
     "Before moving to Kenya, lightly ask: “Has anyone here been to Kenya?” — a quick show of hands, not a formal activity."
    ],
    "ko": {
-    "section": "02 다른 장면",
+    "section": "02 케냐에서 만난 장면",
     "eyebrow": "질문을 안고",
     "title": "그래서 잠깐,\n멈췄습니다.",
     "subtitle": "학교를 1년 쉬었습니다.",
@@ -445,7 +455,7 @@
   },
   {
    "id": "s08",
-   "section": "02 A different scene",
+   "section": "02 What I met in Kenya",
    "kind": "photo",
    "eyebrow": "KENYA",
    "title": "A small room in Kenya,\nand a question.",
@@ -463,7 +473,7 @@
     "Don’t generalize about all of Kenya. Keep it to the people and places you actually met."
    ],
    "ko": {
-    "section": "02 다른 장면",
+    "section": "02 케냐에서 만난 장면",
     "eyebrow": "KENYA",
     "title": "케냐에서 만난\n작은 방과 질문.",
     "subtitle": "내가 당연하게 여겼던 것들을 다시 보게 되었습니다.",
@@ -483,7 +493,7 @@
   },
   {
    "id": "s09",
-   "section": "02 A different scene",
+   "section": "02 What I met in Kenya",
    "kind": "statement",
    "eyebrow": "The scene that stayed with me",
    "title": "The laughter of children\nwho had nothing at all.",
@@ -497,7 +507,7 @@
     "My circumstances couldn’t fully explain my heart. So, when am I happiest? That’s how my question changed."
    ],
    "ko": {
-    "section": "02 다른 장면",
+    "section": "02 케냐에서 만난 장면",
     "eyebrow": "오래 마음에 남은 장면",
     "title": "정말 아무것도 없는\n아이들의 웃음.",
     "subtitle": "",
@@ -514,7 +524,7 @@
   },
   {
    "id": "s10b",
-   "section": "02 A different scene",
+   "section": "02 What I met in Kenya",
    "kind": "statement",
    "eyebrow": "For me",
    "title": "My happiest times.",
@@ -531,7 +541,7 @@
     "Share your own happiest times."
    ],
    "ko": {
-    "section": "02 다른 장면",
+    "section": "02 케냐에서 만난 장면",
     "eyebrow": "저에게는",
     "title": "내가 가장\n행복했던 시간.",
     "subtitle": "",
@@ -549,7 +559,7 @@
   },
   {
    "id": "s11",
-   "section": "03 The user manual",
+   "section": "03 Made for a reason",
    "kind": "objects",
    "eyebrow": "Another question",
    "title": "Everything that’s made\nis made for a reason.",
@@ -563,7 +573,7 @@
     "We’ll make clear on the value slide that this isn’t about judging people like objects. For now, keep it a short, curiosity-opening question."
    ],
    "ko": {
-    "section": "03 사용설명서",
+    "section": "03 만들어진 이유",
     "eyebrow": "또 하나의 질문",
     "title": "만들어진 것에는\n만들어진 이유.",
     "subtitle": "의자. 스마트폰. 자동차.",
@@ -579,7 +589,7 @@
   },
   {
    "id": "s12",
-   "section": "03 The user manual",
+   "section": "03 Made for a reason",
    "kind": "phone",
    "eyebrow": "Imagine this for a second",
    "title": "What if you used\nyour phone like this?",
@@ -594,7 +604,7 @@
     "You can use them that way — but that isn’t what they were made for."
    ],
    "ko": {
-    "section": "03 사용설명서",
+    "section": "03 만들어진 이유",
     "eyebrow": "잠깐 상상해 봐요",
     "title": "스마트폰을\n이렇게 쓴다면?",
     "subtitle": "",
@@ -613,7 +623,7 @@
   },
   {
    "id": "s12b",
-   "section": "03 The user manual",
+   "section": "03 Made for a reason",
    "kind": "statement",
    "eyebrow": "To use it well",
    "title": "To use it well,\nknow why it was made.",
@@ -624,7 +634,7 @@
     "So to live well, we need to know why we were made."
    ],
    "ko": {
-    "section": "03 사용설명서",
+    "section": "03 만들어진 이유",
     "eyebrow": "잘 쓰려면",
     "title": "잘 쓰려면,\n왜 만들어졌는지 알아야 합니다.",
     "subtitle": "",
@@ -638,7 +648,7 @@
   },
   {
    "id": "s13",
-   "section": "03 The user manual",
+   "section": "03 Made for a reason",
    "kind": "contrast",
    "eyebrow": "Even in the same house",
    "title": "Why are we\nall so different?",
@@ -652,7 +662,7 @@
     "[Pause 5 seconds] Have them silently think of one way they’re like the person next to them, and one way they’re different. No sharing required."
    ],
    "ko": {
-    "section": "03 사용설명서",
+    "section": "03 만들어진 이유",
     "eyebrow": "같은 집에서도 이렇게 다른데",
     "title": "왜 우리는\n이렇게 다를까요?",
     "subtitle": "성격도, 재능도, 좋아하는 것도.",
@@ -668,7 +678,7 @@
   },
   {
    "id": "s14",
-   "section": "03 The user manual",
+   "section": "04 Seeing it differently",
    "kind": "money",
    "eyebrow": "The way I saw money changed",
    "title": "The same $100.\nA different weight.",
@@ -684,7 +694,7 @@
     "Don’t present $100 as a price that solves tuition or medical bills. Share only a specific example you actually experienced. Don’t ask students to give."
    ],
    "ko": {
-    "section": "03 사용설명서",
+    "section": "04 다르게 보기",
     "eyebrow": "돈을 보는 눈도 달라졌습니다",
     "title": "같은 100달러.\n다르게 느껴진 무게.",
     "subtitle": "얼마를 갖는가와 함께, 어디에 쓰는가를 생각하게 됐습니다.",
@@ -702,7 +712,7 @@
   },
   {
    "id": "s15",
-   "section": "03 The user manual",
+   "section": "04 Seeing it differently",
    "kind": "turn",
    "eyebrow": "Back to school, then to work",
    "title": "The work continued —\nbut the reason changed.",
@@ -718,7 +728,7 @@
     "[Slowly] When the reason I live changed, the same work felt different."
    ],
    "ko": {
-    "section": "03 사용설명서",
+    "section": "04 다르게 보기",
     "eyebrow": "다시 학교로, 그리고 일터로",
     "title": "하던 일은 이어졌지만,\n하는 이유가 달라졌습니다.",
     "subtitle": "약대를 졸업하고, 회사를 시작했습니다.",
@@ -736,7 +746,7 @@
   },
   {
    "id": "s16",
-   "section": "03 The user manual",
+   "section": "04 Seeing it differently",
    "kind": "reframe-examples",
    "eyebrow": "Getting to know myself",
    "title": "Even the parts I didn’t like\nhad another side.",
@@ -761,7 +771,7 @@
     "This doesn’t mean every struggle automatically becomes a strength. It’s okay to get help with hard things. The point: don’t define yourself by one weakness."
    ],
    "ko": {
-    "section": "03 사용설명서",
+    "section": "04 다르게 보기",
     "eyebrow": "나를 알아간다는 것",
     "title": "내가 아쉬워하던 모습에도\n다른 면이 있었습니다.",
     "subtitle": "어떻게 보느냐에 따라 다르게 볼 수 있어요.",
@@ -788,7 +798,7 @@
   },
   {
    "id": "s17",
-   "section": "03 The user manual",
+   "section": "04 Seeing it differently",
    "kind": "reframe-input",
    "eyebrow": "Question two · 60 seconds",
    "title": "Take one part of you —\nand look from another angle.",
@@ -809,7 +819,7 @@
     "Don’t evaluate shared answers — just receive them: “That’s a great way to see it.” Don’t force a positive conclusion on anyone who couldn’t find one."
    ],
    "ko": {
-    "section": "03 사용설명서",
+    "section": "04 다르게 보기",
     "eyebrow": "두 번째 질문 · 60초",
     "title": "내 모습 하나를,\n다른 각도에서 보면?",
     "subtitle": "",
@@ -844,7 +854,7 @@
   },
   {
    "id": "s18",
-   "section": "03 The user manual",
+   "section": "05 Before the One who made me",
    "kind": "faith-statement",
    "eyebrow": "Something I really want to add",
    "title": "Before God,\nyou are already precious",
@@ -858,7 +868,7 @@
     "Don’t present this as a direct Bible quote. Say it slowly, so the “function” metaphor never limits anyone’s worth."
    ],
    "ko": {
-    "section": "03 사용설명서",
+    "section": "05 지으신 분 앞에서",
     "eyebrow": "이 이야기에 꼭 덧붙이고 싶은 말",
     "title": "하나님 앞에서\n너는 이미 소중한 사람",
     "subtitle": "아직 잘하는 일을 몰라도. 지금 뚜렷한 꿈이 없어도.",
@@ -874,7 +884,7 @@
   },
   {
    "id": "s18b",
-   "section": "03 The user manual",
+   "section": "05 Before the One who made me",
    "kind": "statement",
    "glow": true,
    "eyebrow": "Psalm 139:14",
@@ -886,7 +896,7 @@
     "This is a thankful confession: God made me, and what He makes is wonderful."
    ],
    "ko": {
-    "section": "03 사용설명서",
+    "section": "05 지으신 분 앞에서",
     "eyebrow": "시편 139:14",
     "title": "내가 주께 감사하옴은\n나를 지으심이 심히 기묘하심이라.",
     "subtitle": "주께서 하시는 일이 기이함을 내 영혼이 매우 잘 아나이다.",
@@ -899,7 +909,7 @@
   },
   {
    "id": "s19",
-   "section": "03 The user manual",
+   "section": "05 Before the One who made me",
    "kind": "faith-practice",
    "eyebrow": "",
    "title": "“God,\nwho am I?”",
@@ -911,7 +921,7 @@
     "We can ask through Scripture and prayer, and by talking with trusted adults and friends who know us. It’s okay if the answer doesn’t come all at once."
    ],
    "ko": {
-    "section": "03 사용설명서",
+    "section": "05 지으신 분 앞에서",
     "eyebrow": "",
     "title": "“하나님,\n저는 어떤 사람인가요?”",
     "subtitle": "",
@@ -925,7 +935,7 @@
   },
   {
    "id": "s20",
-   "section": "04 One next step",
+   "section": "06 My first page",
    "kind": "testimony",
    "eyebrow": "",
    "title": "Looking back on the last 10 years,\nit has truly been a time of gratitude.",
@@ -937,7 +947,7 @@
     "Be careful not to suggest you must be perfectly happy every day, or that anxiety comes from a lack of faith."
    ],
    "ko": {
-    "section": "04 다음 한 걸음",
+    "section": "06 나의 첫 페이지",
     "eyebrow": "",
     "title": "지난 10년을 돌아보면\n참으로 감사한 시간이었습니다.",
     "subtitle": "왜 살아가는지, 어떤 사람인지 조금씩 알아가고 있기 때문입니다.",
@@ -951,7 +961,7 @@
   },
   {
    "id": "s21",
-   "section": "04 One next step",
+   "section": "06 My first page",
    "kind": "statement",
    "eyebrow": "",
    "title": "God made each of you differently,\nand each for a reason.",
@@ -963,7 +973,7 @@
     "Add that it’s okay to still be figuring it out — so no one leaves thinking, “If I don’t have an answer now, am I too late?”"
    ],
    "ko": {
-    "section": "04 다음 한 걸음",
+    "section": "06 나의 첫 페이지",
     "eyebrow": "",
     "title": "하나님께서 여러분을 다 다르게 만드신 데에는\n각자의 이유가 있습니다.",
     "subtitle": "환경도, 성격도, 재능도, 꿈도 다르니까요.",
@@ -977,7 +987,7 @@
   },
   {
    "id": "s22",
-   "section": "04 One next step",
+   "section": "06 My first page",
    "kind": "questions",
    "eyebrow": "Questions worth coming back to",
    "title": "What kind of life\ndo I want to live?",
@@ -995,7 +1005,7 @@
     "Next, we’ll write down what comes to mind right now — a first page you can rewrite later."
    ],
    "ko": {
-    "section": "04 다음 한 걸음",
+    "section": "06 나의 첫 페이지",
     "eyebrow": "앞으로도 다시 꺼내 볼 질문",
     "title": "나는 어떤 삶을\n살고 싶을까?",
     "subtitle": "하나씩, 천천히.",
@@ -1015,7 +1025,7 @@
   },
   {
    "id": "s23",
-   "section": "04 One next step",
+   "section": "06 My first page",
    "kind": "worksheet",
    "eyebrow": "Question three · 2 minutes",
    "title": "My user manual:\npage one.",
@@ -1054,7 +1064,7 @@
     "This page stays private. Mention they can download it on their phone, and that filling in just one or two boxes is fine."
    ],
    "ko": {
-    "section": "04 다음 한 걸음",
+    "section": "06 나의 첫 페이지",
     "eyebrow": "세 번째 질문 · 2분",
     "title": "나의 사용설명서\n첫 페이지.",
     "subtitle": "지금 아는 만큼만 적어도 좋아요. 나중에 바뀌어도 괜찮아요.",
@@ -1090,7 +1100,7 @@
   },
   {
    "id": "s25",
-   "section": "04 One next step",
+   "section": "06 My first page",
    "kind": "prayer",
    "eyebrow": "A moment to pause",
    "title": "God,\nhelp me know who I am.",
@@ -1102,7 +1112,7 @@
     "Don’t ask for any particular emotion or decision. Leave a short silence after the prayer."
    ],
    "ko": {
-    "section": "04 다음 한 걸음",
+    "section": "06 나의 첫 페이지",
     "eyebrow": "잠깐 멈추는 시간",
     "title": "하나님,\n저를 알아가게 해 주세요.",
     "subtitle": "나의 지어진 목적을 알게 하시고, 그 목적대로 세상을 살아갈 수 있기를.",
@@ -1116,7 +1126,7 @@
   },
   {
    "id": "s26",
-   "section": "Closing",
+   "section": "07 Closing: orchestra, video & review",
    "kind": "closing",
    "eyebrow": "HEPHZIBAH ACADEMY",
    "title": "That’s why every day\nis full of joy and hope.",
@@ -1137,7 +1147,7 @@
     "I’m cheering you on, truly. Thank you for listening and thinking together. If there’s time, take one or two questions from the screen — then move on to the orchestra."
    ],
    "ko": {
-    "section": "마침",
+    "section": "07 마침: 오케스트라, 영상, 리뷰",
     "eyebrow": "HEPHZIBAH ACADEMY",
     "title": "그래서 매일매일이\n행복하고 기대됩니다.",
     "subtitle": "",
@@ -1170,7 +1180,7 @@
   },
   {
    "id": "s27",
-   "section": "Closing",
+   "section": "07 Closing: orchestra, video & review",
    "kind": "orchestra",
    "eyebrow": "Every instrument has its own voice",
    "title": "Alone, each one\nsounds like this.",
@@ -1183,7 +1193,7 @@
     "Then move on to the video."
    ],
    "ko": {
-    "section": "마침",
+    "section": "07 마침: 오케스트라, 영상, 리뷰",
     "eyebrow": "모든 악기에는 저마다의 소리가 있어요",
     "title": "혼자서는,\n이런 소리가 나요.",
     "subtitle": "악기를 눌러 그 파트만 들어 보세요. 그다음 함께 들어 봐요.",
@@ -1198,7 +1208,7 @@
   },
   {
    "id": "s28",
-   "section": "Closing",
+   "section": "07 Closing: orchestra, video & review",
    "kind": "video",
    "eyebrow": "Together",
    "title": "The Mission — Gabriel’s Oboe",
@@ -1214,7 +1224,7 @@
     "Afterwards, a short pause. Then: “On your phone, tell me what you learned today.”"
    ],
    "ko": {
-    "section": "마침",
+    "section": "07 마침: 오케스트라, 영상, 리뷰",
     "eyebrow": "함께",
     "title": "미션 — 가브리엘의 오보에",
     "subtitle": "엔니오 모리코네가 직접 지휘합니다.",
@@ -1228,7 +1238,7 @@
   },
   {
    "id": "s28b",
-   "section": "Closing",
+   "section": "07 Closing: orchestra, video & review",
    "kind": "statement",
    "glow": true,
    "eyebrow": "Isaiah 55:8–9",
@@ -1239,7 +1249,7 @@
     "Read slowly."
    ],
    "ko": {
-    "section": "마침",
+    "section": "07 마침: 오케스트라, 영상, 리뷰",
     "eyebrow": "이사야 55:8–9",
     "title": "이는 내 생각이 너희의 생각과 다르며\n내 길은 너희의 길과 다름이니라.",
     "subtitle": "여호와의 말씀이니라. 이는 하늘이 땅보다 높음 같이 내 길은 너희의 길보다 높으며 내 생각은 너희의 생각보다 높음이니라.",
@@ -1252,7 +1262,7 @@
   },
   {
    "id": "s28c",
-   "section": "Closing",
+   "section": "07 Closing: orchestra, video & review",
    "kind": "statement",
    "glow": true,
    "eyebrow": "",
@@ -1263,7 +1273,7 @@
     "Say it slowly, looking around the room."
    ],
    "ko": {
-    "section": "마침",
+    "section": "07 마침: 오케스트라, 영상, 리뷰",
     "eyebrow": "",
     "title": "우리 각자의 삶이 어떻게 될지는 알 수 없지만,\n하나님은 여러분 한 사람 한 사람을 통해\n정말로 큰 역사를 만들어 가고 계십니다.",
     "subtitle": "",
@@ -1277,7 +1287,7 @@
   },
   {
    "id": "s30",
-   "section": "Closing",
+   "section": "07 Closing: orchestra, video & review",
    "kind": "candle",
    "eyebrow": "Light and salt",
    "title": "In your own place,\nin what you’ve been given —\nshine as a child of God.",
@@ -1287,7 +1297,7 @@
     "Close with this. Let the candle stay on screen."
    ],
    "ko": {
-    "section": "마침",
+    "section": "07 마침: 오케스트라, 영상, 리뷰",
     "eyebrow": "빛과 소금",
     "title": "각자 자기 자리에서,\n맡겨진 상황에서 빛나는\n하나님의 자녀로 살기를.",
     "subtitle": "",
@@ -1299,7 +1309,7 @@
   },
   {
    "id": "s29",
-   "section": "Closing",
+   "section": "07 Closing: orchestra, video & review",
    "kind": "review",
    "eyebrow": "Before you go",
    "title": "What did you\nlearn today?",
@@ -1322,7 +1332,7 @@
     "They can write how they’ll use their strengths and weaknesses, and leave an email if they’d like job matches later. Remind them email is optional and only with their permission."
    ],
    "ko": {
-    "section": "마침",
+    "section": "07 마침: 오케스트라, 영상, 리뷰",
     "eyebrow": "마치기 전에",
     "title": "오늘 무엇을\n배웠나요?",
     "subtitle": "하나만 나누고, 강의를 평가하고, 내 결과를 휴대폰에서 확인해요.",
@@ -1368,11 +1378,13 @@
   "speaker": "손원규",
   "summary": "공부, 돈, 일, 행복에 대해 \"왜?\"라고 묻고, 하나님이 나를 어떤 사람으로 지으셨는지 조금씩 알아가는 이야기. 학생들은 오케스트라 악기 이름으로 참여해 휴대폰으로 답하고, 그 답이 화면에 실시간으로 나타납니다.",
   "runOfShow": [
-   "처음 질문과 소개",
-   "케냐에서 만난 질문",
-   "사용설명서와 믿음",
-   "나의 첫 페이지와 다음 한 걸음",
-   "오케스트라, 영상, 그리고 나의 리뷰"
+   "시작: 나는 어떤 사람일까?",
+   "케냐에서 만난 장면",
+   "만들어진 이유",
+   "다르게 보기",
+   "지으신 분 앞에서",
+   "나의 첫 페이지",
+   "마침: 오케스트라, 영상, 리뷰"
   ]
  },
  "protected": true,

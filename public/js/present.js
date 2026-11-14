@@ -165,7 +165,8 @@ function render() {
   if (renderedSlide !== state.slideIndex) orchestra.stop();
   renderedSlide = state.slideIndex;
   const stage = document.getElementById("stage");
-  stage.replaceChildren(buildSlide(slide), slideLogo());
+  stage.replaceChildren(h("div", { class: "canvas" }, buildSlide(slide), slideLogo()));
+  fitStage();
   document.getElementById("pos").textContent = `${String(state.slideIndex + 1).padStart(2, "0")} / ${deck.slides.length}`;
   document.getElementById("bar").style.width = `${((state.slideIndex + 1) / deck.slides.length) * 100}%`;
   document.getElementById("section").textContent = slide.section;
@@ -303,6 +304,16 @@ function photoUrl(src) {
   return `/private/${encodeURIComponent(src.slice(8))}` + (room ? `?room=${room.code}` : "");
 }
 
+// Phones and portrait screens: keep the 16:9 slide and scale it down to fit.
+function fitStage() {
+  const st = document.getElementById("stage"); if (!st) return;
+  const small = innerWidth < 1000 || innerWidth < innerHeight;
+  document.body.classList.toggle("fit", small);
+  const c = st.querySelector(".canvas"); if (!c) return;
+  c.style.transform = small ? `translate(-50%, -50%) scale(${Math.min(st.clientWidth / 1280, st.clientHeight / 720)})` : "";
+}
+addEventListener("resize", fitStage);
+
 // Small logo in the bottom corner of every slide.
 function slideLogo() {
   const box = h("div", { class: "slide-logo", "aria-hidden": "true" });
@@ -315,7 +326,7 @@ function buildSlide(slide) {
   const ix = slide.interaction;
 
   if (slide.kind === "cover") {
-    el.style.gridTemplateColumns = room ? "1fr auto auto" : "1fr auto"; el.style.gap = "4vw"; el.style.alignItems = "center";
+    el.style.gridTemplateColumns = room ? "1fr auto auto" : "1fr auto"; el.style.gap = "4cqw"; el.style.alignItems = "center";
     const c = head(slide);
     c.querySelector(".title").append(h("span", { class: "spark", "aria-hidden": "true" }));
     if (slide.body && slide.body[0]) c.append(h("div", { class: "accent" }), h("p", { class: "subtitle", style: "font-weight:700;color:var(--ink)", text: slide.body[0] }));
@@ -325,7 +336,7 @@ function buildSlide(slide) {
   }
 
   if (slide.kind === "candle") {
-    el.style.gridTemplateColumns = "1.2fr 1fr"; el.style.gap = "4vw"; el.style.alignItems = "center";
+    el.style.gridTemplateColumns = "1.2fr 1fr"; el.style.gap = "4cqw"; el.style.alignItems = "center";
     const c = head(slide);
     c.querySelector(".title").classList.add("candle-title");
     const art = h("div", { class: "cover-door" }); art.innerHTML = CANDLE_SVG;
@@ -337,7 +348,7 @@ function buildSlide(slide) {
     el.classList.add("video");
     const v = slide.video;
     el.append(h("div", { style: "display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap" },
-      h("div", {}, h("p", { class: "eyebrow", style: "margin-bottom:8px", text: slide.eyebrow }), h("h1", { class: "title", style: "font-size:clamp(26px,3vw,48px)", text: slide.title })),
+      h("div", {}, h("p", { class: "eyebrow", style: "margin-bottom:8px", text: slide.eyebrow }), h("h1", { class: "title", style: "font-size:clamp(26px,3cqw,48px)", text: slide.title })),
       h("a", { class: "ctl", href: `https://www.youtube.com/watch?v=${v.youtubeId}`, target: "_blank", rel: "noopener", text: t("Open on YouTube ↗", "YouTube에서 열기 ↗") })));
     const frame = h("div", { class: "video-frame" });
     const iframe = h("iframe", { src: `https://www.youtube-nocookie.com/embed/${v.youtubeId}?rel=0&modestbranding=1`, title: v.title,
@@ -372,7 +383,7 @@ function buildSlide(slide) {
     el.classList.add("split-live", "compact");
     const c = head(slide);
     if (ix.type === "text" || ix.type === "review") {
-      c.append(h("p", { class: "subtitle", style: "font-size:clamp(14px,1.2vw,18px);color:var(--muted)" }, room ? `${t("Answer on your phone", "휴대폰으로 답해 주세요")} · ${joinHost()}${room.code}` : ""));
+      c.append(h("p", { class: "subtitle", style: "font-size:clamp(14px,1.2cqw,18px);color:var(--muted)" }, room ? `${t("Answer on your phone", "휴대폰으로 답해 주세요")} · ${joinHost()}${room.code}` : ""));
       if (ix.type === "review") c.append(h("p", { class: "subtitle", id: "reviewStats", style: "font-weight:700;color:var(--ink)" }));
       const wrap = h("div", { class: "wall-wrap" },
         h("div", { class: "wall-head" }, h("span", { text: ix.channel === "qa" ? t("Your questions", "질문") : ix.type === "review" ? t("What we learned", "우리가 배운 것") : t("Live answers", "실시간 답변") }), h("span", { id: "wallCount" })),
@@ -393,7 +404,7 @@ function buildSlide(slide) {
     for (const r of slide.body) box.append(h("div", {}, h("span", { class: "from", text: r.trait }), h("span", { text: "→" }), h("span", { text: r.possibility })));
     c.append(box);
   } else if (slide.kind === "photo") {
-    el.style.gridTemplateColumns = "1.1fr 1fr"; el.style.gap = "4vw";
+    el.style.gridTemplateColumns = "1.1fr 1fr"; el.style.gap = "4cqw";
     const pic = slide.photo.src
       ? h("figure", { class: "photo-fig" }, h("img", { src: photoUrl(slide.photo.src), alt: slide.photo.alt || "" }))
       : h("div", { class: "photo-slot" }, h("div", {}, h("b", { text: slide.photo.label }), h("p", { style: "max-width:36ch", text: slide.photo.note })));
@@ -411,14 +422,14 @@ function buildSlide(slide) {
     return el;
   } else if (ix && ix.type === "estimate") {
     el.classList.add("compact");
-    c.append(h("div", { class: "tabs", style: "margin-top:24px" }, ix.categories.map((cat) => h("span", { class: "tag", style: "font-size:clamp(13px,1.1vw,16px)" }, cat.label))));
+    c.append(h("div", { class: "tabs", style: "margin-top:24px" }, ix.categories.map((cat) => h("span", { class: "tag", style: "font-size:clamp(13px,1.1cqw,16px)" }, cat.label))));
     c.append(h("ul", { class: "blist" }, slide.body.map((b, i) => h("li", {}, h("span", { text: String(i + 1).padStart(2, "0") }), b))));
   } else if (ix && ix.type === "checklist") {
     el.classList.add("compact");
-    c.append(h("ul", { class: "blist", style: "grid-template-columns:1fr" }, slide.body.map((b, i) => h("li", { style: "font-size:clamp(16px,1.5vw,24px);padding:12px 0" }, h("span", { text: String(i + 1).padStart(2, "0") }), b))));
+    c.append(h("ul", { class: "blist", style: "grid-template-columns:1fr" }, slide.body.map((b, i) => h("li", { style: "font-size:clamp(16px,1.5cqw,24px);padding:12px 0" }, h("span", { text: String(i + 1).padStart(2, "0") }), b))));
   } else if (ix && ix.type === "private") {
     c.append(h("ul", { class: "blist" }, ix.fields.map((f, i) => h("li", {}, h("span", { text: String(i + 1).padStart(2, "0") }), f.label))));
-    c.append(h("p", { class: "subtitle", style: "font-size:clamp(14px,1.2vw,18px);color:var(--muted)", text: t("✎ Write this on your phone. ", "✎ 휴대폰에 적어 보세요. ") + ix.privacy }));
+    c.append(h("p", { class: "subtitle", style: "font-size:clamp(14px,1.2cqw,18px);color:var(--muted)", text: t("✎ Write this on your phone. ", "✎ 휴대폰에 적어 보세요. ") + ix.privacy }));
   } else if (Array.isArray(slide.body) && slide.body.length && slide.kind !== "cover" && slide.kind !== "closing") {
     if (slide.body.length === 1) c.append(h("div", { class: "accent" }), h("p", { class: "subtitle", style: "font-weight:700;color:var(--ink)", text: slide.body[0] }));
     else c.append(h("ul", { class: "blist" + (slide.layout === "stack" ? " stack" : "") }, slide.body.map((b, i) => h("li", { class: slide.reveal ? "step" : null }, h("span", { text: String(i + 1).padStart(2, "0") }), b))));
@@ -443,7 +454,7 @@ function toggleQr() {
   const o = document.getElementById("qrOverlay");
   if (!o.hidden) { o.hidden = true; return; }
   o.replaceChildren(h("div", { class: "big" }, qrBox(true),
-    h("div", {}, h("p", { class: "eyebrow", text: t("Join the session", "강의 입장") }), h("h2", { class: "display", style: "font-size:clamp(40px,6vw,96px)" }, t("Scan, or go to", "스캔하거나 접속하세요"), h("br"), h("u", { text: joinHost() }), h("br"), room.code),
+    h("div", {}, h("p", { class: "eyebrow", text: t("Join the session", "강의 입장") }), h("h2", { class: "display", style: "font-size:clamp(40px,6cqw,96px)" }, t("Scan, or go to", "스캔하거나 접속하세요"), h("br"), h("u", { text: joinHost() }), h("br"), room.code),
       h("p", { class: "lead", text: t("Press Q or Esc to close.", "Q 또는 Esc로 닫기") }))));
   o.hidden = false;
   o.onclick = () => (o.hidden = true);
@@ -549,7 +560,7 @@ function renderCloud(wall, msgs) {
     let n = old.get(k);
     if (!n) n = h("span", { class: "cw", "data-k": k });
     n.replaceChildren(g.text, g.n > 1 ? h("sup", { text: "×" + g.n }) : "");
-    n.style.fontSize = `clamp(14px, ${(size / 13).toFixed(2)}vw, ${Math.round(size * 1.3)}px)`;
+    n.style.fontSize = `clamp(14px, ${(size / 13).toFixed(2)}cqw, ${Math.round(size * 1.3)}px)`;
     n.classList.toggle("hot", g.n === max && max > 1);
     frag.push(n);
   }
