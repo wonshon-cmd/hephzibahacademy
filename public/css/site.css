@@ -297,12 +297,12 @@ a.card:hover h3 { transform: translateX(4px); }
 
 /* ===== Warm tone ===== */
 :root {
-  --paper: #fcfcfa; --paper-2: #f3f2ee; --ink: #1b2133; --ink-2: #4b4640; --muted: #8b8276;
+  --paper: #ffffff; --paper-2: #f4f4f2; --ink: #1b2133; --ink-2: #4b4640; --muted: #8b8276;
   --rule: #2a2a33; --hair: rgba(60, 60, 50, 0.14); --accent: #e4c58c;
   --serif: "Fraunces", "Gowun Batang", Georgia, serif;
 }
 html body { background: var(--paper); }
-html .hero { background: radial-gradient(60% 70% at 92% 8%, rgba(228,197,140,0.06), rgba(228,197,140,0) 70%); }
+html .hero { background: radial-gradient(60% 70% at 92% 8%, rgba(228,197,140,0.04), rgba(228,197,140,0) 70%); }
 html .site-header { background: transparent; }
 html .quote, html .names2-verse, html .names2-lead, html .mission b {
   font-family: var(--serif); font-weight: 400; letter-spacing: -0.005em; }
@@ -311,18 +311,18 @@ html .names2-lead { font-size: clamp(22px, 2.2vw, 30px); font-style: italic; }
 html .names2-verse { font-size: 18px; font-style: italic; }
 html .mission b { font-size: 1.12em; font-style: italic; }
 html[lang="ko"] .quote p, html[lang="ko"] .names2-lead, html[lang="ko"] .names2-verse { font-style: normal; font-family: "Gowun Batang", serif; }
-html #light-and-salt { background: linear-gradient(180deg, #f7f6f2, #fbfaf7); border-top-color: transparent; }
+html #light-and-salt { background: linear-gradient(180deg, #fafaf9, #ffffff); border-top-color: transparent; }
 html #light-and-salt .hill-art .glow { opacity: .95; }
 html .btn { border-radius: 12px; }
 html .btn:not(.ghost) { background: #1b2133; box-shadow: 0 6px 18px rgba(27,33,51,.14); }
 html .card { border-radius: 0; }
 html a.card:hover { background: rgba(228,197,140,0.04); }
-html .tag { border-color: var(--hair); background: #fefdfa; }
-html .pillars { background: #fefefc; }
+html .tag { border-color: var(--hair); background: #ffffff; }
+html .pillars { background: #ffffff; }
 html .pillar h3 { font-weight: 700; }
-html .site-footer { background: #f4f3ef; }
+html .site-footer { background: #f6f6f4; }
 html .input { border-radius: 10px; background: #ffffff; }
-html .lang-btn { border-color: var(--hair); background: #fefdfa; }
+html .lang-btn { border-color: var(--hair); background: #ffffff; }
 html .spark { background: var(--accent); box-shadow: 0 0 .12em rgba(228,197,140,0.42); }
 html .lang-btn:hover { background: var(--ink); color: var(--paper); }
 
@@ -353,3 +353,5 @@ html .lang-btn:hover { background: var(--ink); color: var(--paper); }
   .lang-btn.lang-mobile { display: inline-block; margin-left: auto; margin-right: 10px; }
   .nav .lang-btn { display: none; }
 }
+.brand .np { align-self: center; margin-left: 12px; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--hair); border-radius: 999px; padding: 3px 9px; white-space: nowrap; }
+@media (max-width: 1180px) { .brand .np { display: none; } }
