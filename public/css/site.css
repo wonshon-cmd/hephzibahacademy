@@ -297,8 +297,8 @@ a.card:hover h3 { transform: translateX(4px); }
 
 /* ===== Warm tone ===== */
 :root {
-  --paper: #ffffff; --paper-2: #f4f4f2; --ink: #1b2133; --ink-2: #4b4640; --muted: #8b8276;
-  --rule: #2a2a33; --hair: rgba(60, 60, 50, 0.14); --accent: #e4c58c;
+  --paper: #ffffff; --paper-2: #f4f4f2; --ink: #000000; --ink-2: #000000; --muted: #3d3d3d;
+  --rule: #000000; --hair: rgba(60, 60, 50, 0.14); --accent: #e4c58c;
   --serif: "Fraunces", "Gowun Batang", Georgia, serif;
 }
 html body { background: var(--paper); }
@@ -314,7 +314,7 @@ html[lang="ko"] .quote p, html[lang="ko"] .names2-lead, html[lang="ko"] .names2-
 html #light-and-salt { background: linear-gradient(180deg, #fafaf9, #ffffff); border-top-color: transparent; }
 html #light-and-salt .hill-art .glow { opacity: .95; }
 html .btn { border-radius: 12px; }
-html .btn:not(.ghost) { background: #1b2133; box-shadow: 0 6px 18px rgba(27,33,51,.14); }
+html .btn:not(.ghost) { background: #000000; box-shadow: 0 6px 18px rgba(27,33,51,.14); }
 html .card { border-radius: 0; }
 html a.card:hover { background: rgba(228,197,140,0.04); }
 html .tag { border-color: var(--hair); background: #ffffff; }
