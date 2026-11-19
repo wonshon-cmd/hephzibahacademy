@@ -314,6 +314,33 @@ function fitStage() {
 }
 addEventListener("resize", fitStage);
 
+// Bar (+ optional line) chart for "chart" slides: {labels, bars:{name, values}, line:{name, values}, unit, max}.
+function chartSvg(c) {
+  const W = 1000, H = 400, L = 70, R = 70, T = 44, B = 46;
+  const vals = [...(c.bars ? c.bars.values : []), ...(c.line ? c.line.values : [])];
+  const max = c.max || Math.max(...vals) * 1.15;
+  const n = c.labels.length, step = (W - L - R) / n, bw = Math.min(64, step * 0.56);
+  const x = (i) => L + step * i + step / 2, y = (v) => T + (H - T - B) * (1 - v / max);
+  const fmt = (v) => (c.prefix || "") + (Math.round(v * 10) / 10).toLocaleString() + (c.unit || "");
+  let out = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${escape(c.title || "")}">`;
+  out += `<line x1="${L}" y1="${H - B}" x2="${W - R}" y2="${H - B}" class="ch-axis"/>`;
+  c.labels.forEach((lb, i) => { out += `<text x="${x(i)}" y="${H - B + 28}" class="ch-lab" text-anchor="middle">${escape(lb)}</text>`; });
+  if (c.bars) c.bars.values.forEach((v, i) => {
+    const hl = c.highlight && c.highlight.includes(i);
+    out += `<rect x="${x(i) - bw / 2}" y="${y(v)}" width="${bw}" height="${H - B - y(v)}" rx="4" class="ch-bar${hl ? " hl" : ""}"/>`;
+    out += `<text x="${x(i)}" y="${y(v) - 10}" class="ch-val" text-anchor="middle">${fmt(v)}</text>`;
+  });
+  if (c.line) {
+    const pts = c.line.values.map((v, i) => `${x(i)},${y(v)}`).join(" ");
+    out += `<polyline points="${pts}" class="ch-line"/>`;
+    c.line.values.forEach((v, i) => { out += `<circle cx="${x(i)}" cy="${y(v)}" r="6" class="ch-dot"/><text x="${x(i) + 10}" y="${y(v) - 12}" class="ch-lval">${fmt(v)}</text>`; });
+  }
+  let lx = L;
+  if (c.bars) { out += `<rect x="${lx}" y="6" width="16" height="16" rx="3" class="ch-bar"/><text x="${lx + 24}" y="19" class="ch-leg">${escape(c.bars.name)}</text>`; lx += 40 + c.bars.name.length * 13; }
+  if (c.line) out += `<circle cx="${lx + 8}" cy="14" r="7" class="ch-dot"/><text x="${lx + 24}" y="19" class="ch-leg">${escape(c.line.name)}</text>`;
+  return out + "</svg>";
+}
+
 // Small logo in the bottom corner of every slide.
 function slideLogo() {
   const box = h("div", { class: "slide-logo", "aria-hidden": "true" });
@@ -332,6 +359,16 @@ function buildSlide(slide) {
     if (slide.body && slide.body[0]) c.append(h("div", { class: "accent" }), h("p", { class: "subtitle", style: "font-weight:700;color:var(--ink)", text: slide.body[0] }));
     el.append(c, doorArt());
     if (room) el.append(h("div", { class: "content" }, qrBox()));
+    return el;
+  }
+
+  if (slide.kind === "chart") {
+    el.classList.add("compact");
+    const c = head(slide);
+    const box = h("div", { class: "chart" }); box.innerHTML = chartSvg(slide.chart);
+    c.append(box);
+    if (slide.chart.note) c.append(h("p", { class: "chart-note", text: slide.chart.note }));
+    el.append(c);
     return el;
   }
 
@@ -432,7 +469,7 @@ function buildSlide(slide) {
     c.append(h("p", { class: "subtitle", style: "font-size:clamp(14px,1.2cqw,18px);color:var(--muted)", text: t("✎ Write this on your phone. ", "✎ 휴대폰에 적어 보세요. ") + ix.privacy }));
   } else if (Array.isArray(slide.body) && slide.body.length && slide.kind !== "cover" && slide.kind !== "closing") {
     if (slide.body.length === 1) c.append(h("div", { class: "accent" }), h("p", { class: "subtitle", style: "font-weight:700;color:var(--ink)", text: slide.body[0] }));
-    else c.append(h("ul", { class: "blist" + (slide.layout === "stack" ? " stack" : slide.layout === "grid4" ? " g4" : "") }, slide.body.map((b, i) => h("li", { class: slide.reveal ? "step" : null }, h("span", { text: String(i + 1).padStart(2, "0") }), b))));
+    else c.append(h("ul", { class: "blist" + (slide.layout === "stack" ? " stack" : slide.layout === "grid4" ? " g4" : slide.layout === "grid2" ? " g2" : "") }, slide.body.map((b, i) => h("li", { class: slide.reveal ? "step" : null }, h("span", { text: String(i + 1).padStart(2, "0") }), b))));
   } else if (slide.body && slide.body.length) {
     c.append(h("div", { class: "accent" }), h("p", { class: "subtitle", style: "font-weight:700;color:var(--ink)", text: slide.body[0] }));
   }

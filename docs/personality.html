@@ -640,6 +640,22 @@ body.fit .stage { background: var(--paper-2); }
 body.fit .canvas { inset: auto; left: 50%; top: 50%; width: 1280px; height: 720px; transform-origin: center; background: var(--paper); box-shadow: 0 10px 40px rgba(27,33,51,.12); }
 .blist.g4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 
+/* Charts on slides */
+.chart { margin-top: clamp(14px, 3cqh, 32px); }
+.chart svg { width: 100%; height: auto; max-height: 50cqh; display: block; }
+.chart .ch-axis { stroke: var(--ink); stroke-width: 2; }
+.chart .ch-bar { fill: var(--ink); }
+.chart .ch-bar.hl { fill: #c9a35f; }
+.chart .ch-line { fill: none; stroke: #c9a35f; stroke-width: 4; stroke-linejoin: round; }
+.chart .ch-dot { fill: #fff; stroke: #c9a35f; stroke-width: 4; }
+.chart text { font-family: var(--sans, sans-serif); fill: var(--ink); }
+.chart .ch-lab { font-size: 18px; font-weight: 600; fill: var(--muted); }
+.chart .ch-val { font-size: 18px; font-weight: 800; }
+.chart .ch-leg { font-size: 17px; font-weight: 700; }
+.chart-note { margin: 10px 0 0; font-size: clamp(12px, 1cqw, 15px); color: var(--muted); }
+.blist.g2 { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; }
+.chart .ch-lval { font-size: 15px; font-weight: 700; fill: #9a7a3e; }
+
 </style>
 </head>
 <body>
