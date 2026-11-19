@@ -633,6 +633,7 @@ p.step.slow { display: block; }
 .canvas { position: absolute; inset: 0; container-type: size; }
 body.fit .stage { background: var(--paper-2); }
 body.fit .canvas { inset: auto; left: 50%; top: 50%; width: 1280px; height: 720px; transform-origin: center; background: var(--paper); box-shadow: 0 10px 40px rgba(27,33,51,.12); }
+.blist.g4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 
 </style>
 </head>
@@ -3053,7 +3054,7 @@ function buildSlide(slide) {
     c.append(h("p", { class: "subtitle", style: "font-size:clamp(14px,1.2cqw,18px);color:var(--muted)", text: t("✎ Write this on your phone. ", "✎ 휴대폰에 적어 보세요. ") + ix.privacy }));
   } else if (Array.isArray(slide.body) && slide.body.length && slide.kind !== "cover" && slide.kind !== "closing") {
     if (slide.body.length === 1) c.append(h("div", { class: "accent" }), h("p", { class: "subtitle", style: "font-weight:700;color:var(--ink)", text: slide.body[0] }));
-    else c.append(h("ul", { class: "blist" + (slide.layout === "stack" ? " stack" : "") }, slide.body.map((b, i) => h("li", { class: slide.reveal ? "step" : null }, h("span", { text: String(i + 1).padStart(2, "0") }), b))));
+    else c.append(h("ul", { class: "blist" + (slide.layout === "stack" ? " stack" : slide.layout === "grid4" ? " g4" : "") }, slide.body.map((b, i) => h("li", { class: slide.reveal ? "step" : null }, h("span", { text: String(i + 1).padStart(2, "0") }), b))));
   } else if (slide.body && slide.body.length) {
     c.append(h("div", { class: "accent" }), h("p", { class: "subtitle", style: "font-weight:700;color:var(--ink)", text: slide.body[0] }));
   }

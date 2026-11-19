@@ -432,7 +432,7 @@ function buildSlide(slide) {
     c.append(h("p", { class: "subtitle", style: "font-size:clamp(14px,1.2cqw,18px);color:var(--muted)", text: t("✎ Write this on your phone. ", "✎ 휴대폰에 적어 보세요. ") + ix.privacy }));
   } else if (Array.isArray(slide.body) && slide.body.length && slide.kind !== "cover" && slide.kind !== "closing") {
     if (slide.body.length === 1) c.append(h("div", { class: "accent" }), h("p", { class: "subtitle", style: "font-weight:700;color:var(--ink)", text: slide.body[0] }));
-    else c.append(h("ul", { class: "blist" + (slide.layout === "stack" ? " stack" : "") }, slide.body.map((b, i) => h("li", { class: slide.reveal ? "step" : null }, h("span", { text: String(i + 1).padStart(2, "0") }), b))));
+    else c.append(h("ul", { class: "blist" + (slide.layout === "stack" ? " stack" : slide.layout === "grid4" ? " g4" : "") }, slide.body.map((b, i) => h("li", { class: slide.reveal ? "step" : null }, h("span", { text: String(i + 1).padStart(2, "0") }), b))));
   } else if (slide.body && slide.body.length) {
     c.append(h("div", { class: "accent" }), h("p", { class: "subtitle", style: "font-weight:700;color:var(--ink)", text: slide.body[0] }));
   }
