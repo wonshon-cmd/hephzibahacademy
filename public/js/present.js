@@ -343,7 +343,7 @@ addEventListener("resize", fitStage);
 // Bar (+ optional line) chart for "chart" slides: {labels, bars:{name, values}, line:{name, values}, unit, max}.
 function chartSvg(c) {
   const W = 1000, H = 400, L = 70, R = 70, T = 44, B = 46;
-  const vals = [...(c.bars ? c.bars.values : []), ...(c.line ? c.line.values : [])];
+  const vals = [...(c.bars ? c.bars.values : []), ...(c.line ? c.line.values : []), ...(c.lines || []).flatMap((l) => l.values)];
   const max = c.max || Math.max(...vals) * 1.15;
   const n = c.labels.length, step = (W - L - R) / n, bw = Math.min(64, step * 0.56);
   const x = (i) => L + step * i + step / 2, y = (v) => T + (H - T - B) * (1 - v / max);
@@ -364,9 +364,19 @@ function chartSvg(c) {
       out += `<circle cx="${x(i)}" cy="${y(v)}" r="6" class="ch-dot"/>` + (show ? `<text x="${x(i) + 10}" y="${y(v) - 12}" class="ch-lval">${fmt(v)}</text>` : "");
     });
   }
+  // Animated curves: {lines: [{name, values, tone: "gold" | "gray", label: "last"}]} — drawn from left to right.
+  (c.lines || []).forEach((ln) => {
+    const pts = ln.values.map((v, i) => [x(i), y(v)]);
+    let len = 0; for (let i = 1; i < pts.length; i++) len += Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]);
+    out += `<polyline points="${pts.map((p) => p.join(",")).join(" ")}" class="ch-curve ${ln.tone || "gold"}" style="--len:${Math.ceil(len)}"/>`;
+    const [lx2, ly2] = pts[pts.length - 1], v = ln.values[ln.values.length - 1];
+    if (ln.startLabel) out += `<text x="${pts[0][0] + 6}" y="${pts[0][1] - 14}" class="ch-startval">${fmt(ln.values[0])}</text>`;
+    out += `<circle cx="${lx2}" cy="${ly2}" r="7" class="ch-end ${ln.tone || "gold"}"/><text x="${lx2 - 12}" y="${ly2 - 16}" class="ch-endval ${ln.tone || "gold"}" text-anchor="end">${fmt(v)}</text>`;
+  });
   let lx = L;
   if (c.bars) { out += `<rect x="${lx}" y="6" width="16" height="16" rx="3" class="ch-bar"/><text x="${lx + 24}" y="19" class="ch-leg">${escape(c.bars.name)}</text>`; lx += 40 + c.bars.name.length * 13; }
   if (c.line) out += `<circle cx="${lx + 8}" cy="14" r="7" class="ch-dot"/><text x="${lx + 24}" y="19" class="ch-leg">${escape(c.line.name)}</text>`;
+  (c.lines || []).forEach((ln) => { out += `<rect x="${lx}" y="12" width="22" height="5" rx="2" class="ch-sw ${ln.tone || "gold"}"/><text x="${lx + 30}" y="19" class="ch-leg">${escape(ln.name)}</text>`; lx += 60 + ln.name.length * 13; });
   return out + "</svg>";
 }
 
@@ -376,6 +386,7 @@ function wtpSvg(w) {
   const y = (v) => base - (base - T) * (v / max);
   const n = w.bars.length, colW = 150, gap = (W - n * colW) / (n + 1);
   const L = w.labels;
+  const fmt = (v) => (w.prefix ? w.prefix + v.toLocaleString(undefined, { maximumFractionDigits: 2 }) : "");
   let out = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${escape(w.title || "")}">`;
   out += `<line x1="20" y1="${base}" x2="${W - 20}" y2="${base}" class="ch-axis"/>`;
   w.bars.forEach((b, i) => {
@@ -384,12 +395,12 @@ function wtpSvg(w) {
     out += `<rect x="${x0}" y="${y(b.price)}" width="${colW}" height="${y(b.cost) - y(b.price)}" class="w-profit"/>`;
     out += `<rect x="${x0}" y="${y(b.wtp)}" width="${colW}" height="${y(b.price) - y(b.wtp)}" class="w-value"/>`;
     const mid = (a, z) => (y(a) + y(z)) / 2 + 6;
-    out += `<text x="${x0 + colW / 2}" y="${mid(0, b.cost)}" class="w-in light" text-anchor="middle">${escape(L.cost)}</text>`;
+    out += `<text x="${x0 + colW / 2}" y="${mid(0, b.cost)}" class="w-in light" text-anchor="middle">${escape(L.cost)}${w.prefix ? " " + fmt(b.cost) : ""}</text>`;
     if (b.price - b.cost >= max * 0.06) out += `<text x="${x0 + colW / 2}" y="${mid(b.cost, b.price)}" class="w-in light" text-anchor="middle">${escape(L.company)}</text>`;
     if (b.wtp - b.price >= max * 0.06) out += `<text x="${x0 + colW / 2}" y="${mid(b.price, b.wtp)}" class="w-in" text-anchor="middle">${escape(L.customer)}</text>`;
     const close = y(b.price) - y(b.wtp) < 24;
-    out += `<text x="${x0 + colW + 12}" y="${y(b.wtp) + (close ? -6 : 6)}" class="w-tick">${escape(L.wtp)}</text>`;
-    out += `<text x="${x0 + colW + 12}" y="${y(b.price) + (close ? 16 : 6)}" class="w-tick">${escape(L.price)}</text>`;
+    out += `<text x="${x0 + colW + 12}" y="${y(b.wtp) + (close ? -6 : 6)}" class="w-tick">${escape(L.wtp)} ${fmt(b.wtp)}</text>`;
+    out += `<text x="${x0 + colW + 12}" y="${y(b.price) + (close ? 16 : 6)}" class="w-tick strong">${escape(L.price)} ${fmt(b.price)}</text>`;
     out += `<text x="${x0 + colW / 2}" y="${base + 32}" class="ch-lab" text-anchor="middle">${escape(b.name)}</text>`;
   });
   return out + "</svg>";
@@ -419,7 +430,7 @@ function buildSlide(slide) {
   if (slide.kind === "chart") {
     el.classList.add("compact");
     const c = head(slide);
-    const box = h("div", { class: "chart" }); box.innerHTML = chartSvg(slide.chart);
+    const box = h("div", { class: "chart" + (slide.chart.tall ? " tall" : "") }); box.innerHTML = chartSvg(slide.chart);
     c.append(box);
     if (slide.chart.note) c.append(h("p", { class: "chart-note", text: slide.chart.note }));
     el.append(c);

@@ -669,6 +669,21 @@ body.stage-body.full .stage { cursor: pointer; }
 body.stage-body.full .fs-exit { display: grid; place-items: center; position: fixed; top: calc(10px + env(safe-area-inset-top, 0px)); right: calc(10px + env(safe-area-inset-right, 0px)); z-index: 70; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--hair); background: rgba(255,255,255,.85); color: var(--ink); font-size: 15px; cursor: pointer; opacity: .25; transition: opacity .2s; }
 body.stage-body.full .fs-exit:hover, body.stage-body.full .fs-exit:focus-visible { opacity: 1; }
 body.stage-body.full.fit .stage { background: #000; }
+.chart .ch-curve { fill: none; stroke-width: 6; stroke-linejoin: round; stroke-linecap: round; stroke-dasharray: var(--len); stroke-dashoffset: var(--len); animation: chDraw 2.6s .3s cubic-bezier(.5,0,.7,1) forwards; }
+.chart .ch-curve.gold { stroke: #c9a35f; }
+.chart .ch-curve.gray { stroke: #8a8d96; stroke-width: 4; animation-duration: 1.2s; }
+.chart .ch-end { opacity: 0; animation: chFade .4s 2.8s forwards; }
+.chart .ch-end.gold { fill: #c9a35f; } .chart .ch-end.gray { fill: #8a8d96; }
+.chart .ch-endval { font-size: 22px; font-weight: 800; opacity: 0; animation: chFade .4s 2.9s forwards; }
+.chart .ch-endval.gold { fill: #9a7a3e; } .chart .ch-endval.gray { fill: #6b6e77; font-size: 17px; }
+.chart .ch-sw.gold { fill: #c9a35f; } .chart .ch-sw.gray { fill: #8a8d96; }
+@keyframes chDraw { to { stroke-dashoffset: 0; } }
+@keyframes chFade { to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .chart .ch-curve { animation: none; stroke-dashoffset: 0; } .chart .ch-end, .chart .ch-endval { animation: none; opacity: 1; } }
+.chart.tall svg { max-height: 64cqh; }
+.chart .ch-startval { font-size: 15px; font-weight: 700; fill: #9a7a3e; }
+.chart.tall .ch-endval.gold { font-size: 40px; }
+.chart .w-tick.strong { fill: var(--ink); font-size: 18px; }
 
 </style>
 </head>
