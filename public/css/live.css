@@ -287,3 +287,11 @@ body.fit .canvas { inset: auto; left: 50%; top: 50%; width: 1280px; height: 720p
 .chart .w-in { font-size: 17px; font-weight: 800; fill: var(--ink); }
 .chart .w-in.light { fill: #fff; }
 .chart .w-tick { font-size: 16px; font-weight: 700; fill: var(--muted); }
+
+/* Full screen presenting: only the slide */
+.fs-exit { display: none; }
+body.stage-body.full .topbar, body.stage-body.full .bottombar { display: none; }
+body.stage-body.full .stage { cursor: pointer; }
+body.stage-body.full .fs-exit { display: grid; place-items: center; position: fixed; top: calc(10px + env(safe-area-inset-top, 0px)); right: calc(10px + env(safe-area-inset-right, 0px)); z-index: 70; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--hair); background: rgba(255,255,255,.85); color: var(--ink); font-size: 15px; cursor: pointer; opacity: .25; transition: opacity .2s; }
+body.stage-body.full .fs-exit:hover, body.stage-body.full .fs-exit:focus-visible { opacity: 1; }
+body.stage-body.full.fit .stage { background: #000; }
