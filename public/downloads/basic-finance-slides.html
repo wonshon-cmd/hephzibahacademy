@@ -678,6 +678,9 @@ body.stage-body.full.fit .stage { background: #000; }
 .chart .ch-startval { font-size: 15px; font-weight: 700; fill: #9a7a3e; }
 .chart.tall .ch-endval.gold { font-size: 40px; }
 .chart .w-tick.strong { fill: var(--ink); font-size: 18px; }
+.chart .ch-curve.ink { stroke: var(--ink); stroke-width: 5; }
+.chart .ch-kano { font-size: 20px; font-weight: 800; opacity: 0; animation: chFade .5s 2.7s forwards; }
+.chart .ch-kano.gold { fill: #9a7a3e; } .chart .ch-kano.gray { fill: #6b6e77; } .chart .ch-kano.ink { fill: var(--ink); }
 
 </style>
 </head>
@@ -1541,6 +1544,31 @@ function wtpSvg(w) {
   return out + "</svg>";
 }
 
+// Kano model: satisfaction (up) vs. how well a feature is delivered (right), with three curves.
+function kanoSvg(k) {
+  const W = 1000, H = 440, cx = 500, cy = 220, rx = 400, ry = 180;
+  const P = (t, v) => [cx - rx + 2 * rx * t, cy - ry * v];
+  const curve = (f) => { const pts = []; for (let i = 0; i <= 40; i++) { const t = i / 40; pts.push(P(t, f(t))); } return pts; };
+  const lines = [
+    { key: "basic", tone: "gray", pts: curve((t) => -Math.pow(1 - t, 2.4)) },
+    { key: "performance", tone: "ink", pts: curve((t) => -0.8 + 1.6 * t) },
+    { key: "delight", tone: "gold", pts: curve((t) => Math.pow(t, 2.4)) },
+  ];
+  let out = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Kano model">`;
+  out += `<line x1="${cx - rx}" y1="${cy}" x2="${cx + rx + 20}" y2="${cy}" class="ch-axis"/><line x1="${cx}" y1="${cy + ry + 10}" x2="${cx}" y2="${cy - ry - 16}" class="ch-axis"/>`;
+  out += `<text x="${cx + 8}" y="${cy - ry - 2}" class="ch-lab">${escape(k.axes.up)}</text><text x="${cx + 8}" y="${cy + ry + 6}" class="ch-lab">${escape(k.axes.down)}</text>`;
+  out += `<text x="${cx + rx + 20}" y="${cy + 26}" class="ch-lab" text-anchor="end">${escape(k.axes.right)}</text><text x="${cx - rx}" y="${cy + 26}" class="ch-lab">${escape(k.axes.left)}</text>`;
+  for (const ln of lines) {
+    let len = 0; for (let i = 1; i < ln.pts.length; i++) len += Math.hypot(ln.pts[i][0] - ln.pts[i - 1][0], ln.pts[i][1] - ln.pts[i - 1][1]);
+    out += `<polyline points="${ln.pts.map((p) => p.map((n) => n.toFixed(1)).join(",")).join(" ")}" class="ch-curve ${ln.tone}" style="--len:${Math.ceil(len)}"/>`;
+    const [ex, ey] = ln.pts[ln.pts.length - 1];
+    const [px, py] = ln.key === "performance" ? ln.pts[26] : [ex, ey];
+    const dy = { basic: -14, performance: -18, delight: -14 }[ln.key];
+    out += `<text x="${px - 10}" y="${py + dy}" class="ch-kano ${ln.tone}" text-anchor="end">${escape(k.labels[ln.key])}</text>`;
+  }
+  return out + "</svg>";
+}
+
 // Small logo in the bottom corner of every slide.
 function slideLogo() {
   const box = h("div", { class: "slide-logo", "aria-hidden": "true" });
@@ -1578,6 +1606,16 @@ function buildSlide(slide) {
     const box = h("div", { class: "chart" }); box.innerHTML = wtpSvg(slide.wtp);
     c.append(box);
     if (slide.wtp.note) c.append(h("p", { class: "chart-note", text: slide.wtp.note }));
+    el.append(c);
+    return el;
+  }
+
+  if (slide.kind === "kano") {
+    el.classList.add("compact");
+    const c = head(slide);
+    const box = h("div", { class: "chart tall" }); box.innerHTML = kanoSvg(slide.kano);
+    c.append(box);
+    if (slide.kano.note) c.append(h("p", { class: "chart-note", text: slide.kano.note }));
     el.append(c);
     return el;
   }
